@@ -1462,7 +1462,9 @@ function PlanejamentoSection() {
 
   const assignedCount = tasks.filter((task) => task.owner !== 'Responsável a definir').length;
   const informedDatesCount = tasks.filter((task) => task.dueDateSource === 'informada').length;
-  const nextDeadline = [...tasks].sort((a, b) => a.dueDate.getTime() - b.dueDate.getTime())[0];
+  const nextDeadlineTask = tasks.length > 0
+    ? [...tasks].sort((a, b) => a.dueDate.getTime() - b.dueDate.getTime())[0]
+    : undefined;
 
   return (
     <section className="py-16 sm:py-24 relative">
@@ -1523,7 +1525,7 @@ function PlanejamentoSection() {
                 { label: 'ITENS', value: String(tasks.length).padStart(2, '0') },
                 { label: 'COM RESPONSÁVEL', value: String(assignedCount).padStart(2, '0') },
                 { label: 'DATAS INFORMADAS', value: String(informedDatesCount).padStart(2, '0') },
-                { label: 'PRÓXIMO PRAZO', value: nextDeadline?.dueDateLabel ?? '—' }
+                { label: 'PRÓXIMO PRAZO', value: nextDeadlineTask?.dueDateLabel ?? '—' }
               ].map((metric) => (
                 <GlassCard key={metric.label} className="p-4">
                   <div className="text-[10px] text-cyan-300/50 uppercase tracking-wider mb-1">{metric.label}</div>
