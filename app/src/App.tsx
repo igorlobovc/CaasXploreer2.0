@@ -40,6 +40,14 @@ interface ServicoCategoria {
   examples: string[];
 }
 
+interface ProjectBetaStep {
+  title: string;
+  objective: string;
+  status: 'agora' | 'proximo' | 'depois';
+  icon: React.ReactNode;
+  actions: string[];
+}
+
 // ============================================
 // DATA - AÇÕES INSTITUCIONAIS COM EVIDÊNCIA
 // ============================================
@@ -188,6 +196,91 @@ const timelineEvents: TimelineEvent[] = [
     description: 'Relatório técnico consolidado e datasets auditáveis',
     status: 'final'
   }
+];
+
+const projectBetaSteps: ProjectBetaStep[] = [
+  {
+    title: 'Inspecionar e congelar o que precisa ser preservado',
+    objective: 'Confirmar no merge target tudo o que não pode regredir antes de integrar a camada analítica.',
+    status: 'agora',
+    icon: <Shield className="w-5 h-5" />,
+    actions: [
+      'Inventariar `/estados`, `/estados/[uf]`, dados de referência e fluxo atual de deploy.',
+      'Separar o que deve ser preservado, o que entra agora e o que fica explicitamente postergado.',
+      'Validar a integridade do shell atual antes de receber novos blocos analíticos.'
+    ]
+  },
+  {
+    title: 'Adicionar a camada JSON de analytics com baixo risco',
+    objective: 'Colocar os arquivos analíticos no projeto principal sem substituições destrutivas.',
+    status: 'agora',
+    icon: <Database className="w-5 h-5" />,
+    actions: [
+      'Inserir `ranking_normalizado_12m.json`, `ranking_servicos_12m.json`, `ranking_estados_12m.json` e `comparativo_regioes_12m.json` em local seguro.',
+      'Criar a camada `lib/data/analytics.ts` para centralizar leitura, tipagem e fallback.',
+      'Preservar rotas e dados já operacionais enquanto a nova fonte é conectada.'
+    ]
+  },
+  {
+    title: 'Publicar `/ranking` como primeira entrega visível',
+    objective: 'Liberar a visão beta de ranking com os recortes de apresentação prioritários.',
+    status: 'proximo',
+    icon: <BarChart className="w-5 h-5" />,
+    actions: [
+      'Subir a página `/ranking` usando os recortes de 12 meses e os rankings por estado e por serviço.',
+      'Mostrar total de interações, interações compartilhadas e versões normalizadas por 1.000 advogados.',
+      'Incluir leitura comparativa entre estados grandes e pequenos sem quebrar o shell atual.'
+    ]
+  },
+  {
+    title: 'Organizar a apresentação para aprovação de merge',
+    objective: 'Preparar uma trilha clara de homologação antes de mexer na home principal.',
+    status: 'proximo',
+    icon: <Target className="w-5 h-5" />,
+    actions: [
+      'Registrar mapa de merge aprovado com o que foi preservado, incorporado manualmente ou postergado.',
+      'Validar que `/ranking` está pronto para ir ao ar ou já está publicado.',
+      'Conferir que não houve regressão nas rotas por estado nem no deploy.'
+    ]
+  },
+  {
+    title: 'Mesclar blocos da homepage seletivamente',
+    objective: 'Trazer apenas as seções da home que agregam à narrativa executiva sem risco desnecessário.',
+    status: 'depois',
+    icon: <Layout className="w-5 h-5" />,
+    actions: [
+      'Avaliar os candidatos de homepage depois que a camada de analytics estiver estável.',
+      'Promover somente os blocos que reforcem a leitura para a presidência da rede nacional de CAAs.',
+      'Evitar qualquer troca ampla até a validação final do plano de homepage.'
+    ]
+  }
+];
+
+const projectBetaPreservar = [
+  'Rotas atuais `/estados` e `/estados/[uf]`',
+  'Registry/reference data já em produção',
+  'Integridade do deployment atual'
+];
+
+const projectBetaAnalytics = [
+  'Últimos 12 meses',
+  'Total de interações',
+  'Interações compartilhadas',
+  'Total de interações por 1.000 advogados',
+  'Interações compartilhadas por 1.000 advogados',
+  'Ranking por estado',
+  'Ranking por serviço/categoria',
+  'Comparativo entre estados grandes e pequenos'
+];
+
+const projectBetaDeliverables = [
+  'ranking_normalizado_12m.json',
+  'ranking_servicos_12m.json',
+  'ranking_estados_12m.json',
+  'comparativo_regioes_12m.json',
+  'lib/data/analytics.ts',
+  'app/ranking/page.tsx',
+  'homepage candidate files'
 ];
 
 // ============================================
@@ -1333,6 +1426,122 @@ function CronogramaSection() {
   );
 }
 
+function ProjectBetaViewSection() {
+  const statusStyles: Record<ProjectBetaStep['status'], { label: string; className: string }> = {
+    agora: {
+      label: 'AGORA',
+      className: 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
+    },
+    proximo: {
+      label: 'PRÓXIMO',
+      className: 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/30'
+    },
+    depois: {
+      label: 'DEPOIS',
+      className: 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
+    }
+  };
+
+  return (
+    <section className="py-16 sm:py-24 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10 sm:mb-16">
+          <div className="flex items-center gap-2 mb-3 sm:mb-4">
+            <Eye className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
+            <span className="text-[10px] sm:text-xs font-mono text-cyan-300/70 uppercase tracking-wider">PROJECT BETA VIEW</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mb-3 sm:mb-4">Desdobramento organizado para tracking</h2>
+          <p className="text-cyan-200/60 max-w-3xl text-sm sm:text-base">
+            A iniciativa de merge da camada Fanpage Karma foi quebrada em etapas menores para facilitar aprovação, execução e acompanhamento sem perder de vista o que precisa ser preservado.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-5">
+            {projectBetaSteps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08 }}
+              >
+                <GlassCard className="p-5 sm:p-6" hover>
+                  <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 flex-shrink-0">
+                        {step.icon}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-2 mb-2">
+                          <span className="text-[10px] sm:text-xs font-mono text-cyan-400">ETAPA {index + 1}</span>
+                          <span className={`text-[10px] sm:text-xs px-2 py-0.5 rounded-full ${statusStyles[step.status].className}`}>
+                            {statusStyles[step.status].label}
+                          </span>
+                        </div>
+                        <h3 className="text-base sm:text-lg font-medium text-white">{step.title}</h3>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm text-cyan-200/65 mb-4">{step.objective}</p>
+                      <ul className="space-y-2.5">
+                        {step.actions.map((action) => (
+                          <li key={action} className="flex items-start gap-2 text-xs sm:text-sm text-cyan-100/80">
+                            <CheckCircle2 className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                            <span>{action}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="space-y-4 sm:space-y-5">
+            <GlassCard className="p-5 sm:p-6">
+              <h3 className="text-sm font-semibold text-white mb-4">Preservar sem regressão</h3>
+              <ul className="space-y-2.5">
+                {projectBetaPreservar.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-xs sm:text-sm text-cyan-100/80">
+                    <Shield className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </GlassCard>
+
+            <GlassCard className="p-5 sm:p-6">
+              <h3 className="text-sm font-semibold text-white mb-4">Analytics prioritários</h3>
+              <ul className="space-y-2.5">
+                {projectBetaAnalytics.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-xs sm:text-sm text-cyan-100/80">
+                    <BarChart className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </GlassCard>
+
+            <GlassCard className="p-5 sm:p-6">
+              <h3 className="text-sm font-semibold text-white mb-4">Entregáveis candidatos</h3>
+              <ul className="space-y-2.5">
+                {projectBetaDeliverables.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-xs sm:text-sm text-cyan-100/80">
+                    <Database className="w-4 h-4 text-blue-300 mt-0.5 flex-shrink-0" />
+                    <span className="font-mono text-[11px] sm:text-xs break-all">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </GlassCard>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ============================================
 // FOOTER
 // ============================================
@@ -1376,6 +1585,7 @@ function App() {
       <ExemploTecnicoSection />
       <TecnologiaSection />
       <CronogramaSection />
+      <ProjectBetaViewSection />
       <Footer />
     </div>
   );
