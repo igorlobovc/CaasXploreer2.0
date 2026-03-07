@@ -42,8 +42,9 @@ interface ServicoCategoria {
 
 interface ProjectActionTask {
   id: string;
+  sequence: number;
   window: string;
-  owner: 'Agent' | 'igorlobovc' | 'Agent + igorlobovc';
+  owners: Array<'ai-agent' | 'igorlobovc'>;
   title: string;
   action: string;
   deliverable: string;
@@ -204,8 +205,9 @@ const timelineEvents: TimelineEvent[] = [
 const projectActionTasks: ProjectActionTask[] = [
   {
     id: 'P1',
+    sequence: 1,
     window: '0–2h',
-    owner: 'Agent',
+    owners: ['ai-agent'],
     title: 'Fechar mapa de merge e itens preservados',
     action: 'Inspecionar o alvo principal igorlobovc/CaasXploreer2.0 e listar o que deve ser preservado, adicionado, mesclado manualmente ou postergado.',
     deliverable: 'Merge map aprovado com /estados, /estados/[uf], dados de referência e critérios de deploy protegidos.',
@@ -214,8 +216,9 @@ const projectActionTasks: ProjectActionTask[] = [
   },
   {
     id: 'P2',
+    sequence: 2,
     window: '2–6h',
-    owner: 'Agent',
+    owners: ['ai-agent'],
     title: 'Adicionar a camada segura de analytics JSON',
     action: 'Posicionar ranking_normalizado_12m.json, ranking_servicos_12m.json, ranking_estados_12m.json e comparativo_regioes_12m.json em uma camada isolada de dados.',
     deliverable: 'Arquivos analíticos inseridos com caminho e contrato definidos para consumo sem impacto nas rotas atuais.',
@@ -224,8 +227,9 @@ const projectActionTasks: ProjectActionTask[] = [
   },
   {
     id: 'P3',
+    sequence: 3,
     window: '6–10h',
-    owner: 'Agent',
+    owners: ['ai-agent'],
     title: 'Criar adaptador para métricas Fanpage Karma',
     action: 'Conectar lib/data/analytics.ts aos indicadores prioritários: 12 meses, interações totais, interações compartilhadas e métricas por 1.000 advogados.',
     deliverable: 'Adapter pronto para ranking por estado, ranking por serviço/categoria e comparativo entre estados grandes e pequenos.',
@@ -234,8 +238,9 @@ const projectActionTasks: ProjectActionTask[] = [
   },
   {
     id: 'P4',
+    sequence: 4,
     window: '10–16h',
-    owner: 'Agent',
+    owners: ['ai-agent'],
     title: 'Subir /ranking em isolamento controlado',
     action: 'Integrar app/ranking/page.tsx ou equivalente como superfície nova, mantendo /estados e /estados/[uf] inalterados.',
     deliverable: '/ranking live ou pronto para go-live com smoke test de navegação.',
@@ -244,8 +249,9 @@ const projectActionTasks: ProjectActionTask[] = [
   },
   {
     id: 'P5',
+    sequence: 5,
     window: '16–20h',
-    owner: 'igorlobovc',
+    owners: ['igorlobovc'],
     title: 'Decidir o merge seletivo da homepage',
     action: 'Revisar os candidate files de homepage e aprovar apenas os blocos que reforçam a narrativa para a presidência da rede nacional de CAAs.',
     deliverable: 'Plano validado do que entra agora, do que entra depois e do que permanece em backlog.',
@@ -254,8 +260,9 @@ const projectActionTasks: ProjectActionTask[] = [
   },
   {
     id: 'P6',
+    sequence: 6,
     window: '20–22h',
-    owner: 'Agent + igorlobovc',
+    owners: ['ai-agent', 'igorlobovc'],
     title: 'Revisar a narrativa executiva e o QA final',
     action: 'Conferir se os rankings destacam os serviços com melhor performance social e se os comparativos regionais sustentam a apresentação executiva.',
     deliverable: 'Checklist final cobrindo consistência analítica, narrativa para presidência e readiness para publicação.',
@@ -264,8 +271,9 @@ const projectActionTasks: ProjectActionTask[] = [
   },
   {
     id: 'P7',
+    sequence: 7,
     window: '22–24h',
-    owner: 'Agent',
+    owners: ['ai-agent'],
     title: 'Executar regressão e trava de deploy',
     action: 'Rodar build, revisar os artefatos e confirmar que a integração não afeta deploy nem o comportamento das páginas já estáveis.',
     deliverable: 'Go/no-go técnico com zero regressão conhecida nas rotas atuais.',
@@ -1360,6 +1368,11 @@ function TecnologiaSection() {
 // PROJECTS SETUP SECTION
 // ============================================
 function ProjectSetupSection() {
+  const ownerLabels = {
+    'ai-agent': 'AI Agent',
+    igorlobovc: 'Igor Lobovc'
+  } as const;
+
   const statusConfig = {
     now: {
       label: 'Executar agora',
@@ -1418,7 +1431,7 @@ function ProjectSetupSection() {
                     <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 mb-3">
                       <div className="flex items-center gap-3">
                         <div className="w-9 h-9 rounded-full bg-cyan-500/10 border border-cyan-400/20 flex items-center justify-center text-cyan-300 text-sm font-mono">
-                          {index + 1}
+                          {task.sequence}
                         </div>
                         <div>
                           <div className="flex flex-wrap items-center gap-2 mb-1">
@@ -1430,7 +1443,7 @@ function ProjectSetupSection() {
                         </div>
                       </div>
                       <span className="text-[10px] sm:text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-cyan-100/80 w-fit">
-                        Responsável: {task.owner}
+                        Responsável: {task.owners.map((owner) => ownerLabels[owner]).join(' + ')}
                       </span>
                     </div>
 
