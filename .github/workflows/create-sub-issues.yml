@@ -1,0 +1,740 @@
+name: Create Sub-Issues and Project Board for Issue #8
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (print actions without executing)'
+        type: boolean
+        default: false
+
+permissions:
+  issues: write
+  contents: read
+  projects: write
+
+jobs:
+  create-sub-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create labels
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const labels = [
+              { name: 'analytics',       color: '0075ca', description: 'Analytics track' },
+              { name: 'integration',     color: 'e4e669', description: 'Integration track' },
+              { name: 'presentation',    color: 'd93f0b', description: 'Presentation track' },
+              { name: 'project-control', color: '0e8a16', description: 'Project Control track' },
+              { name: 'validation',      color: 'bfd4f2', description: 'Validation track' },
+              { name: 'data',            color: 'fef2c0', description: 'Data track' },
+              { name: 'decision',        color: 'c2e0c6', description: 'Decision track' },
+              { name: 'coordination',    color: 'f9d0c4', description: 'Coordination track' },
+              { name: 'governance',      color: '1d76db', description: 'Governance track' },
+              { name: 'priority-high',   color: 'b60205', description: 'HIGH priority' },
+              { name: 'priority-medium', color: 'fbca04', description: 'MEDIUM priority' },
+            ];
+
+            const dryRun = ${{ inputs.dry_run }};
+            for (const label of labels) {
+              if (dryRun) {
+                console.log(`[DRY RUN] Would create/verify label: ${label.name}`);
+                continue;
+              }
+              try {
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label.name,
+                  color: label.color,
+                  description: label.description,
+                });
+                console.log(`Created label: ${label.name}`);
+              } catch (e) {
+                if (e.status === 422) {
+                  console.log(`Label already exists: ${label.name}`);
+                } else {
+                  core.warning(`Failed to create label ${label.name}: ${e.message}`);
+                }
+              }
+            }
+
+      - name: Create sub-issues and link to issue #8
+        id: create_issues
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const dryRun = ${{ inputs.dry_run }};
+
+            const tasks = [
+              {
+                title: "Confirm analytics package consistency",
+                owner: "Agent 1",
+                track: "Analytics",
+                trackLabel: "analytics",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "2.0",
+                dependencies: "None",
+                deliverable: "Audit note covering missing UFs, missing CAAs by region, field consistency, integer/float issues",
+                notes: "Focus on ranking_normalizado_12m.json, ranking_servicos_12m.json, ranking_estados_12m.json, comparativo_regioes_12m.json",
+              },
+              {
+                title: "Validate Sudeste anomaly",
+                owner: "Agent 1",
+                track: "Analytics",
+                trackLabel: "analytics",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "1.5",
+                dependencies: "Confirm analytics package consistency",
+                deliverable: "Short report with exact Sudeste composition and whether MG/ES are missing",
+                notes: "Do not merge anything yet",
+              },
+              {
+                title: "List trusted analytics files",
+                owner: "Agent 1",
+                track: "Analytics",
+                trackLabel: "analytics",
+                priority: "MEDIUM",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "0.5",
+                dependencies: "Confirm analytics package consistency",
+                deliverable: "One list of SAFE analytics files vs files needing correction",
+                notes: "Should explicitly classify JSONs",
+              },
+              {
+                title: "Inspect CaasXploreer2.0 target structure",
+                owner: "Agent 2",
+                track: "Integration",
+                trackLabel: "integration",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "1.5",
+                dependencies: "None",
+                deliverable: "Inventory of deploy/build/data paths in igorlobovc/CaasXploreer2.0",
+                notes: "Focus on .github/workflows/deploy.yml, app/, app/src/, data location",
+              },
+              {
+                title: "Map candidate package to target repo",
+                owner: "Agent 2",
+                track: "Integration",
+                trackLabel: "integration",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "2.0",
+                dependencies: "Inspect CaasXploreer2.0 target structure",
+                deliverable: "File-by-file ADD / MANUAL_MERGE / POSTPONE map",
+                notes: "No code changes yet",
+              },
+              {
+                title: "Identify minimal live version",
+                owner: "Agent 2",
+                track: "Integration",
+                trackLabel: "integration",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "1.0",
+                dependencies: "Map candidate package to target repo",
+                deliverable: "Recommendation for smallest safe production increment",
+                notes: "Expected likely outcome: analytics JSONs + /ranking candidate",
+              },
+              {
+                title: "Prepare /ranking readiness checklist",
+                owner: "Agent 2",
+                track: "Integration",
+                trackLabel: "integration",
+                priority: "MEDIUM",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "0.5",
+                dependencies: "Map candidate package to target repo",
+                deliverable: "Checklist of files/data required before /ranking goes live",
+                notes: "No merge instructions yet",
+              },
+              {
+                title: "Draft executive analytics narrative",
+                owner: "Agent 3",
+                track: "Presentation",
+                trackLabel: "presentation",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "1.5",
+                dependencies: "None",
+                deliverable: "Short narrative for president: what services worked best, absolute vs normalized winners, regional takeaways",
+                notes: "Use last-12-month logic and normalized metrics",
+              },
+              {
+                title: "Create service-ranking presentation table spec",
+                owner: "Agent 3",
+                track: "Presentation",
+                trackLabel: "presentation",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "1.0",
+                dependencies: "Draft executive analytics narrative",
+                deliverable: "Spec for final ranking table fields and display order",
+                notes: "Must include total interactions, shared interactions, per-1000 lawyers, top service/category",
+              },
+              {
+                title: "Draft homepage section strategy",
+                owner: "Agent 3",
+                track: "Presentation",
+                trackLabel: "presentation",
+                priority: "MEDIUM",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "1.0",
+                dependencies: "Inspect CaasXploreer2.0 target structure",
+                deliverable: "Homepage section map aligned to aq3buksivjaga structure but adapted to current project",
+                notes: "Reference-only, no replacement yet",
+              },
+              {
+                title: "Review and approve README/project text",
+                owner: "Igor",
+                track: "Project Control",
+                trackLabel: "project-control",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "0.5",
+                dependencies: "None",
+                deliverable: "Final approved repo/project description text",
+                notes: "Use updated CaasXploreer2.0 wording",
+              },
+              {
+                title: "Create/organize GitHub Project cards",
+                owner: "Igor",
+                track: "Project Control",
+                trackLabel: "project-control",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "0.5",
+                dependencies: "None",
+                deliverable: "Project board populated with tasks and owners",
+                notes: "Use this CSV as source",
+              },
+              {
+                title: "Download and inspect Kimi package artifacts",
+                owner: "Igor",
+                track: "Validation",
+                trackLabel: "validation",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "0.75",
+                dependencies: "None",
+                deliverable: "Quick manual check of package folder contents and naming",
+                notes: "Open README_MERGE_FIRST.md, MERGE_MAP.md, top JSONs",
+              },
+              {
+                title: "Provide final lawyer totals source confirmation",
+                owner: "Igor",
+                track: "Data",
+                trackLabel: "data",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "0.25",
+                dependencies: "None",
+                deliverable: "Confirmed authoritative totals by UF",
+                notes: "Already available; keep fixed for all agents",
+              },
+              {
+                title: "Decide target repo for first live increment",
+                owner: "Igor",
+                track: "Decision",
+                trackLabel: "decision",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "0.5",
+                dependencies: "Inspect CaasXploreer2.0 target structure; Map candidate package to target repo",
+                deliverable: "Decision note: CaasXploreer2.0 vs caasxplorer-web for first live increment",
+                notes: "Current plan favors CaasXploreer2.0",
+              },
+              {
+                title: "Approve minimal live scope",
+                owner: "Igor",
+                track: "Decision",
+                trackLabel: "decision",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "0.5",
+                dependencies: "Identify minimal live version; Draft executive analytics narrative",
+                deliverable: "Approved scope document",
+                notes: "Likely: analytics layer + /ranking, homepage later",
+              },
+              {
+                title: "Request corrected package if regional anomaly confirmed",
+                owner: "Igor",
+                track: "Coordination",
+                trackLabel: "coordination",
+                priority: "MEDIUM",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "0.25",
+                dependencies: "Validate Sudeste anomaly",
+                deliverable: "Message sent to Kimi asking for corrected analytics package",
+                notes: "Only if anomaly is real",
+              },
+              {
+                title: "Freeze /estados and /estados/[uf] from changes",
+                owner: "Igor",
+                track: "Governance",
+                trackLabel: "governance",
+                priority: "HIGH",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "0.25",
+                dependencies: "None",
+                deliverable: "Explicit project rule recorded",
+                notes: "No rewrite of working state routes",
+              },
+              {
+                title: "Record merge policy in project notes",
+                owner: "Igor",
+                track: "Governance",
+                trackLabel: "governance",
+                priority: "MEDIUM",
+                status: "Todo",
+                due: "Next 24h",
+                estimated_hours: "0.25",
+                dependencies: "None",
+                deliverable: "Short note: analytics first, /ranking second, homepage selective later",
+                notes: "Preserve public/data registry files",
+              },
+              {
+                title: "Consolidate 24h checkpoint",
+                owner: "Igor",
+                track: "Project Control",
+                trackLabel: "project-control",
+                priority: "HIGH",
+                status: "Todo",
+                due: "End of 24h",
+                estimated_hours: "0.5",
+                dependencies: "All agent outputs",
+                deliverable: "One summary note: trusted files, risks, next merge-ready step",
+                notes: "Use for next-day action",
+              },
+            ];
+
+            const createdNumbers = [];
+            const createdIds = [];
+
+            for (const task of tasks) {
+              const priorityLabel = task.priority === 'HIGH' ? 'priority-high' : 'priority-medium';
+              const body = [
+                `## Task Details`,
+                ``,
+                `| Field | Value |`,
+                `|-------|-------|`,
+                `| **Owner** | ${task.owner} |`,
+                `| **Track** | ${task.track} |`,
+                `| **Priority** | ${task.priority} |`,
+                `| **Status** | ${task.status} |`,
+                `| **Due** | ${task.due} |`,
+                `| **Estimated Hours** | ${task.estimated_hours} |`,
+                `| **Dependencies** | ${task.dependencies} |`,
+                ``,
+                `## Deliverable`,
+                ``,
+                task.deliverable,
+                ``,
+                `## Notes`,
+                ``,
+                task.notes,
+                ``,
+                `---`,
+                `_Sub-task of #8 — EXTRACT TASKS_`,
+              ].join('\n');
+
+              if (dryRun) {
+                console.log(`[DRY RUN] Would create issue: "${task.title}" [${task.trackLabel}, ${priorityLabel}]`);
+                continue;
+              }
+
+              let issue;
+              try {
+                issue = await github.rest.issues.create({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  title: task.title,
+                  body: body,
+                  labels: [task.trackLabel, priorityLabel],
+                });
+                console.log(`Created issue #${issue.data.number}: ${task.title}`);
+              } catch (e) {
+                core.error(`Failed to create issue "${task.title}": ${e.message}`);
+                continue;
+              }
+
+              createdNumbers.push(issue.data.number);
+              createdIds.push(issue.data.id);
+
+              // Link as sub-issue of #8
+              try {
+                await github.request(
+                  'POST /repos/{owner}/{repo}/issues/{issue_number}/sub_issues',
+                  {
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: 8,
+                    sub_issue_id: issue.data.id,
+                    headers: { 'X-GitHub-Api-Version': '2022-11-28' },
+                  }
+                );
+                console.log(`  → Linked as sub-issue of #8`);
+              } catch (e) {
+                core.warning(`  → Could not link as sub-issue of #8: ${e.message}`);
+                // Fallback: add a comment on #8 referencing the new issue
+                try {
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: 8,
+                    body: `Sub-task created: #${issue.data.number} — **${task.title}**`,
+                  });
+                } catch (e2) {
+                  core.warning(`  → Could not add comment to #8: ${e2.message}`);
+                }
+              }
+
+              // Throttle to stay well under GitHub rate limits
+              await new Promise(r => setTimeout(r, 600));
+            }
+
+            core.setOutput('issue_numbers', createdNumbers.join(','));
+            core.setOutput('issue_ids', createdIds.join(','));
+            console.log(`\nDone. Created ${createdNumbers.length} issues: ${createdNumbers.join(', ')}`);
+
+      - name: Create GitHub Project and populate fields
+        if: ${{ !inputs.dry_run }}
+        uses: actions/github-script@v7
+        env:
+          ISSUE_NUMBERS: ${{ steps.create_issues.outputs.issue_numbers }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // ── Tasks metadata (same order as creation step) ──────────────────────
+            const tasks = [
+              { title: "Confirm analytics package consistency",                    owner: "Agent 1", track: "Analytics",       priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "2.0",  dependencies: "None",                                                                 deliverable: "Audit note covering missing UFs, missing CAAs by region, field consistency, integer/float issues",   notes: "Focus on ranking_normalizado_12m.json, ranking_servicos_12m.json, ranking_estados_12m.json, comparativo_regioes_12m.json" },
+              { title: "Validate Sudeste anomaly",                                  owner: "Agent 1", track: "Analytics",       priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "1.5",  dependencies: "Confirm analytics package consistency",                               deliverable: "Short report with exact Sudeste composition and whether MG/ES are missing",                           notes: "Do not merge anything yet" },
+              { title: "List trusted analytics files",                              owner: "Agent 1", track: "Analytics",       priority: "MEDIUM", status: "Todo", due: "Next 24h",   estimated_hours: "0.5",  dependencies: "Confirm analytics package consistency",                               deliverable: "One list of SAFE analytics files vs files needing correction",                                        notes: "Should explicitly classify JSONs" },
+              { title: "Inspect CaasXploreer2.0 target structure",                 owner: "Agent 2", track: "Integration",     priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "1.5",  dependencies: "None",                                                                 deliverable: "Inventory of deploy/build/data paths in igorlobovc/CaasXploreer2.0",                                notes: "Focus on .github/workflows/deploy.yml, app/, app/src/, data location" },
+              { title: "Map candidate package to target repo",                     owner: "Agent 2", track: "Integration",     priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "2.0",  dependencies: "Inspect CaasXploreer2.0 target structure",                            deliverable: "File-by-file ADD / MANUAL_MERGE / POSTPONE map",                                                     notes: "No code changes yet" },
+              { title: "Identify minimal live version",                            owner: "Agent 2", track: "Integration",     priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "1.0",  dependencies: "Map candidate package to target repo",                                deliverable: "Recommendation for smallest safe production increment",                                               notes: "Expected likely outcome: analytics JSONs + /ranking candidate" },
+              { title: "Prepare /ranking readiness checklist",                     owner: "Agent 2", track: "Integration",     priority: "MEDIUM", status: "Todo", due: "Next 24h",   estimated_hours: "0.5",  dependencies: "Map candidate package to target repo",                                deliverable: "Checklist of files/data required before /ranking goes live",                                          notes: "No merge instructions yet" },
+              { title: "Draft executive analytics narrative",                      owner: "Agent 3", track: "Presentation",    priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "1.5",  dependencies: "None",                                                                 deliverable: "Short narrative for president: what services worked best, absolute vs normalized winners, regional takeaways", notes: "Use last-12-month logic and normalized metrics" },
+              { title: "Create service-ranking presentation table spec",           owner: "Agent 3", track: "Presentation",    priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "1.0",  dependencies: "Draft executive analytics narrative",                                 deliverable: "Spec for final ranking table fields and display order",                                               notes: "Must include total interactions, shared interactions, per-1000 lawyers, top service/category" },
+              { title: "Draft homepage section strategy",                          owner: "Agent 3", track: "Presentation",    priority: "MEDIUM", status: "Todo", due: "Next 24h",   estimated_hours: "1.0",  dependencies: "Inspect CaasXploreer2.0 target structure",                            deliverable: "Homepage section map aligned to aq3buksivjaga structure but adapted to current project",             notes: "Reference-only, no replacement yet" },
+              { title: "Review and approve README/project text",                   owner: "Igor",    track: "Project Control", priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "0.5",  dependencies: "None",                                                                 deliverable: "Final approved repo/project description text",                                                       notes: "Use updated CaasXploreer2.0 wording" },
+              { title: "Create/organize GitHub Project cards",                     owner: "Igor",    track: "Project Control", priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "0.5",  dependencies: "None",                                                                 deliverable: "Project board populated with tasks and owners",                                                      notes: "Use this CSV as source" },
+              { title: "Download and inspect Kimi package artifacts",              owner: "Igor",    track: "Validation",      priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "0.75", dependencies: "None",                                                                 deliverable: "Quick manual check of package folder contents and naming",                                           notes: "Open README_MERGE_FIRST.md, MERGE_MAP.md, top JSONs" },
+              { title: "Provide final lawyer totals source confirmation",          owner: "Igor",    track: "Data",            priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "0.25", dependencies: "None",                                                                 deliverable: "Confirmed authoritative totals by UF",                                                               notes: "Already available; keep fixed for all agents" },
+              { title: "Decide target repo for first live increment",              owner: "Igor",    track: "Decision",        priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "0.5",  dependencies: "Inspect CaasXploreer2.0 target structure; Map candidate package to target repo", deliverable: "Decision note: CaasXploreer2.0 vs caasxplorer-web for first live increment", notes: "Current plan favors CaasXploreer2.0" },
+              { title: "Approve minimal live scope",                               owner: "Igor",    track: "Decision",        priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "0.5",  dependencies: "Identify minimal live version; Draft executive analytics narrative",       deliverable: "Approved scope document",                                                                            notes: "Likely: analytics layer + /ranking, homepage later" },
+              { title: "Request corrected package if regional anomaly confirmed",  owner: "Igor",    track: "Coordination",    priority: "MEDIUM", status: "Todo", due: "Next 24h",   estimated_hours: "0.25", dependencies: "Validate Sudeste anomaly",                                             deliverable: "Message sent to Kimi asking for corrected analytics package",                                         notes: "Only if anomaly is real" },
+              { title: "Freeze /estados and /estados/[uf] from changes",           owner: "Igor",    track: "Governance",      priority: "HIGH",   status: "Todo", due: "Next 24h",   estimated_hours: "0.25", dependencies: "None",                                                                 deliverable: "Explicit project rule recorded",                                                                     notes: "No rewrite of working state routes" },
+              { title: "Record merge policy in project notes",                     owner: "Igor",    track: "Governance",      priority: "MEDIUM", status: "Todo", due: "Next 24h",   estimated_hours: "0.25", dependencies: "None",                                                                 deliverable: "Short note: analytics first, /ranking second, homepage selective later",                             notes: "Preserve public/data registry files" },
+              { title: "Consolidate 24h checkpoint",                               owner: "Igor",    track: "Project Control", priority: "HIGH",   status: "Todo", due: "End of 24h", estimated_hours: "0.5",  dependencies: "All agent outputs",                                                    deliverable: "One summary note: trusted files, risks, next merge-ready step",                                      notes: "Use for next-day action" },
+            ];
+
+            const issueNumbers = (process.env.ISSUE_NUMBERS || '').split(',').filter(Boolean).map(Number);
+            if (issueNumbers.length === 0) {
+              core.warning('No issue numbers from previous step — skipping project board setup.');
+              return;
+            }
+
+            // ── 1. Find or create a user-level GitHub Project v2 ──────────────────
+            const ownerLogin = context.repo.owner;
+            const projectTitle = 'CaasXploreer2.0 — 24h Sprint Board';
+
+            // Query existing projects for this user
+            const listProjectsQuery = `
+              query($login: String!) {
+                user(login: $login) {
+                  projectsV2(first: 20) {
+                    nodes { id title }
+                  }
+                }
+              }
+            `;
+            let projectId;
+            try {
+              const listRes = await github.graphql(listProjectsQuery, { login: ownerLogin });
+              const existing = listRes.user.projectsV2.nodes.find(p => p.title === projectTitle);
+              if (existing) {
+                projectId = existing.id;
+                console.log(`Found existing project: ${projectTitle} (${projectId})`);
+              }
+            } catch (e) {
+              core.warning(`Could not query projects: ${e.message}`);
+            }
+
+            if (!projectId) {
+              try {
+                // Get the user node ID
+                const userQuery = `query($login: String!) { user(login: $login) { id } }`;
+                const userRes = await github.graphql(userQuery, { login: ownerLogin });
+                const userId = userRes.user.id;
+
+                const createProjectMutation = `
+                  mutation($ownerId: ID!, $title: String!) {
+                    createProjectV2(input: { ownerId: $ownerId, title: $title }) {
+                      projectV2 { id title }
+                    }
+                  }
+                `;
+                const createRes = await github.graphql(createProjectMutation, {
+                  ownerId: userId,
+                  title: projectTitle,
+                });
+                projectId = createRes.createProjectV2.projectV2.id;
+                console.log(`Created new project: ${projectTitle} (${projectId})`);
+              } catch (e) {
+                core.warning(`Could not create project (may need a token with 'project' scope): ${e.message}`);
+                core.warning('Issues were still created and linked to #8. Add them to the project manually from https://github.com/igorlobovc?tab=projects');
+                return;
+              }
+            }
+
+            // ── 2. Ensure custom fields exist ────────────────────────────────────
+            const textFields   = ['Owner', 'Track', 'Due', 'Estimated_Hours', 'Dependencies', 'Deliverable', 'Notes'];
+            const singleFields = [
+              { name: 'Priority', options: ['HIGH', 'MEDIUM', 'LOW'] },
+              { name: 'Status',   options: ['Todo', 'In Progress', 'Done', 'Blocked'] },
+            ];
+
+            const getFieldsQuery = `
+              query($projectId: ID!) {
+                node(id: $projectId) {
+                  ... on ProjectV2 {
+                    fields(first: 30) {
+                      nodes {
+                        ... on ProjectV2Field          { id name }
+                        ... on ProjectV2SingleSelectField { id name options { id name } }
+                      }
+                    }
+                  }
+                }
+              }
+            `;
+
+            let fieldMap = {};
+            try {
+              const fieldsRes = await github.graphql(getFieldsQuery, { projectId });
+              for (const f of fieldsRes.node.fields.nodes) {
+                if (f.name) fieldMap[f.name] = f;
+              }
+              console.log(`Existing fields: ${Object.keys(fieldMap).join(', ')}`);
+            } catch (e) {
+              core.warning(`Could not query project fields: ${e.message}`);
+            }
+
+            const createFieldMutation = `
+              mutation($projectId: ID!, $name: String!, $dataType: ProjectV2CustomFieldType!) {
+                createProjectV2Field(input: { projectId: $projectId, name: $name, dataType: $dataType }) {
+                  projectV2Field {
+                    ... on ProjectV2Field { id name }
+                    ... on ProjectV2SingleSelectField { id name options { id name } }
+                  }
+                }
+              }
+            `;
+
+            const createSelectFieldMutation = `
+              mutation($projectId: ID!, $name: String!, $options: [ProjectV2SingleSelectFieldOptionInput!]!) {
+                createProjectV2Field(input: {
+                  projectId: $projectId,
+                  name: $name,
+                  dataType: SINGLE_SELECT,
+                  singleSelectOptions: $options
+                }) {
+                  projectV2Field {
+                    ... on ProjectV2SingleSelectField { id name options { id name } }
+                  }
+                }
+              }
+            `;
+
+            for (const fieldName of textFields) {
+              if (!fieldMap[fieldName]) {
+                try {
+                  const res = await github.graphql(createFieldMutation, {
+                    projectId,
+                    name: fieldName,
+                    dataType: 'TEXT',
+                  });
+                  fieldMap[fieldName] = res.createProjectV2Field.projectV2Field;
+                  console.log(`Created text field: ${fieldName}`);
+                } catch (e) {
+                  core.warning(`Could not create field ${fieldName}: ${e.message}`);
+                }
+              }
+            }
+
+            for (const sf of singleFields) {
+              if (!fieldMap[sf.name]) {
+                try {
+                  const res = await github.graphql(createSelectFieldMutation, {
+                    projectId,
+                    name: sf.name,
+                    options: sf.options.map(o => ({ name: o, color: 'GRAY', description: '' })),
+                  });
+                  fieldMap[sf.name] = res.createProjectV2Field.projectV2Field;
+                  console.log(`Created single-select field: ${sf.name}`);
+                } catch (e) {
+                  core.warning(`Could not create field ${sf.name}: ${e.message}`);
+                }
+              }
+            }
+
+            // Refresh field map
+            try {
+              const fieldsRes = await github.graphql(getFieldsQuery, { projectId });
+              fieldMap = {};
+              for (const f of fieldsRes.node.fields.nodes) {
+                if (f.name) fieldMap[f.name] = f;
+              }
+            } catch (e) { /* ignore */ }
+
+            // ── 3. Add each issue to the project and set field values ─────────────
+            const addItemMutation = `
+              mutation($projectId: ID!, $contentId: ID!) {
+                addProjectV2ItemById(input: { projectId: $projectId, contentId: $contentId }) {
+                  item { id }
+                }
+              }
+            `;
+
+            const updateTextFieldMutation = `
+              mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $value: String!) {
+                updateProjectV2ItemFieldValue(input: {
+                  projectId: $projectId,
+                  itemId: $itemId,
+                  fieldId: $fieldId,
+                  value: { text: $value }
+                }) { projectV2Item { id } }
+              }
+            `;
+
+            const updateSelectFieldMutation = `
+              mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $optionId: String!) {
+                updateProjectV2ItemFieldValue(input: {
+                  projectId: $projectId,
+                  itemId: $itemId,
+                  fieldId: $fieldId,
+                  value: { singleSelectOptionId: $optionId }
+                }) { projectV2Item { id } }
+              }
+            `;
+
+            // Get issue node IDs
+            const getIssueNodeIdQuery = `
+              query($owner: String!, $repo: String!, $number: Int!) {
+                repository(owner: $owner, name: $repo) {
+                  issue(number: $number) { id }
+                }
+              }
+            `;
+
+            for (let i = 0; i < issueNumbers.length; i++) {
+              const issueNumber = issueNumbers[i];
+              const task = tasks[i];
+              if (!task) continue;
+
+              let nodeId;
+              try {
+                const res = await github.graphql(getIssueNodeIdQuery, {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  number: issueNumber,
+                });
+                nodeId = res.repository.issue.id;
+              } catch (e) {
+                core.warning(`Could not get node ID for issue #${issueNumber}: ${e.message}`);
+                continue;
+              }
+
+              let itemId;
+              try {
+                const res = await github.graphql(addItemMutation, { projectId, contentId: nodeId });
+                itemId = res.addProjectV2ItemById.item.id;
+                console.log(`Added issue #${issueNumber} to project (item ${itemId})`);
+              } catch (e) {
+                core.warning(`Could not add issue #${issueNumber} to project: ${e.message}`);
+                continue;
+              }
+
+              // Set text fields
+              const textFieldValues = {
+                Owner:           task.owner,
+                Track:           task.track,
+                Due:             task.due,
+                Estimated_Hours: task.estimated_hours,
+                Dependencies:    task.dependencies,
+                Deliverable:     task.deliverable,
+                Notes:           task.notes,
+              };
+
+              for (const [fieldName, value] of Object.entries(textFieldValues)) {
+                if (fieldMap[fieldName]?.id) {
+                  try {
+                    await github.graphql(updateTextFieldMutation, {
+                      projectId,
+                      itemId,
+                      fieldId: fieldMap[fieldName].id,
+                      value: String(value),
+                    });
+                  } catch (e) {
+                    core.warning(`  Could not set ${fieldName} on item ${itemId}: ${e.message}`);
+                  }
+                }
+              }
+
+              // Set single-select fields
+              const selectFieldValues = {
+                Priority: task.priority,
+                Status:   task.status,
+              };
+
+              for (const [fieldName, value] of Object.entries(selectFieldValues)) {
+                const field = fieldMap[fieldName];
+                if (field?.options) {
+                  const option = field.options.find(o => o.name === value);
+                  if (option) {
+                    try {
+                      await github.graphql(updateSelectFieldMutation, {
+                        projectId,
+                        itemId,
+                        fieldId: field.id,
+                        optionId: option.id,
+                      });
+                    } catch (e) {
+                      core.warning(`  Could not set ${fieldName} on item ${itemId}: ${e.message}`);
+                    }
+                  }
+                }
+              }
+
+              await new Promise(r => setTimeout(r, 300));
+            }
+
+            console.log(`\n✅ Project board setup complete.`);
+            console.log(`View at: https://github.com/users/${ownerLogin}/projects/`);
