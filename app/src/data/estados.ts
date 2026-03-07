@@ -36,10 +36,16 @@ const MONTHS_12 = [
   'Nov/2024', 'Dez/2024', 'Jan/2025', 'Fev/2025',
 ];
 
+// Simple deterministic pseudo-random based on index to avoid flickering
+function deterministicFactor(seed: number): number {
+  const x = Math.sin(seed + 1) * 10000;
+  return 0.9 + (x - Math.floor(x)) * 0.2;
+}
+
 function monthlyHistory(base: number, growthRate: number): MonthlyPoint[] {
   return MONTHS_12.map((mes, i) => {
     const factor = 1 + growthRate * (i / 11);
-    const interacoes = Math.round(base * factor * (0.9 + Math.random() * 0.2));
+    const interacoes = Math.round(base * factor * deterministicFactor(base * 100 + i));
     return { mes, interacoes, compartilhadas: Math.round(interacoes * 0.35) };
   });
 }
