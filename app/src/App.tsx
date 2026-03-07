@@ -40,6 +40,19 @@ interface ServicoCategoria {
   examples: string[];
 }
 
+interface RoadmapTask {
+  id: string;
+  step: string;
+  phase: string;
+  title: string;
+  notes: string;
+  owner: string;
+  dueDate: Date;
+  dueDateLabel: string;
+  dueDateSource: 'informada' | 'sugerida';
+  status: 'planejado' | 'em andamento' | 'concluído';
+}
+
 // ============================================
 // DATA - AÇÕES INSTITUCIONAIS COM EVIDÊNCIA
 // ============================================
@@ -189,6 +202,109 @@ const timelineEvents: TimelineEvent[] = [
     status: 'final'
   }
 ];
+
+const roadmapSeedInput = `1. Consolidar analytics/ranking_normalizado_12m.json — responsável: Igor — até 12/03/2026 — validar dados primários das 21 CAAs
+2. Organizar analytics/ranking_servicos_12m.json — responsável: Ana — até 14/03/2026 — separar as 10 categorias de serviços
+3. Revisar analytics/ranking_estados_12m.json — responsável: Bruno — até 17/03/2026 — cruzar volume por estado
+4. Validar analytics/comparativo_regioes_12m.json — responsável: Carla — até 19/03/2026 — confirmar o agregado regional
+5. Atualizar docs/DATA_DICTIONARY.md — responsável: Diego — até 21/03/2026 — documentar campos, fórmulas e critérios`;
+
+const roadmapDateFormatter = new Intl.DateTimeFormat('pt-BR', {
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric'
+});
+
+function addDays(date: Date, days: number) {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+
+function parseRoadmapDate(value: string) {
+  const normalized = value.trim().replace(/[.-]/g, '/');
+  const yearFirstMatch = normalized.match(/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/);
+  const dayFirstMatch = normalized.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/);
+
+  if (yearFirstMatch) {
+    const [, year, month, day] = yearFirstMatch;
+    const parsed = new Date(Number(year), Number(month) - 1, Number(day));
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
+  }
+
+  if (dayFirstMatch) {
+    const [, day, month, year] = dayFirstMatch;
+    const normalizedYear = year.length === 2 ? `20${year}` : year;
+    const parsed = new Date(Number(normalizedYear), Number(month) - 1, Number(day));
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
+  }
+
+  return null;
+}
+
+function splitRoadmapInput(input: string) {
+  return input
+    .replace(/\r/g, '\n')
+    .replace(/[•●▪]/g, '\n- ')
+    .replace(/\s+(?=\d+[.)]\s)/g, '\n')
+    .split(/\n+/)
+    .flatMap((line) => line.split(/\s*;\s*/))
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .map((item) => item.replace(/^\d+[.)]\s*/, '').replace(/^[-*]\s*/, '').trim())
+    .filter(Boolean);
+}
+
+function buildRoadmapTasks(input: string) {
+  const fallbackStartDate = new Date(2026, 2, 10);
+
+  return splitRoadmapInput(input).map((item, index) => {
+    const ownerMatch = item.match(/(?:respons[aá]vel|assignee|owner|assigned to)\s*[:-]?\s*@?([^|—–;-]+)/i);
+    const mentionMatch = ownerMatch ? null : item.match(/@([A-Za-zÀ-ÿ0-9._-]+)/);
+    const dateMatch = item.match(/\b(\d{1,2}[/.-]\d{1,2}[/.-]\d{2,4}|\d{4}[/.-]\d{1,2}[/.-]\d{1,2})\b/);
+    const parsedDate = dateMatch ? parseRoadmapDate(dateMatch[1]) : null;
+    const dueDate = parsedDate ?? addDays(fallbackStartDate, index * 3);
+    const dueDateSource = parsedDate ? 'informada' : 'sugerida';
+    const owner = ownerMatch?.[1]?.trim() ?? mentionMatch?.[1] ?? 'Responsável a definir';
+
+    const cleaned = item
+      .replace(/(?:respons[aá]vel|assignee|owner|assigned to)\s*[:-]?\s*@?[^|—–;-]+/gi, '')
+      .replace(/@([A-Za-zÀ-ÿ0-9._-]+)/g, '')
+      .replace(/\b(?:até|due|prazo|deadline)\b\s*[:-]?\s*/gi, '')
+      .replace(/\b(\d{1,2}[/.-]\d{1,2}[/.-]\d{2,4}|\d{4}[/.-]\d{1,2}[/.-]\d{1,2})\b/g, '')
+      .replace(/\s*[—–]\s*/g, ' | ')
+      .replace(/\s{2,}/g, ' ')
+      .replace(/\|\s*\|/g, '|')
+      .trim();
+
+    const [titlePart, ...notesParts] = cleaned
+      .split(/\s+\|\s+/)
+      .map((part) => part.trim().replace(/^[,:-]+|[,:-]+$/g, ''))
+      .filter((part) => part.length > 0 && !/^(até|due|prazo|deadline)$/i.test(part));
+
+    const title = titlePart ?? `Etapa ${index + 1}`;
+    const notes = notesParts.join(' • ');
+    const lowerItem = item.toLowerCase();
+    const status = /conclu[ií]d|finaliz|done/.test(lowerItem)
+      ? 'concluído'
+      : /andamento|progresso|review|revis[aã]o|valid/.test(lowerItem)
+        ? 'em andamento'
+        : 'planejado';
+
+    return {
+      id: `${title}-${index}`,
+      step: String(index + 1).padStart(2, '0'),
+      phase: `Fase ${Math.floor(index / 2) + 1}`,
+      title,
+      notes,
+      owner,
+      dueDate,
+      dueDateLabel: roadmapDateFormatter.format(dueDate),
+      dueDateSource,
+      status
+    } satisfies RoadmapTask;
+  });
+}
 
 // ============================================
 // VIDEO BACKGROUND WITH ANIMATED ORBS
@@ -1334,6 +1450,158 @@ function CronogramaSection() {
 }
 
 // ============================================
+// PLANEJAMENTO SECTION
+// ============================================
+function PlanejamentoSection() {
+  const [projectInput, setProjectInput] = useState(roadmapSeedInput);
+  const [tasks, setTasks] = useState<RoadmapTask[]>(() => buildRoadmapTasks(roadmapSeedInput));
+
+  const organizarProjeto = () => {
+    setTasks(buildRoadmapTasks(projectInput));
+  };
+
+  const assignedCount = tasks.filter((task) => task.owner !== 'Responsável a definir').length;
+  const informedDatesCount = tasks.filter((task) => task.dueDateSource === 'informada').length;
+  const nextDeadlineTask = tasks.length > 0
+    ? [...tasks].sort((a, b) => a.dueDate.getTime() - b.dueDate.getTime())[0]
+    : undefined;
+
+  return (
+    <section className="py-16 sm:py-24 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10 sm:mb-16">
+          <div className="flex items-center gap-2 mb-3 sm:mb-4">
+            <Layout className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
+            <span className="text-[10px] sm:text-xs font-mono text-cyan-300/70 uppercase tracking-wider">ROADMAP</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mb-3 sm:mb-4">Planejamento em pequenas etapas</h2>
+          <p className="text-cyan-200/60 max-w-3xl text-sm sm:text-base">
+            Cole uma solicitação em texto único e o sistema divide o projeto em itens acionáveis, com responsáveis, fases e prazos para acompanhamento.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 sm:gap-8">
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="xl:col-span-5">
+            <GlassCard className="p-5 sm:p-6 h-full">
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-medium text-white">Entrada em texto único</h3>
+                  <p className="text-xs sm:text-sm text-cyan-200/55 mt-1">
+                    Use numeração, ponto e vírgula ou quebra de linha. Datas podem ser informadas como 12/03/2026, 2026-03-12 ou 12-03-26.
+                  </p>
+                </div>
+                <div className="px-2.5 py-1 rounded-full border border-cyan-400/20 bg-cyan-500/10 text-[10px] font-mono text-cyan-300">
+                  CSV → tarefas
+                </div>
+              </div>
+
+              <textarea
+                value={projectInput}
+                onChange={(event) => setProjectInput(event.target.value)}
+                className="w-full min-h-[320px] rounded-xl border border-cyan-500/20 bg-[#07101d]/90 px-4 py-3 text-sm text-cyan-100/90 outline-none transition focus:border-cyan-400/50 focus:ring-2 focus:ring-cyan-500/20"
+                placeholder="Descreva o projeto em um único bloco de texto..."
+                spellCheck={false}
+              />
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-4">
+                <p className="text-xs text-cyan-200/45">
+                  Exemplo carregado com os arquivos do anexo da issue para demonstrar a divisão do trabalho.
+                </p>
+                <button
+                  type="button"
+                  onClick={organizarProjeto}
+                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-cyan-400/30 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-200 transition hover:border-cyan-300/50 hover:bg-cyan-500/15"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  Organizar etapas
+                </button>
+              </div>
+            </GlassCard>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="xl:col-span-7 space-y-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+              {[
+                { label: 'ITENS', value: String(tasks.length).padStart(2, '0') },
+                { label: 'COM RESPONSÁVEL', value: String(assignedCount).padStart(2, '0') },
+                { label: 'DATAS INFORMADAS', value: String(informedDatesCount).padStart(2, '0') },
+                { label: 'PRÓXIMO PRAZO', value: nextDeadlineTask?.dueDateLabel ?? '—' }
+              ].map((metric) => (
+                <GlassCard key={metric.label} className="p-4">
+                  <div className="text-[10px] text-cyan-300/50 uppercase tracking-wider mb-1">{metric.label}</div>
+                  <div className="text-lg sm:text-xl font-semibold text-white">{metric.value}</div>
+                </GlassCard>
+              ))}
+            </div>
+
+            <GlassCard className="p-5 sm:p-6">
+              <div className="flex items-center justify-between gap-3 mb-5">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-medium text-white">Roadmap estruturado</h3>
+                  <p className="text-xs sm:text-sm text-cyan-200/55 mt-1">
+                    Cada item vira uma etapa com fase, responsável e data. Se o texto não trouxer prazo, o sistema sugere uma sequência inicial.
+                  </p>
+                </div>
+                <div className="hidden sm:flex items-center gap-2 text-xs text-cyan-300/60">
+                  <Calendar className="w-4 h-4" />
+                  Datas prontas para cronograma
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {tasks.map((task) => (
+                  <div key={task.id} className="rounded-2xl border border-cyan-500/15 bg-[#07101d]/70 p-4 sm:p-5">
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-300 font-mono text-sm flex-shrink-0">
+                          {task.step}
+                        </div>
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2 mb-2">
+                            <span className="text-[10px] px-2 py-1 rounded-full border border-blue-400/20 bg-blue-500/10 text-blue-300 uppercase tracking-wider">{task.phase}</span>
+                            <span className={`text-[10px] px-2 py-1 rounded-full uppercase tracking-wider ${
+                              task.status === 'concluído'
+                                ? 'border border-emerald-400/20 bg-emerald-500/10 text-emerald-300'
+                                : task.status === 'em andamento'
+                                  ? 'border border-cyan-400/20 bg-cyan-500/10 text-cyan-300'
+                                  : 'border border-cyan-400/15 bg-white/5 text-cyan-100/70'
+                            }`}>
+                              {task.status}
+                            </span>
+                          </div>
+                          <h4 className="text-base sm:text-lg font-medium text-white">{task.title}</h4>
+                          <p className="text-xs sm:text-sm text-cyan-200/60 mt-1">
+                            {task.notes || 'Sem observações adicionais no texto original.'}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 min-w-full lg:min-w-[260px] lg:max-w-[280px]">
+                        <div className="rounded-xl border border-cyan-500/10 bg-cyan-500/5 px-3 py-2">
+                          <div className="text-[10px] text-cyan-300/50 uppercase tracking-wider mb-1">Responsável</div>
+                          <div className="text-sm text-white">{task.owner}</div>
+                        </div>
+                        <div className="rounded-xl border border-cyan-500/10 bg-cyan-500/5 px-3 py-2">
+                          <div className="text-[10px] text-cyan-300/50 uppercase tracking-wider mb-1">Prazo</div>
+                          <div className="text-sm text-white">{task.dueDateLabel}</div>
+                          <div className="text-[10px] text-cyan-200/40 mt-1">
+                            {task.dueDateSource === 'informada' ? 'Data extraída do texto' : 'Data sugerida automaticamente'}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================
 // FOOTER
 // ============================================
 function Footer() {
@@ -1375,6 +1643,7 @@ function App() {
       <SimulacaoResultadosSection />
       <ExemploTecnicoSection />
       <TecnologiaSection />
+      <PlanejamentoSection />
       <CronogramaSection />
       <Footer />
     </div>
