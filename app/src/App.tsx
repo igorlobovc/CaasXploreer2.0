@@ -40,6 +40,17 @@ interface ServicoCategoria {
   examples: string[];
 }
 
+interface ProjectActionTask {
+  id: string;
+  window: string;
+  owner: 'Agent' | 'igorlobovc' | 'Agent + igorlobovc';
+  title: string;
+  action: string;
+  deliverable: string;
+  guardrail: string;
+  status: 'now' | 'next' | 'ready';
+}
+
 // ============================================
 // DATA - AÇÕES INSTITUCIONAIS COM EVIDÊNCIA
 // ============================================
@@ -187,6 +198,79 @@ const timelineEvents: TimelineEvent[] = [
     title: 'Entrega Final',
     description: 'Relatório técnico consolidado e datasets auditáveis',
     status: 'final'
+  }
+];
+
+const projectActionTasks: ProjectActionTask[] = [
+  {
+    id: 'P1',
+    window: '0–2h',
+    owner: 'Agent',
+    title: 'Fechar mapa de merge e itens preservados',
+    action: 'Inspecionar o alvo principal igorlobovc/CaasXploreer2.0 e listar o que deve ser preservado, adicionado, mesclado manualmente ou postergado.',
+    deliverable: 'Merge map aprovado com /estados, /estados/[uf], dados de referência e critérios de deploy protegidos.',
+    guardrail: 'Nenhuma troca destrutiva de rotas ou substituição total de páginas existentes.',
+    status: 'now'
+  },
+  {
+    id: 'P2',
+    window: '2–6h',
+    owner: 'Agent',
+    title: 'Adicionar a camada segura de analytics JSON',
+    action: 'Posicionar ranking_normalizado_12m.json, ranking_servicos_12m.json, ranking_estados_12m.json e comparativo_regioes_12m.json em uma camada isolada de dados.',
+    deliverable: 'Arquivos analíticos inseridos com caminho e contrato definidos para consumo sem impacto nas rotas atuais.',
+    guardrail: 'Manter registry/reference data intacto e evitar sobrescrever fontes atuais.',
+    status: 'now'
+  },
+  {
+    id: 'P3',
+    window: '6–10h',
+    owner: 'Agent',
+    title: 'Criar adaptador para métricas Fanpage Karma',
+    action: 'Conectar lib/data/analytics.ts aos indicadores prioritários: 12 meses, interações totais, interações compartilhadas e métricas por 1.000 advogados.',
+    deliverable: 'Adapter pronto para ranking por estado, ranking por serviço/categoria e comparativo entre estados grandes e pequenos.',
+    guardrail: 'Normalização transparente, sem quebrar dados legados nem duplicar regras.',
+    status: 'next'
+  },
+  {
+    id: 'P4',
+    window: '10–16h',
+    owner: 'Agent',
+    title: 'Subir /ranking em isolamento controlado',
+    action: 'Integrar app/ranking/page.tsx ou equivalente como superfície nova, mantendo /estados e /estados/[uf] inalterados.',
+    deliverable: '/ranking live ou pronto para go-live com smoke test de navegação.',
+    guardrail: 'Sem alterar rotas estáveis nem dependências de deploy já em produção.',
+    status: 'next'
+  },
+  {
+    id: 'P5',
+    window: '16–20h',
+    owner: 'igorlobovc',
+    title: 'Decidir o merge seletivo da homepage',
+    action: 'Revisar os candidate files de homepage e aprovar apenas os blocos que reforçam a narrativa para a presidência da rede nacional de CAAs.',
+    deliverable: 'Plano validado do que entra agora, do que entra depois e do que permanece em backlog.',
+    guardrail: 'Evitar substituir a homepage inteira antes da validação dos novos blocos.',
+    status: 'ready'
+  },
+  {
+    id: 'P6',
+    window: '20–22h',
+    owner: 'Agent + igorlobovc',
+    title: 'Revisar a narrativa executiva e o QA final',
+    action: 'Conferir se os rankings destacam os serviços com melhor performance social e se os comparativos regionais sustentam a apresentação executiva.',
+    deliverable: 'Checklist final cobrindo consistência analítica, narrativa para presidência e readiness para publicação.',
+    guardrail: 'Só aprovar depois de validar ranking por estado, por categoria e métricas normalizadas.',
+    status: 'ready'
+  },
+  {
+    id: 'P7',
+    window: '22–24h',
+    owner: 'Agent',
+    title: 'Executar regressão e trava de deploy',
+    action: 'Rodar build, revisar os artefatos e confirmar que a integração não afeta deploy nem o comportamento das páginas já estáveis.',
+    deliverable: 'Go/no-go técnico com zero regressão conhecida nas rotas atuais.',
+    guardrail: 'Se houver risco em /estados ou /estados/[uf], postergar o merge parcial e manter somente a camada segura de dados.',
+    status: 'ready'
   }
 ];
 
@@ -1273,6 +1357,170 @@ function TecnologiaSection() {
 }
 
 // ============================================
+// PROJECTS SETUP SECTION
+// ============================================
+function ProjectSetupSection() {
+  const statusConfig = {
+    now: {
+      label: 'Executar agora',
+      badge: 'bg-emerald-500/15 text-emerald-300 border border-emerald-400/20'
+    },
+    next: {
+      label: 'Próxima fila',
+      badge: 'bg-cyan-500/15 text-cyan-300 border border-cyan-400/20'
+    },
+    ready: {
+      label: 'Pronto para validação',
+      badge: 'bg-blue-500/15 text-blue-300 border border-blue-400/20'
+    }
+  } as const;
+
+  return (
+    <section className="py-16 sm:py-24 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10 sm:mb-16">
+          <div className="flex items-center gap-2 mb-3 sm:mb-4">
+            <Layout className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
+            <span className="text-[10px] sm:text-xs font-mono text-cyan-300/70 uppercase tracking-wider">PROJECTS SETUP 24H</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mb-3 sm:mb-4">Ações ordenadas para integrar o novo analytics</h2>
+          <p className="text-cyan-200/60 max-w-3xl text-sm sm:text-base">
+            Backlog pronto para ser espelhado em Projects, com responsáveis, janela de execução e guardrails para integrar o pacote Fanpage Karma sem quebrar o que já está no ar.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_0.9fr] gap-6 sm:gap-8 items-start">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <GlassCard className="p-4 sm:p-6">
+              <div className="flex items-start justify-between gap-4 mb-5">
+                <div>
+                  <h3 className="text-base sm:text-lg font-medium text-white mb-1">Fila principal de execução</h3>
+                  <p className="text-xs sm:text-sm text-cyan-200/55">
+                    Ordem sugerida para as próximas 24 horas, separando o que o Agent entrega sozinho e o que depende de igorlobovc aprovar.
+                  </p>
+                </div>
+                <div className="text-right">
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-cyan-300/50 mb-1">Objetivo</div>
+                  <div className="text-sm text-white">/ranking seguro + merge map aprovado</div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {projectActionTasks.map((task, index) => (
+                  <motion.div
+                    key={task.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.08 }}
+                    className="rounded-2xl border border-cyan-500/15 bg-[#0f1728]/60 p-4 sm:p-5"
+                  >
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 mb-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-full bg-cyan-500/10 border border-cyan-400/20 flex items-center justify-center text-cyan-300 text-sm font-mono">
+                          {index + 1}
+                        </div>
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2 mb-1">
+                            <span className="text-xs font-mono text-cyan-400">{task.id}</span>
+                            <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-200/80 border border-cyan-500/20">{task.window}</span>
+                            <span className={`text-[10px] sm:text-xs px-2 py-0.5 rounded-full ${statusConfig[task.status].badge}`}>{statusConfig[task.status].label}</span>
+                          </div>
+                          <h4 className="text-sm sm:text-base font-medium text-white">{task.title}</h4>
+                        </div>
+                      </div>
+                      <span className="text-[10px] sm:text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-cyan-100/80 w-fit">
+                        Responsável: {task.owner}
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 text-xs sm:text-sm">
+                      <div>
+                        <div className="text-[10px] uppercase tracking-[0.18em] text-cyan-300/45 mb-1">Ação</div>
+                        <p className="text-cyan-100/78 leading-relaxed">{task.action}</p>
+                      </div>
+                      <div>
+                        <div className="text-[10px] uppercase tracking-[0.18em] text-cyan-300/45 mb-1">Entrega</div>
+                        <p className="text-cyan-100/78 leading-relaxed">{task.deliverable}</p>
+                      </div>
+                      <div>
+                        <div className="text-[10px] uppercase tracking-[0.18em] text-cyan-300/45 mb-1">Trava</div>
+                        <p className="text-cyan-100/70 leading-relaxed">{task.guardrail}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </GlassCard>
+          </motion.div>
+
+          <div className="space-y-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+              <GlassCard className="p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-medium text-white mb-4">Escopo obrigatório da integração</h3>
+                <div className="space-y-3">
+                  {[
+                    'Últimos 12 meses de performance social',
+                    'Interações totais e interações compartilhadas',
+                    'Métricas normalizadas por 1.000 advogados',
+                    'Ranking por estado e por serviço/categoria',
+                    'Comparativo entre estados grandes e pequenos'
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-cyan-100/75">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </GlassCard>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
+              <GlassCard className="p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-medium text-white mb-4">Não pode quebrar</h3>
+                <div className="space-y-3">
+                  {[
+                    'Rotas atuais /estados e /estados/[uf]',
+                    'Registry/reference data já em uso',
+                    'Integridade do deploy para o merge target',
+                    'Estratégia de merge manual sem replace destrutivo'
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-3">
+                      <Shield className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-cyan-100/75">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </GlassCard>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
+              <GlassCard className="p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-medium text-white mb-4">Saída esperada em Projects</h3>
+                <div className="space-y-4 text-sm text-cyan-100/75">
+                  <div className="flex items-start gap-3">
+                    <ArrowRight className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                    <p><span className="text-white">Now:</span> merge map, analytics JSON seguro e contrato do adaptador.</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <ArrowRight className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                    <p><span className="text-white">Next:</span> /ranking liberado e homepage separada para decisão manual.</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <ArrowRight className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                    <p><span className="text-white">Done:</span> sem regressão nas rotas de estado e com narrativa pronta para apresentação executiva.</p>
+                  </div>
+                </div>
+              </GlassCard>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================
 // CRONOGRAMA / TIMELINE SECTION
 // ============================================
 function CronogramaSection() {
@@ -1375,6 +1623,7 @@ function App() {
       <SimulacaoResultadosSection />
       <ExemploTecnicoSection />
       <TecnologiaSection />
+      <ProjectSetupSection />
       <CronogramaSection />
       <Footer />
     </div>
