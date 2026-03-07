@@ -258,7 +258,7 @@ const projectBetaSteps: ProjectBetaStep[] = [
 
 const projectBetaPreservar = [
   'Rotas atuais `/estados` e `/estados/[uf]`',
-  'Registry/reference data já em produção',
+  'Dados de registry/referência já em produção',
   'Integridade do deployment atual'
 ];
 
@@ -280,8 +280,29 @@ const projectBetaDeliverables = [
   'comparativo_regioes_12m.json',
   'lib/data/analytics.ts',
   'app/ranking/page.tsx',
-  'homepage candidate files'
+  'Seções candidatas da homepage caasxplorer-web'
 ];
+
+const projectBetaStatusStyles: Record<ProjectBetaStep['status'], { label: string; className: string }> = {
+  agora: {
+    label: 'AGORA',
+    className: 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
+  },
+  proximo: {
+    label: 'PRÓXIMO',
+    className: 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/30'
+  },
+  depois: {
+    label: 'DEPOIS',
+    className: 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
+  }
+};
+
+const projectBetaIntroMotion = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true }
+};
 
 // ============================================
 // VIDEO BACKGROUND WITH ANIMATED ORBS
@@ -1427,25 +1448,10 @@ function CronogramaSection() {
 }
 
 function ProjectBetaViewSection() {
-  const statusStyles: Record<ProjectBetaStep['status'], { label: string; className: string }> = {
-    agora: {
-      label: 'AGORA',
-      className: 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
-    },
-    proximo: {
-      label: 'PRÓXIMO',
-      className: 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/30'
-    },
-    depois: {
-      label: 'DEPOIS',
-      className: 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
-    }
-  };
-
   return (
     <section className="py-16 sm:py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10 sm:mb-16">
+        <motion.div {...projectBetaIntroMotion} className="mb-10 sm:mb-16">
           <div className="flex items-center gap-2 mb-3 sm:mb-4">
             <Eye className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
             <span className="text-[10px] sm:text-xs font-mono text-cyan-300/70 uppercase tracking-wider">PROJECT BETA VIEW</span>
@@ -1461,9 +1467,7 @@ function ProjectBetaViewSection() {
             {projectBetaSteps.map((step, index) => (
               <motion.div
                 key={step.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                {...projectBetaIntroMotion}
                 transition={{ delay: index * 0.08 }}
               >
                 <GlassCard className="p-5 sm:p-6" hover>
@@ -1475,8 +1479,8 @@ function ProjectBetaViewSection() {
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2 mb-2">
                           <span className="text-[10px] sm:text-xs font-mono text-cyan-400">ETAPA {index + 1}</span>
-                          <span className={`text-[10px] sm:text-xs px-2 py-0.5 rounded-full ${statusStyles[step.status].className}`}>
-                            {statusStyles[step.status].label}
+                          <span className={`text-[10px] sm:text-xs px-2 py-0.5 rounded-full ${projectBetaStatusStyles[step.status].className}`}>
+                            {projectBetaStatusStyles[step.status].label}
                           </span>
                         </div>
                         <h3 className="text-base sm:text-lg font-medium text-white">{step.title}</h3>
