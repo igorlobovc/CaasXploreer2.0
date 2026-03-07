@@ -1,6 +1,6 @@
 # CaasXploreer2.0
 
-Apresentação operacional do projeto de pesquisa que indexa, mede, sentimentaliza e normaliza serviços das CAAs por estado, com foco no primeiro incremento produtivo de analytics e `/ranking`.
+Apresentação operacional do projeto de pesquisa que indexa, mede, classifica sentimento e normaliza serviços das CAAs por estado, com foco no primeiro incremento produtivo de analytics e `/ranking`.
 
 ## Project
 
