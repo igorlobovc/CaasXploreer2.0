@@ -1,0 +1,10 @@
+# Dependencies
+app/node_modules/
+node_modules/
+
+# Build outputs
+app/dist/
+
+# Misc
+.DS_Store
+*.local
