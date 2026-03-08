@@ -1,0 +1,50 @@
+{
+  "titulo": "Engagement Médio por Categoria",
+  "dados": [
+    {
+      "categoria": "Wellhub/Gympass",
+      "engagement_medio": 0.013435085787591257,
+      "total_posts": 90
+    },
+    {
+      "categoria": "Eventos Esportivos",
+      "engagement_medio": 0.008339994014177163,
+      "total_posts": 419
+    },
+    {
+      "categoria": "Institucional",
+      "engagement_medio": 0.007324879638225476,
+      "total_posts": 65
+    },
+    {
+      "categoria": "Telemedicina",
+      "engagement_medio": 0.005972985758274713,
+      "total_posts": 16
+    },
+    {
+      "categoria": "Campanha de Vacinação",
+      "engagement_medio": 0.005211259435637346,
+      "total_posts": 745
+    },
+    {
+      "categoria": "Saúde Mental",
+      "engagement_medio": 0.004545564742781808,
+      "total_posts": 574
+    },
+    {
+      "categoria": "Outros",
+      "engagement_medio": 0.0035817967693929625,
+      "total_posts": 3
+    },
+    {
+      "categoria": "Convênios e Parcerias",
+      "engagement_medio": 0.002934540449899976,
+      "total_posts": 361
+    },
+    {
+      "categoria": "Planos de Saúde",
+      "engagement_medio": 0.0021790719632685663,
+      "total_posts": 699
+    }
+  ]
+}
