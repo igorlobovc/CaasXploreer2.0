@@ -4,6 +4,10 @@ import heatmapDataSource from './data/heatmap-data.json';
 import rankingEstadosSource from './data/ranking_estados_12m.json';
 import resumoExecutivoSource from './data/resumo-executivo.json';
 import temporalDataSource from './data/temporal-data.json';
+import {
+  resolveHomepageAnalyticsDiagnostics,
+  type AnalyticsResolverDiagnostic,
+} from './analyticsSourceResolver';
 
 import type {
   NormalizedCaaEngagementPoint,
@@ -105,6 +109,10 @@ const FALLBACK_DATE_LABELS = {
   timelineStart: 'Jan/2024',
   timelineEnd: 'Dez/2025',
 };
+
+const ADAPTER_DIAGNOSTIC_PREFIX = '[realDataAdapter:validation]';
+
+let hasLoggedValidationDiagnostics = false;
 
 const isRecord = (value: unknown): value is JsonRecord =>
   typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -434,6 +442,25 @@ const getMedian = (values: number[]): number | null => {
   return sorted[midpoint];
 };
 
+const logSourcePriorityDiagnostics = (diagnostics: AnalyticsResolverDiagnostic[]): void => {
+  if (hasLoggedValidationDiagnostics) {
+    return;
+  }
+  hasLoggedValidationDiagnostics = true;
+
+  if (typeof console === 'undefined' || typeof console.warn !== 'function') {
+    return;
+  }
+
+  for (const diagnostic of diagnostics) {
+    if (diagnostic.details && Object.keys(diagnostic.details).length > 0) {
+      console.warn(`${ADAPTER_DIAGNOSTIC_PREFIX} [${diagnostic.code}] ${diagnostic.message}`, diagnostic.details);
+      continue;
+    }
+    console.warn(`${ADAPTER_DIAGNOSTIC_PREFIX} [${diagnostic.code}] ${diagnostic.message}`);
+  }
+};
+
 const buildSentimentVolumeByWindow = (
   temporalWindow: NormalizedTemporalPoint[],
   baselineEngagementRate: number,
@@ -653,6 +680,17 @@ export function getProvisionalRealAnalyticsData(): ProvisionalRealAnalyticsData 
   const engagementCategoryRows = normalizeEngagementCategoryPoints(engagementCategoriaSource);
   const rankingRows = normalizeRankingPoints(rankingEstadosSource);
   const resumoSnapshot = normalizeResumoSnapshot(resumoExecutivoSource);
+
+  logSourcePriorityDiagnostics(
+    resolveHomepageAnalyticsDiagnostics({
+      resumoTotalPosts: resumoSnapshot.totalPosts,
+      temporalRows,
+      caaVolumeRows,
+      rankingRows,
+      heatmapRows,
+      engagementCategoryRows,
+    }),
+  );
 
   const weightedEngagementByCategory = getWeightedAverage(
     engagementCategoryRows.map((row) => ({ value: row.engagementMedio, weight: row.totalPosts })),
