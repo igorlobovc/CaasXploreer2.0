@@ -19,7 +19,7 @@
 - Dataset total reconciliation required before final KPI certification.
 
 ## Next safest implementation step
-- Implement and document a source-priority resolver that computes each homepage KPI from approved canonical dataset precedence, then verify values against all five datasets.
+- Add and document a read-only CAA identifier/taxonomy normalization layer in `analyticsSourceResolver.ts`, then verify resolver diagnostics against all six datasets.
 
 ## Do not change
 - Do not redesign homepage UI.

@@ -7,7 +7,7 @@
 - Preview/build confirmation completed.
 
 ## 2. READY NEXT
-- Validate analytics source priority across `resumo-executivo`, `temporal-data`, `caa-data`, `heatmap-data`, and `ranking_estados_12m`.
+- Validate analytics source priority across `resumo-executivo`, `temporal-data`, `caa-data`, `heatmap-data`, `ranking_estados_12m`, and `engagement-categoria`.
 - Reconcile KPI totals and define canonical formulas for homepage display.
 - Verify whether canonical sentiment data exists and replace inferred sentiment mapping.
 - Verify whether canonical source/channel breakdown exists and replace inferred channel mapping.

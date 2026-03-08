@@ -11,6 +11,7 @@
    - `caa-data.json`
    - `heatmap-data.json`
    - `ranking_estados_12m.json`
+   - `engagement-categoria.json`
 2. Replace inferred sentiment logic if canonical sentiment data exists.
 3. Replace inferred source/channel distribution if canonical source-by-channel data exists.
 4. Reconcile mismatched totals across datasets before certifying homepage KPIs as final.

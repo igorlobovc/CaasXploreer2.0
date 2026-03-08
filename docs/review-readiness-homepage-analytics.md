@@ -45,5 +45,4 @@ Out-of-scope noise in worktree (do not review as product changes):
 - Final KPI truth claims before source reconciliation and normalization are approved.
 
 ## F. Tiny cleanup still worth doing before PR review
-- Update stale wording in docs now that diagnostics logic lives in `analyticsSourceResolver.ts` (not fully in `realDataAdapter.ts`).
 - Decide whether to remove `app/src/components/home/provisional/simulatedData.ts` (currently unused) or keep it intentionally as a fallback reference; either choice should be explicit in PR notes.

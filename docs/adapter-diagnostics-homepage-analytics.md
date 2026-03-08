@@ -1,10 +1,10 @@
 # Adapter Diagnostics: Homepage Analytics
 
-Status: read-only documentation for the diagnostics added in `app/src/components/home/provisional/realDataAdapter.ts`.
+Status: read-only documentation for diagnostics resolved by `app/src/components/home/provisional/analyticsSourceResolver.ts` and logged by `app/src/components/home/provisional/realDataAdapter.ts`.
 
 ## 1) Diagnostics added
-- Added explicit source-priority metadata (`KPI_SOURCE_PRIORITY_RULES`) with levels: `canonical`, `provisional`, `inferred`.
-- Added non-breaking validation diagnostics (`console.warn`) via `runSourcePriorityValidationDiagnostics`.
+- Added explicit source-priority metadata (`HOMEPAGE_KPI_SOURCE_PRIORITY_RULES`) with levels: `canonical`, `provisional`, `inferred`.
+- Added non-breaking validation diagnostics (`console.warn`) via `resolveHomepageAnalyticsDiagnostics` + adapter-side logging.
 - Diagnostics run once per adapter load and never throw runtime errors.
 
 ## 2) Mismatches now checked
@@ -31,4 +31,4 @@ Status: read-only documentation for the diagnostics added in `app/src/components
 - Confirmation (or addition) of canonical sentiment and source-channel datasets.
 
 ## 6) Single safest next source-code task
-- Implement a read-only `analyticsSourceResolver` utility module that centralizes KPI source precedence and validation assertions (without changing UI values), then wire adapter diagnostics to that resolver.
+- Add a read-only CAA identifier/taxonomy normalization layer in `analyticsSourceResolver.ts` (mapping + validation output only), then consume it in diagnostics without changing rendered KPI/chart values.
