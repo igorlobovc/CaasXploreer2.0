@@ -668,7 +668,7 @@ const classifySignalDensity = (postsPerCaa: number, medianSharedPer1000: number 
 
 export function getProvisionalRealAnalyticsData(): ProvisionalRealAnalyticsData {
   const temporalRows = normalizeTemporalPoints(temporalDataSource);
-  const temporalWindow = temporalRows.length <= WINDOW_SIZE ? temporalRows : temporalRows.slice(0, WINDOW_SIZE);
+  const temporalWindow = temporalRows.length <= WINDOW_SIZE ? temporalRows : temporalRows.slice(-WINDOW_SIZE);
 
   const heatmapRows = normalizeHeatmapPoints(heatmapDataSource);
   const categoryTotals = toAggregatedCategoryTotals(heatmapRows);
