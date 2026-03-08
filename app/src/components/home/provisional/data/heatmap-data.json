@@ -1,0 +1,650 @@
+{
+  "titulo": "Distribuição de Temas por CAA",
+  "dados": [
+    {
+      "caa": "CAAAC",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 73
+    },
+    {
+      "caa": "CAAAC",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 5
+    },
+    {
+      "caa": "CAAAC",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 20
+    },
+    {
+      "caa": "CAAAC",
+      "categoria": "Planos de Saúde",
+      "quantidade": 15
+    },
+    {
+      "caa": "CAAAC",
+      "categoria": "Saúde Mental",
+      "quantidade": 38
+    },
+    {
+      "caa": "CAAAM",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 88
+    },
+    {
+      "caa": "CAAAM",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 36
+    },
+    {
+      "caa": "CAAAM",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 64
+    },
+    {
+      "caa": "CAAAM",
+      "categoria": "Institucional",
+      "quantidade": 11
+    },
+    {
+      "caa": "CAAAM",
+      "categoria": "Planos de Saúde",
+      "quantidade": 88
+    },
+    {
+      "caa": "CAAAM",
+      "categoria": "Saúde Mental",
+      "quantidade": 106
+    },
+    {
+      "caa": "CAAAM",
+      "categoria": "Telemedicina",
+      "quantidade": 5
+    },
+    {
+      "caa": "CAAAM",
+      "categoria": "Wellhub/Gympass",
+      "quantidade": 30
+    },
+    {
+      "caa": "CAAB",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 21
+    },
+    {
+      "caa": "CAAB",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 5
+    },
+    {
+      "caa": "CAAB",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 55
+    },
+    {
+      "caa": "CAAB",
+      "categoria": "Institucional",
+      "quantidade": 2
+    },
+    {
+      "caa": "CAAB",
+      "categoria": "Outros",
+      "quantidade": 1
+    },
+    {
+      "caa": "CAAB",
+      "categoria": "Planos de Saúde",
+      "quantidade": 16
+    },
+    {
+      "caa": "CAAB",
+      "categoria": "Saúde Mental",
+      "quantidade": 24
+    },
+    {
+      "caa": "CAAB",
+      "categoria": "Telemedicina",
+      "quantidade": 1
+    },
+    {
+      "caa": "CAAB",
+      "categoria": "Wellhub/Gympass",
+      "quantidade": 4
+    },
+    {
+      "caa": "CAACE",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 17
+    },
+    {
+      "caa": "CAACE",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 43
+    },
+    {
+      "caa": "CAACE",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 41
+    },
+    {
+      "caa": "CAACE",
+      "categoria": "Planos de Saúde",
+      "quantidade": 39
+    },
+    {
+      "caa": "CAACE",
+      "categoria": "Saúde Mental",
+      "quantidade": 33
+    },
+    {
+      "caa": "CAACE",
+      "categoria": "Wellhub/Gympass",
+      "quantidade": 13
+    },
+    {
+      "caa": "CAADF",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 213
+    },
+    {
+      "caa": "CAADF",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 65
+    },
+    {
+      "caa": "CAADF",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 96
+    },
+    {
+      "caa": "CAADF",
+      "categoria": "Institucional",
+      "quantidade": 6
+    },
+    {
+      "caa": "CAADF",
+      "categoria": "Planos de Saúde",
+      "quantidade": 65
+    },
+    {
+      "caa": "CAADF",
+      "categoria": "Saúde Mental",
+      "quantidade": 34
+    },
+    {
+      "caa": "CAADF",
+      "categoria": "Wellhub/Gympass",
+      "quantidade": 12
+    },
+    {
+      "caa": "CAAES",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 73
+    },
+    {
+      "caa": "CAAES",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 17
+    },
+    {
+      "caa": "CAAES",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 29
+    },
+    {
+      "caa": "CAAES",
+      "categoria": "Institucional",
+      "quantidade": 3
+    },
+    {
+      "caa": "CAAES",
+      "categoria": "Outros",
+      "quantidade": 1
+    },
+    {
+      "caa": "CAAES",
+      "categoria": "Planos de Saúde",
+      "quantidade": 50
+    },
+    {
+      "caa": "CAAES",
+      "categoria": "Saúde Mental",
+      "quantidade": 69
+    },
+    {
+      "caa": "CAAES",
+      "categoria": "Telemedicina",
+      "quantidade": 8
+    },
+    {
+      "caa": "CAAES",
+      "categoria": "Wellhub/Gympass",
+      "quantidade": 32
+    },
+    {
+      "caa": "CAAMA",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 2
+    },
+    {
+      "caa": "CAAMA",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 5
+    },
+    {
+      "caa": "CAAMA",
+      "categoria": "Planos de Saúde",
+      "quantidade": 3
+    },
+    {
+      "caa": "CAAMA",
+      "categoria": "Saúde Mental",
+      "quantidade": 1
+    },
+    {
+      "caa": "CAAMS",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 21
+    },
+    {
+      "caa": "CAAMS",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 16
+    },
+    {
+      "caa": "CAAMS",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 4
+    },
+    {
+      "caa": "CAAMS",
+      "categoria": "Planos de Saúde",
+      "quantidade": 14
+    },
+    {
+      "caa": "CAAMS",
+      "categoria": "Saúde Mental",
+      "quantidade": 41
+    },
+    {
+      "caa": "CAAMS",
+      "categoria": "Wellhub/Gympass",
+      "quantidade": 4
+    },
+    {
+      "caa": "CAAPA",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 55
+    },
+    {
+      "caa": "CAAPA",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 17
+    },
+    {
+      "caa": "CAAPA",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 2
+    },
+    {
+      "caa": "CAAPA",
+      "categoria": "Institucional",
+      "quantidade": 4
+    },
+    {
+      "caa": "CAAPA",
+      "categoria": "Planos de Saúde",
+      "quantidade": 12
+    },
+    {
+      "caa": "CAAPA",
+      "categoria": "Saúde Mental",
+      "quantidade": 22
+    },
+    {
+      "caa": "CAAPA",
+      "categoria": "Wellhub/Gympass",
+      "quantidade": 18
+    },
+    {
+      "caa": "CAAPE",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 25
+    },
+    {
+      "caa": "CAAPE",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 8
+    },
+    {
+      "caa": "CAAPE",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 23
+    },
+    {
+      "caa": "CAAPE",
+      "categoria": "Institucional",
+      "quantidade": 1
+    },
+    {
+      "caa": "CAAPE",
+      "categoria": "Planos de Saúde",
+      "quantidade": 15
+    },
+    {
+      "caa": "CAAPE",
+      "categoria": "Saúde Mental",
+      "quantidade": 12
+    },
+    {
+      "caa": "CAAPE",
+      "categoria": "Wellhub/Gympass",
+      "quantidade": 1
+    },
+    {
+      "caa": "CAAPI",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 65
+    },
+    {
+      "caa": "CAAPI",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 45
+    },
+    {
+      "caa": "CAAPI",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 120
+    },
+    {
+      "caa": "CAAPI",
+      "categoria": "Institucional",
+      "quantidade": 20
+    },
+    {
+      "caa": "CAAPI",
+      "categoria": "Planos de Saúde",
+      "quantidade": 64
+    },
+    {
+      "caa": "CAAPI",
+      "categoria": "Saúde Mental",
+      "quantidade": 151
+    },
+    {
+      "caa": "CAAPI",
+      "categoria": "Telemedicina",
+      "quantidade": 4
+    },
+    {
+      "caa": "CAARJ",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 45
+    },
+    {
+      "caa": "CAARJ",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 28
+    },
+    {
+      "caa": "CAARJ",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 6
+    },
+    {
+      "caa": "CAARJ",
+      "categoria": "Planos de Saúde",
+      "quantidade": 16
+    },
+    {
+      "caa": "CAARJ",
+      "categoria": "Saúde Mental",
+      "quantidade": 7
+    },
+    {
+      "caa": "CAARN",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 42
+    },
+    {
+      "caa": "CAARN",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 41
+    },
+    {
+      "caa": "CAARN",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 59
+    },
+    {
+      "caa": "CAARN",
+      "categoria": "Institucional",
+      "quantidade": 4
+    },
+    {
+      "caa": "CAARN",
+      "categoria": "Planos de Saúde",
+      "quantidade": 42
+    },
+    {
+      "caa": "CAARN",
+      "categoria": "Saúde Mental",
+      "quantidade": 41
+    },
+    {
+      "caa": "CAARN",
+      "categoria": "Wellhub/Gympass",
+      "quantidade": 9
+    },
+    {
+      "caa": "CAARO",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 193
+    },
+    {
+      "caa": "CAARO",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 17
+    },
+    {
+      "caa": "CAARO",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 6
+    },
+    {
+      "caa": "CAARO",
+      "categoria": "Institucional",
+      "quantidade": 12
+    },
+    {
+      "caa": "CAARO",
+      "categoria": "Planos de Saúde",
+      "quantidade": 95
+    },
+    {
+      "caa": "CAARO",
+      "categoria": "Saúde Mental",
+      "quantidade": 64
+    },
+    {
+      "caa": "CAARR",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 39
+    },
+    {
+      "caa": "CAARR",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 18
+    },
+    {
+      "caa": "CAARR",
+      "categoria": "Institucional",
+      "quantidade": 14
+    },
+    {
+      "caa": "CAARR",
+      "categoria": "Planos de Saúde",
+      "quantidade": 45
+    },
+    {
+      "caa": "CAARR",
+      "categoria": "Saúde Mental",
+      "quantidade": 42
+    },
+    {
+      "caa": "CAARS",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 27
+    },
+    {
+      "caa": "CAARS",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 9
+    },
+    {
+      "caa": "CAARS",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 52
+    },
+    {
+      "caa": "CAARS",
+      "categoria": "Institucional",
+      "quantidade": 1
+    },
+    {
+      "caa": "CAARS",
+      "categoria": "Planos de Saúde",
+      "quantidade": 22
+    },
+    {
+      "caa": "CAARS",
+      "categoria": "Saúde Mental",
+      "quantidade": 29
+    },
+    {
+      "caa": "CAARS",
+      "categoria": "Telemedicina",
+      "quantidade": 1
+    },
+    {
+      "caa": "CAASC",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 39
+    },
+    {
+      "caa": "CAASC",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 23
+    },
+    {
+      "caa": "CAASC",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 45
+    },
+    {
+      "caa": "CAASC",
+      "categoria": "Planos de Saúde",
+      "quantidade": 49
+    },
+    {
+      "caa": "CAASC",
+      "categoria": "Saúde Mental",
+      "quantidade": 25
+    },
+    {
+      "caa": "CAASC",
+      "categoria": "Wellhub/Gympass",
+      "quantidade": 16
+    },
+    {
+      "caa": "CAASP",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 30
+    },
+    {
+      "caa": "CAASP",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 52
+    },
+    {
+      "caa": "CAASP",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 3
+    },
+    {
+      "caa": "CAASP",
+      "categoria": "Institucional",
+      "quantidade": 7
+    },
+    {
+      "caa": "CAASP",
+      "categoria": "Outros",
+      "quantidade": 1
+    },
+    {
+      "caa": "CAASP",
+      "categoria": "Planos de Saúde",
+      "quantidade": 63
+    },
+    {
+      "caa": "CAASP",
+      "categoria": "Saúde Mental",
+      "quantidade": 79
+    },
+    {
+      "caa": "CAASP",
+      "categoria": "Wellhub/Gympass",
+      "quantidade": 5
+    },
+    {
+      "caa": "CAATO",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 2
+    },
+    {
+      "caa": "CAATO",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 1
+    },
+    {
+      "caa": "CAATO",
+      "categoria": "Saúde Mental",
+      "quantidade": 4
+    },
+    {
+      "caa": "CASAG",
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 22
+    },
+    {
+      "caa": "CASAG",
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 111
+    },
+    {
+      "caa": "CASAG",
+      "categoria": "Eventos Esportivos",
+      "quantidade": 29
+    },
+    {
+      "caa": "CASAG",
+      "categoria": "Institucional",
+      "quantidade": 8
+    },
+    {
+      "caa": "CASAG",
+      "categoria": "Outros",
+      "quantidade": 1
+    },
+    {
+      "caa": "CASAG",
+      "categoria": "Planos de Saúde",
+      "quantidade": 259
+    },
+    {
+      "caa": "CASAG",
+      "categoria": "Saúde Mental",
+      "quantidade": 88
+    }
+  ]
+}

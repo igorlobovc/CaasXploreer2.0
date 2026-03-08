@@ -1,0 +1,59 @@
+{
+  "titulo": "Resumo de Inteligência Social",
+  "total_posts": 6357,
+  "total_caas": 20,
+  "periodo": {
+    "inicio": "2024-01-31 13:24:03",
+    "fim": "2026-02-27 21:00:00"
+  },
+  "top_categorias": [
+    {
+      "categoria": "Campanha de Vacinação",
+      "quantidade": 1464
+    },
+    {
+      "categoria": "Saúde Mental",
+      "quantidade": 1341
+    },
+    {
+      "categoria": "Planos de Saúde",
+      "quantidade": 1245
+    },
+    {
+      "categoria": "Eventos Esportivos",
+      "quantidade": 1186
+    },
+    {
+      "categoria": "Convênios e Parcerias",
+      "quantidade": 786
+    }
+  ],
+  "top_caas": [
+    {
+      "caa": "CASAG",
+      "quantidade": 518
+    },
+    {
+      "caa": "CAADF",
+      "quantidade": 491
+    },
+    {
+      "caa": "CAAPI",
+      "quantidade": 469
+    },
+    {
+      "caa": "CAAAM",
+      "quantidade": 428
+    },
+    {
+      "caa": "CAARO",
+      "quantidade": 387
+    }
+  ],
+  "insights": [
+    "Campanha de Vacinação é o tema mais discutido (1464 posts)",
+    "CASAG é a CAA mais ativa nas redes sociais (518 posts)",
+    "Wellhub/Gympass é um benefício em crescimento (181 posts)",
+    "Eventos Esportivos geram alto engajamento (1186 posts)"
+  ]
+}

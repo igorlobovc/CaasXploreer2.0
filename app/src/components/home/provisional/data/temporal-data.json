@@ -1,0 +1,109 @@
+{
+  "titulo": "Evolução Temporal de Posts",
+  "dados": [
+    {
+      "mes": "2024-01",
+      "quantidade": 13
+    },
+    {
+      "mes": "2024-02",
+      "quantidade": 148
+    },
+    {
+      "mes": "2024-03",
+      "quantidade": 279
+    },
+    {
+      "mes": "2024-04",
+      "quantidade": 567
+    },
+    {
+      "mes": "2024-05",
+      "quantidade": 270
+    },
+    {
+      "mes": "2024-06",
+      "quantidade": 191
+    },
+    {
+      "mes": "2024-07",
+      "quantidade": 262
+    },
+    {
+      "mes": "2024-08",
+      "quantidade": 270
+    },
+    {
+      "mes": "2024-09",
+      "quantidade": 239
+    },
+    {
+      "mes": "2024-10",
+      "quantidade": 262
+    },
+    {
+      "mes": "2024-11",
+      "quantidade": 216
+    },
+    {
+      "mes": "2024-12",
+      "quantidade": 156
+    },
+    {
+      "mes": "2025-01",
+      "quantidade": 155
+    },
+    {
+      "mes": "2025-02",
+      "quantidade": 119
+    },
+    {
+      "mes": "2025-03",
+      "quantidade": 186
+    },
+    {
+      "mes": "2025-04",
+      "quantidade": 274
+    },
+    {
+      "mes": "2025-05",
+      "quantidade": 355
+    },
+    {
+      "mes": "2025-06",
+      "quantidade": 235
+    },
+    {
+      "mes": "2025-07",
+      "quantidade": 255
+    },
+    {
+      "mes": "2025-08",
+      "quantidade": 334
+    },
+    {
+      "mes": "2025-09",
+      "quantidade": 283
+    },
+    {
+      "mes": "2025-10",
+      "quantidade": 348
+    },
+    {
+      "mes": "2025-11",
+      "quantidade": 339
+    },
+    {
+      "mes": "2025-12",
+      "quantidade": 230
+    },
+    {
+      "mes": "2026-01",
+      "quantidade": 221
+    },
+    {
+      "mes": "2026-02",
+      "quantidade": 150
+    }
+  ]
+}

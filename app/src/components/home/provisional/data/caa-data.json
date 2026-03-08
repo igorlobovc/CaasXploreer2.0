@@ -1,0 +1,157 @@
+{
+  "titulo": "Atividade por CAA",
+  "dados": [
+    {
+      "caa": "CASAG",
+      "quantidade": 518
+    },
+    {
+      "caa": "CAADF",
+      "quantidade": 491
+    },
+    {
+      "caa": "CAAPI",
+      "quantidade": 469
+    },
+    {
+      "caa": "CAAAM",
+      "quantidade": 428
+    },
+    {
+      "caa": "CAARO",
+      "quantidade": 387
+    },
+    {
+      "caa": "CAAES",
+      "quantidade": 282
+    },
+    {
+      "caa": "CAASP",
+      "quantidade": 240
+    },
+    {
+      "caa": "CAARN",
+      "quantidade": 238
+    },
+    {
+      "caa": "CAASC",
+      "quantidade": 197
+    },
+    {
+      "caa": "CAACE",
+      "quantidade": 186
+    },
+    {
+      "caa": "CAARR",
+      "quantidade": 158
+    },
+    {
+      "caa": "CAAAC",
+      "quantidade": 151
+    },
+    {
+      "caa": "CAARS",
+      "quantidade": 141
+    },
+    {
+      "caa": "CAAPA",
+      "quantidade": 130
+    },
+    {
+      "caa": "CAAB",
+      "quantidade": 129
+    }
+  ],
+  "engagement": [
+    {
+      "caa": "CAAES",
+      "engagement_medio": 0.007925589335118876,
+      "engagement_total": 2.235016192503523,
+      "total_posts": 282
+    },
+    {
+      "caa": "CAADF",
+      "engagement_medio": 0.003631062007191823,
+      "engagement_total": 1.7828514455311852,
+      "total_posts": 491
+    },
+    {
+      "caa": "CAAPI",
+      "engagement_medio": 0.005308051333331923,
+      "engagement_total": 1.7569649913328664,
+      "total_posts": 331
+    },
+    {
+      "caa": "CAAAM",
+      "engagement_medio": 0.005855773082222791,
+      "engagement_total": 1.7508761515846145,
+      "total_posts": 299
+    },
+    {
+      "caa": "CAAB",
+      "engagement_medio": 0.010685672490044748,
+      "engagement_total": 1.3784517512157726,
+      "total_posts": 129
+    },
+    {
+      "caa": "CAARR",
+      "engagement_medio": 0.006180791160701543,
+      "engagement_total": 0.9765650033908437,
+      "total_posts": 158
+    },
+    {
+      "caa": "CAAAC",
+      "engagement_medio": 0.009273464710238485,
+      "engagement_total": 0.9737137945750408,
+      "total_posts": 105
+    },
+    {
+      "caa": "CAARO",
+      "engagement_medio": 0.0043465293775054445,
+      "engagement_total": 0.8693058755010888,
+      "total_posts": 200
+    },
+    {
+      "caa": "CAASC",
+      "engagement_medio": 0.005225392961992585,
+      "engagement_total": 0.5747932258191844,
+      "total_posts": 110
+    },
+    {
+      "caa": "CAAPE",
+      "engagement_medio": 0.006092231544977448,
+      "engagement_total": 0.49956298668815075,
+      "total_posts": 82
+    },
+    {
+      "caa": "CASAG",
+      "engagement_medio": 0.0006968219034392256,
+      "engagement_total": 0.36095374598151886,
+      "total_posts": 518
+    },
+    {
+      "caa": "CAAMS",
+      "engagement_medio": 0.023773652031087583,
+      "engagement_total": 0.19018921624870067,
+      "total_posts": 8
+    },
+    {
+      "caa": "CAARJ",
+      "engagement_medio": 0.0014811781934622819,
+      "engagement_total": 0.15108017573315274,
+      "total_posts": 102
+    },
+    {
+      "caa": "CAAPA",
+      "engagement_medio": 0.006685054441072936,
+      "engagement_total": 0.05348043552858349,
+      "total_posts": 8
+    },
+    {
+      "caa": "CAARN",
+      "engagement_medio": 0.004906512238563825,
+      "engagement_total": 0.0392520979085106,
+      "total_posts": 8
+    }
+  ]
+}
