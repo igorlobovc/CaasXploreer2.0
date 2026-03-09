@@ -8,34 +8,34 @@ import { Map, Search, TrendingUp, TrendingDown, Minus, ChevronRight } from 'luci
 import { Link } from 'react-router-dom';
 import { GlassCard, Navbar, PageBackground } from '../components/shared';
 import { estadosData } from '../data/estados';
-import { formatNumber, trendColor } from '../lib/analytics';
+import { formatNumber, getTrendColorClass } from '../lib/analytics';
 
 const REGIOES = ['Todas', 'Norte', 'Nordeste', 'Centro-Oeste', 'Sudeste', 'Sul'];
 
-function TrendIcon({ t }: { t: 'alta' | 'estavel' | 'baixa' }) {
-  if (t === 'alta')   return <TrendingUp   className="w-3.5 h-3.5 text-emerald-400" />;
-  if (t === 'baixa')  return <TrendingDown  className="w-3.5 h-3.5 text-rose-400" />;
+function TrendIcon({ trend }: { trend: 'alta' | 'estavel' | 'baixa' }) {
+  if (trend === 'alta')   return <TrendingUp   className="w-3.5 h-3.5 text-emerald-400" />;
+  if (trend === 'baixa')  return <TrendingDown  className="w-3.5 h-3.5 text-rose-400" />;
   return <Minus className="w-3.5 h-3.5 text-cyan-400/60" />;
 }
 
 export default function EstadosPage() {
-  const [regiao, setRegiao] = useState('Todas');
-  const [search, setSearch] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState('Todas');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const filtered = useMemo(() => {
-    return estadosData.filter((e) => {
-      const matchRegiao = regiao === 'Todas' || e.regiao === regiao;
+  const filteredEstados = useMemo(() => {
+    return estadosData.filter((estadoItem) => {
+      const matchRegiao = selectedRegion === 'Todas' || estadoItem.regiao === selectedRegion;
       const matchSearch =
-        search === '' ||
-        e.estado.toLowerCase().includes(search.toLowerCase()) ||
-        e.uf.toLowerCase().includes(search.toLowerCase());
+        searchQuery === '' ||
+        estadoItem.estado.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        estadoItem.uf.toLowerCase().includes(searchQuery.toLowerCase());
       return matchRegiao && matchSearch;
     });
-  }, [regiao, search]);
+  }, [selectedRegion, searchQuery]);
 
-  const sorted = useMemo(
-    () => [...filtered].sort((a, b) => b.interacoesPer1000 - a.interacoesPer1000),
-    [filtered]
+  const sortedEstados = useMemo(
+    () => [...filteredEstados].sort((a, b) => b.interacoesPer1000 - a.interacoesPer1000),
+    [filteredEstados]
   );
 
   return (
@@ -70,25 +70,25 @@ export default function EstadosPage() {
             <input
               type="text"
               placeholder="Buscar estado ou UF…"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              value={searchQuery}
+              onChange={(inputEvent) => setSearchQuery(inputEvent.target.value)}
               className="w-full pl-9 pr-4 py-2 bg-[#0a1628]/60 border border-cyan-500/20 rounded text-sm text-white placeholder-cyan-200/30 focus:outline-none focus:border-cyan-400/40 transition-colors"
             />
           </div>
 
           {/* Region filter */}
           <div className="flex flex-wrap gap-2">
-            {REGIOES.map((r) => (
+            {REGIOES.map((regionName) => (
               <button
-                key={r}
-                onClick={() => setRegiao(r)}
+                key={regionName}
+                onClick={() => setSelectedRegion(regionName)}
                 className={`px-3 py-1.5 rounded text-xs font-medium transition-colors ${
-                  regiao === r
+                  selectedRegion === regionName
                     ? 'bg-cyan-500/25 text-cyan-300 border border-cyan-400/40'
                     : 'text-cyan-200/50 border border-cyan-500/15 hover:text-cyan-200 hover:border-cyan-500/30'
                 }`}
               >
-                {r}
+                {regionName}
               </button>
             ))}
           </div>
@@ -96,7 +96,7 @@ export default function EstadosPage() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {sorted.map((estado, idx) => (
+          {sortedEstados.map((estado, idx) => (
             <motion.div
               key={estado.uf}
               initial={{ opacity: 0, y: 16 }}
@@ -121,7 +121,7 @@ export default function EstadosPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-1">
-                      <TrendIcon t={estado.tendencia} />
+                      <TrendIcon trend={estado.tendencia} />
                       <ChevronRight className="w-4 h-4 text-cyan-400/40 group-hover:text-cyan-400 transition-colors" />
                     </div>
                   </div>
@@ -134,7 +134,7 @@ export default function EstadosPage() {
                     </div>
                     <div className="bg-cyan-500/5 rounded p-2.5">
                       <div className="text-[9px] text-cyan-300/50 uppercase tracking-wider mb-1">/ 1k adv.</div>
-                      <div className={`text-lg font-bold ${trendColor(estado.tendencia)}`}>
+                      <div className={`text-lg font-bold ${getTrendColorClass(estado.tendencia)}`}>
                         {estado.interacoesPer1000.toFixed(1)}
                       </div>
                     </div>
@@ -177,7 +177,7 @@ export default function EstadosPage() {
           ))}
         </div>
 
-        {sorted.length === 0 && (
+        {sortedEstados.length === 0 && (
           <div className="text-center py-16 text-cyan-200/40">
             Nenhum estado encontrado para os filtros selecionados.
           </div>

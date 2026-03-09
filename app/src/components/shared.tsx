@@ -1,6 +1,54 @@
+import { Link, useLocation } from 'react-router-dom';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
+
+const NAV_LINKS = [
+  { to: '/', label: 'Início' },
+  { to: '/analytics', label: 'Analytics' },
+  { to: '/ranking', label: 'Ranking' },
+  { to: '/estados', label: 'Estados' },
+] as const;
+
+export function Navbar() {
+  const location = useLocation();
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#0a0f1a]/80 border-b border-cyan-500/15">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2 text-white font-semibold text-sm hover:text-cyan-300 transition-colors">
+          CAAsXplorer
+          <span className="text-[10px] font-mono text-cyan-400/60">v2.1.0</span>
+        </Link>
+        <div className="flex items-center gap-1">
+          {NAV_LINKS.map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              className={cn(
+                'px-3 py-1.5 text-xs rounded transition-colors',
+                location.pathname === to
+                  ? 'bg-cyan-500/20 text-cyan-300'
+                  : 'text-cyan-200/60 hover:text-cyan-200',
+              )}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+export function PageBackground() {
+  return (
+    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
+    </div>
+  );
+}
 
 interface GlassCardProps {
   children: ReactNode;

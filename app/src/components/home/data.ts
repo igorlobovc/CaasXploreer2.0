@@ -4,9 +4,14 @@ import {
   Stethoscope,
   Trophy,
   Zap,
+  Map,
+  Database,
+  BarChart2,
+  FileText,
+  Globe,
 } from 'lucide-react';
 
-import type { AcaoInstitucional, ServicoCategoria, TimelineEvent } from './types';
+import type { AcaoInstitucional, ProjectGoal, ServicoCategoria, TimelineEvent } from './types';
 
 export const ACOES_INSTITUCIONAIS: AcaoInstitucional[] = [
   {
@@ -153,5 +158,53 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: 'Entrega Final',
     description: 'Relatório técnico consolidado e datasets auditáveis',
     status: 'final',
+  },
+];
+
+export const PROJECT_GOALS: ProjectGoal[] = [
+  {
+    id: 'goal-mapping-coverage',
+    goalTitle: 'Cobertura Nacional Completa',
+    goalDescription: 'Mapear todas as 27 Caixas de Assistência dos Advogados (CAAs) brasileiras, garantindo representação de todos os estados e do Distrito Federal.',
+    targetValue: '27 CAAs',
+    currentResult: '27 mapeadas',
+    achievementStatus: 'achieved',
+    icon: Map,
+  },
+  {
+    id: 'goal-service-taxonomy',
+    goalTitle: 'Taxonomia de Serviços',
+    goalDescription: 'Identificar e classificar os serviços institucionais em categorias canônicas padronizadas, permitindo comparação objetiva entre estados.',
+    targetValue: '120+ serviços',
+    currentResult: '134 mapeados',
+    achievementStatus: 'achieved',
+    icon: Database,
+  },
+  {
+    id: 'goal-normalized-dataset',
+    goalTitle: 'Dataset Normalizado',
+    goalDescription: 'Construir uma base de dados com métricas normalizadas (interações por 1.000 advogados) para comparação justa entre estados de portes distintos.',
+    targetValue: 'Métrica nacional',
+    currentResult: '65,5 / 1k adv.',
+    achievementStatus: 'achieved',
+    icon: BarChart2,
+  },
+  {
+    id: 'goal-national-reach',
+    goalTitle: 'Alcance Nacional',
+    goalDescription: 'Registrar volume significativo de interações institucionais em nível nacional, evidenciando o impacto das ações de assistência à advocacia.',
+    targetValue: '80.000+ interações',
+    currentResult: '88.200 interações',
+    achievementStatus: 'achieved',
+    icon: Globe,
+  },
+  {
+    id: 'goal-technical-report',
+    goalTitle: 'Relatório Técnico Consolidado',
+    goalDescription: 'Produzir relatório técnico auditável com datasets exportáveis, evidência pública e análise comparativa entre estados e categorias.',
+    targetValue: 'Entrega final',
+    currentResult: 'Em produção',
+    achievementStatus: 'in-progress',
+    icon: FileText,
   },
 ];

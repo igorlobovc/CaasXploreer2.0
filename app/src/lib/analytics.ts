@@ -15,38 +15,38 @@ export function formatPercent(n: number, decimals = 1): string {
   return `${n.toFixed(decimals)}%`;
 }
 
-/** Calculate growth rate between first and last value in a series */
-export function calcGrowthRate(series: MonthlyNational[]): number {
+/** Calculate growth rate between first and last month in a monthly data series */
+export function calcInteractionGrowthRate(series: MonthlyNational[]): number {
   if (series.length < 2) return 0;
-  const first = series[0].totalInteracoes;
-  const last = series[series.length - 1].totalInteracoes;
-  return ((last - first) / first) * 100;
+  const firstMonthTotal = series[0].totalInteracoes;
+  const lastMonthTotal = series[series.length - 1].totalInteracoes;
+  return ((lastMonthTotal - firstMonthTotal) / firstMonthTotal) * 100;
 }
 
-/** Compute the share rate (shared / total) as percentage */
-export function calcShareRate(total: number, shared: number): number {
-  if (total === 0) return 0;
-  return (shared / total) * 100;
+/** Compute the shared-interaction rate (shared / total) as a percentage */
+export function calcSharedInteractionRate(totalInteractions: number, sharedInteractions: number): number {
+  if (totalInteractions === 0) return 0;
+  return (sharedInteractions / totalInteractions) * 100;
 }
 
-/** Compute interactions per 1,000 lawyers */
-export function interacoesPer1000(totalInteracoes: number, totalAdvogados: number): number {
-  if (totalAdvogados === 0) return 0;
-  return (totalInteracoes / totalAdvogados) * 1000;
+/** Compute interactions per 1,000 registered lawyers */
+export function calcInteractionsPer1000Lawyers(totalInteractions: number, totalLawyers: number): number {
+  if (totalLawyers === 0) return 0;
+  return (totalInteractions / totalLawyers) * 1000;
 }
 
-/** Aggregate total interactions from a list of estados */
-export function sumInteracoes(estados: EstadoData[]): number {
-  return estados.reduce((acc, e) => acc + e.totalInteracoes, 0);
+/** Aggregate total interactions across all estados */
+export function sumTotalInteractions(estados: EstadoData[]): number {
+  return estados.reduce((runningTotal, estado) => runningTotal + estado.totalInteracoes, 0);
 }
 
-/** Aggregate total shared interactions */
-export function sumCompartilhadas(estados: EstadoData[]): number {
-  return estados.reduce((acc, e) => acc + e.interacoesCompartilhadas, 0);
+/** Aggregate total shared interactions across all estados */
+export function sumSharedInteractions(estados: EstadoData[]): number {
+  return estados.reduce((runningTotal, estado) => runningTotal + estado.interacoesCompartilhadas, 0);
 }
 
-/** Return a color class based on trend */
-export function trendColor(tendencia: 'alta' | 'estavel' | 'baixa'): string {
+/** Return a Tailwind color class based on trend direction */
+export function getTrendColorClass(tendencia: 'alta' | 'estavel' | 'baixa'): string {
   switch (tendencia) {
     case 'alta':   return 'text-emerald-400';
     case 'baixa':  return 'text-rose-400';
@@ -54,8 +54,8 @@ export function trendColor(tendencia: 'alta' | 'estavel' | 'baixa'): string {
   }
 }
 
-/** Return a trend label in Portuguese */
-export function trendLabel(tendencia: 'alta' | 'estavel' | 'baixa'): string {
+/** Return a human-readable trend label in Portuguese */
+export function getTrendLabel(tendencia: 'alta' | 'estavel' | 'baixa'): string {
   switch (tendencia) {
     case 'alta':   return '↑ Alta';
     case 'baixa':  return '↓ Baixa';
@@ -63,7 +63,7 @@ export function trendLabel(tendencia: 'alta' | 'estavel' | 'baixa'): string {
   }
 }
 
-/** Return top-N items from a ranked list */
-export function topN<T>(items: T[], n: number): T[] {
-  return items.slice(0, n);
+/** Return the top N items from a ranked list */
+export function getTopNItems<T>(items: T[], maxItems: number): T[] {
+  return items.slice(0, maxItems);
 }
