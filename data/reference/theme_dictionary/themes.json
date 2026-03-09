@@ -1,0 +1,226 @@
+{
+  "Atendimento Institucional": {
+    "count": 1710,
+    "services": [
+      {
+        "name": "apoio operacional",
+        "count": 10
+      },
+      {
+        "name": "campanha institucional",
+        "count": 59
+      },
+      {
+        "name": "comunicação institucional",
+        "count": 1445
+      },
+      {
+        "name": "nota de pesar",
+        "count": 107
+      },
+      {
+        "name": "sinal social",
+        "count": 89
+      }
+    ]
+  },
+  "Benefícios": {
+    "count": 3346,
+    "services": [
+      {
+        "name": "anuidade",
+        "count": 172
+      },
+      {
+        "name": "auxílios",
+        "count": 146
+      },
+      {
+        "name": "cinema",
+        "count": 2
+      },
+      {
+        "name": "cinema e entretenimento",
+        "count": 3
+      },
+      {
+        "name": "clube de vantagens",
+        "count": 1388
+      },
+      {
+        "name": "crédito",
+        "count": 39
+      },
+      {
+        "name": "cultura e lazer especializado",
+        "count": 6
+      },
+      {
+        "name": "descontos comerciais",
+        "count": 558
+      },
+      {
+        "name": "grandes parceiros",
+        "count": 166
+      },
+      {
+        "name": "infantil e lazer",
+        "count": 6
+      },
+      {
+        "name": "maternidade e bebê",
+        "count": 13
+      },
+      {
+        "name": "previdência",
+        "count": 75
+      },
+      {
+        "name": "sorteio",
+        "count": 363
+      },
+      {
+        "name": "turismo e lazer",
+        "count": 409
+      }
+    ]
+  },
+  "Digital": {
+    "count": 480,
+    "services": [
+      {
+        "name": "presença digital",
+        "count": 303
+      },
+      {
+        "name": "serviços de mídia",
+        "count": 16
+      },
+      {
+        "name": "suporte digital",
+        "count": 161
+      }
+    ]
+  },
+  "Educação": {
+    "count": 237,
+    "services": [
+      {
+        "name": "educação",
+        "count": 237
+      }
+    ]
+  },
+  "Esporte e Bem-Estar": {
+    "count": 1059,
+    "services": [
+      {
+        "name": "academias",
+        "count": 37
+      },
+      {
+        "name": "competições",
+        "count": 342
+      },
+      {
+        "name": "modalidades",
+        "count": 636
+      },
+      {
+        "name": "modalidades esportivas",
+        "count": 44
+      }
+    ]
+  },
+  "Eventos": {
+    "count": 5526,
+    "services": [
+      {
+        "name": "cerimônia institucional",
+        "count": 2217
+      },
+      {
+        "name": "cultura e gastronomia",
+        "count": 11
+      },
+      {
+        "name": "datas comemorativas",
+        "count": 261
+      },
+      {
+        "name": "festividades",
+        "count": 442
+      },
+      {
+        "name": "posse diretoria",
+        "count": 2595
+      }
+    ]
+  },
+  "Infraestrutura": {
+    "count": 220,
+    "services": [
+      {
+        "name": "espaços físicos",
+        "count": 104
+      },
+      {
+        "name": "estúdio e imagem",
+        "count": 45
+      },
+      {
+        "name": "logística",
+        "count": 71
+      }
+    ]
+  },
+  "Saúde": {
+    "count": 2597,
+    "services": [
+      {
+        "name": "cuidados pessoais",
+        "count": 276
+      },
+      {
+        "name": "estética avançada",
+        "count": 18
+      },
+      {
+        "name": "odontológico",
+        "count": 108
+      },
+      {
+        "name": "plano de saúde",
+        "count": 262
+      },
+      {
+        "name": "prevenção e exames",
+        "count": 213
+      },
+      {
+        "name": "salão e beleza",
+        "count": 58
+      },
+      {
+        "name": "saúde",
+        "count": 34
+      },
+      {
+        "name": "saúde mental",
+        "count": 338
+      },
+      {
+        "name": "saúde pet",
+        "count": 22
+      },
+      {
+        "name": "telemedicina",
+        "count": 80
+      },
+      {
+        "name": "vacinação",
+        "count": 1188
+      }
+    ]
+  }
+}

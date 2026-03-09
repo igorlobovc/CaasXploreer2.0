@@ -1,0 +1,371 @@
+{
+  "Academias e Treino": {
+    "count": 37,
+    "categories": [
+      {
+        "name": "Esporte e Treino",
+        "count": 37
+      }
+    ]
+  },
+  "Anuidade e Regularização": {
+    "count": 172,
+    "categories": [
+      {
+        "name": "Financeiro",
+        "count": 172
+      }
+    ]
+  },
+  "Apoio Operacional": {
+    "count": 10,
+    "categories": [
+      {
+        "name": "Infraestrutura e Serviços",
+        "count": 10
+      }
+    ]
+  },
+  "Auxílios": {
+    "count": 146,
+    "categories": [
+      {
+        "name": "Financeiro",
+        "count": 146
+      }
+    ]
+  },
+  "Campanhas Institucionais": {
+    "count": 1504,
+    "categories": [
+      {
+        "name": "Ações Institucionais",
+        "count": 1504
+      }
+    ]
+  },
+  "Cinema e Entretenimento": {
+    "count": 5,
+    "categories": [
+      {
+        "name": "Convênios e Benefícios",
+        "count": 5
+      }
+    ]
+  },
+  "Clube de Vantagens": {
+    "count": 1388,
+    "categories": [
+      {
+        "name": "Convênios e Benefícios",
+        "count": 1388
+      }
+    ]
+  },
+  "Competições": {
+    "count": 342,
+    "categories": [
+      {
+        "name": "Esporte e Treino",
+        "count": 342
+      }
+    ]
+  },
+  "Crédito e Empréstimos": {
+    "count": 39,
+    "categories": [
+      {
+        "name": "Financeiro",
+        "count": 39
+      }
+    ]
+  },
+  "Cuidados Pessoais": {
+    "count": 276,
+    "categories": [
+      {
+        "name": "Bem-estar Estético",
+        "count": 276
+      }
+    ]
+  },
+  "Cultura e Gastronomia": {
+    "count": 11,
+    "categories": [
+      {
+        "name": "Social e Eventos",
+        "count": 11
+      }
+    ]
+  },
+  "Cultura e Lazer Especializado": {
+    "count": 6,
+    "categories": [
+      {
+        "name": "Identidade e Cultura",
+        "count": 6
+      }
+    ]
+  },
+  "Datas Comemorativas": {
+    "count": 261,
+    "categories": [
+      {
+        "name": "Social e Eventos",
+        "count": 261
+      }
+    ]
+  },
+  "Descontos Comerciais": {
+    "count": 558,
+    "categories": [
+      {
+        "name": "Convênios e Benefícios",
+        "count": 558
+      }
+    ]
+  },
+  "Educação": {
+    "count": 237,
+    "categories": [
+      {
+        "name": "Convênios e Benefícios",
+        "count": 237
+      }
+    ]
+  },
+  "Espaços Físicos": {
+    "count": 104,
+    "categories": [
+      {
+        "name": "Infraestrutura e Serviços",
+        "count": 104
+      }
+    ]
+  },
+  "Estética Avançada": {
+    "count": 18,
+    "categories": [
+      {
+        "name": "Bem-estar Estético",
+        "count": 18
+      }
+    ]
+  },
+  "Estúdio e Imagem": {
+    "count": 45,
+    "categories": [
+      {
+        "name": "Identidade e Cultura",
+        "count": 45
+      }
+    ]
+  },
+  "Festividades": {
+    "count": 442,
+    "categories": [
+      {
+        "name": "Social e Eventos",
+        "count": 442
+      }
+    ]
+  },
+  "Grandes Parceiros": {
+    "count": 166,
+    "categories": [
+      {
+        "name": "Convênios e Benefícios",
+        "count": 166
+      }
+    ]
+  },
+  "Infantil e Lazer": {
+    "count": 6,
+    "categories": [
+      {
+        "name": "Família e Maternidade",
+        "count": 6
+      }
+    ]
+  },
+  "Logística Profissional": {
+    "count": 71,
+    "categories": [
+      {
+        "name": "Infraestrutura e Serviços",
+        "count": 71
+      }
+    ]
+  },
+  "Maternidade e Bebê": {
+    "count": 13,
+    "categories": [
+      {
+        "name": "Família e Maternidade",
+        "count": 13
+      }
+    ]
+  },
+  "Modalidades": {
+    "count": 680,
+    "categories": [
+      {
+        "name": "Esporte e Treino",
+        "count": 680
+      }
+    ]
+  },
+  "Notas de Pesar": {
+    "count": 107,
+    "categories": [
+      {
+        "name": "Ações Institucionais",
+        "count": 107
+      }
+    ]
+  },
+  "Odontológico": {
+    "count": 108,
+    "categories": [
+      {
+        "name": "Saúde",
+        "count": 108
+      }
+    ]
+  },
+  "Plano de Saúde": {
+    "count": 296,
+    "categories": [
+      {
+        "name": "Saúde",
+        "count": 296
+      }
+    ]
+  },
+  "Posse e Gestão": {
+    "count": 4812,
+    "categories": [
+      {
+        "name": "Ações Institucionais",
+        "count": 4812
+      }
+    ]
+  },
+  "Presença Digital": {
+    "count": 303,
+    "categories": [
+      {
+        "name": "Evidência Pública",
+        "count": 303
+      }
+    ]
+  },
+  "Prevenção e Exames": {
+    "count": 213,
+    "categories": [
+      {
+        "name": "Saúde",
+        "count": 213
+      }
+    ]
+  },
+  "Previdência": {
+    "count": 75,
+    "categories": [
+      {
+        "name": "Financeiro",
+        "count": 75
+      }
+    ]
+  },
+  "Salão e Beleza": {
+    "count": 58,
+    "categories": [
+      {
+        "name": "Bem-estar Estético",
+        "count": 58
+      }
+    ]
+  },
+  "Saúde Mental": {
+    "count": 338,
+    "categories": [
+      {
+        "name": "Saúde",
+        "count": 338
+      }
+    ]
+  },
+  "Saúde Pet": {
+    "count": 22,
+    "categories": [
+      {
+        "name": "Bem-estar Estético",
+        "count": 22
+      }
+    ]
+  },
+  "Serviços de Mídia": {
+    "count": 16,
+    "categories": [
+      {
+        "name": "Identidade e Cultura",
+        "count": 16
+      }
+    ]
+  },
+  "Sinal Social": {
+    "count": 89,
+    "categories": [
+      {
+        "name": "Evidência Pública",
+        "count": 89
+      }
+    ]
+  },
+  "Sorteios": {
+    "count": 363,
+    "categories": [
+      {
+        "name": "Sorteios e Promoções",
+        "count": 363
+      }
+    ]
+  },
+  "Suporte Digital e TI": {
+    "count": 161,
+    "categories": [
+      {
+        "name": "Infraestrutura e Serviços",
+        "count": 161
+      }
+    ]
+  },
+  "Telemedicina": {
+    "count": 80,
+    "categories": [
+      {
+        "name": "Saúde",
+        "count": 80
+      }
+    ]
+  },
+  "Turismo e Lazer": {
+    "count": 409,
+    "categories": [
+      {
+        "name": "Convênios e Benefícios",
+        "count": 409
+      }
+    ]
+  },
+  "Vacinação": {
+    "count": 1188,
+    "categories": [
+      {
+        "name": "Saúde",
+        "count": 1188
+      }
+    ]
+  }
+}

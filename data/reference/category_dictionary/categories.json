@@ -1,0 +1,226 @@
+{
+  "Ações Institucionais": {
+    "count": 6423,
+    "subcategories": [
+      {
+        "name": "Campanhas Institucionais",
+        "count": 1504
+      },
+      {
+        "name": "Notas de Pesar",
+        "count": 107
+      },
+      {
+        "name": "Posse e Gestão",
+        "count": 4812
+      }
+    ]
+  },
+  "Bem-estar Estético": {
+    "count": 374,
+    "subcategories": [
+      {
+        "name": "Cuidados Pessoais",
+        "count": 276
+      },
+      {
+        "name": "Estética Avançada",
+        "count": 18
+      },
+      {
+        "name": "Salão e Beleza",
+        "count": 58
+      },
+      {
+        "name": "Saúde Pet",
+        "count": 22
+      }
+    ]
+  },
+  "Convênios e Benefícios": {
+    "count": 2763,
+    "subcategories": [
+      {
+        "name": "Cinema e Entretenimento",
+        "count": 5
+      },
+      {
+        "name": "Clube de Vantagens",
+        "count": 1388
+      },
+      {
+        "name": "Descontos Comerciais",
+        "count": 558
+      },
+      {
+        "name": "Educação",
+        "count": 237
+      },
+      {
+        "name": "Grandes Parceiros",
+        "count": 166
+      },
+      {
+        "name": "Turismo e Lazer",
+        "count": 409
+      }
+    ]
+  },
+  "Esporte e Treino": {
+    "count": 1059,
+    "subcategories": [
+      {
+        "name": "Academias e Treino",
+        "count": 37
+      },
+      {
+        "name": "Competições",
+        "count": 342
+      },
+      {
+        "name": "Modalidades",
+        "count": 680
+      }
+    ]
+  },
+  "Evidência Pública": {
+    "count": 392,
+    "subcategories": [
+      {
+        "name": "Presença Digital",
+        "count": 303
+      },
+      {
+        "name": "Sinal Social",
+        "count": 89
+      }
+    ]
+  },
+  "Família e Maternidade": {
+    "count": 19,
+    "subcategories": [
+      {
+        "name": "Infantil e Lazer",
+        "count": 6
+      },
+      {
+        "name": "Maternidade e Bebê",
+        "count": 13
+      }
+    ]
+  },
+  "Financeiro": {
+    "count": 432,
+    "subcategories": [
+      {
+        "name": "Anuidade e Regularização",
+        "count": 172
+      },
+      {
+        "name": "Auxílios",
+        "count": 146
+      },
+      {
+        "name": "Crédito e Empréstimos",
+        "count": 39
+      },
+      {
+        "name": "Previdência",
+        "count": 75
+      }
+    ]
+  },
+  "Identidade e Cultura": {
+    "count": 67,
+    "subcategories": [
+      {
+        "name": "Cultura e Lazer Especializado",
+        "count": 6
+      },
+      {
+        "name": "Estúdio e Imagem",
+        "count": 45
+      },
+      {
+        "name": "Serviços de Mídia",
+        "count": 16
+      }
+    ]
+  },
+  "Infraestrutura e Serviços": {
+    "count": 346,
+    "subcategories": [
+      {
+        "name": "Apoio Operacional",
+        "count": 10
+      },
+      {
+        "name": "Espaços Físicos",
+        "count": 104
+      },
+      {
+        "name": "Logística Profissional",
+        "count": 71
+      },
+      {
+        "name": "Suporte Digital e TI",
+        "count": 161
+      }
+    ]
+  },
+  "Saúde": {
+    "count": 2223,
+    "subcategories": [
+      {
+        "name": "Odontológico",
+        "count": 108
+      },
+      {
+        "name": "Plano de Saúde",
+        "count": 296
+      },
+      {
+        "name": "Prevenção e Exames",
+        "count": 213
+      },
+      {
+        "name": "Saúde Mental",
+        "count": 338
+      },
+      {
+        "name": "Telemedicina",
+        "count": 80
+      },
+      {
+        "name": "Vacinação",
+        "count": 1188
+      }
+    ]
+  },
+  "Social e Eventos": {
+    "count": 714,
+    "subcategories": [
+      {
+        "name": "Cultura e Gastronomia",
+        "count": 11
+      },
+      {
+        "name": "Datas Comemorativas",
+        "count": 261
+      },
+      {
+        "name": "Festividades",
+        "count": 442
+      }
+    ]
+  },
+  "Sorteios e Promoções": {
+    "count": 363,
+    "subcategories": [
+      {
+        "name": "Sorteios",
+        "count": 363
+      }
+    ]
+  }
+}
