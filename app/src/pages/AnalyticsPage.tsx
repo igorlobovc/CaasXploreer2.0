@@ -86,6 +86,10 @@ export default function AnalyticsPage() {
     analyticsSummary.totalInteracoes,
     analyticsSummary.interacoesCompartilhadas,
   );
+  const growthWindowLabel =
+    historicoNacional.length > 1
+      ? `${historicoNacional[0].mes} → ${historicoNacional[historicoNacional.length - 1].mes}`
+      : analyticsSummary.periodoCobertura;
 
   const COLORS = ['#ec4899', '#06b6d4', '#8b5cf6', '#3b82f6', '#64748b'];
 
@@ -107,7 +111,7 @@ export default function AnalyticsPage() {
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">Analytics</h1>
           <p className="text-cyan-200/60 text-sm sm:text-base max-w-2xl">
-            Visão consolidada dos últimos 12 meses de interações institucionais das CAAs brasileiras.
+            Visão consolidada da janela monitorada de interações institucionais das CAAs brasileiras.
             Período: <span className="text-cyan-300 font-mono">{analyticsSummary.periodoCobertura}</span>
           </p>
         </motion.div>
@@ -118,7 +122,7 @@ export default function AnalyticsPage() {
             icon={Activity}
             label="Total de Interações"
             value={formatNumber(analyticsSummary.totalInteracoes)}
-            sub="últimos 12 meses"
+            sub="janela monitorada"
             color="cyan"
             delay={0}
           />
@@ -142,7 +146,7 @@ export default function AnalyticsPage() {
             icon={TrendingUp}
             label="Crescimento no período"
             value={`+${formatPercent(growthRate, 0)}`}
-            sub="Mar/2024 → Fev/2025"
+            sub={growthWindowLabel}
             color="violet"
             delay={0.15}
           />
@@ -172,7 +176,7 @@ export default function AnalyticsPage() {
               Evolução Mensal de Interações
             </h2>
             <p className="text-xs text-cyan-200/50 mb-6">
-              Total de interações e interações compartilhadas mês a mês nos últimos 12 meses.
+              Total de interações e interações compartilhadas mês a mês na série monitorada.
             </p>
             <ResponsiveContainer width="100%" height={280}>
               <LineChart data={historicoNacional} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
@@ -302,7 +306,7 @@ export default function AnalyticsPage() {
 
         {/* Data note */}
         <p className="text-center text-[10px] text-cyan-200/30 mt-10">
-          Dados analíticos gerados a partir do pipeline CAAsXplorer v2.1.0 · Base operacional: Fev/2025 · Schema auditável
+          Dados analíticos gerados a partir do pipeline CAAsXplorer v2.1.0 · Base operacional: {analyticsSummary.ultimaAtualizacao} · Schema auditável
         </p>
       </main>
     </div>

@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { Trophy, TrendingUp, TrendingDown, Minus, BarChart2, Users } from 'lucide-react';
 import { GlassCard, Navbar, PageBackground } from '../components/shared';
 import { rankingPorEstado, rankingPorTotalInteracoes, rankingPorCategoria } from '../data/ranking';
+import { analyticsSummary } from '../data/analytics';
 import { formatNumber, trendColor, trendLabel } from '../lib/analytics';
 import { Link } from 'react-router-dom';
 
@@ -70,7 +71,7 @@ export default function RankingPage() {
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">Ranking das CAAs</h1>
           <p className="text-cyan-200/60 text-sm max-w-xl">
             Classificação dos estados por volume de interações institucionais monitoradas.
-            Período: <span className="text-cyan-300 font-mono">Mar/2024 – Fev/2025</span>
+            Período: <span className="text-cyan-300 font-mono">{analyticsSummary.periodoCobertura}</span>
           </p>
         </motion.div>
 
