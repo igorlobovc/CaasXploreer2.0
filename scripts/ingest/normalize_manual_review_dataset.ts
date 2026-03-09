@@ -14,6 +14,15 @@ type PreviewOutput = {
 };
 
 const EXPECTED_FIELDS = ['uf', 'entidade', 'categoria', 'servico', 'descricao', 'fonte', 'status'];
+const FIELD_ALIASES: Record<string, string[]> = {
+  uf: ['uf', 'estado'],
+  entidade: ['entidade', 'profile', 'perfil', 'profile original', 'pagina', 'page'],
+  categoria: ['categoria canonica', 'categoria', 'subcategoria canonica', 'subcategoria'],
+  servico: ['cluster servico', 'servico', 'tema servico'],
+  descricao: ['descricao', 'message', 'texto', 'conteudo', 'observacoes classificacao'],
+  fonte: ['fonte', 'network', 'origem', 'source', 'canal'],
+  status: ['status', 'needs manual review', 'qa priority', 'needs dedupe review', 'match fraco'],
+};
 
 function assertFileExists(filePath: string) {
   return fs
@@ -91,13 +100,68 @@ function extractHeaderRow(sheetXml: string, sharedStrings: string[]) {
   return headers.map((header) => header.value).filter(Boolean);
 }
 
-function proposeFieldMapping(columns: string[]) {
+function normalizeLabel(value: string) {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+function proposeLegacyFieldMapping(columns: string[]) {
   const mapping: Record<string, string | null> = {};
   for (const field of EXPECTED_FIELDS) {
     const candidate = columns.find((col) => col.toLowerCase().includes(field));
     mapping[field] = candidate ?? null;
   }
   return mapping;
+}
+
+function findColumnByAliases(columns: string[], aliases: string[]) {
+  const normalizedColumns = columns.map((raw) => ({ raw, normalized: normalizeLabel(raw) }));
+  for (const alias of aliases) {
+    const normalizedAlias = normalizeLabel(alias);
+    const exactMatch = normalizedColumns.find((col) => col.normalized === normalizedAlias);
+    if (exactMatch) {
+      return exactMatch.raw;
+    }
+  }
+
+  for (const alias of aliases) {
+    const normalizedAlias = normalizeLabel(alias);
+    const partialMatch = normalizedColumns.find(
+      (col) => col.normalized.includes(normalizedAlias) || normalizedAlias.includes(col.normalized),
+    );
+    if (partialMatch) {
+      return partialMatch.raw;
+    }
+  }
+
+  return null;
+}
+
+function proposeFieldMapping(columns: string[]) {
+  const mapping: Record<string, string | null> = {};
+  for (const field of EXPECTED_FIELDS) {
+    const aliases = FIELD_ALIASES[field] ?? [field];
+    mapping[field] = findColumnByAliases(columns, aliases);
+  }
+  return mapping;
+}
+
+function summarizeMappingDiff(
+  beforeMapping: Record<string, string | null>,
+  afterMapping: Record<string, string | null>,
+) {
+  const changedFields = EXPECTED_FIELDS.filter((field) => beforeMapping[field] !== afterMapping[field]);
+  if (changedFields.length === 0) {
+    return 'No mapping changes detected';
+  }
+
+  return changedFields
+    .map((field) => `${field}: ${beforeMapping[field] ?? 'null'} -> ${afterMapping[field] ?? 'null'}`)
+    .join('; ');
 }
 
 async function inspectXlsx(filePath: string) {
@@ -197,7 +261,9 @@ async function main() {
     : await inspectXlsx(resolvedPath);
 
   const primaryColumns = columnsBySheet[sheetNames[0]] ?? [];
+  const legacyMapping = proposeLegacyFieldMapping(primaryColumns);
   const proposedMapping = proposeFieldMapping(primaryColumns);
+  const mappingSummary = summarizeMappingDiff(legacyMapping, proposedMapping);
 
   const preview: PreviewOutput = {
     metadata: {
@@ -218,6 +284,7 @@ async function main() {
   console.log('Sheets:', sheetNames.join(', ') || 'none');
   console.log('Primary columns:', primaryColumns.join(' | ') || 'none');
   console.log('Rows read:', rowCount ?? 'n/a');
+  console.log('Mapping changes:', mappingSummary);
   console.log('Proposed mapping:', proposedMapping);
   console.log('Preview written to:', outputPath);
 }
