@@ -7,6 +7,7 @@ type PreviewOutput = {
     generatedAt: string;
     sourceFile: string;
     sheetNames: string[];
+    rowCount: number | null;
   };
   columns: Record<string, string[]>;
   proposedFieldMapping: Record<string, string | null>;
@@ -111,15 +112,74 @@ async function inspectXlsx(filePath: string) {
     columnsBySheet[sheetNames[idx]] = sheetXml ? extractHeaderRow(sheetXml, sharedStrings) : [];
   }
 
-  return { sheetNames, columnsBySheet };
+  return { sheetNames, columnsBySheet, rowCount: null as number | null };
+}
+
+function parseCsvHeaderAndRowCount(content: string) {
+  const rows: string[][] = [];
+  let currentCell = '';
+  let currentRow: string[] = [];
+  let inQuotes = false;
+
+  const pushCell = () => {
+    currentRow.push(currentCell);
+    currentCell = '';
+  };
+
+  const pushRow = () => {
+    pushCell();
+    rows.push(currentRow);
+    currentRow = [];
+  };
+
+  for (let idx = 0; idx < content.length; idx += 1) {
+    const char = content[idx];
+    if (char === '"') {
+      if (inQuotes && content[idx + 1] === '"') {
+        currentCell += '"';
+        idx += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      continue;
+    }
+
+    if (char === ',' && !inQuotes) {
+      pushCell();
+      continue;
+    }
+
+    if ((char === '\n' || char === '\r') && !inQuotes) {
+      if (char === '\r' && content[idx + 1] === '\n') {
+        idx += 1;
+      }
+      pushRow();
+      continue;
+    }
+
+    currentCell += char;
+  }
+
+  if (currentCell.length > 0 || currentRow.length > 0) {
+    pushRow();
+  }
+
+  const rawHeader = rows[0] ?? [];
+  const normalizedHeader = rawHeader
+    .map((col, index) => (index === 0 ? col.replace(/^\uFEFF/, '') : col))
+    .map((col) => col.trim())
+    .filter(Boolean);
+
+  const dataRows = rows.slice(1).filter((row) => row.some((value) => value.trim().length > 0)).length;
+
+  return { columns: normalizedHeader, rowCount: dataRows };
 }
 
 async function inspectCsv(filePath: string) {
   const content = await fs.readFile(filePath, 'utf8');
-  const [headerLine] = content.split(/\r?\n/);
-  const columns = headerLine ? headerLine.split(',').map((col) => col.trim()) : [];
+  const { columns, rowCount } = parseCsvHeaderAndRowCount(content);
   const sheetName = path.basename(filePath);
-  return { sheetNames: [sheetName], columnsBySheet: { [sheetName]: columns } };
+  return { sheetNames: [sheetName], columnsBySheet: { [sheetName]: columns }, rowCount };
 }
 
 async function main() {
@@ -132,7 +192,7 @@ async function main() {
   await assertFileExists(resolvedPath);
 
   const isCsv = resolvedPath.toLowerCase().endsWith('.csv');
-  const { sheetNames, columnsBySheet } = isCsv
+  const { sheetNames, columnsBySheet, rowCount } = isCsv
     ? await inspectCsv(resolvedPath)
     : await inspectXlsx(resolvedPath);
 
@@ -144,6 +204,7 @@ async function main() {
       generatedAt: new Date().toISOString(),
       sourceFile: resolvedPath,
       sheetNames,
+      rowCount,
     },
     columns: columnsBySheet,
     proposedFieldMapping: proposedMapping,
@@ -156,6 +217,7 @@ async function main() {
 
   console.log('Sheets:', sheetNames.join(', ') || 'none');
   console.log('Primary columns:', primaryColumns.join(' | ') || 'none');
+  console.log('Rows read:', rowCount ?? 'n/a');
   console.log('Proposed mapping:', proposedMapping);
   console.log('Preview written to:', outputPath);
 }
