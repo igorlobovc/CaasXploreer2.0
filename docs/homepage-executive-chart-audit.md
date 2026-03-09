@@ -1,23 +1,19 @@
 # A. keep on homepage
-
 - `ProvisionalSimulationResultsSection` headline KPI cards (`kpis`)
 - The section-level framing that explains the homepage is showing an executive external-signal snapshot, not a full analytical workspace
 
 # B. move to analytics later
-
 - `Volume Relativo por Janela de Consulta`
 - `Evolução Temporal de Menções por Tema`
 - `Distribuição de Fontes por Entidade`
 - The closing comparative-analysis paragraph under `Comparativos Analíticos`
 
 # C. move to state detail later
-
 - `ParaibaSpotlight`
 - `StateEvidenceView`
 - `EvidenciaPublicaSection`
 
 # D. rationale for each move
-
 - **Homepage KPI cards → keep on homepage**
   - They are the fastest executive read on scale and signal strength.
   - They preserve the homepage’s role as a decision-maker summary before the user clicks deeper.
