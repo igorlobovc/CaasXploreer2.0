@@ -4,7 +4,7 @@
 
 ### Phase 1
 
-| Page | B. Page purpose | C. Required data source by page | D. What should stay off each page initially |
+| A. Page | B. Page purpose | C. Required data source by page | D. What should stay off each page initially |
 | --- | --- | --- | --- |
 | `/` Homepage | Executive-first landing page with the core story: what CAAs are doing well, where the strongest signals are, and where to go next. Keep it lean, summary-led, and decision-oriented. | `app/src/data/analytics.ts` for headline KPIs, `app/src/data/ranking.ts` for top winners, and at most a small curated proof point from `app/src/data/manualReviewEvidence.ts` or `app/src/components/home/data.ts`. | Full taxonomy browser, full evidence explorer, long technical explanations, Paraíba deep dive, public-initiatives gallery, technology/stack section, and delivery timeline. |
 | `/analytics` | National dashboard for the monitored window, focused on KPI validation and macro trends. | `app/src/data/analytics.ts`, backed by `app/src/components/home/provisional/data/resumo-executivo.json`, `temporal-data.json`, `heatmap-data.json`, `engagement-categoria.json`, and `ranking_estados_12m.json`. | Long narrative copy, state-by-state evidence browsing, service taxonomy exploration, and technical implementation details. |
@@ -14,7 +14,7 @@
 
 ### Phase 2
 
-| Page | B. Page purpose | C. Required data source by page | D. What should stay off each page initially |
+| A. Page | B. Page purpose | C. Required data source by page | D. What should stay off each page initially |
 | --- | --- | --- | --- |
 | `/servicos` | Dedicated taxonomy page for browsing mapped services by category without overloading the homepage. | `app/src/components/home/data.ts` (`SERVICOS_POR_CATEGORIA`) now; later expand with `data/reference/category_dictionary/categories.json`, `data/reference/subcategory_dictionary/subcategories.json`, and `data/reference/service_dictionary/services.json`. | Personalized recommendations, advanced filters, benchmark scoring, and evidence-level drilldowns. |
 | `/destaques/paraiba` | First state-highlight page that turns the current Paraíba spotlight into a reusable editorial template. | `app/src/components/state/stateSpotlights.ts`, `app/src/components/state/paraibaSpotlight.data`, and supporting context from `app/src/data/estados.ts`. | Rollout to every state, comparative benchmarking across states, and dense chart packs. |
@@ -23,7 +23,7 @@
 
 ### Phase 3
 
-| Page | B. Page purpose | C. Required data source by page | D. What should stay off each page initially |
+| A. Page | B. Page purpose | C. Required data source by page | D. What should stay off each page initially |
 | --- | --- | --- | --- |
 | `/metodologia/exemplo-tecnico` | Show the canonical record shape, sample query logic, and schema conventions for technical reviewers. | `app/src/components/home/ExemploTecnicoSection.tsx`, `schemas/`, and related ingestion assumptions in `scripts/ingest/`. | Broad product marketing copy and large dashboard embeds. |
 | `/metodologia/tecnologia` | Explain the ingestion, taxonomy, auditability, and export stack for operators and reviewers. | `docs/methodology/ingestion-architecture.md`, `scripts/ingest/`, and `data/reference/`. | Executive narrative, ranking tables, and state-by-state storytelling. |
