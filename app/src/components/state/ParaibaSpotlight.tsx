@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 import { GlassCard, RadarSymbol, SectionHeading } from '@/components/shared';
 
-import { PARAIBA_SPOTLIGHT } from './paraibaSpotlight.data';
+import { STATE_SPOTLIGHTS } from './stateSpotlights';
 
 export function ParaibaSpotlight() {
   return (
@@ -11,15 +11,15 @@ export function ParaibaSpotlight() {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <SectionHeading
             icon={<RadarSymbol className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />}
-            label={PARAIBA_SPOTLIGHT.label}
-            title={PARAIBA_SPOTLIGHT.title}
-            description={PARAIBA_SPOTLIGHT.description}
+            label={STATE_SPOTLIGHTS.PB.label}
+            title={STATE_SPOTLIGHTS.PB.title}
+            description={STATE_SPOTLIGHTS.PB.description}
             descriptionClassName="max-w-3xl"
           />
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {PARAIBA_SPOTLIGHT.pillars.map((pillar, index) => (
+          {STATE_SPOTLIGHTS.PB.pillars.map((pillar, index) => (
             <motion.div
               key={pillar}
               initial={{ opacity: 0, y: 20 }}
