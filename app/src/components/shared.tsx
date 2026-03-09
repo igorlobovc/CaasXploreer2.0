@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-import { BarChart2, Home, Map, Trophy } from 'lucide-react';
+import { BarChart2, Database, Home, Layers, Map, Trophy } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
@@ -151,6 +151,8 @@ const navItems = [
   { to: '/analytics', label: 'Analytics', icon: BarChart2 },
   { to: '/ranking', label: 'Ranking', icon: Trophy },
   { to: '/estados', label: 'Estados', icon: Map },
+  { to: '/evidencias', label: 'Evidências', icon: Database },
+  { to: '/servicos', label: 'Serviços', icon: Layers },
 ];
 
 export function Navbar() {
