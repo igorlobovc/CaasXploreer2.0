@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-09T16:53:20.081Z",
+  "sourceFile": "data/normalized/manual_review/manual_review.preview.json",
+  "note": "Based on 200 sample rows from 15175 total rows",
+  "total": 200,
+  "items": [
+    {
+      "uf": "ES",
+      "count": 69
+    },
+    {
+      "uf": "TO",
+      "count": 40
+    },
+    {
+      "uf": "DF",
+      "count": 40
+    },
+    {
+      "uf": "SC",
+      "count": 23
+    },
+    {
+      "uf": "GO",
+      "count": 15
+    },
+    {
+      "uf": "RJ",
+      "count": 12
+    },
+    {
+      "uf": "MS",
+      "count": 1
+    }
+  ]
+}

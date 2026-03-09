@@ -1,0 +1,44 @@
+{
+  "generatedAt": "2026-03-09T16:53:20.081Z",
+  "sourceFile": "data/normalized/manual_review/manual_review.preview.json",
+  "note": "Based on 200 sample rows from 15175 total rows",
+  "total": 200,
+  "items": [
+    {
+      "categoria": "Ações Institucionais",
+      "count": 69
+    },
+    {
+      "categoria": "Convênios e Benefícios",
+      "count": 62
+    },
+    {
+      "categoria": "Esporte e Treino",
+      "count": 28
+    },
+    {
+      "categoria": "Saúde",
+      "count": 12
+    },
+    {
+      "categoria": "Social e Eventos",
+      "count": 11
+    },
+    {
+      "categoria": "Evidência Pública",
+      "count": 9
+    },
+    {
+      "categoria": "Bem-estar Estético",
+      "count": 6
+    },
+    {
+      "categoria": "Infraestrutura e Serviços",
+      "count": 2
+    },
+    {
+      "categoria": "Financeiro",
+      "count": 1
+    }
+  ]
+}

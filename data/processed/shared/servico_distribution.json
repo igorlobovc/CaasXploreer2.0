@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-03-09T16:53:20.081Z",
+  "sourceFile": "data/normalized/manual_review/manual_review.preview.json",
+  "note": "Based on 200 sample rows from 15175 total rows",
+  "total": 200,
+  "items": [
+    {
+      "servico": "Benefícios",
+      "count": 60
+    },
+    {
+      "servico": "Eventos",
+      "count": 58
+    },
+    {
+      "servico": "Esporte e Bem-Estar",
+      "count": 28
+    },
+    {
+      "servico": "Atendimento Institucional",
+      "count": 24
+    },
+    {
+      "servico": "Saúde",
+      "count": 18
+    },
+    {
+      "servico": "Digital",
+      "count": 7
+    },
+    {
+      "servico": "Educação",
+      "count": 3
+    },
+    {
+      "servico": "Infraestrutura",
+      "count": 2
+    }
+  ]
+}
