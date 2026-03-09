@@ -1,0 +1,53 @@
+{
+  "total": 12,
+  "data": [
+    {
+      "categoria": "Ações Institucionais",
+      "count": 6423
+    },
+    {
+      "categoria": "Convênios e Benefícios",
+      "count": 2763
+    },
+    {
+      "categoria": "Saúde",
+      "count": 2223
+    },
+    {
+      "categoria": "Esporte e Treino",
+      "count": 1059
+    },
+    {
+      "categoria": "Social e Eventos",
+      "count": 714
+    },
+    {
+      "categoria": "Financeiro",
+      "count": 432
+    },
+    {
+      "categoria": "Evidência Pública",
+      "count": 392
+    },
+    {
+      "categoria": "Bem-estar Estético",
+      "count": 374
+    },
+    {
+      "categoria": "Sorteios e Promoções",
+      "count": 363
+    },
+    {
+      "categoria": "Infraestrutura e Serviços",
+      "count": 346
+    },
+    {
+      "categoria": "Identidade e Cultura",
+      "count": 67
+    },
+    {
+      "categoria": "Família e Maternidade",
+      "count": 19
+    }
+  ]
+}

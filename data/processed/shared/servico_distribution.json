@@ -1,0 +1,37 @@
+{
+  "total": 8,
+  "data": [
+    {
+      "servico": "Eventos",
+      "count": 5526
+    },
+    {
+      "servico": "Benefícios",
+      "count": 3346
+    },
+    {
+      "servico": "Saúde",
+      "count": 2597
+    },
+    {
+      "servico": "Atendimento Institucional",
+      "count": 1710
+    },
+    {
+      "servico": "Esporte e Bem-Estar",
+      "count": 1059
+    },
+    {
+      "servico": "Digital",
+      "count": 480
+    },
+    {
+      "servico": "Educação",
+      "count": 237
+    },
+    {
+      "servico": "Infraestrutura",
+      "count": 220
+    }
+  ]
+}

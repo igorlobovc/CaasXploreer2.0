@@ -1,0 +1,118 @@
+{
+  "total": 28,
+  "_note": "BR (count: 1) is a national-level entity in the source data, not a state code.",
+  "data": [
+    {
+      "uf": "AC",
+      "count": 758
+    },
+    {
+      "uf": "AL",
+      "count": 473
+    },
+    {
+      "uf": "AM",
+      "count": 925
+    },
+    {
+      "uf": "AP",
+      "count": 287
+    },
+    {
+      "uf": "BA",
+      "count": 573
+    },
+    {
+      "uf": "BR",
+      "count": 1
+    },
+    {
+      "uf": "CE",
+      "count": 404
+    },
+    {
+      "uf": "DF",
+      "count": 1296
+    },
+    {
+      "uf": "ES",
+      "count": 1543
+    },
+    {
+      "uf": "GO",
+      "count": 767
+    },
+    {
+      "uf": "MA",
+      "count": 447
+    },
+    {
+      "uf": "MG",
+      "count": 20
+    },
+    {
+      "uf": "MS",
+      "count": 217
+    },
+    {
+      "uf": "MT",
+      "count": 154
+    },
+    {
+      "uf": "PA",
+      "count": 291
+    },
+    {
+      "uf": "PB",
+      "count": 269
+    },
+    {
+      "uf": "PE",
+      "count": 484
+    },
+    {
+      "uf": "PI",
+      "count": 971
+    },
+    {
+      "uf": "PR",
+      "count": 474
+    },
+    {
+      "uf": "RJ",
+      "count": 688
+    },
+    {
+      "uf": "RN",
+      "count": 370
+    },
+    {
+      "uf": "RO",
+      "count": 912
+    },
+    {
+      "uf": "RR",
+      "count": 423
+    },
+    {
+      "uf": "RS",
+      "count": 613
+    },
+    {
+      "uf": "SC",
+      "count": 422
+    },
+    {
+      "uf": "SE",
+      "count": 224
+    },
+    {
+      "uf": "SP",
+      "count": 784
+    },
+    {
+      "uf": "TO",
+      "count": 384
+    }
+  ]
+}
