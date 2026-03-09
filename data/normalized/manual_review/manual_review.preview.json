@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "generatedAt": "2026-03-09T16:46:37.861Z",
+    "sourceFile": "/workspaces/CaasXploreer2.0/data/raw/manual_review/MERGED_POST_WALL_2022_2026_CLASSIFIED_V2_QA.csv",
+    "sheetNames": [
+      "MERGED_POST_WALL_2022_2026_CLASSIFIED_V2_QA.csv"
+    ],
+    "rowCount": 15175
+  },
+  "columns": {
+    "MERGED_POST_WALL_2022_2026_CLASSIFIED_V2_QA.csv": [
+      "UF",
+      "Regiao",
+      "Date",
+      "Profile",
+      "Profile_original",
+      "Profile_tipo",
+      "Network",
+      "Message",
+      "Total_Interactions",
+      "Engagement",
+      "Message-ID",
+      "Profile-ID",
+      "Link",
+      "External Links",
+      "Image Link",
+      "Dedupe_Key",
+      "Incoming_Batch",
+      "Needs_Dedupe_Review",
+      "categoria_canonica",
+      "subcategoria_canonica",
+      "cluster_servico",
+      "tema_servico",
+      "tipo_conteudo",
+      "confianca_classificacao",
+      "observacoes_classificacao",
+      "relevancia_institucional",
+      "classificacao_relevancia_institucional",
+      "escopo_registro",
+      "qa_priority",
+      "qa_reason",
+      "fallback_dominante",
+      "match_fraco",
+      "needs_manual_review"
+    ]
+  },
+  "proposedFieldMapping": {
+    "uf": "UF",
+    "entidade": "Profile",
+    "categoria": "categoria_canonica",
+    "servico": "cluster_servico",
+    "descricao": "Message",
+    "fonte": "Network",
+    "status": "needs_manual_review"
+  }
+}
