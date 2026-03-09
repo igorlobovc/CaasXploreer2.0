@@ -8,9 +8,11 @@ type PreviewOutput = {
     sourceFile: string;
     sheetNames: string[];
     rowCount: number | null;
+    row_count: number | null;
   };
   columns: Record<string, string[]>;
   proposedFieldMapping: Record<string, string | null>;
+  sample_rows: Array<Record<string, string | null>>;
 };
 
 const EXPECTED_FIELDS = ['uf', 'entidade', 'categoria', 'servico', 'descricao', 'fonte', 'status'];
@@ -176,10 +178,16 @@ async function inspectXlsx(filePath: string) {
     columnsBySheet[sheetNames[idx]] = sheetXml ? extractHeaderRow(sheetXml, sharedStrings) : [];
   }
 
-  return { sheetNames, columnsBySheet, rowCount: null as number | null };
+  return {
+    sheetNames,
+    columnsBySheet,
+    rowCount: null as number | null,
+    headerCells: [] as string[],
+    dataRows: [] as string[][],
+  };
 }
 
-function parseCsvHeaderAndRowCount(content: string) {
+function parseCsvRows(content: string) {
   const rows: string[][] = [];
   let currentCell = '';
   let currentRow: string[] = [];
@@ -228,22 +236,49 @@ function parseCsvHeaderAndRowCount(content: string) {
     pushRow();
   }
 
-  const rawHeader = rows[0] ?? [];
-  const normalizedHeader = rawHeader
-    .map((col, index) => (index === 0 ? col.replace(/^\uFEFF/, '') : col))
-    .map((col) => col.trim())
-    .filter(Boolean);
-
-  const dataRows = rows.slice(1).filter((row) => row.some((value) => value.trim().length > 0)).length;
-
-  return { columns: normalizedHeader, rowCount: dataRows };
+  return rows;
 }
 
 async function inspectCsv(filePath: string) {
   const content = await fs.readFile(filePath, 'utf8');
-  const { columns, rowCount } = parseCsvHeaderAndRowCount(content);
+  const rows = parseCsvRows(content);
+  const rawHeader = rows[0] ?? [];
+  const headerCells = rawHeader
+    .map((col, index) => (index === 0 ? col.replace(/^\uFEFF/, '') : col))
+    .map((col) => col.trim());
+  const columns = headerCells.filter(Boolean);
+  const dataRows = rows.slice(1).filter((row) => row.some((value) => value.trim().length > 0));
+  const rowCount = dataRows.length;
   const sheetName = path.basename(filePath);
-  return { sheetNames: [sheetName], columnsBySheet: { [sheetName]: columns }, rowCount };
+  return { sheetNames: [sheetName], columnsBySheet: { [sheetName]: columns }, rowCount, headerCells, dataRows };
+}
+
+function normalizeValue(value: string | undefined) {
+  const normalized = (value ?? '').trim();
+  return normalized.length > 0 ? normalized : null;
+}
+
+function buildSampleRows(
+  headerCells: string[],
+  dataRows: string[][],
+  mapping: Record<string, string | null>,
+  limit = 200,
+) {
+  const indicesByField = EXPECTED_FIELDS.reduce<Record<string, number>>((acc, field) => {
+    const mappedColumn = mapping[field];
+    acc[field] = mappedColumn ? headerCells.findIndex((col) => col === mappedColumn) : -1;
+    return acc;
+  }, {});
+
+  return dataRows.slice(0, limit).map((row) => ({
+    uf: indicesByField.uf >= 0 ? normalizeValue(row[indicesByField.uf]) : null,
+    entidade: indicesByField.entidade >= 0 ? normalizeValue(row[indicesByField.entidade]) : null,
+    categoria: indicesByField.categoria >= 0 ? normalizeValue(row[indicesByField.categoria]) : null,
+    servico: indicesByField.servico >= 0 ? normalizeValue(row[indicesByField.servico]) : null,
+    descricao: indicesByField.descricao >= 0 ? normalizeValue(row[indicesByField.descricao]) : null,
+    fonte: indicesByField.fonte >= 0 ? normalizeValue(row[indicesByField.fonte]) : null,
+    status: indicesByField.status >= 0 ? normalizeValue(row[indicesByField.status]) : null,
+  }));
 }
 
 async function main() {
@@ -256,7 +291,7 @@ async function main() {
   await assertFileExists(resolvedPath);
 
   const isCsv = resolvedPath.toLowerCase().endsWith('.csv');
-  const { sheetNames, columnsBySheet, rowCount } = isCsv
+  const { sheetNames, columnsBySheet, rowCount, headerCells, dataRows } = isCsv
     ? await inspectCsv(resolvedPath)
     : await inspectXlsx(resolvedPath);
 
@@ -264,6 +299,7 @@ async function main() {
   const legacyMapping = proposeLegacyFieldMapping(primaryColumns);
   const proposedMapping = proposeFieldMapping(primaryColumns);
   const mappingSummary = summarizeMappingDiff(legacyMapping, proposedMapping);
+  const sampleRows = isCsv ? buildSampleRows(headerCells, dataRows, proposedMapping, 200) : [];
 
   const preview: PreviewOutput = {
     metadata: {
@@ -271,9 +307,11 @@ async function main() {
       sourceFile: resolvedPath,
       sheetNames,
       rowCount,
+      row_count: rowCount,
     },
     columns: columnsBySheet,
     proposedFieldMapping: proposedMapping,
+    sample_rows: sampleRows,
   };
 
   const outDir = path.resolve(process.cwd(), 'data/normalized/manual_review');
@@ -284,6 +322,7 @@ async function main() {
   console.log('Sheets:', sheetNames.join(', ') || 'none');
   console.log('Primary columns:', primaryColumns.join(' | ') || 'none');
   console.log('Rows read:', rowCount ?? 'n/a');
+  console.log('Sample rows:', sampleRows.length);
   console.log('Mapping changes:', mappingSummary);
   console.log('Proposed mapping:', proposedMapping);
   console.log('Preview written to:', outputPath);
