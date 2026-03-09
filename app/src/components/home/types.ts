@@ -26,3 +26,13 @@ export interface ServicoCategoria {
   count: string;
   examples: string[];
 }
+
+export interface ProjectGoal {
+  id: string;
+  goalTitle: string;
+  goalDescription: string;
+  targetValue: string;
+  currentResult: string;
+  achievementStatus: 'achieved' | 'in-progress' | 'planned';
+  icon: LucideIcon;
+}

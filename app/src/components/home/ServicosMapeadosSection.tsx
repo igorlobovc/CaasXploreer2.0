@@ -10,7 +10,7 @@ import { SERVICOS_POR_CATEGORIA } from './data';
 const REGIOES = ['Norte', 'Nordeste', 'Centro-Oeste', 'Sudeste', 'Sul'];
 
 export function ServicosMapeadosSection() {
-  const [regiaoAtiva, setRegiaoAtiva] = useState<string | null>(null);
+  const [activeRegion, setActiveRegion] = useState<string | null>(null);
 
   return (
     <section className="py-16 sm:py-24 relative">
@@ -25,16 +25,16 @@ export function ServicosMapeadosSection() {
         </motion.div>
 
         <div className="flex flex-wrap gap-2 mb-8">
-          <FilterChipButton active={regiaoAtiva === null} onClick={() => setRegiaoAtiva(null)}>
+          <FilterChipButton active={activeRegion === null} onClick={() => setActiveRegion(null)}>
             Todas
           </FilterChipButton>
-          {REGIOES.map((regiao) => (
+          {REGIOES.map((regionName) => (
             <FilterChipButton
-              key={regiao}
-              active={regiaoAtiva === regiao}
-              onClick={() => setRegiaoAtiva(regiao)}
+              key={regionName}
+              active={activeRegion === regionName}
+              onClick={() => setActiveRegion(regionName)}
             >
-              {regiao}
+              {regionName}
             </FilterChipButton>
           ))}
         </div>

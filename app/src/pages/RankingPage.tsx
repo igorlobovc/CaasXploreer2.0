@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { Trophy, TrendingUp, TrendingDown, Minus, BarChart2, Users } from 'lucide-react';
 import { GlassCard, Navbar, PageBackground } from '../components/shared';
 import { rankingPorEstado, rankingPorTotalInteracoes, rankingPorCategoria } from '../data/ranking';
-import { formatNumber, trendColor, trendLabel } from '../lib/analytics';
+import { formatNumber, getTrendColorClass, getTrendLabel } from '../lib/analytics';
 import { Link } from 'react-router-dom';
 
 type RankingMode = 'normalizado' | 'total' | 'categoria';
@@ -32,24 +32,24 @@ function VariacaoBadge({ variacao }: { variacao: number }) {
   );
 }
 
-function MedalBadge({ pos }: { pos: number }) {
-  if (pos === 1)
+function MedalBadge({ position }: { position: number }) {
+  if (position === 1)
     return <span className="text-yellow-400 text-base">🥇</span>;
-  if (pos === 2)
+  if (position === 2)
     return <span className="text-slate-300 text-base">🥈</span>;
-  if (pos === 3)
+  if (position === 3)
     return <span className="text-amber-600 text-base">🥉</span>;
   return (
     <span className="text-xs font-mono text-cyan-200/50 w-6 text-center">
-      {pos}
+      {position}
     </span>
   );
 }
 
 export default function RankingPage() {
-  const [mode, setMode] = useState<RankingMode>('normalizado');
+  const [activeRankingMode, setActiveRankingMode] = useState<RankingMode>('normalizado');
 
-  const tabs: { key: RankingMode; label: string; Icon: React.ElementType }[] = [
+  const rankingModeTabs: { key: RankingMode; label: string; Icon: React.ElementType }[] = [
     { key: 'normalizado', label: 'Por 1.000 adv.', Icon: Users },
     { key: 'total',       label: 'Total absoluto',  Icon: BarChart2 },
     { key: 'categoria',   label: 'Por categoria',   Icon: Trophy },
@@ -77,12 +77,12 @@ export default function RankingPage() {
         {/* Mode Tabs */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="mb-8">
           <GlassCard className="inline-flex rounded">
-            {tabs.map(({ key, label, Icon }) => (
+            {rankingModeTabs.map(({ key, label, Icon }) => (
               <button
                 key={key}
-                onClick={() => setMode(key)}
+                onClick={() => setActiveRankingMode(key)}
                 className={`flex items-center gap-2 px-4 py-2.5 text-xs font-medium transition-colors ${
-                  mode === key
+                  activeRankingMode === key
                     ? 'text-cyan-300 bg-cyan-500/20 border-b-2 border-cyan-400'
                     : 'text-cyan-200/50 hover:text-cyan-200/70'
                 }`}
@@ -95,7 +95,7 @@ export default function RankingPage() {
         </motion.div>
 
         {/* Ranking: by normalized metric */}
-        {mode === 'normalizado' && (
+        {activeRankingMode === 'normalizado' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <GlassCard className="overflow-hidden rounded">
               <div className="px-4 py-3 border-b border-cyan-500/20 flex items-center gap-2">
@@ -114,7 +114,7 @@ export default function RankingPage() {
                     className="flex items-center gap-4 px-4 py-3 hover:bg-cyan-500/5 transition-colors"
                   >
                     <div className="w-8 flex justify-center flex-shrink-0">
-                      <MedalBadge pos={item.posicao} />
+                      <MedalBadge position={item.posicao} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
@@ -146,8 +146,8 @@ export default function RankingPage() {
                     <div className="w-12 text-right">
                       <VariacaoBadge variacao={item.variacao} />
                     </div>
-                    <span className={`text-[10px] w-14 text-right ${trendColor(item.tendencia)}`}>
-                      {trendLabel(item.tendencia)}
+                    <span className={`text-[10px] w-14 text-right ${getTrendColorClass(item.tendencia)}`}>
+                      {getTrendLabel(item.tendencia)}
                     </span>
                   </motion.div>
                 ))}
@@ -157,7 +157,7 @@ export default function RankingPage() {
         )}
 
         {/* Ranking: by absolute totals */}
-        {mode === 'total' && (
+        {activeRankingMode === 'total' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <GlassCard className="overflow-hidden rounded">
               <div className="px-4 py-3 border-b border-cyan-500/20 flex items-center gap-2">
@@ -176,7 +176,7 @@ export default function RankingPage() {
                     className="flex items-center gap-4 px-4 py-3 hover:bg-cyan-500/5 transition-colors"
                   >
                     <div className="w-8 flex justify-center flex-shrink-0">
-                      <MedalBadge pos={item.posicao} />
+                      <MedalBadge position={item.posicao} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
@@ -214,7 +214,7 @@ export default function RankingPage() {
         )}
 
         {/* Ranking: by category */}
-        {mode === 'categoria' && (
+        {activeRankingMode === 'categoria' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <GlassCard className="overflow-hidden rounded">
               <div className="px-4 py-3 border-b border-cyan-500/20 flex items-center gap-2">
@@ -233,7 +233,7 @@ export default function RankingPage() {
                     className="flex items-center gap-4 px-4 py-4 hover:bg-cyan-500/5 transition-colors"
                   >
                     <div className="w-8 flex justify-center flex-shrink-0">
-                      <MedalBadge pos={item.posicao} />
+                      <MedalBadge position={item.posicao} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-medium text-white mb-1">{item.categoria}</div>
@@ -252,7 +252,7 @@ export default function RankingPage() {
                     </div>
                     <div className="text-right flex-shrink-0 space-y-0.5">
                       <div className="text-xs font-mono text-cyan-300">{item.percentual}%</div>
-                      <div className={`text-[10px] ${trendColor(item.tendencia)}`}>{trendLabel(item.tendencia)}</div>
+                      <div className={`text-[10px] ${getTrendColorClass(item.tendencia)}`}>{getTrendLabel(item.tendencia)}</div>
                     </div>
                   </motion.div>
                 ))}
@@ -262,8 +262,8 @@ export default function RankingPage() {
             {/* Summary note */}
             <p className="text-center text-xs text-cyan-200/40 mt-6">
               Total combinado: <span className="text-cyan-300">
-                {formatNumber(rankingPorCategoria.reduce((s, c) => s + c.totalInteracoes, 0))}
-              </span> interações · {rankingPorCategoria.reduce((s, c) => s + c.totalServicos, 0)} serviços mapeados
+                {formatNumber(rankingPorCategoria.reduce((totalSum, categoryItem) => totalSum + categoryItem.totalInteracoes, 0))}
+              </span> interações · {rankingPorCategoria.reduce((totalSum, categoryItem) => totalSum + categoryItem.totalServicos, 0)} serviços mapeados
             </p>
           </motion.div>
         )}

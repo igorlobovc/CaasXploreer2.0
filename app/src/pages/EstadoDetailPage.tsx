@@ -14,7 +14,7 @@ import {
 } from 'recharts';
 import { GlassCard, Navbar, PageBackground } from '../components/shared';
 import { estadoByUF } from '../data/estados';
-import { formatNumber, formatPercent, calcShareRate, trendLabel } from '../lib/analytics';
+import { formatNumber, formatPercent, calcSharedInteractionRate, getTrendLabel } from '../lib/analytics';
 
 const tooltipStyle = {
   backgroundColor: 'rgba(10,22,40,0.92)',
@@ -74,7 +74,7 @@ export default function EstadoDetailPage() {
     );
   }
 
-  const shareRate = calcShareRate(estado.totalInteracoes, estado.interacoesCompartilhadas);
+  const sharedInteractionRate = calcSharedInteractionRate(estado.totalInteracoes, estado.interacoesCompartilhadas);
   const TrendIcon =
     estado.tendencia === 'alta' ? TrendingUp :
     estado.tendencia === 'baixa' ? TrendingDown : Minus;
@@ -123,7 +123,7 @@ export default function EstadoDetailPage() {
               'bg-cyan-500/10 border-cyan-500/30 text-cyan-400'
             }`}>
               <TrendIcon className="w-3.5 h-3.5" />
-              <span className="text-xs font-medium">{trendLabel(estado.tendencia)}</span>
+              <span className="text-xs font-medium">{getTrendLabel(estado.tendencia)}</span>
             </div>
           </div>
           <p className="text-cyan-200/50 text-sm mt-2">
@@ -137,7 +137,7 @@ export default function EstadoDetailPage() {
             <StatCard Icon={Activity} label="Total de Interações" value={formatNumber(estado.totalInteracoes)} sub="últimos 12 meses" color="cyan" />
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
-            <StatCard Icon={Share2}   label="Compartilhadas"     value={formatNumber(estado.interacoesCompartilhadas)} sub={formatPercent(shareRate)} color="emerald" />
+            <StatCard Icon={Share2}   label="Compartilhadas"     value={formatNumber(estado.interacoesCompartilhadas)} sub={formatPercent(sharedInteractionRate)} color="emerald" />
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
             <StatCard Icon={TrendingUp} label="Por 1.000 adv." value={estado.interacoesPer1000.toFixed(1)} sub="métrica normalizada" color="blue" />
@@ -226,7 +226,7 @@ export default function EstadoDetailPage() {
             </div>
             <div className="divide-y divide-cyan-500/10">
               {estado.categorias.map((cat) => {
-                const pct = (cat.interacoes / estado.totalInteracoes) * 100;
+                const categoryInteractionPercent = (cat.interacoes / estado.totalInteracoes) * 100;
                 return (
                   <div key={cat.categoria} className="flex items-center gap-4 px-4 py-3">
                     <div
@@ -241,13 +241,13 @@ export default function EstadoDetailPage() {
                       <div className="h-1.5 w-full bg-cyan-500/10 rounded-full overflow-hidden">
                         <div
                           className="h-full rounded-full"
-                          style={{ width: `${pct}%`, backgroundColor: catColors[cat.categoria] ?? '#64748b' }}
+                          style={{ width: `${categoryInteractionPercent}%`, backgroundColor: catColors[cat.categoria] ?? '#64748b' }}
                         />
                       </div>
                     </div>
                     <div className="text-right w-24 flex-shrink-0">
                       <div className="text-sm font-medium text-white">{formatNumber(cat.interacoes)}</div>
-                      <div className="text-[10px] text-cyan-200/50">{pct.toFixed(1)}%</div>
+                      <div className="text-[10px] text-cyan-200/50">{categoryInteractionPercent.toFixed(1)}%</div>
                     </div>
                   </div>
                 );

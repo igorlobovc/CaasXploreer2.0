@@ -21,8 +21,8 @@ import {
 import {
   formatNumber,
   formatPercent,
-  calcGrowthRate,
-  calcShareRate,
+  calcInteractionGrowthRate,
+  calcSharedInteractionRate,
 } from '../lib/analytics';
 
 // ---- Stat card -----------------------------------------------
@@ -81,13 +81,13 @@ const tooltipStyle = {
 // MAIN PAGE
 // ============================================================
 export default function AnalyticsPage() {
-  const growthRate = calcGrowthRate(historicoNacional);
-  const shareRate  = calcShareRate(
+  const interactionGrowthRate = calcInteractionGrowthRate(historicoNacional);
+  const sharedInteractionRate = calcSharedInteractionRate(
     analyticsSummary.totalInteracoes,
     analyticsSummary.interacoesCompartilhadas,
   );
 
-  const COLORS = ['#ec4899', '#06b6d4', '#8b5cf6', '#3b82f6', '#64748b'];
+  const PIE_CHART_COLORS = ['#ec4899', '#06b6d4', '#8b5cf6', '#3b82f6', '#64748b'];
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-x-hidden">
@@ -126,7 +126,7 @@ export default function AnalyticsPage() {
             icon={Share2}
             label="Interações Compartilhadas"
             value={formatNumber(analyticsSummary.interacoesCompartilhadas)}
-            sub={`${formatPercent(shareRate)} do total`}
+            sub={`${formatPercent(sharedInteractionRate)} do total`}
             color="emerald"
             delay={0.05}
           />
@@ -141,7 +141,7 @@ export default function AnalyticsPage() {
           <StatCard
             icon={TrendingUp}
             label="Crescimento no período"
-            value={`+${formatPercent(growthRate, 0)}`}
+            value={`+${formatPercent(interactionGrowthRate, 0)}`}
             sub="Mar/2024 → Fev/2025"
             color="violet"
             delay={0.15}
@@ -281,17 +281,17 @@ export default function AnalyticsPage() {
                       innerRadius={40}
                     >
                       {sourceDistribution.map((entry, index) => (
-                        <Cell key={entry.fonte} fill={COLORS[index % COLORS.length]} opacity={0.85} />
+                        <Cell key={entry.fonte} fill={PIE_CHART_COLORS[index % PIE_CHART_COLORS.length]} opacity={0.85} />
                       ))}
                     </Pie>
                     <Tooltip contentStyle={tooltipStyle} formatter={(v: number) => [`${v}%`, 'Participação']} />
                   </PieChart>
                 </ResponsiveContainer>
                 <div className="flex flex-wrap gap-3 justify-center mt-2">
-                  {sourceDistribution.map((s, i) => (
-                    <div key={s.fonte} className="flex items-center gap-1.5">
-                      <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
-                      <span className="text-xs text-cyan-200/60">{s.fonte} {s.percentual}%</span>
+                  {sourceDistribution.map((sourceEntry, i) => (
+                    <div key={sourceEntry.fonte} className="flex items-center gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: PIE_CHART_COLORS[i % PIE_CHART_COLORS.length] }} />
+                      <span className="text-xs text-cyan-200/60">{sourceEntry.fonte} {sourceEntry.percentual}%</span>
                     </div>
                   ))}
                 </div>

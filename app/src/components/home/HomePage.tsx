@@ -5,6 +5,7 @@ import { ExemploTecnicoSection } from './ExemploTecnicoSection';
 import { FooterSection } from './FooterSection';
 import { HeroSection } from './HeroSection';
 import { HomeBackground } from './HomeBackground';
+import { ProjectGoalsSection } from './ProjectGoalsSection';
 import { ProvisionalSimulationResultsSection } from './provisional/ProvisionalSimulationResultsSection';
 import { ServicosMapeadosSection } from './ServicosMapeadosSection';
 import { TecnologiaSection } from './TecnologiaSection';
@@ -18,6 +19,7 @@ export function HomePage() {
       <ServicosMapeadosSection />
       <EvidenciaPublicaSection />
       <ProvisionalSimulationResultsSection />
+      <ProjectGoalsSection />
       <ExemploTecnicoSection />
       <TecnologiaSection />
       <CronogramaSection />
