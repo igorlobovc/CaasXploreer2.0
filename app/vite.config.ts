@@ -5,7 +5,8 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/CaasXploreer2.0/',
+  // Local development should serve from root; GitHub Pages can override this with VITE_BASE_PATH.
+  base: process.env.VITE_BASE_PATH ?? '/',
   plugins: [inspectAttr(), react()],
   resolve: {
     alias: {

@@ -1,4 +1,7 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+
+import { BarChart2, Home, Map, Trophy } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
@@ -108,5 +111,76 @@ export function FilterChipButton({ active, className, ...props }: FilterChipButt
       )}
       {...props}
     />
+  );
+}
+
+export function PageBackground() {
+  return (
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden>
+      <div className="absolute inset-0 bg-[#0a0f1a]" />
+      <div
+        className="absolute -top-[15%] -left-[10%] h-[45rem] w-[45rem] rounded-full"
+        style={{
+          background:
+            'radial-gradient(circle, rgba(6,182,212,0.14) 0%, rgba(6,182,212,0.04) 45%, transparent 75%)',
+          filter: 'blur(45px)',
+        }}
+      />
+      <div
+        className="absolute -bottom-[20%] -right-[10%] h-[40rem] w-[40rem] rounded-full"
+        style={{
+          background:
+            'radial-gradient(circle, rgba(16,185,129,0.12) 0%, rgba(16,185,129,0.03) 45%, transparent 75%)',
+          filter: 'blur(60px)',
+        }}
+      />
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(6,182,212,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.8) 1px, transparent 1px)',
+          backgroundSize: '42px 42px',
+        }}
+      />
+    </div>
+  );
+}
+
+const navItems = [
+  { to: '/', label: 'Inicio', icon: Home },
+  { to: '/analytics', label: 'Analytics', icon: BarChart2 },
+  { to: '/ranking', label: 'Ranking', icon: Trophy },
+  { to: '/estados', label: 'Estados', icon: Map },
+];
+
+export function Navbar() {
+  return (
+    <header className="fixed top-0 left-0 right-0 z-30 border-b border-cyan-500/20 bg-[#081322]/70 backdrop-blur-md">
+      <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-3 sm:px-6">
+        <Link to="/" className="font-mono text-xs tracking-wider text-cyan-200/85 hover:text-cyan-100 transition-colors">
+          CAAsXplorer
+        </Link>
+        <div className="flex items-center gap-1 sm:gap-2">
+          {navItems.map(({ to, label, icon: Icon }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) =>
+                cn(
+                  'flex items-center gap-1 rounded px-2.5 py-1.5 text-[11px] sm:text-xs transition-colors',
+                  isActive
+                    ? 'bg-cyan-500/20 text-cyan-200'
+                    : 'text-cyan-200/55 hover:bg-cyan-500/10 hover:text-cyan-200',
+                )
+              }
+              end={to === '/'}
+            >
+              <Icon className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">{label}</span>
+            </NavLink>
+          ))}
+        </div>
+      </nav>
+    </header>
   );
 }
