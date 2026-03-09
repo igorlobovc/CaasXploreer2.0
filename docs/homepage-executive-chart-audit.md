@@ -35,7 +35,7 @@
 
 # D. What should not be shown on homepage
 
-- **Sentiment split** now shown in the provisional homepage section, because there is no canonical sentiment dataset in the repo and the current values are inferred.
+- **Sentiment split** should not be shown on the homepage, because there is no canonical sentiment dataset in the repo and the current values are inferred.
 - **Source/channel mix** (Instagram / Facebook / Portais / etc.), because the current distribution is inferred rather than sourced from a canonical channel dataset.
 - **Per-capita rankings** from `ranking_estados_12m.json`, because state/CAA coverage and identifier taxonomy still need normalization.
 - **Deep state drill-down metrics** from `app/src/data/estados.ts`, because they are better suited to `/estados` and state detail pages than to executive homepage storytelling.
