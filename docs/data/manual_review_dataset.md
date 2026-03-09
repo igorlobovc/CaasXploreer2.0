@@ -33,3 +33,28 @@ The normalized output is a single JSON payload written to `data/normalized/manua
   - `status` (optional)
 
 The exact field mapping rules will be documented once spreadsheet headers are finalized.
+
+## Expected Input Path
+
+Primary workbook (source of truth):
+
+- `data/raw/manual_review/MERGED_POST_WALL_2022_2026_CLASSIFIED_V3_CORRECTED_CANDIDATE.xlsx`
+
+Support files:
+
+- `data/raw/manual_review/MERGED_POST_WALL_2022_2026_CORRECTION_SUMMARY.xlsx`
+- `data/raw/manual_review/MERGED_POST_WALL_2022_2026_FINAL_MANUAL_REVIEW_SHORTLIST.xlsx`
+
+## How To Run Preview
+
+From the repository root:
+
+```bash
+npx tsx scripts/ingest/normalize_manual_review_dataset.ts data/raw/manual_review/MERGED_POST_WALL_2022_2026_CLASSIFIED_V3_CORRECTED_CANDIDATE.xlsx
+```
+
+## Preview Output
+
+The preview file is written to:
+
+- `data/normalized/manual_review/manual_review.preview.json`
