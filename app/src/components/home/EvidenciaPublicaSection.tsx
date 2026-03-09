@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 import { Calendar, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -9,7 +9,10 @@ import { ACOES_INSTITUCIONAIS } from './data';
 
 export function EvidenciaPublicaSection() {
   const [filterUF, setFilterUF] = useState<string | null>(null);
-  const ufs = [...new Set(ACOES_INSTITUCIONAIS.map((acao) => acao.uf))];
+  const ufs = useMemo(
+    () => [...new Set(ACOES_INSTITUCIONAIS.map((acao) => acao.uf))],
+    [],
+  );
   const filteredAcoes = filterUF
     ? ACOES_INSTITUCIONAIS.filter((acao) => acao.uf === filterUF)
     : ACOES_INSTITUCIONAIS;

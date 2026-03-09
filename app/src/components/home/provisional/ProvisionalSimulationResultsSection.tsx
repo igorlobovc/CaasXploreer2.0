@@ -5,16 +5,16 @@ import { GlassCard, SectionHeading } from '@/components/shared';
 
 import { PROVISIONAL_REAL_ANALYTICS_DATA } from './realDataAdapter';
 
+const { kpis, sentimentVolumeByWindow, topicMentionsTimeline, entitySourceDistribution, dateLabels } =
+  PROVISIONAL_REAL_ANALYTICS_DATA;
+
+const maxVolume = Math.max(
+  1,
+  ...topicMentionsTimeline.map((datum) => Math.max(datum.saude, datum.beneficios)),
+);
+
 // Provisional/simulated analytics visuals until canonical analytics integration.
 export function ProvisionalSimulationResultsSection() {
-  const { kpis, sentimentVolumeByWindow, topicMentionsTimeline, entitySourceDistribution, dateLabels } =
-    PROVISIONAL_REAL_ANALYTICS_DATA;
-
-  const maxVolume = Math.max(
-    1,
-    ...topicMentionsTimeline.map((datum) => Math.max(datum.saude, datum.beneficios)),
-  );
-
   return (
     <section className="py-16 sm:py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
