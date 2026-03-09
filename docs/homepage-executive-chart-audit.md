@@ -1,42 +1,52 @@
-# A. Top 3 homepage chart candidates
+# A. keep on homepage
+- `ProvisionalSimulationResultsSection` headline KPI cards (`kpis`)
+- The section-level framing that explains the homepage is showing an executive external-signal snapshot, not a full analytical workspace
 
-1. **Evolução mensal de menções nacionais**
-   - **Source file:** `app/src/components/home/provisional/data/temporal-data.json`
-   - **Chart type:** line chart
-   - **Key metric:** `dados[].quantidade` by `dados[].mes`
-   - **Caveat:** safest when anchored to the same global total already confirmed in `resumo-executivo.json`; this is volume, not sentiment or engagement quality.
-   - **Why useful for executive reading:** gives the clearest “is visibility growing or cooling?” signal in one glance and is the most stable time-series already available to the frontend.
+# B. move to analytics later
+- `Volume Relativo por Janela de Consulta`
+- `Evolução Temporal de Menções por Tema`
+- `Distribuição de Fontes por Entidade`
+- The closing comparative-analysis paragraph under `Comparativos Analíticos`
 
-2. **Top categorias por volume de menções**
-   - **Source file:** `app/src/components/home/provisional/data/heatmap-data.json`
-   - **Chart type:** horizontal bar chart
-   - **Key metric:** aggregated `quantidade` by `categoria`
-   - **Caveat:** category totals do not fully reconcile with `resumo-executivo.top_categorias`, so this should be presented as the best available distribution view, not as the single source for all headline totals.
-   - **Why useful for executive reading:** shows where assistance demand and public-facing attention are concentrated, which helps leadership prioritize the biggest themes fast.
+# C. move to state detail later
+- `ParaibaSpotlight`
+- `StateEvidenceView`
+- `EvidenciaPublicaSection`
 
-3. **Top CAAs por volume observado**
-   - **Source file:** `app/src/components/home/provisional/data/resumo-executivo.json`
-   - **Chart type:** ranked horizontal bar chart
-   - **Key metric:** `top_caas[].quantidade`
-   - **Caveat:** best kept to the summary/top slice only; it should not be stretched into a full-state ranking because broader ranking files use mismatched CAA/state coverage and naming.
-   - **Why useful for executive reading:** provides an immediate benchmark of where visible activity is concentrated without forcing the homepage into a dense analytics or ranking experience.
+# D. rationale for each move
+- **Homepage KPI cards → keep on homepage**
+  - They are the fastest executive read on scale and signal strength.
+  - They preserve the homepage’s role as a decision-maker summary before the user clicks deeper.
+  - They are also the least cognitively heavy analytical block currently on the homepage.
 
-# B. Source file for each
+- **Section framing copy → keep on homepage**
+  - The homepage still needs one short explanation of what the signal means.
+  - Keeping the framing avoids dropping users directly into numbers without context.
 
-- Monthly trend: `app/src/components/home/provisional/data/temporal-data.json`
-- Category distribution: `app/src/components/home/provisional/data/heatmap-data.json`
-- Top CAA summary: `app/src/components/home/provisional/data/resumo-executivo.json`
+- **Volume Relativo por Janela de Consulta → move to analytics later**
+  - It asks the homepage reader to interpret sentiment composition over time, which is already a deeper analytical task.
+  - Current source notes mark sentiment-related outputs as inferred rather than canonical, so this is not the strongest executive chart to foreground on the homepage.
 
-# C. Caveats
+- **Evolução Temporal de Menções por Tema → move to analytics later**
+  - Theme-by-theme time comparison is useful, but it is exploratory rather than headline-level.
+  - It fits better beside the broader charts already on `/analytics`, where users expect trend comparison and method caveats.
 
-- `temporal-data.json` is the strongest canonical chart source, but it supports **volume trend** only.
-- `heatmap-data.json` is the best available category-distribution source, but its totals do **not** fully match summary totals.
-- `resumo-executivo.json` is reliable for **headline/top-5 storytelling**, but not for a complete comparative ranking model.
+- **Distribuição de Fontes por Entidade → move to analytics later**
+  - This is the most detailed current homepage chart and requires the most explanation to read well.
+  - Source/channel distribution is also documented as inferred, so it should live in the deeper analytics layer instead of the executive surface.
 
-# D. What should not be shown on homepage
+- **Comparative-analysis closing paragraph → move to analytics later**
+  - The paragraph only makes sense once the comparative charts stay on the page.
+  - If the deeper comparison moves off the homepage, the interpretation should move with it.
 
-- **Sentiment split** should not be shown on the homepage, because there is no canonical sentiment dataset in the repo and the current values are inferred.
-- **Source/channel mix** (Instagram / Facebook / Portais / etc.), because the current distribution is inferred rather than sourced from a canonical channel dataset.
-- **Per-capita rankings** from `ranking_estados_12m.json`, because state/CAA coverage and identifier taxonomy still need normalization.
-- **Deep state drill-down metrics** from `app/src/data/estados.ts`, because they are better suited to `/estados` and state detail pages than to executive homepage storytelling.
-- **Manual review evidence tables** from `app/src/data/manualReviewEvidence.ts`, because they are useful for validation and exploration, not for a concise homepage executive read.
+- **ParaibaSpotlight → move to state detail later**
+  - It is a state-specific narrative block, not a national executive summary.
+  - As state pages mature, this content becomes a better teaser or first panel inside `/estados/:uf` than a permanent homepage section.
+
+- **StateEvidenceView → move to state detail later**
+  - It is explicitly filterable by UF, category, service, and entity, which makes it a drill-down tool.
+  - That interaction model is valuable after a user chooses a state, but too heavy for the homepage reading flow.
+
+- **EvidenciaPublicaSection → move to state detail later**
+  - The content is organized around state-coded institutional actions and becomes more meaningful when attached to a chosen UF.
+  - It supports state storytelling better than homepage executive scanning, especially once dedicated state pages already exist.
