@@ -7,6 +7,7 @@ import { HeroSection } from './HeroSection';
 import { HomeBackground } from './HomeBackground';
 import { StateEvidenceView } from '../evidence/StateEvidenceView';
 import { ParaibaSpotlight } from '../state/ParaibaSpotlight';
+import { ServiceTaxonomySection } from '../services/ServiceTaxonomySection';
 import { ProvisionalSimulationResultsSection } from './provisional/ProvisionalSimulationResultsSection';
 import { ServicosMapeadosSection } from './ServicosMapeadosSection';
 import { TecnologiaSection } from './TecnologiaSection';
@@ -18,6 +19,7 @@ export function HomePage() {
       <HeroSection />
       <ComoFuncionaSection />
       <ServicosMapeadosSection />
+      <ServiceTaxonomySection />
       <ParaibaSpotlight />
       <StateEvidenceView />
       <EvidenciaPublicaSection />
