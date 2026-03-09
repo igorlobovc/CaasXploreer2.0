@@ -169,3 +169,11 @@
 ### Phase 5 — prune leftovers from homepage
 - Once Analytics, Ranking, and state pages carry their own depth, reduce homepage sections to teasers only.
 - Keep the homepage as a stable front door, not a dumping ground for every report chapter.
+
+## E. First 3 homepage extraction candidates
+
+| A. Top 3 extraction candidates | B. Destination page | C. Why each should move | D. Extraction priority |
+| --- | --- | --- | --- |
+| `StateEvidenceView` | `/evidencias` as the full explorer, with a filtered teaser or handoff into `/estados/:uf` | It is the heaviest drill-down interaction on the homepage: filters, pagination, and evidence records by UF/category/service/entity. That makes it high-payoff to remove from the landing flow, and its standalone data loader keeps the implementation effort comparatively low once the evidence page is added. | **P1** — highest payoff for the least homepage disruption |
+| `ServiceTaxonomySection` (and the overlapping taxonomy depth in `ServicosMapeadosSection`) | `/servicos` | The homepage currently spends two consecutive sections on taxonomy depth, which is the clearest case of catalog content overpowering orientation. Moving the fuller taxonomy browser first creates immediate decluttering, and the rollout docs already reserve `/servicos` for this content family. | **P2** — major declutter, but waits on the dedicated taxonomy page |
+| `ProvisionalSimulationResultsSection` (move the comparative charts first; keep only a compact KPI summary on `/`) | `/analytics` | This is the most report-like analytical block on the homepage and overlaps directly with the stated purpose of `/analytics`. The payoff is high because it removes dense comparison reading from the landing page, but the effort is slightly higher because the homepage should still retain a short executive-summary slice after extraction. | **P3** — strong payoff, but requires a split between teaser and full page |
