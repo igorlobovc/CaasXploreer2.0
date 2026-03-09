@@ -5,6 +5,7 @@ import { ExemploTecnicoSection } from './ExemploTecnicoSection';
 import { FooterSection } from './FooterSection';
 import { HeroSection } from './HeroSection';
 import { HomeBackground } from './HomeBackground';
+import { ParaibaSpotlight } from '../state/ParaibaSpotlight';
 import { ProvisionalSimulationResultsSection } from './provisional/ProvisionalSimulationResultsSection';
 import { ServicosMapeadosSection } from './ServicosMapeadosSection';
 import { TecnologiaSection } from './TecnologiaSection';
@@ -16,6 +17,7 @@ export function HomePage() {
       <HeroSection />
       <ComoFuncionaSection />
       <ServicosMapeadosSection />
+      <ParaibaSpotlight />
       <EvidenciaPublicaSection />
       <ProvisionalSimulationResultsSection />
       <ExemploTecnicoSection />
