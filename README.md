@@ -173,7 +173,7 @@ These rules are part of the project operating model and should be preserved unle
 ### Presentation
 - draft executive analytics narrative
 - create service-ranking presentation table spec
-- draft homepage section strategy aligned to Kimi reference structure
+- phased build roadmap by page: `docs/phased-build-roadmap.md` (homepage stays lean and executive-first)
 
 ### Project control / governance / decision
 - review README/project text
