@@ -1,13 +1,10 @@
 import { ComoFuncionaSection } from './ComoFuncionaSection';
-import { CronogramaSection } from './CronogramaSection';
-import { EvidenciaPublicaSection } from './EvidenciaPublicaSection';
-import { ExemploTecnicoSection } from './ExemploTecnicoSection';
+import { EvidenceTeaserSection } from './EvidenceTeaserSection';
 import { FooterSection } from './FooterSection';
 import { HeroSection } from './HeroSection';
 import { HomeBackground } from './HomeBackground';
-import { ProvisionalSimulationResultsSection } from './provisional/ProvisionalSimulationResultsSection';
-import { ServicosMapeadosSection } from './ServicosMapeadosSection';
-import { TecnologiaSection } from './TecnologiaSection';
+import { ParaibaSpotlight } from '../state/ParaibaSpotlight';
+import { ServicosTeaserSection } from './ServicosTeaserSection';
 
 export function HomePage() {
   return (
@@ -15,12 +12,9 @@ export function HomePage() {
       <HomeBackground />
       <HeroSection />
       <ComoFuncionaSection />
-      <ServicosMapeadosSection />
-      <EvidenciaPublicaSection />
-      <ProvisionalSimulationResultsSection />
-      <ExemploTecnicoSection />
-      <TecnologiaSection />
-      <CronogramaSection />
+      <ParaibaSpotlight />
+      <EvidenceTeaserSection />
+      <ServicosTeaserSection />
       <FooterSection />
     </div>
   );

@@ -1,3 +1,4 @@
+import { getLawyerTotalByUF } from './lawyerTotalsReference';
 // ============================================================
 // DATA: Estados brasileiros com métricas analíticas das CAAs
 // Cobre os 27 estados + DF mapeados pelo CAAsXplorer
@@ -594,6 +595,19 @@ export const estadosData: EstadoData[] = [
 ];
 
 // Quick lookup by UF
+
+estadosData.forEach((e) => {
+  const authoritativeTotal = getLawyerTotalByUF(e.uf);
+  if (!authoritativeTotal || authoritativeTotal <= 0 || e.advogados === authoritativeTotal) {
+    return;
+  }
+
+  e.interacoesPer1000 = Number(
+    (((e.interacoesPer1000 * e.advogados) / authoritativeTotal)).toFixed(1)
+  );
+  e.advogados = authoritativeTotal;
+});
+
 export const estadoByUF: Record<string, EstadoData> = Object.fromEntries(
   estadosData.map((e) => [e.uf, e])
 );

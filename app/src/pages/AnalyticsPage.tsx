@@ -12,6 +12,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend,
 } from 'recharts';
 import { GlassCard, Navbar, PageBackground } from '../components/shared';
+import { ProvisionalSimulationResultsSection } from '../components/home/provisional/ProvisionalSimulationResultsSection';
 import {
   analyticsSummary,
   historicoNacional,
@@ -309,6 +310,8 @@ export default function AnalyticsPage() {
           Dados analíticos gerados a partir do pipeline CAAsXplorer v2.1.0 · Base operacional: {analyticsSummary.ultimaAtualizacao} · Schema auditável
         </p>
       </main>
+
+      <ProvisionalSimulationResultsSection />
     </div>
   );
 }

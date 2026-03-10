@@ -1,0 +1,1859 @@
+{
+  "metadata": {
+    "generatedAt": "2026-03-09T16:53:20.081Z",
+    "sourceFile": "/workspaces/CaasXploreer2.0/data/raw/manual_review/MERGED_POST_WALL_2022_2026_CLASSIFIED_V2_QA.csv",
+    "sheetNames": [
+      "MERGED_POST_WALL_2022_2026_CLASSIFIED_V2_QA.csv"
+    ],
+    "rowCount": 15175,
+    "row_count": 15175
+  },
+  "columns": {
+    "MERGED_POST_WALL_2022_2026_CLASSIFIED_V2_QA.csv": [
+      "UF",
+      "Regiao",
+      "Date",
+      "Profile",
+      "Profile_original",
+      "Profile_tipo",
+      "Network",
+      "Message",
+      "Total_Interactions",
+      "Engagement",
+      "Message-ID",
+      "Profile-ID",
+      "Link",
+      "External Links",
+      "Image Link",
+      "Dedupe_Key",
+      "Incoming_Batch",
+      "Needs_Dedupe_Review",
+      "categoria_canonica",
+      "subcategoria_canonica",
+      "cluster_servico",
+      "tema_servico",
+      "tipo_conteudo",
+      "confianca_classificacao",
+      "observacoes_classificacao",
+      "relevancia_institucional",
+      "classificacao_relevancia_institucional",
+      "escopo_registro",
+      "qa_priority",
+      "qa_reason",
+      "fallback_dominante",
+      "match_fraco",
+      "needs_manual_review"
+    ]
+  },
+  "proposedFieldMapping": {
+    "uf": "UF",
+    "entidade": "Profile",
+    "categoria": "categoria_canonica",
+    "servico": "cluster_servico",
+    "descricao": "Message",
+    "fonte": "Network",
+    "status": "needs_manual_review"
+  },
+  "sample_rows": [
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "?? Aperfeiçoe Seu Posicionamento em Entrevistas à Imprensa! ??️????\n\nA CAAES Mulheres, em parceria com a CAAES Igualdade Racial e CAAES Jovem, convida você para um Workshop de Media Training! Participe e aprenda com o jornalista jurídico João Camargo Neto a construir respostas eficazes, se apresentar com confiança em entrevistas e organizar suas informações com qualidade.\n\n?? Data: 27 de junho \n?? Horário: 19h \n?? Local: Sebrae-ES \n\nGaranta já sua vaga e desenvolva suas habilidades de comunicação! \n\n#MediaTraining #Entrevistas #ComunicaçãoEficaz #CAAESMulheres",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "???? O clube mais bonito do Tocantins te espera neste fim de semana, em Palmas. Com a nova piscina de borda infinita e deck recém inaugurados pela OABTO e a CAATO, a advocacia tocantinense pode reservar um quiosque pelo telefone (63) 3212-9623. (As unidades são limitadas!)\n\n??⏰ O Clube estará aberto neste fim de semana no sábado e domingo, das 10h às 19h. \n\n??⛱ Venha para o Clube da OABTO/CAATO!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Blazers, calças, vestidos, casacos e mais: todas as peças indispensáveis para um look elegante e estiloso a advocacia encontra na Açúcar Moreno, a mais nova conveniada da CAAES. Advogados e advogadas têm 17% de desconto em pagamentos em dinheiro e 15% para pagamentos parcelados ou à vista. \n\nConfira na íntegra no site da CAAES. (www.caaes.com.br)\n\nacucarmoreno",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Novo marco para a advocacia tocantinense: CAATO comemora cessão do Governo do Tocantins de terreno para construção da ARENA OAB/CAATO. A área tem 3 mil m² e fica na região Norte de Palmas. O local vai abrigar estrutura poliesportiva e social que  irá atender a classe dos advogados, mas também a sociedade civil, que receberá um qualidade de vida com a prática de esportes e demais atividades. #ArenaOABCAATO #OABTO #CAATO #GovernoDoTocantins",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Campeões nacionais! Os advogados da seleção capixaba de futebol venceram a disputa, nesta terça-feira (15), em duas categorias do Campeonato Nacional Alifa 2022, realizado em Recife, Pernambuco. O evento é organizado pela Associação Liga de Futebol dos Advogados e Advogadas do Brasil (Alifa).\n\nO Supermaster (a partir de 45 anos) entrou em campo, na categoria Society, contra o time de São Paulo e se consagrou campeão nos pênaltis, por 3×1; já o Livre 11 (todas as idades), também enfrentou a delegação paulista e venceu nos pênaltis por 5×4.\n\nO tesoureiro da Caixa de Assistência dos Advogados do Espírito Santo (CAAES), Rodrigo Mello de Almeida, fez parte da delegação capixaba na categoria Supermaster. “Todos que estiveram aqui representaram muito bem, dentro e fora de campo, a bandeira do Estado e a Ordem dos Advogados do Brasil, Seccional Espírito Santo (OAB-ES), com um comportamento exemplar e equipes disciplinadas. Só temos a agradecer o apoio da CAAES, um parceiro fundamental no incentivo e na participação”.\n\nConfira a matéria completa no site da CAAES! (Link na bio)\n\n#caaesPresente #caaesParceira",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Unidos pelo propósito de buscar uma vida saudável juntos, o casal de advogados Tais Pegorare e Alexandre Ferraz emagreceu 13kg e 10,5kg, respectivamente, com o acompanhamento nutricional da CAAES. Juntos, foram mais de 20kg eliminados.\n\nA decisão veio no início do ano passado, quando começaram a praticar Beach Tennis – também oferecido pela CAAES – e perceberam uma mudança na motivação e disposição. Entretanto, os resultados na balança e nas medidas vieram apenas com o início do acompanhamento nutricional. “A dra Rafaela nos passou as orientações, vitaminas e suplementos e começamos a ver resultados. Nosso corpo mudou completamente, estamos muito felizes e satisfeitos”, comemora Taís Pegorare, que também perdeu 15cm de circunferência abdominal.\n\n“Oferecer isso para os(as) advogados(as), através da CAAES, foi um dos benefícios mais legais que eu recebi em 20 anos de advocacia”, destaca Alexandre Ferraz. Além de perder 10 cm de circunferência abdominal, o advogado também reduziu sua taxa de gordura corporal de 32% para 22,8%. \n\n#advocaciacapixaba #caaessaúde",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Vem aí uma noite que promete entrar para a história da advocacia do DF!\n\nNo dia 15 de agosto, o Na Praia será palco de um encontro único, com Elba Ramalho, Zé Ramalho e Alceu Valença em um mesmo show. Tudo isso com desconto especial para quem é inscrito na OAB/DF.\n\nOs advogados e advogadas regularmente inscritos receberão por e-mail o cupom e o link para garantir o ingresso. Assim que estiver disponível, o link também estará na bio do nosso Instagram.\n\nUma oportunidade para celebrar o Mês da Advocacia com música boa e muita confraternização.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Investimento bem aplicado garante obras e benfeitorias para a advocacia tocantinense. A última novidade: Piscina do Clube da OAB-CAATO reformada e prontinha para receber você, sua família e seus amigos para espantar o calor! ????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Educação",
+      "descricao": "Advogadas de Palmas, chegou o momento de aprender autodefesa! Inscrições abertas e gratuitas no site da CAATO! O Workshop acontecerá em Palmas nos dias 06 e 13 de abril de 2024. #Autodefesa #Mulheres #CAATO #OABTO",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Dia Mundial de Conscientização do Autismo! ??\n\nUma data para reforçar a importância da inclusão, do respeito e da visibilidade para as pessoas autistas. E, para celebrar essa causa tão importante, temos um lembrete especial: no dia 18 de maio, o Eixão Atípico tomará conta de Brasília!\n\nEsse evento incrível transforma o Eixão em um espaço de lazer acessível e inclusivo, promovendo mais integração e diversão para todos. A CAADF e a OAB/DF apoiam essa iniciativa e convidam toda a advocacia e sociedade para participarem desse momento especial!\n\nEm breve, divulgaremos mais informações sobre esse grande dia! \n\nFoto: Paulo H Carvalho/Agência Brasília",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Dia da Advocacia está chegando e merece ser comemorado em grande estilo né?! ????\n\nQue tal irmos até a praia e curtirmos um evento imperdível? \n\nEntão já anota na agenda: dia 11/08 nosso escritório será Na Praia ao som de Largo Tudo e Ju Marques.\n\n* Valor do ingresso para advogado R$41,00 sendo válido quatro ingressos por CPF \n\nE aí, nos vemos Na Praia? ??️",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "A advocacia do df merece uma comemoração prolongadaaa ??\n\nCupom OABNAPRAIA liberado para usar em qualquer evento da programação do Na Praia até este domingo, dia 14/08! \n\nJá marca aqui o amigo que vai curtir com você o final de semana ??⬇️\n\n#CAADF #CAA #DistritoFederal #Advocacia #AdvocaciaDF",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Saúde",
+      "servico": "Saúde",
+      "descricao": "O novo psicólogo da Caixa de Assistência dos Advogados do Espírito Santo (CAAES), Afonso Celso, já chegou com agenda lotada. “A demanda de atendimento psicológico da CAAES é muito grande e, para que não haja fila de espera, estamos preenchendo todos os horários\", contou o psicólogo.\n\nOs atendimentos são feitos de segunda a sexta, das 9h às 18h, de forma presencial, na sede da CAAES, e on-line. Nessa modalidade, inclusive, são contemplados muitos profissionais das subseções fora da Grande Vitória. Esse é um dos serviços que podem ser utilizados pela advocacia do interior.\n\nAgende um horário pelo telefone (27) 2142-9019 ou no WhatsApp (27) 99274-4723. \n\nbenhur.farina roniborgo rodrigomello1101 polianafirme eliaidina.adna milenacelestino.adv doraliceadv natalialessaadv saviofaustino edinalva.bg julianagavacarlini viviansantosgomes erikatcavalcantii marcia.aquinoadvogada _afonsogava #CAAES #Advocacia #SaúdeMental",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "⚖️A Advocacia não é profissão para covardes.\n\nAdvogar faz rir e também faz chorar, sensibiliza mas também ensina a importância de ser forte, ela tem a capacidade de transformar advogados em super heróis, mas também de fazer com que, muitas vezes, sintam-se impotentes.\n\nMais do que uma profissão, a advocacia molda parte do caráter e ensina que o seu coração se encontra na democracia e na luta pelos direitos.\n\nE cuidar destes destemidos, que escolheram a advocacia como sacerdócio, é a nossa missão! ??\n\nViva a advocacia! ????\n\n#CAASC #OABSC #advocaciacatarinense #11deagosto #direito #amoadvogar",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "A Caixa de Assistência dos Advogados do Espírito Santo manifesta total repúdio às agressões sofridas por um advogado em uma boate em Vila Velha, na madrugada desta quinta-feira (23/06). \n\nO caso foi noticiado pela imprensa. Devido às agressões, o advogado foi hospitalizado e está internado em estado grave. Ele teve todos os dentes da parte inferior da boca quebrados e sofreu também lesões na testa e no pescoço. Acionada, a Polícia esteve no local e está apurando o caso. \n\nA CAAES defende que a agressão seja rigorosamente investigada e que os responsáveis respondam pelo crime na Justiça.\n\nTrata-se de uma violência desmedida, que não pode ser tolerada nem pela advocacia nem pela sociedade. A CAAES acompanhará o caso e cobrará a punição dos envolvidos.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "??Neste 20 de julho, Dia do Amigo ?? marque aqui aquele advogad@ super amig@ ??\n\n#caasc #20dejulho #diadoamigo#advogados #advocacia #oabsc #cfoab",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Entrar na Capital pela manhã e chegar aos compromissos profissionais pode ser uma tarefa complicada em meio ao trânsito intenso. ??\n\n??Para facilitar a rotina da advocacia, oferecemos de domingo a quinta-feira, uma parte da diária no hotel. \n\n??Quer saber como funciona? Arrasta pro lado e acesse aqui: https://www.caasc.org.br/p/servico/hotel-de-transito/175/\n\nCuidar de você,\nesta é a Ordem! ☂️ \n\n#caasc #oabsc #hotel #floripa #florianopolis #advocaciacatarinense",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Neste sábado (25), a CAATO sorteará 5 coletes dupla face após o torneio de Fut 7, do Campeonato Estadual. Para participar é necessário ser advogado (a) e cumprir com os critérios acima.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Saúde",
+      "servico": "Saúde",
+      "descricao": "Histórias como a da Dona Eterna, mãe da advogada Juliana Serpa, nos motivam a manter o nosso compromisso de cuidar da advocacia do DF e de seus dependentes ??\n\nAtravés da nossa campanha de Outubro Rosa, Dona Eterna obteve um diagnóstico precoce, que foi fundamental para que ela pudesse vencer o câncer de mama, contando com o apoio incondicional de sua família.\n\nÉ sobre cuidar de si nos pequenos detalhes. O diagnóstico precoce é o melhor caminho para a cura. #OutubroRosa",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Dr. Rafael Maione: Medalhista de Ouro Duplo na Natação! ???? Parabéns ao incrível Dr. Rafael Maione, advogado e atleta da OAB Tocantins, que conquistou duas medalhas de ouro nos Jogos da Advocacia. Ele brilhou nas provas de 50 metros borboleta e 50 metros livre, demonstrando habilidade e determinação impressionantes. Sua dedicação em conciliar a carreira jurídica com o esporte é inspiradora. Celebremos juntos essa conquista excepcional! ??????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Nesta manhã ensolarada ☀️, parte da delegação da OAB Tocantins partiu rumo ao I Jogos da Advocacia Nacional em Goiânia ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "A CAA/DF visitou a brasalveiculos para conferir de perto as condições exclusivas para a advocacia.\n\nÉ isso mesmo: advogados e advogadas têm descontos especiais na compra de veículos novos ou seminovos:\n\n- R$ 1.000 de desconto para veículos até R$ 70 mil\n- R$ 1.500 de desconto para veículos entre R$ 71 mil e R$ 120 mil\n- R$ 2.000 de desconto para veículos acima de R$ 120 mil\n\nE tem mais: na compra, você escolhe duas cortesias, entre:\n✅ Insulfilm nos vidros\n✅ Emplacamento\n✅ Vale-combustível de R$ 200\n\nAtenção! Os descontos são válidos em qualquer concessionária Brasal no DF.\n\n?? (61) 3962-6655 | WhatsApp: 9696-7970",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Evidência Pública",
+      "servico": "Digital",
+      "descricao": "A CAAES Mulher vem a público manifestar seu total repúdio às declarações ofensivas proferidas pelo promotor de Justiça Francisco Santiago, do Ministério Público de Minas Gerais, contra a advogada Sarah Quinetti Pironi, em uma sessão de júri no dia 26 de março. \nA advogada, que atuava na sessão de julgamento, foi chamada de “galinha garnisé”, dentre outros insultos. O caso ganhou repercussão nacional após Sarah divulgar o vídeo do momento nas redes sociais. \nÉ inadmissível que uma profissional seja tão cruelmente ultrajada no exercício de sua função, com termos extremamente machistas e ofensivos à sua honra e imagem, violando não apenas as prerrogativas da advocacia, como hostilizando uma mulher em função do seu gênero.\nA CAAES Mulher se solidariza com Sarah Quinetti Pironi e espera que ações como essas sejam punidas com o rigor necessário.\n\n#CAAESmulher #repudio #advocaciaunida",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "A CAADF tem parceria com a bluefitacademia! \n\n✉️ Envie um e-mail para relacionamento@caadf.org.br, solicite o voucher e faça a sua matrícula.\n\nConfira os pré-requisitos????\n\n??Ser advogado(a)  inscrito na OAB/DF\n??Ser dependente de advogado(a) inscrito(a) na OAB/DF, sendo necessário encaminhar documento que comprove o vínculo\n\n❗Válido somente para novos contratos.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Bem-estar Estético",
+      "servico": "Saúde",
+      "descricao": "O Tribunal de Justiça do Estado do Espírito Santo torna público a abertura das inscrições para formação de lista tríplice destinada ao preenchimento de 01 (uma) vaga para Membro Substituto da Classe dos Juristas do egrégio Tribunal Regional Eleitoral do Estado do Espírito Santo.\n\nAs inscrições estarão abertas de 15 a 19 de maio. Os requerimentos de inscrição deverão ser encaminhados para o e-mail: subsecretariageral@tjes.jus.br\n\nAcesse o edital na íntegra nos stories",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "A CAA/DF lança o projeto Guarda-Roupas Sustentável, uma iniciativa voltada ao consumo consciente e à sustentabilidade.\n\nVocê pode contribuir com a doação de roupas e acessórios em bom estado de conservação, de preferência peças sociais. As entregas podem ser feitas diretamente na sede da CAA/DF, localizada SHLN, Conjunto B, Bloco 02 - Asa Norte.\n\nEm caso de dúvidas ou para doações em maior volume, entre em contato pelo telefone fixo ou pelo chat: (61) 3347-0213  que programamos a retirada.\n\nEssa é a primeira etapa do Programa que criará uma loja para advocacia: as peças poderão ser retiradas e deverão # ser devolvidas dentro do prazo de 2 anos (pelas mesmas peças ou por outras peças).\n\nParticipe e fortaleça essa rede de apoio à advocacia! \n\nAfinal… “Caixa de Assistência é a sua OAB em forma de cuidado pra você”",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Vem aí… AdvogaRUN 2025! \n\nA corrida oficial da advocacia vai começar e você não pode ficar de fora! Um evento pensado com todo o carinho, segurança e estrutura para receber você e sua família… e, pela primeira vez na história: com trajeto kids! \n\n?? 24 de agosto\n⏰ Largada às 7h\n?? Em frente ao Palácio do Buriti\n\nNeste ano, teremos:\n☑️ Percursos de 5km e 10km\n☑️ Corrida Kids (trecho exclusivo)\n☑️ Percurso exclusivo para PCD\n\nA corrida é aberta ao público, mas com benefícios exclusivos para a advocacia e jovem advocacia! \n\nAs inscrições serão abertas em breve e divulgadas por aqui! Reserva essa data!!!\n\nFique de olho no nosso Instagram e venha correr com a gente!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "RJ",
+      "entidade": "CAARJ",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "No Dia da Advocacia, saudamos os advogados e advogadas que labutam por uma sociedade mais justa ao garantir a defesa do direito de seus clientes.\n\nParabéns a todos e todas que fazem da ética e da legalidade seus principais argumentos! \n\nA Caixa de Assistência deseja um feliz dia aos colegas.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Futebol é com a CAAES! \n\nE graças ao empenho dos treinadores que comandam as 10 equipes de futebol da CAAES, os advogados e as advogadas têm dado um show em competições estaduais e nacionais. \n\nParabéns aos profissionais que trabalham arduamente para elevar a cultura do esporte entre a advocacia, representados neste vídeo por Erich Bomfim, técnico do time feminino de Cariacica e da seleção Livre masculina.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Tem novidade chegando para a advocacia capixaba!\nA CAAES firmou convênio com o Clube Álvares Cabral, e agora você pode se tornar sócio conveniado do clube com condições exclusivas.\n\nPiscinas, quadras, área de lazer e muito mais esperando por você.\n\n➡️ Arraste pro lado e conheça todos os detalhes.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "O momento mais esperado chegou ??\nBora descansar? ??️ \n\nSe for viajar não esqueça de economizar através da nossa rede conveniada. Baixe o PopUp CAASC e poupe tempo e dinheiro ?? \n\n#caasc #advogado #advogada #estudantededireito #direito #advocacia #advogada #mulheradvogada #direitopenal #direitocivil #direitoconstitucional #direitoadministrativo #direitopenal #direitoprocessualcivil #direitotributario #recessoforense #amodireito #recesso #oab",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Essa frase é um requisito para quem tem amigos Advogados, né? \n\nMarca aqui nos comentários aquele seu amigo advogado que você chamaria ?? \n\n#CAADF #OABDF #Advocacia #AdvocaciaDF",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "E aí, advocacia capixaba? Conta pra gente se vocês têm alguma forma carinhosa de chamar a CAAES. Entramos na trend! ???? \n\n#CAAESpresente #AdvocaciaCapixaba #OABES",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Orientar e defender a cidadania é a maior missão da advocacia! \n\nNeste 11 de agosto, celebramos o dia dos advogados e advogadas, que fazem com que as pessoas aproveitem melhor a vida!\n\nFeliz dia e vida longa à advocacia! \n\n#Diadaadvocacia #OABGoiás #advogado #advogada",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Oportunidade de desfrutar de uma vista privilegiada e viver uma experiência única de voar! A CAAES firmou um convênio com a Skydive Espírito Santo, empresa de paraquedismo em Vila Velha. A advocacia tem 12% de desconto no salto duplo de paraquedas com instrutor.\n\n*Sobre a Skydive*\n\nCom o objetivo de promover e difundir o  paraquedismo, a Skydive é a única escola de paraquedismo em atividade no Espírito Santo. O salto começa com um treinamento de instrução no solo. Após ocorrer a decolagem do avião, ele sobrevoa a região de Vila Velha por aproximadamente 20 minutos. A 10.000 pés (equivalente a 3.000 metros), chega a hora do salto! A queda livre tem duração aproximada de 35 segundos com uma velocidade de mais de 200km/h. Após a abertura do paraquedas você aproveita um passeio de 5 a 7 minutos observando Vila Velha e cidades próximas até chegar ao solo novamente.\n\nPara mais informações, entre em contato pelo WhatsApp (27) 99923-2221, pelo Instagram skydiveespiritosanto ou acesse o site https://www.skydiveespiritosanto.com.br/",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "A Caixa de Assistência dos Advogados do Espírito Santo (CAAES), por meio das Diretorias CAAES Esportes e CAAES Igualdade Racial, se manifesta em repúdio ao ataque racista sofrido contra o treinador do time Rio Branco, Rodrigo César, no último domingo (17/03). O ato ocorreu durante uma partida do Campeonato Capixabão, quando o profissional foi atacado com insultos racistas por um indivíduo.\n\nO esporte deve objetivar apenas união, alegria e entretenimento, e não se tornar palco da prática de um crime. Absurdos como esse não devem ser tolerados em nenhuma esfera de nossa sociedade. O combate ao racismo é uma prática diária, coletiva e que, além de ser fortalecida com ações do Poder Público, também deve ser um compromisso individual de cada cidadão.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Hoje foi dia de Fluzão no Mundial... e no fim de semana pode ser seu filho ou filha brilhando no Clube da OAB, hein? ??\n\nA Seletiva Oficial do Fluminense FC – Xerém vai acontecer, nos dias 5 e 6 de julho, no Clube da OAB, para meninos e meninas de 8 a 19 anos! \n\n E tem mais: a advocacia do DF tem 30% de desconto na inscrição!\n\nA seletiva contará com a presença de nomes importantes do clube carioca:\n\n- Amarildo de Jesus\n- Observador Técnico (captador – Xerém)\n- Paulo César – Treinador do Sub-20 Feminino\n- Equipe Fluminense BSB Performance\n- Guilherme Silva – Marketing FFC\n\n?? Masculino no sábado (05/07) | Feminino no domingo (06/07)\n?? Local: Clube da Advocacia (SCES, Trecho 2, QL 26, Conj. 1, Asa Sul)\n\nO objetivo é selecionar atletas para as equipes oficiais do Fluminense (Xerém) e para o time de Performance do Fluminense Brasília!\n\nVAGAS LIMITADAS! Aproveite a oportunidade e inscreva seu filho ou filha!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "MS",
+      "entidade": "CAAMS",
+      "categoria": "Saúde",
+      "servico": "Saúde",
+      "descricao": "?? Encerramos o Janeiro Branco com cuidado e acolhimento\n\nHoje vivemos uma manhã especial de alongamento, relaxamento e conexão, pensada para cuidar do corpo e da mente. Um momento de pausa na rotina, de respiro e de atenção ao bem-estar, encerrando o Janeiro Branco com propósito e sensibilidade.\n\nAgradecemos a todos que participaram e estiveram presentes, compartilhando esse instante de autocuidado, leveza e equilíbrio. Momentos como esse reforçam a importância de olhar para si, respeitar os próprios limites e valorizar a saúde em todas as fases da vida.\n\nSeguimos juntos, promovendo ações que incentivam o cuidado, o bem-estar e a qualidade de vida. ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Social e Eventos",
+      "servico": "Eventos",
+      "descricao": "???? Óia que tá chegando o mió Arraiá desse mundão! \n\n?? Marca aí que o Arraiá da Advocacia será no dia 13 de junho lá no CEL da OAB/CASAG.\n\n???? A gente espera ôceis pá muita cumida boa, gente aprontada e um arrasta pé daqueles! \n\n?? Já já nois divurga o horário, as atrações e o início da venda de ingressos!\n\nFica de óio ??\n\n#arraiadaadvocacia",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "RJ",
+      "entidade": "CAARJ",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Hoje acontece o retorno do recesso do judiciário!\n\nO ano de 2023 começa oficialmente agora para a advocacia brasileira, e nada mais justo do que começar o primeiro dia de trabalho desse ano analisando as metas para a advocacia!\n\nCom qual meta você mais se identificou? \nComenta aqui embaixo e marca um colega que também precisa cumprir esse objetivo!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Quer arrasar nos looks de primavera? ????\n\nEntão aproveite o desconto de até 50% na coleção de primavera/verão 2024 da Renner e que a advocacia catarinense ainda ganha mais 20% de desconto pela CAASC para garantir seus looks. A campanha vai até 30/09✅\n\nComo economizar? Acesse o link http://lojasrenner.parcerialink.com.br/caasc e o desconto vem na aplicação automática na sacola.??\n\n??Baixe o App PopUp CAASC e veja onde economizar agora mesmo! \n\n#renner #oabsc #caasc #advocaciacatarinense",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "A Caixa de Assistência dos Advogados do Espírito Santo (CAAES) se solidariza com as famílias e os amigos das vítimas do ataque brutal e covarde à Escola Estadual de Ensino Fundamental e Médio (EEFM) Primo Bitti e ao Centro Educacional Praia de Coqueiral (CEPC), em Aracruz, que deixou três mortos e 11 feridos.\n\nToda a sociedade do Espírito Santo e do país vive um momento de profunda dor diante dessa tragédia inaceitável, com perdas irreparáveis. É preciso haver apuração e punição exemplar. A CAAES parabeniza o esforço das forças policiais em esclarecer o crime e solicita atenção máxima às autoridades. \n\nbenhur.farina roniborgo rodrigomell01101\npolianafirme eliaidina.adna milenacelestino.adv\ndoraliceadv saviofaustino viviansantosgomes\nedinalva.bg julianagavacarlini erikacavalcantti natalialessasanches casagrande_es",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Advogados e advogadas, todas as nossas homenagens são para vocês! O Dia da Advocacia demonstra nossa admiração por essa classe que sempre está na luta pelos direitos da sociedade. \n\nA CAAES se orgulha de cuidar da advocacia e parabeniza todos os advogados(as)!\n\nbenhur.farina roniborgo rodrigomell01101 polianafirme eliaidina.adna milenacelestino.adv doraliceadv saviofaustino viviansantosgomes edinalva.bg erikacavalcantti genaina_vasconcellos cinthyapol natalialessaadvogada",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Evidência Pública",
+      "servico": "Atendimento Institucional",
+      "descricao": "A partir do dia 1 de março, a tesoureira Raquel Custódio assume a presidência da Caato para representar e homenagear todas as mulheres advogadas do Tocantins. \n\n?? A iniciativa visa o empoderamento e ascensão de mulheres através da condução das ações da Caato pertinentes a todas as advogadas durante o mês de março.\n\n#mêsdamulher #caato #homenagem #mulheradvogada",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "De musculação às artes marciais, a CAAES traz 3 convênios para iniciar 2023 praticando atividade física e garantindo ainda mais qualidade de vida. \n\nbenhur.farina roniborgo rodrigomell01101\npolianafirme eliaidina.adna milenacelestino.adv\ndoraliceadv saviofaustino viviansantosgomes\nedinalva.bg julianagavacarlini erikacavalcantti natalialessasanches",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Educação",
+      "descricao": "Nesta segunda-feira (10), houve uma reunião de deliberação sobre o Encontro Nacional da Jovem Advocacia, que acontecerá em Salvador-BA. \n\nSerão ofertadas 52 vagas exclusivas para jovens advogados irem ao evento, e o transporte será terrestre, com ônibus executivo, gratuito. A iniciativa da OAB/TO, ESA/TO e CAJ/TO é apoiada pela CAATO.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Bem-estar Estético",
+      "servico": "Saúde",
+      "descricao": "A advogada Sara Oliveira emagreceu 16 quilos em menos de três meses após iniciar acompanhamento com a nutricionista da Caixa de Assistência dos Advogados do Espírito Santo (CAAES), Rafaela Gomes. A CAAES disponibiliza consultas gratuitas para a advocacia com o time de nutricionistas, visando o bem-estar e a saúde.\n\nSara conta que conheceu o serviço na entrega de carteiras da Ordem em dezembro do ano passado, momento em que é realizado um acolhimento aos jovens advogados e em que os diretores(as) da CAAES costumam apresentar todos os serviços e benefícios disponibilizados para a advocacia.\n\n“No primeiro dia que eu mandei mensagem, consegui marcar minha primeira consulta com a Rafaela, que foi muito solícita, sempre me incentivando. Não achei a dieta muito restritiva, consegui fazer tranquilamente e tive esse resultado”.\n\nConfira a matéria na íntegra no site da CAAES. Link nos stories. \n\nsarandrade.adv \nbenhur.farina roniborgo rodrigomell01101\npolianafirme eliaidina.adna milenacelestino.adv\ndoraliceadv saviofaustino viviansantosgomes\nedinalva.bg julianagavacarlini erikacavalcantti natalialessasanches rafaelanutriesportiva",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "Um convite especial para esta sexta-feira: Missa dos Advogados, no campinho do Convento, a partir das 9 horas. ????????????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "AMIG@ BOM É AMIG@ ADVOGAD@ \n\nque nos defende até quando estamos errados ??\n\n??Neste 20 de julho, Dia Internacional da Amizade ?? marque aqui aquele advogad@ super amig@ ??\n\n#caasc #20dejulho #diadoamigo#advogados #advocacia #oabsc #cfoab",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "#NaCAADFTem parcerias exclusivas para os advogados e advogadas do Distrito Federal! ??\n\n???? Arraste para conhecer 1️⃣4️⃣ convênios esportivos para você aproveitar.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Mais uma vantagem imperdível pra advocacia! Afinal, vocês merecem, né? ????\n\nAgora, seus pais, filhos e cônjuges também podem aproveitar o plano exclusivo de R$ 109,90 na Academia Evolve! \n\nAs matrículas devem ser feitas na unidade Brasil 21, mas depois você pode treinar em qualquer unidade da Evolve.\n\nLembrando que é necessário apresentar a carteirinha da OAB ou a do dependente no momento da matrícula!\n\nAqui na CAA/DF, pensamos em tudo para oferecer mais conforto, rede de apoio e benefícios exclusivos para você e sua família!\n\n?? Mais informações: (61) 99853-5380",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "RJ",
+      "entidade": "CAARJ",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "A Caarj em parceria com Teatro Riachuelo oferece à toda advocacia a oportunidade de curtir a cultura e entretenimento para toda a família com descontos de até 25%. ??\n\nNão perca essa oportunidade! Acesse o site Caarj.org.br e veja mais informações sobre essa parceria. ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "RJ",
+      "entidade": "CAARJ",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "A Caarj traz novos auxílios para a advocacia neste ano de 2023. ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Desconto exclusivo para a Advocacia do DF na Steak Bull – Brazilian Steakhouse! ??️\n\n❗Segunda e terça: 50% de desconto no rodízio, almoço e jantar. \n❗Quarta a domingo: 15% de desconto no rodízio, almoço e jantar. \n\nImportante: o desconto não se aplica em datas especiais e feriados, e não inclui bebidas e sobremesas. Aproveite essa oportunidade para uma experiência gastronômica de qualidade!\n\nPara mais informações, acesse o site da CAADF.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "A largada foi dada! ??\n\nA AdvogaRUN 2025 começou com muita energia, reunindo a advocacia e suas famílias em percursos de 5km, 10km, caminhada e, pela primeira vez, a Corrida Kids. \n\nUm evento que já entrou pra história e vai ficar na memória de todos!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Evidência Pública",
+      "servico": "Digital",
+      "descricao": "Pra brilhar ainda mais na sua profissão, você merece um toque especial! ✨\n\n??Como economizar? acesse o site https://vivara.parcerialink.com.br/caasc e coloque os cupons CAASC15  e CAASC5 para ter os descontos especiais na vivaraonline \n\n#oabsc #caasc #advocaciacatarinense #vivaraprofissoes",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Evidência Pública",
+      "servico": "Digital",
+      "descricao": "CAAES Jovem repudia projeto que pretende limitar o trabalho de jovens advogados \n\nRecebemos com uma preocupação importante a notícia de que está sendo elaborado um Projeto de Lei que visa categorizar a carreira da Advocacia. Inicialmente o que pudemos apurar é que a ideia do legislador seria limitar a atuação do Advogado à quantidade de anos de atuação. Então, com até 5 anos de carteira profissional, a classe só poderia atuar em 1ª instância. \n\nEntre 5 anos e 10 anos lhe seria dada a concessão de atuar nos Tribunais Estaduais e, apenas e tão somente após 10 anos de profissão, poderiam atuar nos Tribunais Superiores.\n\nAfirmamos categoricamente, inclusive por trabalharmos diretamente com Jovens Advogados, que não existe limitador capacitante algum na quantidade de anos que o profissional está na ativa. \n\nPelo contrário, o que se pode aferir com certeza é a rapidez com que o Jovem Advogado se insere e a facilidade que tem de trabalhar com novas tecnologias aliadas à técnica jurídica.\n\nNinguém limita a atuação de um jovem médico ou de um jovem engenheiro meramente por serem recém-formados.\n\nUma limitação desta natureza é uma afronta à toda classe, ao espírito legislativo e também ao princípios constitucionais, que pregam a consistência dos valores sociais e do trabalho.\n\nViva a Jovem Advocacia!\n\nbenhur.farina roniborgo rodrigomell01101 polianafirme eliaidina.adna milenacelestino.adv doraliceadv saviofaustino viviansantosgomes edinalva.bg erikacavalcantti genaina_vasconcellos cinthyapol natalialessaadvogada",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "A Aplica LGPD, método criado pela professora de Direito e advogada Fernanda Modolo, oferece uma ótima oferta para a advocacia! São 40% de desconto na capacitação de consultor jurídico na área de Compliance em LGPD, atuando inclusive como Encarregado de Proteção de Dados Pessoais. \nPara mais informações sobre o Método Aplica LGPD, acesse o Instagram aplicalgpd",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Parabéns para nossa Advogada Cláudia Fittipaldi pela sua medalha de prata! ???? Seu desempenho no Judô nos I Jogos da Advocacia Nacional foi incrível! ???? Continue brilhando e inspirando outros atletas! ???? #MedalhaDePrata #OrgulhoOABTocantins",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "☀️??️ Vai curtir o verão? Os benefícios da CAAES vão com você!\n\nSelecionamos 7 convênios para você aproveitar descontos especiais e curtir a estação com mais economia e conforto. \n\n????Passe para o lado e confira!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "?? Atenção, advogados e advogadas! \n\n?? Chegou a hora de se preparar para um dos eventos mais aguardados do ano!\n\n??️ Anotem na agenda: a 2ª Corrida da Advocacia será no dia 9 de agosto!\n\n????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "A gente sabe que no dia a dia, ser advogado vai além do significado literal, né?\n\nParabéns a todos os colegas advogados e todas as colegas advogadas ??\n\n#CAADF #OABDF #Advocacia #AdvocaciaDF",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "RJ",
+      "entidade": "CAARJ",
+      "categoria": "Social e Eventos",
+      "servico": "Eventos",
+      "descricao": "Estamos chegando no fim do Mês da Mulher, mas a luta continua!\n\nO machismo ainda é uma infeliz realidade no dia a dia da advogada, não só em sua vida pessoal, mas no exercício de sua profissão.\n⠀\nBasta de desrespeito às prerrogativas das mulheres advogadas! Não podemos permitir que a prática do Direito continue reproduzindo violências, estigmas e preconceitos.⠀\n\nCompartilhe este post e comente aqui quais outras falas e atitudes as advogadas seguem enfrentando.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Ir até os escritórios, ouvir os advogados e advogadas em seus locais de trabalho e falar sobre os serviços que a CAAES oferece à advocacia. Esse é o projeto CAAES em Ação, que desta vez visitou o Edifício Portugal, no Centro de Vitória. \n\nUm contato direto, aberto e franco com a nossa classe! ??\n\nNa CAAES, nossa palavra de ordem é evoluir sempre, superando os desafios e atendendo os anseios da advocacia.\n\nEm breve, vamos mostrar aqui como foi nossa conversa com os(as) advogados(as) durante a visita.\n\n#CAAESemAÇÃO #vemUSARaCAAES\n#vemPraCaaes",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "É claro que a CAADF pensou nas crianças da Advocacia do DF! ??\n\nO mês de outubro está chegando ao fim e preparamos uma peça teatral do Sítio do Picapau Amarelo para toda a garotada. ??\n???? Arraste para o lado e confira o regulamento.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "O final de semana está chegando ⛱️\n\nAtenção advogado! Não deixe de fazer a reserva do quiosque no clube da OAB, é só ligar no telefone (63) 3212-9623 ?? \n\nDiversão e lazer garantidos para sua família! ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Educação",
+      "descricao": "Advocacia do Estado de Goiás, os colegas do Rio Grande do Sul precisam de nossa solidariedade. \n\nA CASAG, a OAB-GO e a ESA-GO apoiam a campanha SOS Rio Grande do Sul, comandada pela OAB/RS. \n\nContamos com a sua participação, advogado e advogada, para fornecer ajuda àqueles que foram prejudicados pelas enchentes que atingiram o Estado na última semana. \n\nDoe através do PIX: 92.958.800/0001-38\n\nO pix estará em nome de: Associação dos Bancos no Estado do Rio Grande do Sul.\n\nVamos juntos!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Energia, força, animação e muita interação entre os advogados(as)! Confira os melhores momentos da 1ª edição dos Jogos da Advocacia Capixaba realizado pela CAAES.\n#caaes #jogoscaaes #caaespresente \nbenhur.farina roniborgo rodrigomello1101 polianafirme eliaidina.adna milenacelestino.adv doraliceadv saviofaustino viviansantosgomes edinalva.bg julianagavacarlini erikatcavalcantii natalialessasanches",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Financeiro",
+      "servico": "Benefícios",
+      "descricao": "Vem aí o IV Congresso de Direito Previdenciário do Estado do Espírito Santo. Fique ligado nas nossas redes sociais. Em breve, mais informações!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Foi top, advocacia!!! ??????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Saúde",
+      "servico": "Saúde",
+      "descricao": "A podóloga e reflexoterapeuta Silvana Alencar também é conveniada da CAAES! A sessão de reflexologia podal está por R$ 75 e a de podologia por R$ 80, um desconto especial de 5% para advogados e advogadas.\nA reflexoterapia trata e previne questões físicas e emocionais por meio de estímulos nas terminações nervosas dos pés, de forma não invasiva.\nOs descontos estabelecimentos são válidos para pagamento em pix, cartão de débito e dinheiro.\n\nSilvana Alencar\nbemcuidar.podoereflexologia / silbemcuidar.podologa\nWhatsApp: (27) 98122-6060\nEndereço: Praça San Martin, 84, sala 503. Ed. Alphaville Trade Center. \n\nbenhur.farina roniborgo rodrigomell01101\npolianafirme eliaidina.adna milenacelestino.adv\ndoraliceadv saviofaustino viviansantosgomes\nedinalva.bg julianagavacarlini erikacavalcantti natalialessasanches",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "RJ",
+      "entidade": "CAARJ",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "As inundações no Rio de Grande do Sul estão deixando um cenário de calamidade em mais de trezentos municípios. Em quase duas semanas, choveu o volume esperado para um ano, vitimando fatalmente 90 pessoas e deixando mais de cem desaparecidas. E a previsão é que mais pancadas de chuva atinjam o estado nos próximos dias. ⚠️\n\n??A Caixa de Assistência da Advocacia do Rio de Janeiro (Caarj) e a Comissão de Direitos Humanos e Assistência Judiciária (CDHAJ) da OABRJ iniciaram, nesta terça-feira, dia 7, uma campanha para recolher donativos em socorro à população daquele estado. São bem-vindos todos os tipos de doações, mas os itens mais necessários são: água mineral, fraldas e produtos de higiene pessoal e alimentos não perecíveis.\n\n⚠️O ponto de coleta é a sede da OABRJ (Avenida Marechal Câmara, 150), de segunda a sexta-feira, das 9h às 18h.\n\n?? Acesse oabrj.org.br para mais informações e participe dessa campanha.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Não fique de fora! O clube da OAB-TO estará em funcionamento normal durante os dias 18 à 21 de fevereiro, feriado de carnaval ??\n\n➡️ Arrasta para o lado e confira a programação deste sábado (18/02)\n⚠️ Ainda temos quiosques disponíveis para reserva (últimas unidades) entre em contato e garanta já o seu! (63) 3212-9623 ??\n\n#CarnavalCaato #FeriadoDeCarnaval #ProgramaçãoCaato",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Evidência Pública",
+      "servico": "Digital",
+      "descricao": "Tem novidade chegando… ?? \n\nE já podemos adiantar: quem gosta de esportes, quem não quer ficar sem treinar e parado, vai amar!\n\nFiquem ligados e acompanhem as nossas redes sociais! ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "O time masculino de futebol da OAB Tocantins fez sua estreia emocionante nas I Olimpíadas da Advocacia 2023, enfrentando o time de Goiás nos Jogos Nacionais da Advocacia! O placar foi TO 0 x 3 GO ⚽️?? Nossos jogadores mostraram muita garra e determinação. ???? Mesmo diante do resultado adverso, continuaremos firmes e perseverantes, em busca de novas vitórias e conquistas! ???? Vamos em frente, Tocantins! Juntos somos mais fortes! ??????\n#OABTocantins\n#OABCaato #FutebolMasculino",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "Está com os sintomas? ??⚠️\n\nBaixe o “PopUp CAASC” e acesse agora mesmo o Einsten Conecta para uma primeira avaliação. \n\nLink na bio!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Cheias de energia e garra, as advogadas da seleção capixaba de futebol embarcaram, na última terça-feira (07/11), rumo a Recife, para disputar o Campeonato Nacional de Futebol para advogadas! ⚽️⚽️\n\nA CAAES deseja sorte e uma excelente competição às atletas! ????\n\nbenhur.farina roniborgo rodrigomell01101\npolianafirme eliaidina.adna milenacelestino.adv\ndoraliceadv saviofaustino viviansantosgomes\nedinalva.bg julianagavacarlini erikacavalcantti natalialessasanches",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "RJ",
+      "entidade": "CAARJ",
+      "categoria": "Infraestrutura e Serviços",
+      "servico": "Infraestrutura",
+      "descricao": "Agora, advogados e advogadas, pais e responsáveis, terão um ambiente de acolhimento para crianças! ????\n\n?? A Caarj inaugurou, nesta quinta-feira, dia 13, uma brinquedoteca para os pequenos e uma sala de amamentação na sede da OABRJ. \n\nAssista ao vídeo e veja mais como ficou a estrutura do espaço feito para atender a advocacia! ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "RJ",
+      "entidade": "CAARJ",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "Alô, estudantes do Direito! ⚖️\n\nEstá vindo aí mais uma edição do Caarj 4.0 nas Faculdades. Já foi lá se inscrever? Acesse o link da bio e não perca mais tempo! ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Para cuidar da saúde da advocacia, a CAAES firmou convênio com o Centro de Cirurgia Ocular do Espírito Santo (CECOES). A clínica é referência em diagnóstico e tratamento ocular, conta com especialistas altamente qualificados e presta atendimento clínico de excelência. São 30% de desconto em exame, cirurgia e consulta médica.\n\nA CECOES fica localizada na Rua Desembargador Ferreira Coelho, 304 Praia do Suá - Vitória/ES. O horário de atendimento é de segunda a sexta, das 7h30 às 18h30.\n\nEntre em contato pelo WhatsApp: (27) 3227-7648 ou pelo Instagram cecoes_oftalmologia",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "A Juju tem um recado pra advocacia catarinense! ??\n\njujuteofilo a gente sabe que o cuscuz é importante, mas não se preocupa que aqui na CAASC até pro cuscuz tem desconto!\n\n?? Ser advogado e advogada catarinense te traz inúmeros benefícios, mas o que é novidade é que agora você consegue calcular esses benefícios na palma da sua mão.\n\nO PopUp CAASC te faz POUPAR através da geolocalização, te mostrando os parceiros mais próximos para adquirir produtos, sair para jantar, ir ao cinema, comprar roupas, sapatos e muito mais! Como disse a Juju, até para ir ao Beto Carrero. ??\n\n?? Além disso, o app oferece um cartão de visita digital e exclusivo para todos os associados. Esse é só o começo e vem muito mais por aí!\n\nA Caixa está se renovando e contamos com você para irmos muito além, por isso, clique agora mesmo no link da bio e baixe o aplicativo para Apple ou Google. ❤️??\n\n#advocacia #advocaciacatarinense #caasc #popup #cuscuz #jujuteofilo",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "?? Advocacia do DF! \n\nVem aí a primeira Oficina ChatGPT do CEAPD!\nCom o objetivo de capacitar empreendedores e profissionais jurídicos, a Oficina abordará, de forma prática, a aplicação do ChatGPT e de outras ferramentas de IA existentes no mercado. \n\nO evento ocorrerá no dia 26.04 (quarta-feira), e os interessados podem se inscrever para participar de forma presencial ou remota, por meio dos links: \n\n????Advogados Jovens DF (50% desc.):\n\nLink com cupom incorporado - https://sun.eduzz.com/1882886?cupom=ADVOCACIAJOVEMDF\n\n Cupom - ADVOCACIAJOVEMDF\n\n???? Advogados do DF (15% desc):\n\nLink com cupom incorporado - https://sun.eduzz.com/1882886?cupom=ADVOCACIADF\n\nCupom - ADVOCACIADF",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Prepare-se para um dia de aventura e conexão com a natureza! Não perca essa oportunidade de compartilhar momentos especiais com os colegas advogados. Vamos nessa!\n\n#Trilha #Advocacia #CAATO #OABTO",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "36 anos de um Tocantins forte! #Tocantins36Anos  #CAATO #OABTO",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "O convênio entre a CAAES e a APCEF em Bicanga – Serra, é uma boa pedida em todas as épocas do ano. Mas especialmente no verão, período em que as temperaturas ficam ainda mais elevadas, o momento é ideal para aproveitar toda a estrutura que o clube oferece: piscinas, parque infantil, choupana e churrasqueiras.\n\nE para o ano de 2023 a CAAES traz uma novidade: o fim da limitação de até 20 pessoas. A entrada no espaço é gratuita para a advocacia, independentemente da quantidade de advogados e advogadas que estiverem no clube. A taxa para dependentes - cônjuge e filhos(as) - é de R$ 17 e para convidados é de R$ 27 + R$ 7 (taxa da piscina).\n\nDurante o mês de janeiro, o Clube está aberto de quarta a domingo, das 8h às 17h. Já nos demais meses, o funcionamento é aos finais de semana. A reserva de vaga deve ser feita durante a semana, de segunda a quinta das 9h às 18h, para o fim de semana seguinte, entrando em contato com a CAAES pelo WhatsApp (27) 99503-5595.\n\nComo era antes:\nLimitação de até 20 pessoas. Os advogados e advogadas que passavam dessa quantidade, utilizavam o espaço mediante o pagamento do valor de uma taxa.\n\nComo é agora:\nSem limitação de pessoas. Entrada gratuita para a advocacia. Dependentes pagam uma taxa de R$ 17 e convidados de R$ 27 + R$ 7 (taxa da piscina).\n\nbenhur.farina roniborgo rodrigomell01101\npolianafirme eliaidina.adna milenacelestino.adv\ndoraliceadv saviofaustino viviansantosgomes\nedinalva.bg julianagavacarlini erikacavalcantti natalialessasanches",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Bem-estar Estético",
+      "servico": "Saúde",
+      "descricao": "Dizem que um banho de mar é capaz de lavar a alma e renovar as energias. Pensando nisso e no bem-estar da advocacia, a Caixa de Assistência dos Advogados do Espírito Santo (CAAES) oferece uma nova modalidade esportiva, a natação no mar. \n\nOs interessados em participar dessa nova modalidade devem entrar em contato com o professor Gustavo, temporariamente responsável pelas inscrições, pelo telefone (27) 99977-4050.\n\n??Acesse os stories e saiba mais!\n\nbenhur.farina oabespiritosanto equiperaias oabvilavelha #CAAES #SaudeNaVeia #CAAESpresente #CAAESavança",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "?? Corrida da Justiça da Acessibilidade e Inclusão ??\n?? Data: 8 de dezembro, 6h30 ?? Largada: Tribunal de Justiça\n?? Inscrições: 8 de novembro a 1º de dezembro. 1.100 vagas. ?? Kit: Camiseta, viseira e sacola – retirada nos dias 6 e 7 de dezembro. ?? Premiações: Mais de R$ 45 mil, 48 premiados.\n??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "Nosso projeto de energia solar está a todo vapor. Nossa inauguração foi marcada pela presença de advogados e advogadas que compartilham o sentimento de alegria pela utilização de energia limpa.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Sexta-feira de fé! A Missa da Advocacia foi realizada na manhã dessa sexta-feira (14/04) e contou com a presença de dezenas de advogados e advogadas que, reunidos, celebraram a Padroeira do Estado Nossa Senhora da Penha.\n\nbenhur.farina roniborgo rodrigomell01101\npolianafirme eliaidina.adna milenacelestino.adv\ndoraliceadv saviofaustino viviansantosgomes\nedinalva.bg julianagavacarlini erikacavalcantti natalialessasanches",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "RJ",
+      "entidade": "CAARJ",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "O diagnóstico de câncer de mama é um momento desafiador, mas é importante saber que as mulheres brasileiras possuem diversos direitos garantidos por lei para enfrentar essa batalha.\n\n➡ Arraste para o lado e saiba quais!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Bem-estar Estético",
+      "servico": "Saúde",
+      "descricao": "Sempre pensando no seu bem-estar, trouxemos mais 5️⃣ convênios para a Advocacia do Distrito Federal.\n\nArrasta pro lado e confira os benefícios que separamos para vocês ➡️",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Infraestrutura e Serviços",
+      "servico": "Infraestrutura",
+      "descricao": "Você sabia que a CAAES é a única instituição responsável pelo funcionamento das modalidades esportivas, transporte interfóruns e muito mais?  Conheça um pouco da nossa atuação em prol da advocacia capixaba no novo quadro #ACAAESFaz! \n\nbenhur.farina roniborgo rodrigomell01101 polianafirme eliaidina.adna milenacelestino.adv doraliceadv saviofaustino viviansantosgomes edinalva.bg erikacavalcantti genaina_vasconcellos cinthyapol natalialessaadvogada",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "RJ",
+      "entidade": "CAARJ",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "A escolha da data remonta a 10 de outubro de 1980, quando mulheres realizaram um grande protesto nas escadarias do Teatro Municipal de São Paulo, denunciando o aumento dos crimes de gênero no país. Esta manifestação histórica marcou o início de um movimento mais organizado de luta contra a violência contra a mulher no Brasil.\n\n?? A OABRJ e a Caarj voltam a reforçar a importância da conscientização e do combate a todos os tipos de violência contra as mulheres.\n\n?? Se você souber de alguma situação de violência, disque 180 e denuncie! ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "A prática esportiva pode mudar a vida das pessoas! E o Sandro Zago é um exemplo disso! A vida dele mudou depois que começou a praticar o vôlei da CAAES. Ao todo, Sandro deixou para trás 50 quilos! Confira o depoimento dele! ??#CAAESparceira #superação #desafio",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Evidência Pública",
+      "servico": "Digital",
+      "descricao": "Está na hora de mudar o mindset.\n\nNeste 2 de abril, Dia Nacional da Conscientização sobre o Autismo, dizemos sim ao conhecimento.\n\nEntre no nosso site ou clique na link da nossa bio para conhecer o nosso projeto Central da Inclusão, que apoia a ingressão de advogados e advogadas catarinenses com deficiência no mercado de trabalho.??\n\n#diadaconscientizaçãodoautismo #caasc #oabsc",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Gratidão! 2023 foi um ano de muitas conquistas! E nosso maior foco sempre foi dar voz à advocacia nos projetos e iniciativas da CAAES.\nAgradecemos pela parceria neste ano! Seguiremos firmes e unidos em 2024.\nFeliz Natal e um excelente ano novo!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "??❤️",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Saúde",
+      "servico": "Saúde",
+      "descricao": "*CAAES entrega mimos em alusão à campanha Outubro Rosa*\n\nA campanha Outubro Rosa tem movimentado pessoas e entidades em todo o mundo com o objetivo de chamar a atenção para a saúde da mulher, sobretudo a prevenção do câncer de mama. \n\nA Caixa de Assistência dos Advogados do Espírito Santo (CAAES) abraça essa campanha e encontrou uma forma diferente de mostrar para as advogadas como se preocupa com a saúde delas. \n\nDurante toda a semana, estão sendo entregues às mulheres que vêm até a CAAES uma pequena lembrança, contendo um par de brincos e um cartão lembrando da campanha Outubro Rosa. Também foram montados kits com bombons. \n\nPara a advogada Lucelia Gonçalves de Rezende, a iniciativa da Caixa de Assistência foi positiva. “Gostei e achei muito interessante essa forma de nos lembrar de nos cuidar, inclusive hoje vim para cuidar da minha saúde alimentar, com a nutricionista”, destacou. \n\nDurante todo o mês as lembrancinhas serão entregues às advogadas que passarem pela CAAES. Não deixe de pegar a sua, advogada! \n\n.\n\nbenhur.farina roniborgo rodrigomell01101\npolianafirme eliaidina.adna milenacelestino.adv\ndoraliceadv saviofaustino viviansantosgomes\nedinalva.bg julianagavacarlini erikacavalcantti natalialessasanches",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Ainda pensando no que fazer nesse verão? ☀️ A gente reuniu as melhores opções para as suas férias com descontos para a advocacia catarinense.\n\n?? Baladas, restaurantes, parques de diversão, passeios de lancha e hotéis maravilhosos para você e sua família. ?? Arrasta para o lado e confira:\n\nO link de acesso aos descontos está na nossa bio, aproveite e boas férias! ❤️\n\n#CAASC #OABSC #AdvocaciaCatarinense #DireitoSC #férias",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "No emocionante jogo do Campeonato Alifa Nacional 2023 Feminino Society, a OAB CAATO demonstrou sua supremacia, conquistando uma vitória memorável por 4 a 2 contra as Jogadoras da Lei FC, representando a OAB-RJ.\n\nAs jogadoras da OAB CAATO brilharam intensamente no campo, exibindo um desempenho notável que encheu os corações dos torcedores de orgulho. Enaile Gomes de Oliveira, a grande estrela da partida, comandou o espetáculo ao marcar três gols espetaculares. Cada gol dela foi uma verdadeira obra de arte, demonstrando técnica, habilidade e determinação.\n\nAlém disso, Raquel não ficou para trás e mostrou sua destreza ao converter um pênalti decisivo, que solidificou a vantagem da nossa equipe. O jogo foi uma montanha-russa de emoções, com momentos de tensão e êxtase à medida que as jogadoras da OAB CAATO travavam uma batalha implacável contra suas adversárias.\n\nO triunfo não é apenas uma vitória no placar, mas também uma celebração do compromisso e da dedicação das nossas jogadoras, que representam a força do futebol feminino. A OAB CAATO está no caminho certo, e este é apenas o começo de uma jornada repleta de conquistas. O Campeonato Alifa Nacional 2023 promete ser uma temporada épica e nossa equipe está pronta para enfrentar todos os desafios com coragem e paixão. Continue a apoiar a OAB CAATO, pois juntas, somos imparáveis! #OABCAATO #FutebolFeminino ⚽??????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Hoje a CAATO realizou a entrega de uma roçadeira para manutenção do Clube da OAB/TO de Araguaína.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "INSCRIÇÕES ABERTAS AdvogaRUN 2025! \n\nA corrida oficial da advocacia vai começar e você vai com a gente!\n\n?? 24 de agosto \n⏰ Largada às 7h \n⏰ 8h30 Corrida Kids \n??Em frente ao Palácio do Buriti\n\nPreço da corrida (com um kit de tirar o fôlego até do atleta mais preparado):\n??️ R$ 119,00 Público Geral \n??️ R$ 99,00 Advocacia \n??️ R$ 89,00 Advocacia Jovem \n??️ R$ 79,00 Kids \n \nPercursos: \n- 5km e 10km\n-",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Parabéns, Dra. Geany Dantas! ???? Sua incrível conquista na categoria pena/leve do Jiu-Jitsu nos Jogos da Advocacia Nacional merece todo o reconhecimento! ???? Sua dedicação e talento a levaram à medalha de ouro, além da medalha de prata na categoria absoluta, mostrando que não há limites para alcançar o sucesso quando se ama o que faz. ???? Continue brilhando e inspirando a todos! ???? #JogosDaAdvocacia #JiuJitsu #OABTocantins #CAATO",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Muita diversão e lazer no carnaval da Caato ??\n\n?? Arrasta para o lado e confira as fotos desse sábado! Todos que marcaram presença curtiram uma programação completa para toda a família ??️??\n\n??Futebol - Amistoso Oab x União\n??Carnaval kids ciafinalfeliz \n??Música com o dj henriquenoronha",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "RJ",
+      "entidade": "CAARJ",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "Ah, se a gente pudesse… ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Saúde",
+      "servico": "Saúde",
+      "descricao": "A CAAES se orgulha em comemorar 65 anos!\n\nEm 2022, tivemos muitas conquistas: ampliação das modalidades esportivas e dos atendimentos de serviço social, psicológico e nutricional.\n\nAvançamos na luta pela igualdade feminina, pelos direitos dos jovens, na luta por igualdade racial e nas demandas da advocacia do interior. \n\nMas todo esse trabalho vem sendo possível porque, ao longo da história da CAAES, vários presidentes deixaram legados importantes no que se refere à assistência social para advogados e advogadas. \n\nVamos acompanhar?",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "??⚽ Rumo ao Campeonato Nacional ALIFA 2023! ⚽??\n\nApresentamos uma prévia da nossa forte delegação de atletas do futebol masculino, nas categorias master e livre, que terão a honra de representar a OAB-CAATO neste grande evento esportivo. Cada jogador carrega consigo a paixão pelo esporte e o compromisso de dar o seu melhor em campo.\n\nAgradecemos o apoio e a torcida de todos! Juntos, somos mais fortes. Vamos com tudo, equipe! ????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Comemorando o Dia da Mulher Advogada com muita informação necessária! ????\n\nConhecer esses benefícios é um direito, divulgar é essencial para que mais mulheres saibam que não estão sozinhas! Informação também é cuidado.\n\nAlém de protagonizar a advocacia, as mulheres advogadas contam com benefícios e auxílios pensados para oferecer acolhimento, segurança e apoio em diferentes momentos da vida profissional e pessoal. \n\nNa foto, a querida Leopoldina: a primeira mulher advogada do DF!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Social e Eventos",
+      "servico": "Eventos",
+      "descricao": "Meus fios e minhas fias, óia só quem tá de vorta! \n\nComo trem bão é coisa boa, o nosso Arraiá da Advocacia tá vindo pra gente dançar esse arrasta-pé!\n\nMarca aí na sua foinha, dia 23 de junho, às 19h30, no CEL da OAB de Aparecida de Goiânia! \n\nNão perde não, sô! \n\n⚠️ E fica de zóio aqui, porque já já a gente divurga as vendas de ingressos! \n\n#oab #oabgo #oabcasag #arraialdaadvocacia #festajunina #phemichael",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "A CAAES firmou um convênio com a Academia Crossfit Citius que garante condições exclusivas para advogados, advogadas e familiares. A Citius possui unidades em Jardim Camburi (Rua Gelu Vervloet dos Santos, 864) e na Praia da Costa (Rua Henrique Moscoso, 419, Vila Velha).\n\nA tabela de convênio conta com os seguintes valores: Citius Plus ilimitado: mensal (De R$ 309 por R$ 229); Citius Plus (3x): mensal (De R$ 229 por R$ 199);\nEntre em contato no WhatsApp a seguir para saber mais! (27) 99252-3644\n\ncrossfitcitiusvilavelha crossfitcitiusvitoria",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "A tradicional Missa da Advocacia, que ocorre dentro na programação da Festa da Penha, será realizada no dia 14 de abril, às 9h, na Capela do Convento. O tema da 453º edição da festa religiosa é “Com Maria, Chamados a Servir”.\n\nÀs 7h da manhã haverá a concentração na entrada do Convento e às 7h30 o início da subida a pé com a reza do terço. Um ponto de coleta será disponibilizado para entrega de alimentos não perecíveis para doação.\n\nA CAAES convida a todos a participarem desse importante momento para o calendário capixaba!\n\n#FestaDaPenha2023 #MissaDaAdvocacia \n\nbenhur.farina roniborgo rodrigomello1101 polianafirme eliaidina.adna milenacelestino.adv doraliceadv saviofaustino viviansantosgomes edinalva.bg",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Bem-estar Estético",
+      "servico": "Saúde",
+      "descricao": "Hoje, 8 de março, Dia Internacional da Mulher, reafirmamos o compromisso com o reconhecimento, o respeito e a valorização das mulheres na advocacia o ano todo.\n\nA Caixa de Assistência dos Advogados do Espírito Santo segue ao lado das advogadas capixabas, oferecendo serviços, benefícios e iniciativas que contribuem para que cada advogada possa exercer sua profissão com segurança e dignidade, conciliando carreira, vida pessoal e bem-estar. \n\nNosso compromisso é contínuo: abrir novas possibilidades e garantir que cada advogada tenha voz e espaço para crescer e transformar a realidade ao seu redor.\n\nAcesse nosso site e confira todos os benefícios para vocês, advogadas!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Hoje parabenizamos os(as) profissionais responsáveis por nossa saúde alimentar. Parabéns, nutricionistas!\n\nNa CAAES a advocacia tem atendimento nutricional gratuito em Vitória, Vila Velha e on-line para todo o Estado. \n\nParabéns, saraquadros.nutri e rafaelanutriesportiva \n\nAgende sua consulta pelo número (27) 3232-3600 / (27) 99622-4195.\n\nbenhur.farina roniborgo rodrigomell01101 polianafirme eliaidina.adna milenacelestino.adv doraliceadv saviofaustino viviansantosgomes edinalva.bg erikacavalcantti genaina_vasconcellos cinthyapol natalialessaadvogada",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "Quer ficar por dentro de todos os serviços que a CAAES oferece, além das notícias e convênios? Faça parte da nossa lista de transmissão no WhatsApp\n\nSalve o número 27 99697-5958 na sua lista de contatos e envie a mensagem “quero receber novidades”. Esperamos você!\n\nbenhur.farina roniborgo rodrigomell01101\npolianafirme eliaidina.adna milenacelestino.adv\ndoraliceadv saviofaustino viviansantosgomes\nedinalva.bg julianagavacarlini erikacavalcantti natalialessasanches",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Time OAB MASTER 11 tratorou o time do Distrito Federal, goleada histórica de TO 4 x 0 DF no Campeonato Brasileiro dos advogados ALIFA",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "É amanhã! Está chegando o grande dia da inauguração da CAAES em Vila Velha! \nEsperamos toda a advocacia para a cerimônia no dia 5 de abril, às 16h, na Avenida Champagnat, 1073 – Edifício Atlântico Sul, 4º andar, sala 405. \n\nbenhur.farina roniborgo rodrigomell01101 polianafirme eliaidina.adna milenacelestino.adv doraliceadv saviofaustino viviansantosgomes edinalva.bg julianagavacarlini erikacavalcantti natalialessasanches",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "Hoje é um dia especial para nossos futuros advogados e advogadas! Nós, da CAAES, desejamos boa sorte na prova, com a certeza de que vamos nos encontrar em breve na Caixa. Boa prova!! ???????? #ExameDaOrdem",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Celebramos o Dia da Advocacia de um jeitinho diferente ??\n\nLevamos o nosso escritório para o Na Praia com luau do Gilsons! \n\nComo é bom reunir novamente as advogadas e os advogados do DF para comemorar uma data tão especial para nós. Valeu advocacia! Não poderia ter sido melhor ??\n\n#CAADF #CAA #DistritoFederal #Advocacia #AdvocaciaDF",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Não perca essa chance de cuidar da sua saúde com desconto especial! ??\n\n#CAATO #Bluefit #Academia #Parceria #Saúde #Desconto #OABTO #VidaSaudável ????️",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Neste último sábado, o Clube da OAB abriu as portas para todos os advogados do Tocantins, oferecendo diversas atividades recreativas: Futebol feminino e masculino, tênis de mesa, bilhar, música ao vivo, entre outros.\n\nA CAATO agradece a presença de cada um que fez parte dessa data especial.\n\n#CAATO #pmw #oabto",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Social e Eventos",
+      "servico": "Eventos",
+      "descricao": "???? Hoje é dia de #tbt!\n\n?? O Arraiá da Advocacia 2024 está chegando e nada melhor para entrar no clima junino do que lembrar da festa linda que tivemos no último ano! \n\n??️ E aí, já garantiu os seus ingressos? \n\n???? Vá até um de nossos pontos de vendas das 8h às 18h: \n\n?? Centro de Excelência: Avenida Fued José Sebba, n° 1515, Setor Jardim Goiás, Goiânia - GO\n\n?? Meu Escritório: Av. Goiás, n° 60, Setor Central, Goiânia - GO\n\n?? Sede da seccional OAB: Rua 1121, nº 200, Setor Marista, Goiânia - GO\n\n?? As entradas também estão disponíveis no nosso site e no aplicativo da OAB-GO. \n\n#oabcasag #arraiadaadvocacia",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Um super projeto está chegando às Subseções do Estado, aumentando a visibilidade profissional, autoestima e confiança das mulheres advogadas. A CAAES Mulher, em parceria com o Grupo Kodak, organiza ensaios fotográficos para advogadas, que receberão gratuitamente uma foto revelada no tamanho 30x40, a sua escolha, além de R$ 200 reais de desconto no pacote fotográfico. De R$ 750,00 o ensaio completo sairá por $550,00 (média de 120 arquivos), sendo 10 com tratamento.\n\nAs sessões fotográficas ocorrerão nos auditórios das Subseções do Estado, onde serão montados estúdios itinerantes, com uma equipe de apoio composta por maquiadora, fotógrafa e técnica em fotografia. Cada Subseção terá datas determinadas para a realização do ensaio, com 8 horários disponíveis em cada localidade, ocupados por ordem de inscrição (confira o calendário abaixo).\n\nComo será o ensaio\n\nOs cliques serão feitos de forma individual, com uma advogada por horário, e terão a duração de 1h. A maquiagem fica por conta do Grupo Kodak, sendo necessário levar apenas os looks de preferência (até 3, que podem ser formais, casuais, esportivos) e elementos para ajudar a compor as fotos (livros, canecas, etc). \n\nA foto-brinde será enviada posteriormente, via correio, pois será necessário passar por tratamento e impressão. Tudo ocorrerá de forma gratuita e só haverá custo se houver interesse em adquirir outros produtos, como books encadernados, foto livro, mini álbuns e fotos em arquivo, com ou sem tratamento. \n\nCaso queiram adquirir as fotos digitais, as advogadas receberão um super desconto de R$ 200 reais para ter acesso ao ensaio na íntegra.\n\nFaça sua inscrição no site da CAAES.\n\nConfira o calendário completo:\n20 e 21 de maio -Vitória\n22 de maio - Vila Velha\n23 de maio - Guarapari\n24 de maio - Serra\n27 de maio - Aracruz\n28 de maio - Cariacica\n29 de maio - Mimoso do Sul (Cachoeiro)",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Atenção! ⚠️\n\nSe você está planejando comprar ou trocar de carro, aguarde até novembro. \n\nTemos novidades chegando!\n\n#parceriascaasc #economizometro #oabsc #caasc",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Social e Eventos",
+      "servico": "Eventos",
+      "descricao": "Óia que tá chegando a mió festança no ano! ????\n\n?? Marca aí, o Arraiá da Advocacia será no dia 28 de junho, às 19h30, lá no CEL da OAB/CASAG. \n\nA gente espera ôceis pá muita cumida boa e um arrasta-pé daqueles! ????\n\n⚠️ Já já nois divurga o início da venda de ingressos! \n\n#oabcasag #arraiadaadvocacia #festajunina",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Aproveite os descontos da parceria com a CAASC nos produtos para todo o Estado.\n\nRenove sua casa com a MAGALU.??\n\nAcesse o nosso site e na aba “convênios” busque por “MAGALU” e saiba como utilizar o desconto.\n\n#caasc #oabsc #advocaciacatarinense #magalu",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "As inscrições para o Mestrado em Direito do UniProcessus, em associação com o UniLasalle estão abertas a partir do dia 27/07 até 14/8 ??\n\n?? O curso terá duas linhas de pesquisa, sendo elas: Efetividade do Direito na Sociedade e Sociedade e Fragmentação do Direito.\n\nPara associados da CAADF, a mensalidade sai com 20% de desconto!\n\nConfira o edital e mais informações no site: \n\nhttps://processus.edu.br/mestrado-em-direito/",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Isso mesmo! \n\nConseguimos um cupom de desconto. Com ele você poderá comprar até 4 ingressos para a Festa da Advocacia! ????\n\nClick no link: https://r2.com.vc/produto/festa-da-advocacia (link disponível da nossa bio) e seja direcionado para o App da R2 (caso o tenha baixado no seu celular) ou para o seu navegador e utilize o cupom: OAB18. Aproveite!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Essas são as nossas metas para toda a Advocacia do DF em 2023!✨\n\nVamos cumprir juntos? ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "A CAAES firmou um super convênio que beneficia a advocacia e garante até 20% de desconto na Movele Planejados e Marcenaria, com produção 100% sob medida. A loja fica localizada na R. Castelo Branco, 243 - Praia da Costa, Vila Velha.\n\n“Este benefício abrange tanto o ambiente familiar, quanto o ambiente corporativo. Nossa proposta é fazer um projeto para a advocacia, para desenvolver e entregar o melhor serviço, com muita qualidade. Nossos projetos são desenvolvidos por arquitetos, de forma 3D e são apresentados ao cliente”, afirma o sócio-proprietário da Movele, José Nilton Oliveira.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "?? O time da OAB CAATO de futebol feminino brilhou em campo e conquistou uma vitória impressionante sobre a equipe do Mato Grosso do Sul, vencendo por 4 a 2! Parabéns, meninas, pelo desempenho incrível e pelo trabalho em equipe. Continuem brilhando! ⚽?? #FutebolFeminino #VitóriaDaOAB",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Sexta-feira (11/08) nosso escritório virou praiano!\n\nDia de curtir o Dia da Advocacia ao som de Ju Marques e Largo Tudo.\n\nAumenta o som pra já ir entrando no clima!\n\nE se, ainda não garantiu o seu ingresso, corre no link da nossa bio e não fique de fora!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "A CAADF conta com mais de 900 convênios exclusivos para você aproveitar ??\n\nArrasta para conferir mais alguns dos nossos parceiros ????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "E chegou o mês mais aguardado, o mês da #Advocacia! ??\n\nPor isso, reunimos nossos parceiros que prepararam campanhas especiais, apenas pra você, que é fundamental para garantir a aplicação da justiça.\n\nMarque nos comentários o seu advogad@ do ❤️.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Não perca essa chance de cuidar da sua saúde. #CAATO #VacinaçãoAdvogadosEAdvogadas #SaúdeNaAdvocacia #35AnosOABTO",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Mãe, advogada e atleta de motovelocidade: conheça a história inspiradora de Gabriella Bastos.\n\nParabéns a todas as mulheres pela garra, força e determinação! Conheçam a história da advogada Gabriella Bastos, atleta de motovelocidade, e que representa muito bem o nosso Estado na prática esportiva!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Resultado oficial já disponível! ??\n\nAcesse o link para conferir as colocações de acordo com os chips: https://chipkm.com.br/resultados/g-live.html?f=eventos/2023/30%C2%BA-CORRIDA-DA-ADVOCACIA/30%C2%BA-CORRIDA-DA-ADVOCACIA.clax \n\n(Link disponível na bio e também nos stories)",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Social e Eventos",
+      "servico": "Eventos",
+      "descricao": "???? Foi um sucesso! ????\n\nO nosso Arraiá da Advocacia teve recorde de público! ??\n\nE, é claro, não faltaram as comidas típicas, a tradicional quadrilha e dois shows de muita qualidade. \n\n➡️ Arrasta pro lado e dá uma olhada como foi a festança!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "?? Boa notícia: você não precisa enfrentar isso sozinho(a)! A advocacia catarinense conta com Meu Einstein , com acesso rápido a consultas online aos médicos do Hospital Israelita Albert Einstein, direto do conforto de onde estiver.\n\n✅ Benefícios do Meu Einstein:\n\n?? Atendimento 24 horas por dia, 7 dias por semana.\n?? Médicos especializados, sem fila ou deslocamento.\n?? Praticidade para cuidar da saúde sem comprometer o descanso.\n\n?? Não deixe que pequenos imprevistos atrapalhem o seu verão. Use o Meu Eintein e aproveite a temporada com tranquilidade!\n\n?? Para saber mais, baixe nosso app PopUp CAASC pelo link na bio!\n\nSua saúde em 1º lugar! ????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Evidência Pública",
+      "servico": "Digital",
+      "descricao": "Advocacia, se prepare para 6ª Corrida da Justiça da Acessibilidade e Inclusão! Inscrições abertas de 08 de novembro a 01 de dezembro (ou até esgotarem as vagas). Garanta já seu lugar e venha para essa corrida com distâncias para todos os níveis – 3km, 5km e 10km! Os kits estarão disponíveis nos dias 6 e 7 de dezembro. Participe e corra em busca de prêmios especiais!\n\nhttps://www.stinscricoes.com.br/site/consultanovainscricao.php?ev=807\n\n#Corrida #TJTO #CAATO #Esporte #CorridaDeRua #Tocantins #Circuito",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Um dos eventos esportivos mais tradicionais do Estado, que a CAAES teve o orgulho de apoiar! \n\nMontamos nossa estrutura mais uma vez na Praia da Costa para proporcionar o melhor suporte possível às advogadas e aos advogados participantes da Travessia João Moreno, um momento único de confraternização da Advocacia capixaba! \n\nParabéns a todos que nadaram, correram e deram exemplo de garra e determinação! ????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Saúde",
+      "servico": "Saúde",
+      "descricao": "Confira o passo a passo para agendar seu atendimento psicológico e nutricional pela CAAES!\n\nO atendimento é totalmente gratuito para a advocacia e também pode ser realizado de forma remota, de onde você estiver.\n\nAgende pelo WhatsApp (27) 99622-4195 e cuide da sua saúde com a equipe da CAAES!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "Hoje nossas homenagens são direcionadas aos advogados e advogadas trabalhistas! Parabéns aos profissionais que, com tanto afinco, lutam por relações de trabalho mais justas e igualitárias. \n\nbenhur.farina roniborgo rodrigomell01101 polianafirme eliaidina.adna milenacelestino.adv doraliceadv saviofaustino viviansantosgomes edinalva.bg erikacavalcantti natalialessasanches genaina_vasconcellos cinthyapol",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "A nossa 29ª Corrida da Advocacia do DF foi um sucesso!??\n\n??Parabéns aos primeiros colocados e para todas as pessoas que fizeram esse evento acontecer!\n\nNos vemos na próxima edição!????????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "O ADVerão virou tradição! ✨\n\nNosso primeiro encontro acontece neste sábado (24), a partir das 9h30, em frente à APCEF/SC, em Jurerê.\n\nTraga a sua família e venha curtir o melhor do verão com a gente! ??☀️",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Saúde",
+      "servico": "Saúde",
+      "descricao": "+ 2.700 advogados e familiares vacinados… e a contagem continua! ????\n\nAcompanhe os pontos de vacinação e faça parte. ??\n\n❗️Horário de vacinação: 10h às 16h\n\n#CAA #CAADF #OABDF #Advocacia #AdvocaciaDF #Vacinacao #VacinacaoAntigripal #VacinacaoBrasilia",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "OUROOO para o Brasil!\nQue a CAAES sempre está em clima esportivo vocês já sabem, mas durante as olimpíadas nossa torcida se intensificou ainda mais!\nE nada melhor para uma instituição que promove qualidade de vida para a advocacia por meio do esporte, também comemorar as medalhas olímpicas das atletas brasileiras. E que venham mais!\n\n?? Beatriz Souza – Medalha de Ouro no Judô (+78 kg)\n?? Rebecca Andrade – Medalha de Ouro na Ginástica Artística (Solo)",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "CARNAVAL TÁ CHEGANDO e tem coisa boa para ADVOCACIA ! ???? \n\nÉ isso mesmo: a CAA/DF preparou uma programação especial para vocês curtirem o Carnaval com muita diversão, segurança e benefícios pra você e toda sua família!\n\n ?? 1º a 4 de março o Carnaval da Advocacia será no Iate Clube Folia com Adriana Samartini, Bloco Eduardo & Mônica, Mundo Bita, Matrakaberta, e muito mais! \nValor do ingresso é preço de SÓCIO: R$ 40,00 - e na terça-feira, será apenas R$ 25,00. \n\nPensamos em cada detalhe: um ambiente exclusivo para a advocacia com conforto, momentos de diversão e hidratação! Essa CAA é demais, né? ????\n\nE tem mais: \n\n?? 2 de março – AABB com Monobloco.\n?? 15 de março – Ressaca de Carnaval no Clube da OAB.\n\nGaranta seu ingresso e aproveite! O Link está na nossa bio!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "A OAB Tocantins brilhou na abertura dos I Jogos da Advocacia Nacional, uma celebração marcada pela união e pelo espírito esportivo. Com grande entusiasmo, nossos advogados e advogadas competiram em diversas modalidades, mostrando habilidade e determinação. Além disso, tivemos a honra de participar da cerimônia de entrega da bandeira, representando o compromisso e a excelência da Advocacia Tocantinense. Parabéns a todos os participantes e que os jogos nacionais sejam um marco de integração e representatividade entre os colegas de profissão. A OAB Tocantins e a CAATO estão orgulhosas de fazer parte desse evento histórico. Juntos, somos imbatíveis! ???? #OAB #CAATO #OlimpíadasdaAdvocacia #EspíritoEsportivo #União",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Evidência Pública",
+      "servico": "Atendimento Institucional",
+      "descricao": "Em um duelo repleto de adrenalina entre o time masculino da OAB CAATO e a Seleção OAB Goiás, o campo se transformou no palco de uma batalha emocionante, que ficou eternizada como a \"disputa do pequi\", em homenagem ao fruto nativo da região. Na segunda rodada do Grupo E, em 29 de outubro, no EsPCEX, os valentes da OAB CAATO ergueram a bandeira da vitória com um marcador de 2 a 1.\n\nOs gols que ecoaram com paixão nas arquibancadas foram uma verdadeira obra-prima. Romashow e Yuri, com sua maestria, encontraram o caminho para o fundo da rede adversária, proporcionando à torcida um espetáculo esportivo memorável.\n\nNeste jogo emocionante, na categoria Livre 11, a OAB CAATO mostrou sua força e determinação, destacando-se como um time de guerreiros. Esta vitória é uma homenagem ao trabalho árduo e ao espírito de equipe que caracterizam nossa equipe masculina e garantiu a classificação antecipada para as oitavas de finais da competição. A OAB CAATO é sinônimo de excelência e comprometimento, e esta conquista é apenas mais um capítulo brilhante em nossa história! #OABCAATO #FutebolMasculino ⚽????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Neste fim de semana, aconteceram os primeiros jogos do Campeonato Estadual da CAAES de Futebol Masculino e Feminino! \n\nA abertura ocorreu na noite de sexta-feira (05), com dois jogos no masculino. É importante destacar que este é o primeiro campeonato com record de equipes. São 25, ao todo, sendo 6 femininas!\n\nNo sábado (06) os primeiros times femininos entraram em campo para mostrar que futebol também é coisa de mulher. E não é que elas deram um show de bola!\n\nNo domingo (07), seguiram os jogos do feminino pela manhã e o masculino nos dois turnos. O resultado completo dos jogos você confere no site da CAAES nesta segunda-feira (08)!\n\nbenhur.farina rodrigomello1101 roniborgo edinalva.bg lorenabotelholeao marcondessanches.adv ligaindependentevilavelha natalialessasanches",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Um domingo com chuva, frio, mas com advogados e advogadas participando de uma bonita festa de esporte e saúde em Vitória, na corrida Capixaba de Ferro CAAES. ????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Saúde",
+      "servico": "Saúde",
+      "descricao": "ATENÇÃO MULHER ADVOGADA! QUANDO FOI SEU ÚLTIMO PREVENTIVO?⚠️\n\nEm celebração ao mês da mulher, nos unimos com a oabsantacatarina numa parceria para oferecer exames para detecção precoce de câncer de colo de útero, gratuitos, para advogadas de todo o Estado.\n\n??Participe e cuide-se: \nAs inscrições começam no dia 1º e vão até o dia 11 de março.\n\n✅Para agendar o seu exame, acesse o link em nossa bio e preencha o formulário e localize o contato para agendamento referente a sua subseção.\n\nDiagnóstico precoce salva vidas! ????\n\n#marcolilas #oabsc #caasc\n#papanicolau #advogadas #direito\ncancerdecolodeutero #examesgratuitos #cancer",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "A CAADF tem descontos exclusivos! ??️\n\nSão várias opções para você aproveitar com a sua família. Arraste e confira! ????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Social e Eventos",
+      "servico": "Eventos",
+      "descricao": "O Arraiá da Advocacia vai rolar no CEL da OAB CASAG, e as vendas já estão liberadas! Então corre para garantir o seu lugar nessa festança! ????\n\nÉ isso mesmo, pessoar! Preparem-se para muita música boa, comidas típicas deliciosas e, é claro, aquela animação que só a gente sabe fazer! ??\n\nNão vai ficar de fora dessa, né? Chama os amigos, a família e vem curtir uma noite pra lá de animada com a gente! ??\n\nEntra no nosso site ou no APP da OAB-GO e garanta o seu!\n\n#oabcasag #celdaoabgo #arraiadaadvocacia #festajunina #sãojoão",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "A vida da advocacia é muito corrida!??\n\n??Por isso, antecipamos a venda do Diário Jurídico de 2024 para ajudar os advogados e advogadas a se organizarem já para o próximo ano.\n\n??️Para comprar basta acessar o market place CAASC SHOP (link na bio ??), que o produto chegará direto no endereço que você escolher e com frete grátis????.\n\nCuidar de você,\nesta é a Ordem ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Uma cantada jurídica ou um presente misterioso? ????\n\nNeste Dia dos Namorados, surpreenda quem você ama com vantagens exclusivas dos nossos convênios! ??\n\nConfira no app as condições de desconto e a disponibilidade dos convênios na sua região.\n\n#CAASC #OABSC #convenios #advocaciacatarinense #popupcaasc",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "A Natação Vitória tá demais! Com 100 advogados nas 5 turmas disponibilizadas, as aulas ocorrem no Clube Álvares Cabral. E você, pratica a modalidade? Conte nos comentários há quanto tempo está no projeto #CAAESEsportes",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "?? Matrículas abertas!\n\nNossa empolgação está em dose dupla: o retorno do recesso e a oportunidade para novos alunos se inscreverem nas modalidades esportivas. Por isso, preparamos um tira-dúvidas detalhado para você fazer sua inscrição e treinar com a gente #TimeCAAES. Arraste para o lado e confira!\n\n?? Para mais informações, entre em contato com o setor de esportes pelo WhatsApp: (27) 99503-5595.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "Foi dada a largada! ????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Musculação todos os dias pela metade do preço. É isso mesmo! A CAAES acaba de firmar um convênio com a academia Spartan Sports, onde a advocacia terá um desconto imperdível na musculação, pagando apenas R$ 45 reais por mês.\nA Spartan Sports fica localizada na Rua Amazonas, n⁰ 202, Bairro Beira Rio, Nova Venécia. Para mais informações, entre em contato pelo WhatsApp 27 99753-9982 ou pelo Instagram spartansportsnv",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Classificadas! As advogadas-atletas da Seleção Capixaba de Futebol estão nas quartas de final do Campeonato Nacional Alifa 2024. As representantes capixabas venceram o Pará por 2x0, no último jogo da primeira fase do campeonato, garantindo a classificação. Os gols da vitória foram marcados pelas atacantes Iara Mota e Pamela Coutinho.\n\nAgora, o time capixaba se prepara para enfrentar o Rio de Janeiro nas quartas de final, com o jogo marcado para sexta-feira (08/11), às 15h30, na APCEF.\n\nParabéns, Seleção! Rumo a mais uma vitória!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Sabadou e você tá sem programação? ??\n\n??Que tal voar economizando pelos Canyons de Santa Catarina? A gente tem convênio com a voe_nos_canyons você:\n\n?? 15% de desconto no voo de instrução de balão de ar quente, mediante agendamento com contratação antecipada de 3 dias.\n\nEndereço: Rua Caetano Lummertz , 575 - Centro, Sombrio/SC\n\n☎️ Entre em contato:\n\nTelefone: (48) 99985-1133\n\nE-mail: murilomaguisco@gmail.com\n\nImagens: kassioalmeidak",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Evidência Pública",
+      "servico": "Digital",
+      "descricao": "A Caixa de Assistência dos Advogados do Espírito Santo (CAAES) divulga a Portaria nº 049/02/2023 que nomeia a advogada Jacqueline Silva Almeida como diretora da CAAES Mulher Serra.\n\n\"Contamos com a união e participação de todos os advogados e advogadas do Estado do Espírito Santo, para que juntos possamos gerir a CAAES Mulher de Serra\", frisou a advogada.\n\nAcesse o documento na íntegra no site da CAAES",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Um desconto especial para os advogados e as advogadas que desejam comer comida saudável a um ótimo preço. A Green Station Centro de Vitória oferece 10% de desconto em saladas ou wraps, em pagamentos em dinheiro, Pix, PicPay ou débito.\n\nGreen Station Centro de Vitória\ngreencentrovix_\nPedidos no WhatsApp: (27) 99726-6551 \n\nbenhur.farina roniborgo rodrigomell01101 polianafirme eliaidina.adna milenacelestino.adv doraliceadv saviofaustino viviansantosgomes edinalva.bg erikacavalcantti natalialessasanches genaina_vasconcellos",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "?? Fé, união e comprometimento!\n\nA 9ª Caminhada da Fé reuniu, nesta sexta-feira, cerca de 700 advogados e advogadas para o tradicional percurso entre Goiânia e Trindade. \n\nO trajeto de devoção realizado pela advocacia foi apoiado pela CASAG desde a saída para a Rodovia dos Romeiros até a chegada ao Santuário Basílica do Divino Pai Eterno, com a instalação de três tendas de apoio para a melhor recomposição dos romeiros. \n\nPela primeira vez, a presença dos membros da Ordem dos Advogados do Brasil entrou para o calendário oficial da festividade religiosa, sendo celebrada na Missa da Romaria da OAB. \n\n?? Confira como foi um pouco desta trajetória",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Saúde",
+      "servico": "Saúde",
+      "descricao": "✨ Uma nova forma de cuidar da saúde dos nossos advogados, advogadas e seus familiares.\n\nO Saúde em Dia é um programa voltado para a saúde primária, ou seja, visa oferecer aos advogados, familiares e convidados acesso a cuidados preventivos e curativos de saúde com uma equipe qualificada e valor acessível. \n\nPara mais informações: 3347-0213\n\n‼️ Valores relativos às parcelas mensais",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "A CAAES orgulha-se em divulgar a lista das 21 advogadas-atletas que representarão o estado no Campeonato Nacional Alifa 2024, que neste ano será sediado pelo Espírito Santo.\nA equipe irá fazer seu jogo de estreia contra o time de Rondônia, no dia 4 de novembro (segunda-feira), às 16h, no campo da APCEF. Vamos torcer por nossas atletas!\n\nConfira a lista de convocadas: \n- Alessandra Batalha (Goleira) (1)\n- Amanda Karen (Atacante) (47)\n- Ariane Deize (Atacante) (12)\n- Bruna Sartori (Zagueira) (4)\n- Ellen Tybel (Ala) (2)\n- Gizelly Cassimiro (Zagueira) (21)\n- Hellen Borlot (Meio) (26)\n- Iara Mota (Atacante) (14)\n- Izabella Cruz (Zagueira) (6)\n- Jéssica Duarte (Zagueira) (7)\n- Lenize Mazolini (Atacante) (11)\n- Lorena Bulhões (Zagueira/Ala) (18)\n- Leticia Zanoteli (Goleira) (28)\n- Maiara Garcia (Meio) (99)\n- Pamela Coutinho (Atacante) (15)\n- Rayane Celestino (Meio) (8)\n- Rhayanne Schultz (Meio) (20)\n- Tamires Negrelli (Meio) (9)\n- Thais Borgo (Ala) (23)\n- Vitória Rossato (Ala) (16)\n\nComissão Técnica:\nRhuan Alvarenga – Treinador\nWelton Rodrigues – Auxiliar Técnico\nMatheus Cabral – Preparador de Goleiro\nDeyvid Franca – Auxiliar de Preparação Física",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "??????A CAAES por meio da CAAES esportes em parceria com a Comissão de Esportes e Lazer OAB Serra decidiram sortear mais 6 Kits da tradicional Corrida FENAE, prevista para ocorrer em 21/05/2023, e com pódio exclusivo para advogados (as). \n\n????????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "A CAAES Saúde realiza uma campanha solidária de doação de fraldas geriátricas para o advogado Thiago Corona, que está hospitalizado há mais de 1 mês, na enfermaria do Hospital Santa Rita.\nAs fraldas devem ser no tamanho XG e podem ser entregues na sede da CAAES, em Vitória ou nas filiais de Vila Velha e Serra. Contamos com o apoio da advocacia!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "SC",
+      "entidade": "CAASC",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "QUE MOMENTO!!! ??\n\nNeste fim de semana tivemos mais uma etapa do Circuito Catarinense da Advocacia 2025, na Maratona Internacional de Floripa! ????",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "A advogada Valéria Silva enviou um lindo depoimento sobre sua história com a natação no mar, uma das modalidades oferecidas pela CAAES para a advocacia.\nE você, advogado(a), também quer ganhar qualidade de vida de forma física e mental? Inscreva-se no site da CAAES",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "???? Um benefício de dar água na boca!\n\nA advocacia do DF tem desconto especial no rodízio do Steak Bull Brazilian Steakhouse, uma experiência gastronômica completa! \n\n?? 50% OFF no rodízio às segundas e terças (almoço e jantar)\n?? 15% OFF de quarta a domingo (também no almoço e jantar)\n\nVálido para dias comuns, bebidas e sobremesas não inclusas.\n\nAproveite mais esse benefício e viva uma experiência irresistível!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Saúde",
+      "servico": "Saúde",
+      "descricao": "???? Dia de vacinação na subsede da OAB em Taquaralto",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "A Caixa de Assistência em parceria com a CAAES Mulher e CAAES Saúde realizam do dia 22 de março a 6 de abril o 1º Desafio da Nutri CAAES, uma iniciativa que visa promover maior qualidade de vida às advogadas e a experimentação de um novo estilo de vida por meio da reeducação alimentar. O desafio ocorrerá de forma remota e contará com um limite de 20 advogadas, que serão instruídas e acompanhadas via grupo de WhatsApp pela nutricionista da CAAES e especialista em nutrição clínica e esportiva, Rafaela Gomes. \n\nPara participar do desafio, além de fazer a inscrição, as advogadas deverão cumprir algumas regras. Cada meta de perda de peso será individual e todas as participantes ganharão uma squeeze, uma sessão de corrente aussie para flacidez da wzesteticaesaude e uma avaliação de aptidão funcional clinica.franciscobrioschi . A ganhadora do desafio também será contemplada com um pacote especial estético da fiolaser.praiadacosta .\n\nConfira a matéria na íntegra no site da CAAES e realize sua inscrição! #DesafioDaNutriCAAES",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Nossa Trilha da advocacia foi um sucesso! Obrigado a todos que participaram! \n#CAATO #Tocantins #advogados #AdvocaciaTO",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "A CAAES firmou convênio com a empresa Asterix, que oferecerá 15% de desconto na compra de suplementos alimentares para toda a advocacia.\n\nO desconto não é cumulativo com outras ofertas vigentes e valerá para todas as formas de pagamento, exceto vale alimentação.\n\nAsterix Suplementos\nWhatsApp (27) 99533-7442\nInstagram asterixsuplementos",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Atendendo ao pedido da advocacia, a Caixa de Assistência dos Advogados do Espírito Santo (CAAES) retornará com a rota do Interfóruns em Viana, na terça-feira (8), mantendo o mesmo itinerário de antes da suspensão do serviço, que foi extinto devido à baixa demanda, porém em dias e horários diferentes.\n\nA van sairá às terças e quintas às 11h de Vitória, cumprindo o mesmo itinerário de costume. Da última parada retornará às 13h30. A segunda viagem, nesses mesmos dias, terá a saída de Vitória às 15h30. Cumprindo o mesmo percurso e retornando a Vitória às 17h. \n\n??Acesse os stories e saiba mais!\n\nbenhur.farina oabespiritosanto subsecao11oabes roniborgo francisco.pioo #CAAES #AdvocaciaCapixaba",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "?? Esporte e Advocacia: Fortalecendo laços e oportunidades! ⚽????️",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "RJ",
+      "entidade": "CAARJ",
+      "categoria": "Social e Eventos",
+      "servico": "Eventos",
+      "descricao": "Em comemoração ao Dia das Crianças a Caarj preparou uma série de dicas culturais para que você possa aproveitar com os pequenos ao longo de outubro. ??\n\nPara o primeiro fim de semana do mês nós te convidamos a conhecer o @",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Esporte e Treino",
+      "servico": "Esporte e Bem-Estar",
+      "descricao": "Vocês pediram e ela está de volta: Vem aí a nossa 30ª Corrida da Advocacia! ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Chega à Goiânia a tour “A Resposta”!\n\nUm dos maiores evangelistas do mundo, Deive Leonardo apresenta uma mensagem inspiradora e de fé, buscando responder as maiores inquietações do ser humano.\n\nE mais! Advogados e advogadas ganham 50% de desconto no valor do ingresso!*\n\nO encontro acontece no dia 03 de dezembro, sábado, às 20h, no Goiânia Arena!\n\nNão fique de fora dessa e garanta já o seu ingresso na Livraria Leitura do Goiânia Shopping ou pelo site Ingresso Digital!\n\nA advocacia com a exclusividade que merece na OAB CASAG!\n\n*Desconto válido sobre o valor da inteira.\n\n#oabcasag #casag #oabgo #aresposta #deiveleonardo #goiâniaarena",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Bem-estar Estético",
+      "servico": "Saúde",
+      "descricao": "Um mês de muito trabalho para tudo que vem por aí!\n\nForam dias de diálogo contínuo, atuação presente e conquistas importantes para fortalecer e ampliar os benefícios da nossa classe. Estamos trabalhando incansavelmente para garantir mais qualidade de vida, bem-estar e suporte para a advocacia em todo o Espírito Santo. ?? Destacamos aqui algumas das principais para você ficar por dentro.\n\nE podemos adiantar: vem muita novidade por aí! \n\nA CAAES segue de norte a sul, buscando melhorias reais para você, advogado e advogada capixaba. Fique ligado! ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "INSCRIÇÕES ABERTAS AdvogaRUN 2025! \n\nA corrida oficial da advocacia vai começar e você vai com a gente!\n\n?? 24 de agosto \n⏰ Largada às 7h \n⏰ 8h30 Corrida Kids \n??Em frente ao Palácio do Buriti\n\nPreço da corrida (com um kit de tirar o fôlego até do atleta mais preparado):\n??️ R$ 119,00 Público Geral \n??️ R$ 99,00 Advocacia \n??️ R$ 89,00 Advocacia Jovem \n??️ R$ 79,00 Kids \n \nPercursos: \n- 5km e 10km\n-",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "?? Foi bonito, foi. Foi intenso, foi! Vai ficar pra história os I Jogos da Advocacia Nacional!\n\nEm cinco dias de jogos, mais de 2 mil atletas de todos os Estados do País participaram das competições nacionais, realizadas aqui em Goiás.\n\nA gente fez bonito e ficou em segundo lugar dos jogos com 17 ouros, 20 pratas e 17 bronzes, totalizando 54 medalhas!\n\nEsses jogos ficarão na memória de todos! Já tá dando saudade por aqui ??",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Ações Institucionais",
+      "servico": "Atendimento Institucional",
+      "descricao": "Na CAADF tem muita diversão! ??\n\nPreparamos uma peça incrível para você e sua família, vai ter muita pipoca e o riso é garantido. Então, já prepara aquela selfie para registrar esse momento tão especial! ??\n\n❗A bilhetagem será realizada a partir das 15h30, por ordem de chegada.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Saúde",
+      "servico": "Saúde",
+      "descricao": "A nossa campanha de vacinação antigripal de 2022 foi um sucesso! ??\n\n??Foram mais de 60 profissionais envolvidos com muito esforço e dedicação para atender toda a Advocacia do DF, e esse ano não vai ser diferente! \n\nConvidamos você para participar da nossa campanha de vacinação que vai acontecer daqui a 17 dias. Vamos quebrar esse recorde juntos?",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "O amor está no ar! ?? E com os convênios da CAAES você garante a melhor programação e os melhores presentes para o seu amor.\n\n???? Passe para o lado e confira algumas das nossas sugestões para deixar essa data ainda mais especial.\n\nA lista completa dos nossos convênios está no site da CAAES. Acesse e conheça seus benefícios! ??\n\nwww.caaes.org.br/convenios",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Ações Institucionais",
+      "servico": "Eventos",
+      "descricao": "Horário de funcionamento ?? \n\nPara atendimento em geral, informamos que a Caato funciona de segunda a sexta-feira, no horário de 8h às 12h e das 14h às 18h.\n\n??Também disponibilizamos do serviço de atendimento pelo telefone no número (63) 3212-9623 ou pelo WhatsApp no (63) 9961-3072.\n\n#caato #oabto #tocantins#caixadeassistenciadosadvogados",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "GO",
+      "entidade": "CASAG",
+      "categoria": "Social e Eventos",
+      "servico": "Eventos",
+      "descricao": "?? E que festança linda demais! \n\n???? O nosso Arraiá da Advocacia 2024 superou todas as expectativas e ultrapassou o nosso recorde de público! \n\n?? O CEL da OAB foi palco para o melhor arrasta-pé, comida da boa, música para lá de animada e, com certeza, momentos inesquecíveis! \n\n?? Agradecemos a presença desse público incrível! Ano que vem estaremos por aí de novo! ✨\n\n?? Arrasta para o lado para ver os detalhes \n\n#arraiadaadvocia #oabcasag #celdaoab",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "DF",
+      "entidade": "CAADF",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Para começar a semana, trouxemos as melhores parcerias para a advocacia do Distrito Federal!\n\nArraste e conheça mais 5️⃣ convênios que a CAADF oferece para você ????.\n\nPlay na semana!",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Social e Eventos",
+      "servico": "Eventos",
+      "descricao": "Hoje é dia de comemoração, pois o nosso Secretário-geral completa mais um ano de vida. Que seja um dia de luz! #Parabéns #CAATO #OABTO",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Social e Eventos",
+      "servico": "Eventos",
+      "descricao": "Aulão de Tênis para as advogadas ??\n\nAgradecemos todas que marcaram presença! Em especial a professora emily_bezerra_ ??\n\n???? Continue de olho nas nossas redes sociais e na sua caixa de entrada para acompanhar toda a programação do Mês da Mulher Caato.\n\n#mêsdamulher #caato #tocantins #aulão",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "TO",
+      "entidade": "CAATO",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "Neste fim de semana, a CAATO realizou o Aulão de Beach Tennis no Clube da OAB, com a parceria da todysport.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    },
+    {
+      "uf": "ES",
+      "entidade": "CAAES",
+      "categoria": "Convênios e Benefícios",
+      "servico": "Benefícios",
+      "descricao": "O advogado Wellington de Oliveira, de 51 anos, celebrou uma grande conquista: foi vice-campeão na categoria masculino D, do Torneio Basa Beach Tennis (3ª etapa da FET 2024), realizado na Praia de Camburi, no mês de março. O resultado é fruto de 1 ano de treinos no esporte, que foi incluído no rol de modalidades da CAAES a partir de 2022. \n\nSem praticar atividade física desde o fim da adolescência, Wellington buscou se exercitar no projeto da CAAES “esperando contribuir de alguma forma pra minha vida, pra minha carreira. Isso porque a gente lê sobre o assunto, ouve falar, relatos de colegas... A literatura especializada fala sobre isso. Mas eu não imaginava o quanto realmente poderia me ajudar”.\n\nO advogado conta que esse ato promoveu uma virada em sua atividade profissional, pessoal, em seus relacionamentos pessoais, em casa, com os amigos e na igreja que participa. “A minha qualidade de vida melhorou”. \n\nPódio\nApós ter conquistado o vice-campeonato, Wellington descreve o momento como “uma sensação incrível que eu pude desfrutar, com meus 51 anos, no meio de toda uma garotada”. Por isso, ele convida os advogados e advogadas a participarem dos projetos esportivos da CAAES, que proporcionam “desenvolvimento, crescimento, um progresso humano completo”.",
+      "fonte": "INSTAGRAM",
+      "status": "TRUE"
+    }
+  ]
+}

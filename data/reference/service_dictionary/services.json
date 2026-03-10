@@ -1,0 +1,416 @@
+{
+  "academias": {
+    "count": 37,
+    "clusters": [
+      {
+        "name": "Esporte e Bem-Estar",
+        "count": 37
+      }
+    ]
+  },
+  "anuidade": {
+    "count": 172,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 172
+      }
+    ]
+  },
+  "apoio operacional": {
+    "count": 10,
+    "clusters": [
+      {
+        "name": "Atendimento Institucional",
+        "count": 10
+      }
+    ]
+  },
+  "auxílios": {
+    "count": 146,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 146
+      }
+    ]
+  },
+  "campanha institucional": {
+    "count": 59,
+    "clusters": [
+      {
+        "name": "Atendimento Institucional",
+        "count": 59
+      }
+    ]
+  },
+  "cerimônia institucional": {
+    "count": 2217,
+    "clusters": [
+      {
+        "name": "Eventos",
+        "count": 2217
+      }
+    ]
+  },
+  "cinema": {
+    "count": 2,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 2
+      }
+    ]
+  },
+  "cinema e entretenimento": {
+    "count": 3,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 3
+      }
+    ]
+  },
+  "clube de vantagens": {
+    "count": 1388,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 1388
+      }
+    ]
+  },
+  "competições": {
+    "count": 342,
+    "clusters": [
+      {
+        "name": "Esporte e Bem-Estar",
+        "count": 342
+      }
+    ]
+  },
+  "comunicação institucional": {
+    "count": 1445,
+    "clusters": [
+      {
+        "name": "Atendimento Institucional",
+        "count": 1445
+      }
+    ]
+  },
+  "crédito": {
+    "count": 39,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 39
+      }
+    ]
+  },
+  "cuidados pessoais": {
+    "count": 276,
+    "clusters": [
+      {
+        "name": "Saúde",
+        "count": 276
+      }
+    ]
+  },
+  "cultura e gastronomia": {
+    "count": 11,
+    "clusters": [
+      {
+        "name": "Eventos",
+        "count": 11
+      }
+    ]
+  },
+  "cultura e lazer especializado": {
+    "count": 6,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 6
+      }
+    ]
+  },
+  "datas comemorativas": {
+    "count": 261,
+    "clusters": [
+      {
+        "name": "Eventos",
+        "count": 261
+      }
+    ]
+  },
+  "descontos comerciais": {
+    "count": 558,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 558
+      }
+    ]
+  },
+  "educação": {
+    "count": 237,
+    "clusters": [
+      {
+        "name": "Educação",
+        "count": 237
+      }
+    ]
+  },
+  "espaços físicos": {
+    "count": 104,
+    "clusters": [
+      {
+        "name": "Infraestrutura",
+        "count": 104
+      }
+    ]
+  },
+  "estética avançada": {
+    "count": 18,
+    "clusters": [
+      {
+        "name": "Saúde",
+        "count": 18
+      }
+    ]
+  },
+  "estúdio e imagem": {
+    "count": 45,
+    "clusters": [
+      {
+        "name": "Infraestrutura",
+        "count": 45
+      }
+    ]
+  },
+  "festividades": {
+    "count": 442,
+    "clusters": [
+      {
+        "name": "Eventos",
+        "count": 442
+      }
+    ]
+  },
+  "grandes parceiros": {
+    "count": 166,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 166
+      }
+    ]
+  },
+  "infantil e lazer": {
+    "count": 6,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 6
+      }
+    ]
+  },
+  "logística": {
+    "count": 71,
+    "clusters": [
+      {
+        "name": "Infraestrutura",
+        "count": 71
+      }
+    ]
+  },
+  "maternidade e bebê": {
+    "count": 13,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 13
+      }
+    ]
+  },
+  "modalidades": {
+    "count": 636,
+    "clusters": [
+      {
+        "name": "Esporte e Bem-Estar",
+        "count": 636
+      }
+    ]
+  },
+  "modalidades esportivas": {
+    "count": 44,
+    "clusters": [
+      {
+        "name": "Esporte e Bem-Estar",
+        "count": 44
+      }
+    ]
+  },
+  "nota de pesar": {
+    "count": 107,
+    "clusters": [
+      {
+        "name": "Atendimento Institucional",
+        "count": 107
+      }
+    ]
+  },
+  "odontológico": {
+    "count": 108,
+    "clusters": [
+      {
+        "name": "Saúde",
+        "count": 108
+      }
+    ]
+  },
+  "plano de saúde": {
+    "count": 262,
+    "clusters": [
+      {
+        "name": "Saúde",
+        "count": 262
+      }
+    ]
+  },
+  "posse diretoria": {
+    "count": 2595,
+    "clusters": [
+      {
+        "name": "Eventos",
+        "count": 2595
+      }
+    ]
+  },
+  "presença digital": {
+    "count": 303,
+    "clusters": [
+      {
+        "name": "Digital",
+        "count": 303
+      }
+    ]
+  },
+  "prevenção e exames": {
+    "count": 213,
+    "clusters": [
+      {
+        "name": "Saúde",
+        "count": 213
+      }
+    ]
+  },
+  "previdência": {
+    "count": 75,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 75
+      }
+    ]
+  },
+  "salão e beleza": {
+    "count": 58,
+    "clusters": [
+      {
+        "name": "Saúde",
+        "count": 58
+      }
+    ]
+  },
+  "saúde": {
+    "count": 34,
+    "clusters": [
+      {
+        "name": "Saúde",
+        "count": 34
+      }
+    ]
+  },
+  "saúde mental": {
+    "count": 338,
+    "clusters": [
+      {
+        "name": "Saúde",
+        "count": 338
+      }
+    ]
+  },
+  "saúde pet": {
+    "count": 22,
+    "clusters": [
+      {
+        "name": "Saúde",
+        "count": 22
+      }
+    ]
+  },
+  "serviços de mídia": {
+    "count": 16,
+    "clusters": [
+      {
+        "name": "Digital",
+        "count": 16
+      }
+    ]
+  },
+  "sinal social": {
+    "count": 89,
+    "clusters": [
+      {
+        "name": "Atendimento Institucional",
+        "count": 89
+      }
+    ]
+  },
+  "sorteio": {
+    "count": 363,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 363
+      }
+    ]
+  },
+  "suporte digital": {
+    "count": 161,
+    "clusters": [
+      {
+        "name": "Digital",
+        "count": 161
+      }
+    ]
+  },
+  "telemedicina": {
+    "count": 80,
+    "clusters": [
+      {
+        "name": "Saúde",
+        "count": 80
+      }
+    ]
+  },
+  "turismo e lazer": {
+    "count": 409,
+    "clusters": [
+      {
+        "name": "Benefícios",
+        "count": 409
+      }
+    ]
+  },
+  "vacinação": {
+    "count": 1188,
+    "clusters": [
+      {
+        "name": "Saúde",
+        "count": 1188
+      }
+    ]
+  }
+}
