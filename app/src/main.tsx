@@ -9,6 +9,7 @@ import RankingPage from './pages/RankingPage.tsx'
 import ServicosPage from './pages/ServicosPage.tsx'
 import EstadosPage from './pages/EstadosPage.tsx'
 import EstadoDetailPage from './pages/EstadoDetailPage.tsx'
+import { QuickStart } from './components/map/QuickStart.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/servicos" element={<ServicosPage />} />
         <Route path="/estados" element={<EstadosPage />} />
         <Route path="/estados/:uf" element={<EstadoDetailPage />} />
+        <Route path="/mapa-demo" element={<QuickStart />} />
       </Routes>
     </HashRouter>
   </StrictMode>,
