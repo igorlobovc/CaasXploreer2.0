@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { Map, Search, TrendingUp, TrendingDown, Minus, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { GlassCard, Navbar, PageBackground } from '../components/shared';
+import { UFHeatmapMatrix } from '../components/state/UFHeatmapMatrix';
 import { estadosData } from '../data/estados';
 import { formatNumber, trendColor } from '../lib/analytics';
 
@@ -55,6 +56,15 @@ export default function EstadosPage() {
             Todos os {estadosData.length} estados brasileiros mapeados pelo CAAsXplorer.
             Selecione um estado para ver o painel detalhado.
           </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.08 }}
+          className="mb-8"
+        >
+          <UFHeatmapMatrix />
         </motion.div>
 
         {/* Filters */}
