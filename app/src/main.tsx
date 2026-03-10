@@ -6,6 +6,7 @@ import App from './App.tsx'
 import AnalyticsPage from './pages/AnalyticsPage.tsx'
 import EvidenciasPage from './pages/EvidenciasPage.tsx'
 import RankingPage from './pages/RankingPage.tsx'
+import RankingV2Page from './pages/RankingV2Page.tsx'
 import ServicosPage from './pages/ServicosPage.tsx'
 import EstadosPage from './pages/EstadosPage.tsx'
 import EstadoDetailPage from './pages/EstadoDetailPage.tsx'
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/analytics" element={<AnalyticsPage />} />
         <Route path="/evidencias" element={<EvidenciasPage />} />
         <Route path="/ranking" element={<RankingPage />} />
+        <Route path="/ranking-v2" element={<RankingV2Page />} />
         <Route path="/servicos" element={<ServicosPage />} />
         <Route path="/estados" element={<EstadosPage />} />
         <Route path="/estados/:uf" element={<EstadoDetailPage />} />
