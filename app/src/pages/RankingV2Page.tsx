@@ -4,6 +4,7 @@
 // ============================================================
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Navbar, PageBackground } from '@/components/shared';
 import { RankingHeatmapMatrixV2 } from '@/components/comparison/RankingHeatmapMatrixV2';
 import { ParaibaEditorialBlockV2 } from '@/components/comparison/ParaibaEditorialBlockV2';
@@ -13,7 +14,16 @@ type ViewMode = 'heatmap' | 'paraiba' | 'combined';
 
 export default function RankingV2Page() {
   const [mode, setMode] = useState<ViewMode>('combined');
-  const [selectedUF, setSelectedUF] = useState<string>('PB');
+  const [selectedUF] = useState<string>('PB');
+  const navigate = useNavigate();
+
+  const handleUFClick = (uf: string) => {
+    navigate(`/estados/${uf.toLowerCase()}`);
+  };
+
+  const handlePBShortcut = () => {
+    navigate('/estados/pb');
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-slate-200 overflow-x-hidden">
@@ -68,7 +78,7 @@ export default function RankingV2Page() {
           {/* Paraíba Editorial Block */}
           {(mode === 'combined' || mode === 'paraiba') && (
             <div className={`${mode === 'combined' ? 'lg:col-span-5' : 'lg:col-span-8 lg:col-start-3'}`}>
-              <ParaibaEditorialBlockV2 />
+              <ParaibaEditorialBlockV2 onViewDetails={handlePBShortcut} />
             </div>
           )}
 
@@ -78,7 +88,7 @@ export default function RankingV2Page() {
               <RankingHeatmapMatrixV2
                 metric="per1000"
                 highlightUF={selectedUF}
-                onUFClick={setSelectedUF}
+                onUFClick={handleUFClick}
               />
             </div>
           )}

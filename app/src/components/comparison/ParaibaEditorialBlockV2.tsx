@@ -31,6 +31,7 @@ interface ComparisonMetrics {
 
 interface ParaibaEditorialBlockV2Props {
   className?: string;
+  onViewDetails?: () => void;
 }
 
 function TrendIndicator({ value }: { value: number }) {
@@ -47,6 +48,7 @@ function formatDelta(current: number, baseline: number): string {
 
 export const ParaibaEditorialBlockV2: React.FC<ParaibaEditorialBlockV2Props> = ({
   className = '',
+  onViewDetails,
 }) => {
   const metrics: ComparisonMetrics = useMemo(() => {
     const pb = estadoByUF['PB'];
@@ -99,7 +101,10 @@ export const ParaibaEditorialBlockV2: React.FC<ParaibaEditorialBlockV2Props> = (
   return (
     <div className={`bg-slate-950 border border-slate-800 rounded-sm ${className}`}>
       {/* Header */}
-      <div className="px-5 py-4 border-b border-slate-800">
+      <div 
+        className="px-5 py-4 border-b border-slate-800 cursor-pointer hover:bg-slate-900/50 transition-colors"
+        onClick={onViewDetails}
+      >
         <div className="flex items-center gap-2 mb-1">
           <MapPin className="w-3.5 h-3.5 text-cyan-400" />
           <span className="text-[10px] font-medium tracking-[0.1em] text-cyan-400/80 uppercase">Análise Regional</span>
@@ -216,6 +221,16 @@ export const ParaibaEditorialBlockV2: React.FC<ParaibaEditorialBlockV2Props> = (
             </div>
           </div>
         </div>
+
+        {/* View Details Button */}
+        {onViewDetails && (
+          <button
+            onClick={onViewDetails}
+            className="w-full mt-5 py-2.5 bg-cyan-950/50 hover:bg-cyan-900/50 border border-cyan-800/50 text-cyan-400 text-[11px] font-medium rounded-sm transition-colors"
+          >
+            Ver detalhes completos →
+          </button>
+        )}
       </div>
     </div>
   );
