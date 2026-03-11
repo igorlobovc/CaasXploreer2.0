@@ -1,11 +1,10 @@
 import { ComoFuncionaSection } from './ComoFuncionaSection';
-import { EvidenceTeaserSection } from './EvidenceTeaserSection';
 import { FooterSection } from './FooterSection';
 import { HeroSection } from './HeroSection';
 import { HomeBackground } from './HomeBackground';
+import { ExploreAgoraSection } from './ExploreAgoraSection';
 import { ParaibaSpotlight } from '../state/ParaibaSpotlight';
 import { ServiceTaxonomySection } from '../services/ServiceTaxonomySection';
-import { ServicosTeaserSection } from './ServicosTeaserSection';
 
 export function HomePage() {
   return (
@@ -15,8 +14,7 @@ export function HomePage() {
       <ComoFuncionaSection />
       <ServiceTaxonomySection />
       <ParaibaSpotlight />
-      <EvidenceTeaserSection />
-      <ServicosTeaserSection />
+      <ExploreAgoraSection />
       <FooterSection />
     </div>
   );
