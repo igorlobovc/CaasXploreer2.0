@@ -4,6 +4,7 @@ import { FooterSection } from './FooterSection';
 import { HeroSection } from './HeroSection';
 import { HomeBackground } from './HomeBackground';
 import { ParaibaSpotlight } from '../state/ParaibaSpotlight';
+import { ServiceTaxonomySection } from '../services/ServiceTaxonomySection';
 import { ServicosTeaserSection } from './ServicosTeaserSection';
 
 export function HomePage() {
@@ -12,6 +13,7 @@ export function HomePage() {
       <HomeBackground />
       <HeroSection />
       <ComoFuncionaSection />
+      <ServiceTaxonomySection />
       <ParaibaSpotlight />
       <EvidenceTeaserSection />
       <ServicosTeaserSection />
