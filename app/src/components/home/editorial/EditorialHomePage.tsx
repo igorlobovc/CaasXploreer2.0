@@ -6,7 +6,8 @@ import { MobilizaAdvocaciaSection } from './MobilizaAdvocaciaSection';
 import { ParaibaPerspectivaSection } from './ParaibaPerspectivaSection';
 import { CaudaLongaBeneficiosSection } from './CaudaLongaBeneficiosSection';
 import { RelatorioIntelligenciaSection } from './RelatorioIntelligenciaSection';
-import { ExploreBetaSection } from './ExploreBetaSection';
+import { FanpageKarmaSection } from './FanpageKarmaSection';
+import { CAADirectorySection } from './CAADirectorySection';
 import { EditorialFooterSection } from './EditorialFooterSection';
 
 export function EditorialHomePage() {
@@ -21,7 +22,8 @@ export function EditorialHomePage() {
         <div id="paraiba"><ParaibaPerspectivaSection /></div>
         <div id="cauda-longa"><CaudaLongaBeneficiosSection /></div>
         <div id="relatorio"><RelatorioIntelligenciaSection /></div>
-        <div id="explore"><ExploreBetaSection /></div>
+        <div id="fanpagekarma"><FanpageKarmaSection /></div>
+        <div id="diretorio"><CAADirectorySection /></div>
       </main>
       <EditorialFooterSection />
     </div>

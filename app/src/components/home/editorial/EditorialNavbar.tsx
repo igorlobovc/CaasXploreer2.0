@@ -19,7 +19,8 @@ const sectionAnchors = [
   { id: 'paraiba', label: 'Paraíba' },
   { id: 'cauda-longa', label: 'Casos' },
   { id: 'relatorio', label: 'Relatório' },
-  { id: 'explore', label: 'Beta' },
+  { id: 'fanpagekarma', label: 'FPK' },
+  { id: 'diretorio', label: 'Diretório' },
 ];
 
 export function EditorialNavbar() {
