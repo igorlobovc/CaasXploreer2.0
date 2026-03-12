@@ -22,8 +22,8 @@ export function EditorialHomePage() {
         <div id="paraiba"><ParaibaPerspectivaSection /></div>
         <div id="cauda-longa"><CaudaLongaBeneficiosSection /></div>
         <div id="relatorio"><RelatorioIntelligenciaSection /></div>
-        <div id="fanpagekarma"><FanpageKarmaSection /></div>
         <div id="diretorio"><CAADirectorySection /></div>
+        <div id="fanpagekarma"><FanpageKarmaSection /></div>
       </main>
       <EditorialFooterSection />
     </div>
