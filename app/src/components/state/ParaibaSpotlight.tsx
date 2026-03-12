@@ -11,13 +11,10 @@ export function ParaibaSpotlight() {
   const pb = estadosData.find((estado) => estado.uf === 'PB');
   const nordeste = estadosData.filter((estado) => estado.regiao === 'Nordeste');
 
-  if (!pb || nordeste.length === 0) {
-    return null;
-  }
+  if (!pb || nordeste.length === 0) return null;
 
   const brasilMediaPer1000 =
     estadosData.reduce((sum, estado) => sum + estado.interacoesPer1000, 0) / estadosData.length;
-
   const nordesteMediaPer1000 =
     nordeste.reduce((sum, estado) => sum + estado.interacoesPer1000, 0) / nordeste.length;
 
@@ -33,20 +30,15 @@ export function ParaibaSpotlight() {
     [...estadosData].sort((a, b) => b.interacoesPer1000 - a.interacoesPer1000).findIndex((item) => item.uf === 'PB') +
     1;
 
-  const insight =
-    pb.interacoesPer1000 >= brasilMediaPer1000
-      ? 'Paraíba opera acima da média regional e nacional em intensidade relativa de engajamento.'
-      : 'Paraíba preserva boa tração relativa e mantém espaço claro para aceleração acima da média nacional.';
-
   return (
-    <section className="py-16 sm:py-24 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+    <section className="py-14 sm:py-20 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <SectionHeading
             icon={<RadarSymbol className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />}
-            label="PARAÍBA · DESTAQUE EDITORIAL"
-            title="Paraíba em Perspectiva Analítica"
-            description="Comparativo beta-safe entre Paraíba, média do Nordeste e média do Brasil com foco em eficiência de interação."
+            label="PARAÍBA EM PERSPECTIVA ANALÍTICA"
+            title="Comparativo beta-safe entre PB, Nordeste e Brasil"
+            description="Benchmark estável para leitura executiva de intensidade de interação e compartilhamento público."
             descriptionClassName="max-w-3xl"
           />
         </motion.div>
@@ -74,23 +66,12 @@ export function ParaibaSpotlight() {
           </GlassCard>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.06 }}
-          className="mt-4"
-        >
-          <GlassCard className="p-4 sm:p-5 border border-cyan-500/25">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-              <div>
-                <div className="text-[10px] uppercase tracking-wider text-cyan-300/60 mb-1">Posição segura no ranking</div>
-                <p className="text-sm text-cyan-100">PB rank #{pbRank} em interações por 1.000 advogados.</p>
-              </div>
-              <p className="text-sm text-cyan-200/90 sm:text-right">{insight}</p>
-            </div>
-          </GlassCard>
-        </motion.div>
+        <GlassCard className="p-4 sm:p-5 border border-cyan-500/25 mt-4">
+          <p className="text-sm text-cyan-100">
+            PB ocupa a posição <span className="text-white font-semibold">#{pbRank}</span> em interações por 1.000
+            advogados, mantendo referência comparativa segura para análises editoriais da versão beta.
+          </p>
+        </GlassCard>
       </div>
     </section>
   );
