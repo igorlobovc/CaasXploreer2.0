@@ -1,359 +1,310 @@
-# CAAsXploreer2.0 - SINGLE AI HANDOFF MASTER FILE
+# CAAsXploreer2.0 — MASTER README / SINGLE AI HANDOFF FILE
 
-## Repo and execution base
+## 1. Estado atual do repositório
 
-- **Repo:** `igorlobovc/CaasXploreer2.0`
-- **Implementation base:** GitHub repo, not Kimi
-- **Reference product layer:** Kimi preview / similar structure only
-- **Current important branch from prior work:** `copilot/update-project-instructions`
-- **Open PR from prior work:** `#16` - homepage refactor + provisional analytics integration
-- **Main working rule:** GitHub is the base implementation layer; Kimi is only reference.
+- **Repositório-base:** `igorlobovc/CaasXploreer2.0`
+- **Camada oficial de implementação:** GitHub repo
+- **Kimi / Manus / Codex:** camadas auxiliares de ideação, scaffold, comparação visual e experimentação
+- **Regra operacional principal:** tudo que valer como estado real do produto precisa existir de verdade no Git e aparecer em branch/commit verificável
 
-## Product purpose
+## 2. Branches importantes no momento
 
-CAAsXploreer2.0 should become a **statewide service-intelligence site** for Brazilian CAAs, focused on:
+### Branch estável para beta
+- **`feature/state-highlights-paraiba`**
+- Esta é a branch mais estável para demo / beta navegável
+- Ela contém as melhorias reais já empurradas e verificadas do produto navegável
 
-- easy checking of services by state
-- category and subcategory comparison
-- raw and normalized performance
-- evidence-backed linked sources
-- region-by-region synthesis
-- current vs predecessor comparison where relevant
-- Fanpage Karma as the backbone for historical and benchmark periods
-- YouScan only for the rolling pulse layer
+### Branch de experimento para nova home editorial
+- **`feature/home-editorial-redesign`**
+- Criada para experimentar uma homepage mais inspirada na apresentação / PowerPoint
+- Ainda não deve ser tratada como branch estável de demo sem validação visual e técnica final
 
-This is **not** just a homepage polish project.
+### Branch de revisão de proposta Manus
+- **`manus-homepage-review`**
+- Branch temporária criada para visualizar a proposta editorial do Manus em isolamento
+- Serve para comparar com a home atual sem contaminar a branch beta estável
 
-## Fixed analysis periods
+### Branch remota externa do Manus
+- **`origin/feat/homepage-editorial-redesign`**
+- Commit identificado na conversa:
+  - `de5edacc6ca4c81c065ef73e576bcf31721b1060`
+- É uma proposta editorial paralela, não automaticamente integrada ao fluxo principal
 
-### P1 - Historical / structural layer
-- **Source family:** Fanpage Karma
-- **Range:** `2022-03-16` to `2026-02-13`
+## 3. Estado funcional atual do produto
 
-### P2 - Leadership / benchmark layer
-- **Source family:** Fanpage Karma
-- **Current period:** `2025-01-01` to `2026-03-31`
-- **Comparison period:** `2023-01-01` to `2024-03-31`
+Hoje o produto está mais forte nas páginas internas do que na homepage.
 
-### P3 - Pulse layer
-- **Source family:** YouScan
-- **Range:** rolling last 28 days
-- If missing, keep structure pending and do **not** fabricate data
+### Páginas consideradas fortes / apresentáveis
+- `/servicos`
+- `/estados`
+- `/estados/pb`
+- `/ranking`
+- `/ranking-v2`
+- `/evidencias`
+- `/analytics`
 
-## What the final useful version must contain
+### Página ainda em debate / redesign
+- `/` (homepage)
 
-### Core entities
-- state / UF
-- region
-- CAA branch
-- service
-- category
-- subcategory
-- source / evidence item
-- platform
-- post / content item
-- period
-- benchmark / comparison slice
+## 4. O que já está realmente implementado no produto navegável
 
-### Final data families
-- statewide service index
-- category comparison tables
-- subcategory comparison tables
-- regional synthesis tables
-- raw totals
-- normalized totals per professional / lawyer base
-- current vs predecessor comparison outputs
-- evidence-linked source layer
-- completeness / confidence / QA flags
+### 4.1 Estrutura de navegação
+O produto já possui navegação funcionando para:
+- home
+- ranking
+- ranking-v2
+- estados
+- detalhe por estado
+- evidências
+- serviços
+- analytics
 
-### Evidence fields required
-- source URL
-- platform
-- source type
-- state / UF
-- CAA name
-- category
-- subcategory
-- service
-- post/content title or descriptor
-- date
-- evidence confidence
-- completeness
-- analytical use
-- canonical / provisional status
+### 4.2 Camada comparativa / ranking
+Já existe base visual e estrutural para:
+- comparação por estado
+- leitura proporcional
+- leitura editorial regional
+- destaque comparativo da Paraíba
 
-### Metric families required
-- post volume
-- interaction totals
-- shared interactions
-- average engagement
-- normalized engagement
-- normalized service performance
-- service frequency
-- category frequency
-- subcategory frequency
-- benchmark deltas
-- period-over-period deltas
+### 4.3 Página estadual
+A página da Paraíba é uma das superfícies mais fortes do produto no momento e foi usada como prova de valor do beta.
 
-### QA / confidence fields required
-- canonical vs provisional
-- source family
-- confidence score
-- completeness score
-- reconciliation note
-- anomaly flag
-- normalization source
-- provenance note
+### 4.4 Serviços / taxonomia
+A página de serviços está forte e ajuda a provar que o projeto não é só “visualização”, mas sim um índice navegável com taxonomia.
 
-## What is already known from prior work
+### 4.5 Evidências
+A camada de evidências já funciona como suporte de auditabilidade / método.
 
-### Homepage / app structure work already done
-- modular homepage components under `app/src/components/home/`
-- shared primitives under `app/src/components/shared.tsx`
-- `app/src/App.tsx` reduced to thin wrapper
-- provisional analytics section wired to runtime JSON files
-- adapter/resolver pattern introduced
+### 4.6 Analytics
+A página de analytics está utilizável, mas deve ser tratada como camada de apoio, não como a principal narrativa de abertura.
 
-### Provisional analytics files already relevant
-- `app/src/components/home/provisional/ProvisionalSimulationResultsSection.tsx`
-- `app/src/components/home/provisional/realDataAdapter.ts`
-- `app/src/components/home/provisional/realDataTypes.ts`
-- `app/src/components/home/provisional/analyticsSourceResolver.ts`
+## 5. Lawyer totals / normalização
 
-### Runtime provisional JSONs already used
-- `app/src/components/home/provisional/data/temporal-data.json`
-- `app/src/components/home/provisional/data/heatmap-data.json`
-- `app/src/components/home/provisional/data/engagement-categoria.json`
-- `app/src/components/home/provisional/data/resumo-executivo.json`
-- `app/src/components/home/provisional/data/caa-data.json`
-- `app/src/components/home/provisional/data/ranking_estados_12m.json`
+A base de normalização por quantidade de advogados foi corrigida e passou a ser tratada como ponto crítico de credibilidade.
 
-### Important limitation
-Those provisional JSONs are **not enough** to represent the final product goal. They are only an intermediate integration layer.
+### Fonte de referência fixada no repo
+- `data/reference/lawyer_totals/lawyer_totals_mar_2026.csv`
 
-## Critical external data not yet cleanly ingested into GitHub
+### Observação importante
+A Paraíba foi tratada explicitamente como caso de correção relevante:
+- **PB = 24.226**
 
-The useful classified batch was **not yet properly added into the repo**.
+Isso afeta:
+- leitura por 1.000 advogados
+- comparações proporcionais
+- ranking normalizado
+- narrativa da Paraíba
 
-Important external files:
-- `MERGED_POST_WALL_2022_2026_CLASSIFIED_V2_QA.xlsx`
-- `MERGED_POST_WALL_2022_2026_CLASSIFIED_V2_20250308.xlsx`
-- and any related canonical classified Fanpage Karma batch
+## 6. Homepage: estado atual real
 
-This means:
-- Kimi classification work may exist outside GitHub
-- repo may still lack the full useful Fanpage Karma backbone
-- next AI must verify what is in repo versus what is still external
+A homepage passou por múltiplas tentativas de ajuste. Nem todas aterrissaram em commits reais. Portanto, a distinção abaixo é essencial.
 
-## GitHub Projects / governance rules already defined
+### O que é real na branch beta estável
+Na branch `feature/state-highlights-paraiba`, a home atual é **utilizável**, mas ainda não representa a versão editorial final desejada.
 
-These rules are part of the project operating model and should be preserved unless explicitly changed:
+### Problema central da home
+A homepage ainda oscilou entre:
+- shell de produto
+- pilha de cards
+- teaser stack
+- tentativa de editorialização parcial
 
-- analytics first
-- `/ranking` second
-- homepage selective later
-- preserve public/data registry files
-- do not rewrite stable routes casually
-- keep `/estados` and `/estados/[uf]` frozen during this cycle
-- do not authorize merge if the Sudeste anomaly is unresolved
+### Conclusão atual
+A homepage ainda precisa ser tratada como:
+- ponto de entrada do produto
+- síntese editorial do relatório
+- guia de navegação para as páginas internas fortes
 
-## Existing GitHub Projects task model to preserve
+Mas isso ainda está em refinamento.
 
-### Analytics
-- confirm analytics package consistency
-- validate Sudeste anomaly
-- list trusted analytics files
+## 7. Direção correta para a homepage
 
-### Integration
-- inspect target repo structure
-- map candidate package to target repo
-- identify minimal live version
-- prepare `/ranking` readiness checklist
+A direção correta já foi definida na conversa e deve ser preservada.
 
-### Presentation
-- draft executive analytics narrative
-- create service-ranking presentation table spec
-- draft homepage section strategy aligned to Kimi reference structure
+### A homepage NÃO deve ser:
+- dashboard genérico
+- amontoado de teasers
+- analytics wall
+- experimentação de iframe
+- vitrine de lógica inacabada
 
-### Project control / governance / decision
-- review README/project text
-- organize GitHub project cards
-- inspect Kimi package artifacts
-- confirm lawyer totals source
-- decide target repo for first live increment
-- approve minimal live scope
-- record merge policy
-- consolidate 24h checkpoint
+### A homepage DEVE ser:
+- capa editorial do projeto
+- síntese executiva
+- apresentação dos principais achados
+- vitrine da leitura comparativa da Paraíba
+- hub de entrada para o app real
 
-## Correct implementation direction
+### Estrutura-alvo da homepage editorial
+1. Hero / cover
+2. Panorama executivo
+3. O que realmente mobiliza a advocacia
+4. Paraíba em perspectiva analítica
+5. Exemplos de leitura / casos
+6. Explore o beta
+7. Footer
 
-### Keep as implementation base
-- repo structure
-- branch / PR workflow
-- routing
-- modular homepage code
-- adapter/resolver pattern where useful
+## 8. Conteúdo editorial já definido para a nova home
 
-### Treat as reference only
-- Kimi preview structure
-- Kimi filters
-- Kimi enriched service browsing
-- Kimi section ordering
-- Kimi evidence presentation patterns
+### Título principal
+**Panorama comparativo das Caixas de Assistência da Advocacia Brasileira**
 
-### Do NOT prioritize
-- badges/icons as primary work
-- homepage micro-polish first
-- route rewrites
-- broad visual redesign
-- random doc sprawl
+### Subtítulo
+**Leitura editorial e comparativa sobre cobertura de benefícios, engajamento digital e diferenciais regionais das CAAs no Brasil.**
 
-## Correct repo structure target
+### Panorama executivo
+Três ideias principais já definidas:
+1. **O padrão ouro**
+2. **O motor do engajamento**
+3. **A era da hiper-personalização**
 
-```text
-data/
-	raw/
-		fanpagekarma/
-		youscan/
-		scraping/
-		external_batches/
-	reference/
-		states/
-		caa_dictionary/
-		category_dictionary/
-		subcategory_dictionary/
-		lawyer_totals/
-		source_maps/
-	processed/
-		period_1/
-		period_2/
-		period_3/
-		shared/
-schemas/
-content/
-	report/
-	state_profiles/
-	app/
-charts/
-	specs/
-docs/
-	methodology/
-	reconciliation/
-	ai_handoff/
-app/
-	src/
-		components/
-		lib/
-```
+### Mobilização da advocacia
+Categorias a destacar:
+- Benefícios e Convênios
+- Sorteios
+- Esporte e Bem-estar
+- Saúde
 
-## Exact ingestion principle
+### Paraíba
+Usar framing comparativo estável entre:
+- PB
+- Nordeste
+- Brasil
 
-Do not dump external XLSX files randomly into the repo.
+### Exemplos / casos
+Blocos editoriais desejados:
+- Cauda longa dos benefícios
+- Esportes diferenciados
+- Adoção tecnológica e fricção regional
+- A Caixa do futuro
 
-For each external classified batch:
-1. store original source files in a raw/external source area
-2. create normalized derivatives
-3. create canonical processed outputs
-4. add provenance / caveats / coverage note
-5. define whether each output is canonical or provisional
+### Explore o beta
+A home deve terminar com 4 entradas claras:
+- Ranking — Comparação relativa entre estados.
+- Estados — Visão por UF com recortes consolidados.
+- Evidências — Registros públicos para validação de método e taxonomia.
+- Serviços — Catálogo estruturado com cobertura atual.
 
-## Files and areas the next AI should NOT touch casually
+## 9. Materiais editoriais / apresentação
 
-- `app/dist`
-- `node_modules`
-- `.vite`
-- route structure in `app/src/main.tsx`
-- ranking/state pages unless explicitly required:
-	- `src/pages/AnalyticsPage.tsx`
-	- `src/pages/RankingPage.tsx`
-	- `src/pages/EstadosPage.tsx`
-	- `src/pages/EstadoDetailPage.tsx`
-- provisional JSON source files should not be rewritten blindly without ingestion/reconciliation logic
+Foram usados materiais derivados de apresentações / slides / PNGs como referência visual e narrativa para a homepage editorial.
 
-## Practical unknowns that must be verified first
+### Regra importante
+Esses materiais devem servir como:
+- referência estética
+- referência de hierarquia
+- referência narrativa
 
-The next AI must confirm:
+Eles **não** devem ser simplesmente despejados como “slides embutidos”.
 
-1. Does the repo already contain any real Fanpage Karma-derived canonical dataset beyond provisional homepage JSONs?
-2. Did any of the Kimi classification outputs actually make it into GitHub?
-3. Is there already category/subcategory-ready processed data in repo?
-4. Which external files are authoritative?
-5. Is the Sudeste anomaly real?
-6. Which lawyer totals source is fixed and authoritative?
+### Uso correto
+A nova home deve:
+- parecer uma capa editorial premium
+- continuar pertencendo visualmente ao CAAsXploreer
+- manter shell dark e leitura moderna
+- usar imagens estáticas e narrativas sem depender de lógica dinâmica inacabada
 
-## Single next task
+## 10. Fanpage Karma
 
-### Next task
-**Create a clean ingestion structure for the useful external classified Fanpage Karma batch and document provenance before any broader feature work.**
+### Situação
+Foi criado um sandbox isolado para testar embedding de uma apresentação Fanpage Karma:
+- rota temporária de teste:
+  - `/fanpagekarma-test`
 
-### Goal
-Make the repo ready for another AI to ingest the useful classified batch in a traceable, non-chaotic way.
+### Conclusão prática
+A apresentação Fanpage Karma pode ser útil como:
+- referência
+- sandbox
+- CTA externa opcional
 
-### Files/folders allowed to change
-- `data/raw/...`
-- `data/reference/...`
-- `data/processed/...`
-- `schemas/...`
-- `docs/methodology/...`
-- `docs/reconciliation/...`
-- minimal helper scripts for ingestion
+Mas **não** deve ser dependência central da homepage.
 
-### Files/folders not to touch
-- `app/dist`
-- route files
-- ranking/state pages
-- visual homepage components unless directly needed for ingestion documentation
+### Regra
+- não embutir Fanpage Karma como base crítica da home
+- não fazer a home depender do iframe
 
-### Definition of done
-- clean folder structure exists
-- provenance metadata file exists
-- ingestion script placeholders or first script exists
-- canonical vs provisional boundary is documented
+## 11. Dados de canais / matriz por seccional
 
-## Exact first prompts for the next AI
+A matriz de canais por seccional foi discutida, mas a realidade atual ficou clara:
 
-### Prompt 1 - verify repo reality
-```text
-Inspect the current repo and tell me clearly whether it already contains:
-1. Fanpage Karma-derived data
-2. Kimi-generated categorization/classification outputs
-3. category/subcategory-ready processed files
-4. only provisional homepage JSONs versus a full analytics backbone
+### O que existe
+- estrutura / templates de ingestão
+- documentação de necessidade de dados
 
-Return only:
-A. confirmed Fanpage Karma files already in repo
-B. confirmed classification/categorization files already in repo
-C. what is missing from repo but exists outside it
-D. the single next ingestion task needed
-```
+### O que NÃO existe ainda no repo como dado live
+- a base canônica final de preferência de canais por seccional ingerida no produto
 
-### Prompt 2 - ingestion structure
-```text
-The useful classified batch is NOT yet cleanly in GitHub. We need to ingest it into the repo in a structured, traceable, non-chaotic way.
+### Templates criados
+Em branch estável foram criados templates como:
+- `data/reference/channel_preferences/channel_preferences_by_uf_template.csv`
+- `data/reference/channel_preferences/channel_preferences_ranked_template.csv`
+- `data/reference/channel_preferences/channel_preferences_regional_template.csv`
+- `docs/methodology/channel_preferences_data_requirements.md`
 
-Return only:
-A. exact target folders/files to create
-B. exact filenames to use
-C. what should be committed as-is versus transformed first
-D. the first ingestion script(s) that should exist
-E. the minimum provenance/metadata doc that should be created
-F. the single safest first implementation step
-```
+### Regra
+Não fingir que a matriz já está viva no app.
+Ela deve ser tratada como:
+- próxima ingestão
+- próxima validação
+- próxima expansão metodológica
 
-### Prompt 3 - final product reorientation
-```text
-Reorient CAAsXploreer2.0 correctly.
+## 12. Organização real dos dados no repo
 
-Target product:
-a statewide service-intelligence site using Fanpage Karma as backbone for P1 and P2, and YouScan only for P3.
+### Já existem camadas relevantes como:
+- dados provisórios para homepage / analytics
+- referências de lawyer totals
+- estruturas de taxonomy / subcategorias
+- dados para páginas internas
 
-Return only:
-A. exact final data model
-B. exact repo structure
-C. exact implementation order in 5 phases max
-D. first 8 GitHub issues/tasks to open
-```
+### Mas o projeto ainda não deve ser tratado como “camada final completa”
+Ainda há separação entre:
+- backbone utilizável
+- camada provisória
+- camadas editoriais
+- dados externos ainda não totalmente reconciliados
 
-## One-line operating rule
+## 13. O que já não deve mais ser prioridade
 
-**GitHub repo is the implementation base. Kimi is the structure/reference layer. Fanpage Karma backbone and ingestion structure come before UI polish.**
+Não priorizar agora:
+- micro-polish de badge
+- mexer em rotas estáveis sem necessidade
+- reescrever páginas internas fortes
+- reabrir loops de homepage antiga
+- perseguir commits relatados por IA que não aparecem em `git log`
+- qualquer redesign amplo fora da homepage
+
+## 14. Regras de branch / operação
+
+### Branch segura para demo
+- `feature/state-highlights-paraiba`
+
+### Branch para experimento editorial de home
+- `feature/home-editorial-redesign`
+
+### Branch de revisão externa / Manus
+- `manus-homepage-review`
+
+### Regra operacional crítica
+Só considerar como “implementado de verdade” o que:
+1. existe em branch real
+2. aparece em `git log`
+3. compila
+4. abre em preview verificável
+
+## 15. Regra de validação de mudanças de IA
+
+Mudança vinda de Codex / Manus / Kimi só vale se:
+- houver hash real verificável
+- a branch existir
+- o preview abrir
+- o output fizer sentido visualmente
+- não houver dependência de truque frágil (ex.: mutação de DOM via `querySelector`)
+
+## 16. Preview / execução local em Codespaces
+
+### Fluxo que funcionou
+```bash
+cd /workspaces/CaasXploreer2.0/app
+rm -rf dist
+npm run build
+npm run preview -- --host 0.0.0.0 --port 4200
