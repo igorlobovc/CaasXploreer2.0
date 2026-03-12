@@ -4,7 +4,8 @@ import {
   ResponsiveContainer, ReferenceLine, Cell,
 } from 'recharts';
 import { GlassCard } from '@/components/shared';
-import { TrendingUp, AlertCircle, ExternalLink } from 'lucide-react';
+import { AlertCircle, ExternalLink } from 'lucide-react';
+import { PptxSlideCarousel } from './PptxSlideCarousel';
 
 // Benchmark data for northeastern states
 const BENCHMARK_DATA = [
@@ -167,39 +168,18 @@ export function ParaibaPerspectivaSection() {
             viewport={{ once: true }}
             className="space-y-5"
           >
-            {/* Key finding */}
-            <GlassCard className="p-5 border border-red-500/20">
-              <div className="flex items-start gap-3">
-                <div className="w-9 h-9 bg-red-500/15 border border-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <TrendingUp className="w-5 h-5 text-red-400" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[10px] px-2 py-0.5 bg-red-500/15 text-red-400 rounded font-mono">
-                      CAA-PB
-                    </span>
-                    <span className="text-[10px] text-cyan-200/40">Motor digital do Nordeste</span>
-                  </div>
-                  <h4 className="text-base font-bold text-white mb-1">
-                    1 post/dia · 43k+ interações
-                  </h4>
-                  <p className="text-xs text-cyan-200/50 leading-relaxed">
-                    A Paraíba posta mais e engaja mais que gigantes regionais como Pernambuco. O
-                    desafio não é criar o canal, mas otimizar a mensagem.
-                  </p>
-                </div>
-              </div>
-            </GlassCard>
+            {/* PPTX Slide Carousel */}
+            <PptxSlideCarousel />
 
             {/* Hex embed — Geography of Legal Practice */}
             <GlassCard className="p-0 overflow-hidden border border-cyan-500/15">
               <div className="px-5 pt-4 pb-3 border-b border-cyan-500/10 flex items-center justify-between">
                 <div>
-                  <h4 className="text-sm font-semibold text-white">
-                    A Geografia da Prática Jurídica
+                  <h4 className="text-sm font-semibold text-white leading-snug">
+                    Bench comparativo perfis CAAs
                   </h4>
-                  <p className="text-[10px] text-cyan-200/40 mt-0.5">
-                    Distribuição capital × interior por estado
+                  <p className="text-[10px] text-cyan-200/40 mt-0.5 leading-relaxed">
+                    JAN 2025 até 11 mar · vs. mesmo período dez 2024 para trás
                   </p>
                 </div>
                 <a

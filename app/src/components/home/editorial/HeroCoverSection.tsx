@@ -67,7 +67,7 @@ export function HeroCoverSection() {
                 O Ecossistema de Benefícios da Advocacia Brasileira
               </p>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white tracking-tight leading-[1.05]">
-                O DNA da Nova
+                Serviços que Engajam a
                 <br />
                 <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
                   Advocacia Brasileira
@@ -76,8 +76,8 @@ export function HeroCoverSection() {
             </div>
 
             <p className="text-base sm:text-lg text-cyan-100/60 leading-relaxed max-w-2xl">
-              Um raio-x analítico em 15 visualizações de alto impacto sobre demografia, economia,
-              tecnologia e sentimento institucional das Caixas de Assistência (CAAs).
+              Raio-x analítico sobre sentimento institucional das Caixas de Assistência (CAAs).
+              Dados, engajamento e oportunidades estratégicas para a advocacia brasileira.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
