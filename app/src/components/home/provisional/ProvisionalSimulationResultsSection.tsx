@@ -18,7 +18,7 @@ export function ProvisionalSimulationResultsSection() {
   return (
     <section className="py-16 sm:py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <motion.div initial={false} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <SectionHeading
             icon={<TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />}
             label="SINAL EXTERNO"
@@ -40,7 +40,7 @@ export function ProvisionalSimulationResultsSection() {
           {kpis.map((kpi, index) => (
             <motion.div
               key={kpi.label}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={false}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
@@ -79,7 +79,7 @@ export function ProvisionalSimulationResultsSection() {
                 {sentimentVolumeByWindow.map((datum, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, height: 0 }}
+                    initial={false}
                     whileInView={{ opacity: 1, height: `${datum.volume}%` }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.03, ease: 'easeOut' }}
@@ -145,7 +145,7 @@ export function ProvisionalSimulationResultsSection() {
         </motion.div>
 
         <div className="mt-12 sm:mt-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
+          <motion.div initial={false} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
             <h3 className="text-xl sm:text-2xl font-semibold text-white mb-2">Comparativos Analíticos</h3>
             <p className="text-sm text-cyan-200/60">
               Leitura comparativa de repercussão por tema e por entidade de assistência.
@@ -214,7 +214,7 @@ export function ProvisionalSimulationResultsSection() {
                   {topicMentionsTimeline.map((datum, index) => (
                     <div key={index} className="flex-1 relative h-full">
                       <motion.div
-                        initial={{ opacity: 0, scale: 0 }}
+                        initial={false}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.3, delay: 0.5 + index * 0.04 }}
@@ -227,7 +227,7 @@ export function ProvisionalSimulationResultsSection() {
                         title={`${datum.mes}: Saúde ${datum.saude} menções`}
                       />
                       <motion.div
-                        initial={{ opacity: 0, scale: 0 }}
+                        initial={false}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.3, delay: 0.6 + index * 0.04 }}
@@ -294,7 +294,7 @@ export function ProvisionalSimulationResultsSection() {
                   return (
                     <motion.div
                       key={entidade.nome}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={false}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}

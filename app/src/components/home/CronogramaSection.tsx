@@ -9,7 +9,7 @@ export function CronogramaSection() {
   return (
     <section className="py-16 sm:py-24 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <motion.div initial={false} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <SectionHeading
             icon={<Clock className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />}
             label="ENTREGA"
@@ -26,7 +26,7 @@ export function CronogramaSection() {
             {TIMELINE_EVENTS.map((event, index) => (
               <motion.div
                 key={event.date}
-                initial={{ opacity: 0, x: -20 }}
+                initial={false}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 }}

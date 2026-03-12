@@ -2,48 +2,45 @@ import { useEffect, useRef } from 'react';
 
 import { motion } from 'framer-motion';
 
-function VideoBackground() {
+function GalaxyNebulaBackground() {
   return (
-    <div className="fixed inset-0 overflow-hidden z-0">
-      <div className="absolute inset-0">
-        <motion.div
-          animate={{ x: [0, 50, 0, -30, 0], y: [0, 30, 60, 20, 0], scale: [1, 1.1, 0.95, 1.05, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -top-[20%] -left-[10%] w-[60vw] h-[60vw] rounded-full"
-          style={{
-            background:
-              'radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, rgba(0, 100, 200, 0.05) 50%, transparent 70%)',
-            filter: 'blur(60px)',
-          }}
-        />
-        <motion.div
-          animate={{ x: [0, -40, 0, 30, 0], y: [0, -50, -20, -40, 0], scale: [1, 0.9, 1.15, 1, 1] }}
-          transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          className="absolute -bottom-[10%] -right-[15%] w-[50vw] h-[50vw] rounded-full"
-          style={{
-            background:
-              'radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(88, 28, 135, 0.05) 50%, transparent 70%)',
-            filter: 'blur(80px)',
-          }}
-        />
-        <motion.div
-          animate={{ x: [0, 30, -20, 40, 0], y: [0, -30, 20, -10, 0], scale: [1, 1.2, 0.9, 1.1, 1] }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 5 }}
-          className="absolute top-[30%] left-[40%] w-[40vw] h-[40vw] rounded-full"
-          style={{
-            background:
-              'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.03) 50%, transparent 70%)',
-            filter: 'blur(70px)',
-          }}
-        />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1a]/80 via-[#0a0f1a]/60 to-[#0a0f1a]/90" />
+    <div className="fixed inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1E] via-[#101A31] to-[#1E293B]" />
+
+      <motion.div
+        animate={{ x: [0, 60, 0, -30, 0], y: [0, 30, 70, 10, 0], scale: [1, 1.1, 0.95, 1.05, 1] }}
+        transition={{ duration: 24, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute -left-[15%] -top-[20%] h-[65vw] w-[65vw] rounded-full"
+        style={{
+          background:
+            'radial-gradient(circle, rgba(0,224,255,0.16) 0%, rgba(59,130,246,0.08) 42%, rgba(10,15,30,0) 72%)',
+          filter: 'blur(70px)',
+        }}
+      />
+      <motion.div
+        animate={{ x: [0, -50, 0, 40, 0], y: [0, -40, -10, -30, 0], scale: [1, 0.9, 1.1, 0.95, 1] }}
+        transition={{ duration: 28, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
+        className="absolute -bottom-[20%] -right-[15%] h-[56vw] w-[56vw] rounded-full"
+        style={{
+          background:
+            'radial-gradient(circle, rgba(59,130,246,0.18) 0%, rgba(30,41,59,0.08) 45%, rgba(10,15,30,0) 72%)',
+          filter: 'blur(80px)',
+        }}
+      />
+
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.11]"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(0, 212, 255, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 212, 255, 0.5) 1px, transparent 1px)',
-          backgroundSize: '50px 50px',
+            'radial-gradient(circle at 20% 18%, rgba(255,255,255,0.65) 1px, transparent 1.5px), radial-gradient(circle at 76% 34%, rgba(255,255,255,0.45) 1px, transparent 1.5px), radial-gradient(circle at 60% 78%, rgba(255,255,255,0.5) 1px, transparent 1.5px), radial-gradient(circle at 32% 66%, rgba(255,255,255,0.35) 1px, transparent 1.5px)',
+        }}
+      />
+      <div
+        className="absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(0,224,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(0,224,255,0.4) 1px, transparent 1px)',
+          backgroundSize: '72px 72px',
         }}
       />
     </div>
@@ -87,40 +84,22 @@ function CenteredRadarBackground() {
       ctx.clearRect(0, 0, width, height);
 
       for (let i = 1; i <= 8; i += 1) {
-        const radius = 60 + i * 50;
+        const radius = 70 + i * 52;
         ctx.beginPath();
         ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(0, 212, 255, ${0.04 + i * 0.003})`;
+        ctx.strokeStyle = `rgba(0, 224, 255, ${0.03 + i * 0.003})`;
         ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-
-      ctx.beginPath();
-      ctx.moveTo(0, centerY);
-      ctx.lineTo(width, centerY);
-      ctx.moveTo(centerX, 0);
-      ctx.lineTo(centerX, height);
-      ctx.strokeStyle = 'rgba(0, 212, 255, 0.05)';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-
-      for (let angle = 0; angle < 360; angle += 45) {
-        const rad = (angle * Math.PI) / 180;
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.lineTo(centerX + Math.cos(rad) * 500, centerY + Math.sin(rad) * 500);
-        ctx.strokeStyle = 'rgba(0, 212, 255, 0.03)';
         ctx.stroke();
       }
 
       const pulseCount = 3;
       for (let i = 0; i < pulseCount; i += 1) {
         const pulseOffset = (pulsePhase + i / pulseCount) % 1;
-        const pulseRadius = 80 + pulseOffset * 350;
-        const alpha = (1 - pulseOffset) * 0.12;
+        const pulseRadius = 110 + pulseOffset * 380;
+        const alpha = (1 - pulseOffset) * 0.11;
         ctx.beginPath();
         ctx.arc(centerX, centerY, pulseRadius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(0, 212, 255, ${alpha})`;
+        ctx.strokeStyle = `rgba(0, 224, 255, ${alpha})`;
         ctx.lineWidth = 1.5;
         ctx.stroke();
       }
@@ -128,27 +107,17 @@ function CenteredRadarBackground() {
       ctx.save();
       ctx.translate(centerX, centerY);
       ctx.rotate(sweepAngle);
-      const sweepGradient = ctx.createLinearGradient(0, 0, 400, 0);
-      sweepGradient.addColorStop(0, 'rgba(0, 212, 255, 0)');
-      sweepGradient.addColorStop(0.5, 'rgba(0, 212, 255, 0.15)');
-      sweepGradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
+      const sweepGradient = ctx.createLinearGradient(0, 0, 420, 0);
+      sweepGradient.addColorStop(0, 'rgba(0, 224, 255, 0)');
+      sweepGradient.addColorStop(0.45, 'rgba(0, 224, 255, 0.14)');
+      sweepGradient.addColorStop(1, 'rgba(0, 224, 255, 0)');
       ctx.fillStyle = sweepGradient;
       ctx.beginPath();
       ctx.moveTo(0, 0);
-      ctx.arc(0, 0, 400, -0.12, 0.12);
+      ctx.arc(0, 0, 420, -0.13, 0.13);
       ctx.closePath();
       ctx.fill();
       ctx.restore();
-
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, 4, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0, 212, 255, 0.8)';
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, 12, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0, 212, 255, 0.2)';
-      ctx.fill();
 
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -162,19 +131,13 @@ function CenteredRadarBackground() {
     };
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none z-[1]"
-      style={{ opacity: 0.9 }}
-    />
-  );
+  return <canvas ref={canvasRef} className="pointer-events-none fixed inset-0 z-[1] h-full w-full" style={{ opacity: 0.9 }} />;
 }
 
 export function HomeBackground() {
   return (
     <>
-      <VideoBackground />
+      <GalaxyNebulaBackground />
       <CenteredRadarBackground />
     </>
   );
