@@ -1,0 +1,9 @@
+{
+  "name": "caasxploreer",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd app && npm ci && npm run build",
+    "install": "cd app && npm install"
+  }
+}
