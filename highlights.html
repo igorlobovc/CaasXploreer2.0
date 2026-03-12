@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAAsXplorer · Interactive Elements Highlights</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ── Design tokens ─────────────────────────────────────────── */
+    :root {
+      --bg:        #050b14;
+      --surface:   #0a1628;
+      --surface2:  #0d1e38;
+      --border:    rgba(6,182,212,.15);
+      --cyan:      #06b6d4;
+      --cyan-dim:  rgba(6,182,212,.45);
+      --cyan-faint:rgba(6,182,212,.08);
+      --white:     #f1f5f9;
+      --muted:     rgba(224,242,254,.45);
+      --red:       #ef4444;
+      --blue:      #3b82f6;
+      --violet:    #8b5cf6;
+      --green:     #10b981;
+      --amber:     #f59e0b;
+      --radius:    12px;
+      --radius-sm: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Scrollbar ─────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    /* ── Fixed top nav ─────────────────────────────────────────── */
+    .top-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 52px;
+      background: rgba(5,11,20,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 24px;
+      gap: 8px;
+    }
+    .top-nav .brand {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: var(--white);
+      text-decoration: none; margin-right: auto;
+    }
+    .brand-icon {
+      width: 28px; height: 28px;
+      background: var(--cyan-faint);
+      border: 1px solid rgba(6,182,212,.25);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .brand-icon svg { width: 14px; height: 14px; color: var(--cyan); }
+    .brand-tag {
+      font-size: 9px; font-family: monospace;
+      color: rgba(6,182,212,.4); letter-spacing: .1em;
+    }
+    .nav-pill {
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      background: none; border: none;
+      color: rgba(224,242,254,.4);
+      cursor: pointer; transition: all .2s;
+      text-decoration: none;
+    }
+    .nav-pill:hover, .nav-pill.active {
+      background: var(--cyan-faint);
+      color: rgba(224,242,254,.85);
+    }
+
+    /* ── Hero header ───────────────────────────────────────────── */
+    .hero-header {
+      padding: 100px 24px 60px;
+      max-width: 900px; margin: 0 auto;
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 10px; font-family: monospace;
+      color: rgba(6,182,212,.6);
+      text-transform: uppercase; letter-spacing: .2em;
+      border: 1px solid rgba(6,182,212,.2);
+      background: rgba(6,182,212,.06);
+      padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--cyan);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    .hero-header h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800; line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero-header h1 span {
+      background: linear-gradient(90deg, var(--cyan), #60a5fa, var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-header p {
+      font-size: 15px; color: var(--muted);
+      max-width: 560px; margin: 0 auto 32px;
+    }
+    .hero-chips {
+      display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+    }
+    .chip {
+      font-size: 10px; font-family: monospace;
+      padding: 4px 10px; border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--cyan-dim);
+    }
+    .chip.highlight { border-color: rgba(6,182,212,.4); color: var(--cyan); }
+
+    /* ── Section layout ────────────────────────────────────────── */
+    .section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 64px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .section-label {
+      font-size: 10px; font-family: monospace;
+      color: rgba(6,182,212,.5);
+      text-transform: uppercase; letter-spacing: .2em;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 700; margin-bottom: 8px;
+    }
+    .section-title span { color: var(--cyan); }
+    .section-desc {
+      font-size: 13px; color: var(--muted);
+      max-width: 560px; margin-bottom: 40px;
+    }
+
+    /* ── Glass card ────────────────────────────────────────────── */
+    .glass {
+      background: rgba(10,22,40,.6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(8px);
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .glass:hover {
+      border-color: rgba(6,182,212,.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(6,182,212,.06);
+    }
+
+    /* ── Feature badge ─────────────────────────────────────────── */
+    .feature-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 10px; font-weight: 600;
+      padding: 3px 10px; border-radius: 20px;
+      border: 1px solid;
+    }
+    .badge-cyan  { background: rgba(6,182,212,.1);  color: #67e8f9; border-color: rgba(6,182,212,.25); }
+    .badge-blue  { background: rgba(59,130,246,.1); color: #93c5fd; border-color: rgba(59,130,246,.25); }
+    .badge-violet{ background: rgba(139,92,246,.1); color: #c4b5fd; border-color: rgba(139,92,246,.25); }
+    .badge-green { background: rgba(16,185,129,.1); color: #6ee7b7; border-color: rgba(16,185,129,.25); }
+    .badge-amber { background: rgba(245,158,11,.1); color: #fcd34d; border-color: rgba(245,158,11,.25); }
+    .badge-red   { background: rgba(239,68,68,.1);  color: #fca5a5; border-color: rgba(239,68,68,.25); }
+    .badge-pink  { background: rgba(236,72,153,.1); color: #f9a8d4; border-color: rgba(236,72,153,.25); }
+    .badge-rose  { background: rgba(244,63,94,.1);  color: #fda4af; border-color: rgba(244,63,94,.25); }
+    .badge-sky   { background: rgba(14,165,233,.1); color: #7dd3fc; border-color: rgba(14,165,233,.25); }
+
+    /* ══════════════════════════════════════════════════════════════
+       ELEMENT 1 — Animated Hero Stats
+    ══════════════════════════════════════════════════════════════ */
+    .hero-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media(max-width:640px){ .hero-demo { grid-template-columns: 1fr; } }
+
+    .hero-preview {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative; overflow: hidden;
+    }
+    .hero-preview::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,212,255,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-preview::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 9px; font-family: monospace;
+      color: rgba(6,182,212,.6);
+      border: 1px solid rgba(6,182,212,.2);
+      background: rgba(6,182,212,.06);
+      padding: 3px 10px; border-radius: 20px;
+      width: fit-content; margin-bottom: 16px;
+    }
+    .hero-h1 {
+      font-size: 22px; font-weight: 800; line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .hero-h1 span {
+      background: linear-gradient(90deg, var(--cyan), #60a5fa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub { font-size: 11px; color: var(--muted); margin-bottom: 14px; }
+    .hero-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 7px 14px; font-size: 11px; font-weight: 600;
+      background: var(--cyan); color: var(--bg);
+      border: none; border-radius: var(--radius-sm);
+      cursor: pointer; transition: background .2s;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .btn-primary:hover { background: #22d3ee; }
+    .btn-ghost {
+      padding: 7px 14px; font-size: 11px;
+      background: none;
+      border: 1px solid rgba(6,182,212,.3);
+      color: rgba(6,182,212,.8);
+      border-radius: var(--radius-sm);
+      cursor: pointer; transition: all .2s;
+    }
+    .btn-ghost:hover { border-color: rgba(6,182,212,.6); color: var(--cyan); }
+
+    .stat-cards { display: flex; flex-direction: column; gap: 8px; }
+    .stat-card {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 14px;
+      background: rgba(10,22,40,.5);
+      border: 1px solid rgba(6,182,212,.12);
+      border-radius: 10px;
+      opacity: 0; transform: translateX(20px);
+      transition: opacity .5s, transform .5s;
+    }
+    .stat-card.visible { opacity: 1; transform: translateX(0); }
+    .stat-icon {
+      width: 32px; height: 32px;
+      background: rgba(6,182,212,.1);
+      border: 1px solid rgba(6,182,212,.2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .stat-icon svg { width: 14px; height: 14px; stroke: var(--cyan); fill: none; stroke-width: 2; }
+    .stat-value { font-size: 18px; font-weight: 700; }
+    .stat-label { font-size: 10px; color: var(--muted); }
+
+    .element-desc {
+      padding: 20px;
+    }
+    .element-desc h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .element-desc p { font-size: 12px; color: var(--muted); margin-bottom: 12px; line-height: 1.7; }
+    .tech-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .replay-btn {
+      padding: 6px 14px; font-size: 11px;
+      background: var(--cyan-faint);
+      border: 1px solid rgba(6,182,212,.25);
+      color: var(--cyan); border-radius: 6px;
+      cursor: pointer; transition: all .2s;
+    }
+    .replay-btn:hover { background: rgba(6,182,212,.15); }
+
+    /* ══════════════════════════════════════════════════════════════
+       ELEMENT 2 — Scroll-reveal animations
+    ══════════════════════════════════════════════════════════════ */
+    .reveal-demo {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    }
+    @media(max-width:640px){ .reveal-demo { grid-template-columns: 1fr; } }
+
+    .reveal-card {
+      padding: 20px;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal-card.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-card .num {
+      font-size: 40px; font-weight: 800;
+      color: rgba(180,140,90,.7);
+      line-height: 1; margin-bottom: 8px;
+    }
+    .reveal-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .reveal-card p { font-size: 11px; color: var(--muted); line-height: 1.6; }
+    .reveal-tags { display: flex; gap: 5px; margin-top: 10px; flex-wrap: wrap; }
+
+    .reveal-trigger {
+      text-align: center; padding: 20px 0 0;
+    }
+    .trigger-btn {
+      padding: 8px 20px; font-size: 12px;
+      background: none;
+      border: 1px solid rgba(6,182,212,.3);
+      color: var(--cyan); border-radius: 6px;
+      cursor: pointer; transition: all .2s;
+    }
+    .trigger-btn:hover { background: var(--cyan-faint); }
+
+    /* ══════════════════════════════════════════════════════════════
+       ELEMENT 3 — Tab-switched chart
+    ══════════════════════════════════════════════════════════════ */
+    .tab-bar {
+      display: flex; gap: 4px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 4px;
+      width: fit-content; margin-bottom: 20px;
+    }
+    .tab {
+      padding: 6px 16px; font-size: 11px; font-weight: 500;
+      background: none; border: none;
+      color: rgba(224,242,254,.4);
+      border-radius: 5px; cursor: pointer;
+      transition: all .2s;
+    }
+    .tab.active {
+      background: rgba(6,182,212,.15);
+      color: rgba(6,182,212,.9);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .chart-wrap {
+      background: rgba(10,22,40,.6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .chart-title { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+    .chart-sub { font-size: 10px; color: var(--muted); margin-bottom: 16px; }
+    canvas { max-height: 220px; }
+
+    .progress-list { display: flex; flex-direction: column; gap: 14px; }
+    .progress-item {}
+    .progress-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 6px;
+    }
+    .progress-label { font-size: 12px; font-weight: 500; }
+    .progress-val { font-size: 11px; font-family: monospace; color: var(--cyan); }
+    .progress-track {
+      height: 8px; background: rgba(10,22,40,.8);
+      border: 1px solid var(--border);
+      border-radius: 4px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; border-radius: 4px;
+      width: 0; transition: width 1s cubic-bezier(.4,0,.2,1);
+    }
+    .progress-note {
+      margin-top: 14px; padding: 10px 14px;
+      background: rgba(10,15,26,.6);
+      border: 1px solid rgba(6,182,212,.1);
+      border-radius: 8px;
+      font-size: 10px; color: rgba(224,242,254,.4);
+    }
+    .progress-note span { color: var(--cyan); }
+
+    /* ══════════════════════════════════════════════════════════════
+       ELEMENT 4 — Scatter chart with tooltip
+    ══════════════════════════════════════════════════════════════ */
+    .scatter-wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    @media(max-width:640px){ .scatter-wrap { grid-template-columns: 1fr; } }
+
+    .insight-card {
+      padding: 16px;
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+    }
+    .insight-card .ic-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+    }
+    .ic-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .ic-icon svg { width: 14px; height: 14px; stroke-width: 2; fill: none; }
+    .ic-label { font-size: 9px; font-family: monospace; text-transform: uppercase; letter-spacing: .1em; }
+    .ic-value { font-size: 15px; font-weight: 700; }
+    .ic-desc { font-size: 11px; color: var(--muted); line-height: 1.6; }
+
+    .geo-bars { display: flex; flex-direction: column; gap: 8px; }
+    .geo-row { display: flex; align-items: center; gap: 8px; }
+    .geo-uf { font-size: 10px; font-family: monospace; color: rgba(6,182,212,.7); width: 22px; }
+    .geo-track-wrap { flex: 1; display: flex; align-items: center; gap: 2px; }
+    .geo-track {
+      flex: 1; height: 7px; background: rgba(10,22,40,.8);
+      border-radius: 4px; overflow: hidden;
+    }
+    .geo-fill-int { height: 100%; border-radius: 4px; background: #c2410c; transition: width 1s ease; }
+    .geo-fill-cap { height: 100%; border-radius: 4px; background: #1e40af; transition: width 1s ease; }
+    .geo-divider { width: 1px; height: 14px; background: rgba(6,182,212,.3); }
+    .geo-pct { font-size: 9px; color: rgba(224,242,254,.3); width: 52px; text-align: right; }
+    .geo-legend { display: flex; gap: 12px; margin-top: 10px; }
+    .geo-legend-item { display: flex; align-items: center; gap: 5px; font-size: 9px; color: rgba(224,242,254,.4); }
+    .geo-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+    /* ══════════════════════════════════════════════════════════════
+       ELEMENT 5 — Hover case cards
+    ══════════════════════════════════════════════════════════════ */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media(max-width:768px){ .cases-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:480px){ .cases-grid { grid-template-columns: 1fr; } }
+
+    .case-card {
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(10,22,40,.6);
+      cursor: pointer;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .case-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(6,182,212,.06) 0%, transparent 60%);
+      opacity: 0; transition: opacity .3s;
+    }
+    .case-card:hover { transform: translateY(-3px); }
+    .case-card:hover::after { opacity: 1; }
+    .case-card.sky:hover   { border-color: rgba(14,165,233,.4);  box-shadow: 0 8px 24px rgba(14,165,233,.08); }
+    .case-card.amber:hover { border-color: rgba(245,158,11,.4);  box-shadow: 0 8px 24px rgba(245,158,11,.08); }
+    .case-card.violet:hover{ border-color: rgba(139,92,246,.4);  box-shadow: 0 8px 24px rgba(139,92,246,.08); }
+    .case-card.pink:hover  { border-color: rgba(236,72,153,.4);  box-shadow: 0 8px 24px rgba(236,72,153,.08); }
+    .case-card.rose:hover  { border-color: rgba(244,63,94,.4);   box-shadow: 0 8px 24px rgba(244,63,94,.08); }
+    .case-card.green:hover { border-color: rgba(16,185,129,.4);  box-shadow: 0 8px 24px rgba(16,185,129,.08); }
+
+    .case-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+    .case-icon {
+      width: 36px; height: 36px;
+      background: rgba(6,182,212,.1);
+      border: 1px solid rgba(6,182,212,.2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .case-icon svg { width: 16px; height: 16px; stroke: var(--cyan); fill: none; stroke-width: 2; }
+    .case-badges { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+    .case-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .case-caa { font-size: 9px; font-family: monospace; color: rgba(6,182,212,.4); margin-bottom: 8px; }
+    .case-desc { font-size: 11px; color: var(--muted); line-height: 1.6; }
+
+    /* ══════════════════════════════════════════════════════════════
+       ELEMENT 6 — Navbar active state demo
+    ══════════════════════════════════════════════════════════════ */
+    .nav-demo {
+      background: rgba(5,11,20,.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .nav-demo-bar {
+      display: flex; align-items: center; gap: 4px;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(5,11,20,.8);
+      backdrop-filter: blur(8px);
+    }
+    .nav-demo-brand {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600;
+      margin-right: auto;
+    }
+    .nav-demo-link {
+      display: flex; align-items: center; gap: 5px;
+      padding: 5px 10px; border-radius: 6px;
+      font-size: 10px; color: rgba(224,242,254,.35);
+      cursor: pointer; transition: all .2s;
+      border: none; background: none;
+    }
+    .nav-demo-link svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .nav-demo-link:hover { color: rgba(224,242,254,.7); background: rgba(6,182,212,.05); }
+    .nav-demo-link.active { background: rgba(6,182,212,.15); color: rgba(6,182,212,.9); }
+
+    .nav-demo-content {
+      padding: 24px;
+      min-height: 120px;
+      display: none;
+    }
+    .nav-demo-content.active { display: block; }
+    .nav-demo-content h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .nav-demo-content p { font-size: 12px; color: var(--muted); }
+
+    /* ══════════════════════════════════════════════════════════════
+       ELEMENT 7 — Keyboard shortcut demo
+    ══════════════════════════════════════════════════════════════ */
+    .kbd-demo {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px;
+    }
+    @media(max-width:640px){ .kbd-demo { grid-template-columns: repeat(4,1fr); } }
+
+    .kbd-item {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 14px 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer; transition: all .2s;
+    }
+    .kbd-item:hover, .kbd-item.pressed {
+      background: rgba(6,182,212,.1);
+      border-color: rgba(6,182,212,.4);
+      transform: translateY(-2px);
+    }
+    .kbd-key {
+      width: 32px; height: 32px;
+      background: rgba(10,22,40,.8);
+      border: 1px solid rgba(6,182,212,.25);
+      border-bottom: 3px solid rgba(6,182,212,.4);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; font-family: monospace;
+      color: var(--cyan);
+    }
+    .kbd-label { font-size: 9px; color: var(--muted); text-align: center; line-height: 1.3; }
+    .kbd-feedback {
+      margin-top: 16px; padding: 10px 16px;
+      background: rgba(6,182,212,.06);
+      border: 1px solid rgba(6,182,212,.15);
+      border-radius: 8px;
+      font-size: 11px; color: rgba(6,182,212,.7);
+      min-height: 38px;
+      transition: all .3s;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       ELEMENT 8 — Explore Beta module cards
+    ══════════════════════════════════════════════════════════════ */
+    .beta-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 14px;
+    }
+    @media(max-width:640px){ .beta-grid { grid-template-columns: 1fr; } }
+
+    .beta-card {
+      padding: 20px;
+      border-radius: var(--radius);
+      background: rgba(10,22,40,.6);
+      border: 1px solid var(--border);
+      transition: all .25s;
+      cursor: pointer;
+    }
+    .beta-card:hover {
+      border-color: rgba(6,182,212,.35);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(6,182,212,.07);
+    }
+    .beta-card-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .beta-card-icon svg { width: 18px; height: 18px; fill: none; stroke-width: 2; }
+    .beta-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .beta-card p { font-size: 11px; color: var(--muted); margin-bottom: 14px; line-height: 1.6; }
+    .beta-cta {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600;
+      color: var(--cyan); background: none; border: none;
+      cursor: pointer; padding: 0;
+      transition: gap .2s;
+    }
+    .beta-cta:hover { gap: 8px; }
+    .beta-cta svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+
+    .beta-banner {
+      margin-top: 16px; padding: 24px;
+      background: linear-gradient(135deg, rgba(6,182,212,.08), rgba(59,130,246,.06));
+      border: 1px solid rgba(6,182,212,.2);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .beta-banner h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .beta-banner p { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+    .beta-banner-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+    /* ══════════════════════════════════════════════════════════════
+       Summary table
+    ══════════════════════════════════════════════════════════════ */
+    .summary-section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 64px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .summary-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 12px;
+    }
+    .summary-table th {
+      text-align: left; padding: 10px 14px;
+      font-size: 10px; font-family: monospace;
+      color: rgba(6,182,212,.5);
+      text-transform: uppercase; letter-spacing: .1em;
+      border-bottom: 1px solid var(--border);
+    }
+    .summary-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(6,182,212,.06);
+      color: var(--muted);
+      vertical-align: top;
+    }
+    .summary-table td:first-child { color: var(--white); font-weight: 600; }
+    .summary-table tr:hover td { background: rgba(6,182,212,.03); }
+
+    /* ── Footer ────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 11px; color: rgba(6,182,212,.3);
+    }
+    footer span { color: rgba(6,182,212,.5); }
+
+    /* ── Scroll reveal observer ────────────────────────────────── */
+    .observe { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
+    .observe.in-view { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ── Top navigation ──────────────────────────────────────────── -->
+<nav class="top-nav">
+  <a class="brand" href="#">
+    <div class="brand-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+        <path d="M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/>
+      </svg>
+    </div>
+    <span>CAAsXplorer</span>
+    <span class="brand-tag">v2.1.0</span>
+  </a>
+  <a class="nav-pill" href="#hero-stats">Hero Stats</a>
+  <a class="nav-pill" href="#scroll-reveal">Scroll Reveal</a>
+  <a class="nav-pill" href="#tab-chart">Tab Chart</a>
+  <a class="nav-pill" href="#scatter">Scatter</a>
+  <a class="nav-pill" href="#cases">Cases</a>
+  <a class="nav-pill" href="#navbar">Navbar</a>
+  <a class="nav-pill" href="#keyboard">Keyboard</a>
+  <a class="nav-pill" href="#beta">Beta</a>
+</nav>
+
+<!-- ── Hero header ─────────────────────────────────────────────── -->
+<div class="hero-header">
+  <div class="eyebrow">
+    <div class="eyebrow-dot"></div>
+    feat/homepage-editorial-redesign
+  </div>
+  <h1>CAAsXplorer<br/><span>Interactive Elements</span></h1>
+  <p>A focused walkthrough of every interactive element in the new editorial homepage — live demos, design rationale, and implementation notes.</p>
+  <div class="hero-chips">
+    <span class="chip highlight">8 interactive elements</span>
+    <span class="chip">React + TypeScript</span>
+    <span class="chip">Framer Motion</span>
+    <span class="chip">Recharts</span>
+    <span class="chip">Chart.js</span>
+    <span class="chip">Tailwind CSS</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ELEMENT 1 — Animated Hero Stats
+══════════════════════════════════════════════════════════════ -->
+<section class="section" id="hero-stats">
+  <p class="section-label">Element 01 · Hero Cover</p>
+  <h2 class="section-title">Animated <span>Hero Stats</span></h2>
+  <p class="section-desc">Three stat cards stagger-animate in from the right on page load using Framer Motion. Each card carries an icon, a bold metric, and a label.</p>
+
+  <div class="hero-demo">
+    <!-- Live preview -->
+    <div class="hero-preview">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-dot"></div>
+        Relatório de Inteligência de Dados
+      </div>
+      <div class="hero-h1">O DNA da Nova<br/><span>Advocacia Brasileira</span></div>
+      <p class="hero-sub">Um raio-x analítico em 15 visualizações de alto impacto sobre as CAAs.</p>
+      <div class="hero-btns">
+        <button class="btn-primary">
+          Explorar Analytics
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn-ghost">Ver Ranking Nacional</button>
+      </div>
+    </div>
+
+    <!-- Stat cards column -->
+    <div>
+      <div class="stat-cards" id="statCards">
+        <div class="stat-card glass" id="sc1">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div><div class="stat-value">27</div><div class="stat-label">CAAs mapeadas</div></div>
+        </div>
+        <div class="stat-card glass" id="sc2">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <div><div class="stat-value">1.47M</div><div class="stat-label">Profissionais</div></div>
+        </div>
+        <div class="stat-card glass" id="sc3">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div><div class="stat-value">6.357</div><div class="stat-label">Posts analisados</div></div>
+        </div>
+      </div>
+
+      <div class="element-desc">
+        <h3>How it works</h3>
+        <p>Each card uses <code style="font-size:10px;color:var(--cyan)">motion.div</code> with <code style="font-size:10px;color:var(--cyan)">initial={{ opacity:0, x:20 }}</code> and a staggered <code style="font-size:10px;color:var(--cyan)">delay: 0.4 + i * 0.1</code>. The whole column animates in from the right while the headline fades up from below — creating a split-entry feel.</p>
+        <div class="tech-list">
+          <span class="feature-badge badge-cyan">Framer Motion</span>
+          <span class="feature-badge badge-blue">Stagger delay</span>
+          <span class="feature-badge badge-violet">CSS backdrop-blur</span>
+        </div>
+        <button class="replay-btn" onclick="replayStats()">↺ Replay animation</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ELEMENT 2 — Scroll-reveal cards
+══════════════════════════════════════════════════════════════ -->
+<section class="section" id="scroll-reveal">
+  <p class="section-label">Element 02 · Panorama Executivo</p>
+  <h2 class="section-title">Scroll-reveal <span>Pillar Cards</span></h2>
+  <p class="section-desc">The three Panorama pillars fade and slide up as they enter the viewport. Each card uses <code style="font-size:11px;color:var(--cyan)">whileInView</code> with <code style="font-size:11px;color:var(--cyan)">viewport={{ once: true }}</code>.</p>
+
+  <div class="reveal-demo" id="revealDemo">
+    <div class="reveal-card glass" data-delay="0">
+      <div class="num">1</div>
+      <h4>O Padrão Ouro</h4>
+      <p>As CAAs transcenderam a saúde básica. Hoje, atuam como hubs completos de lifestyle, ancorados em Telemedicina e acessos fitness.</p>
+      <div class="reveal-tags">
+        <span class="feature-badge badge-cyan">Telemedicina</span>
+        <span class="feature-badge badge-blue">Wellhub</span>
+      </div>
+    </div>
+    <div class="reveal-card glass" data-delay="100">
+      <div class="num">2</div>
+      <h4>O Motor do Engajamento</h4>
+      <p>O engajamento digital é dominado por Benefícios de Varejo e Sorteios. Esporte e Bem-estar gera maior retenção orgânica.</p>
+      <div class="reveal-tags">
+        <span class="feature-badge badge-amber">Sorteios</span>
+        <span class="feature-badge badge-green">Esporte</span>
+      </div>
+    </div>
+    <div class="reveal-card glass" data-delay="200">
+      <div class="num">3</div>
+      <h4>A Era da Hiper-Personalização</h4>
+      <p>Os estados apostam na cauda longa: de paraquedismo no Espírito Santo a saúde pet no Paraná e hidratação de bolsas em Goiás.</p>
+      <div class="reveal-tags">
+        <span class="feature-badge badge-sky">Paraquedismo</span>
+        <span class="feature-badge badge-pink">Saúde Pet</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal-trigger">
+    <button class="trigger-btn" onclick="triggerReveal()">▶ Trigger reveal animation</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ELEMENT 3 — Tab-switched engagement chart
+══════════════════════════════════════════════════════════════ -->
+<section class="section" id="tab-chart">
+  <p class="section-label">Element 03 · O Que Mobiliza a Advocacia</p>
+  <h2 class="section-title">Tab-switched <span>Engagement Chart</span></h2>
+  <p class="section-desc">Users can toggle between a horizontal bar chart and animated progress bars. Both views display the same engagement data from 6,357 analysed posts.</p>
+
+  <div class="tab-bar">
+    <button class="tab active" onclick="switchTab('chart')">Gráfico Interativo</button>
+    <button class="tab" onclick="switchTab('progress')">Barras de Progresso</button>
+  </div>
+
+  <div id="panel-chart" class="tab-panel active">
+    <div class="chart-wrap">
+      <div class="chart-title">Taxa de Engajamento por Categoria</div>
+      <div class="chart-sub">Engajamento médio (%) — quanto maior, mais orgânico e recorrente</div>
+      <canvas id="engagementChart"></canvas>
+      <div class="progress-note" style="margin-top:12px">
+        <span>Nota:</span> Sorteios geram picos absolutos de comentários e marcações — motor de visibilidade, não de retenção.
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-progress" class="tab-panel">
+    <div class="chart-wrap">
+      <div class="chart-title">Taxa de Engajamento por Categoria</div>
+      <div class="chart-sub">Engajamento médio (%) — quanto maior, mais orgânico e recorrente</div>
+      <div class="progress-list" id="progressList">
+        <div class="progress-item">
+          <div class="progress-header">
+            <span class="progress-label">Benefícios e Convênios</span>
+            <span class="progress-val">1.34%</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="background:#06b6d4" data-width="96"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-header">
+            <span class="progress-label">Sorteios</span>
+            <span class="progress-val">0.83%</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="background:#3b82f6" data-width="62"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-header">
+            <span class="progress-label">Esporte e Bem-estar</span>
+            <span class="progress-val">0.73%</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="background:#8b5cf6" data-width="54"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-header">
+            <span class="progress-label">Saúde</span>
+            <span class="progress-val">0.52%</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="background:#10b981" data-width="39"></div></div>
+        </div>
+      </div>
+      <div class="progress-note">
+        <span>Nota:</span> Sorteios geram picos absolutos de comentários e marcações — motor de visibilidade, não de retenção.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ELEMENT 4 — Scatter chart + geo bars
+══════════════════════════════════════════════════════════════ -->
+<section class="section" id="scatter">
+  <p class="section-label">Element 04 · Paraíba em Perspectiva Analítica</p>
+  <h2 class="section-title">Scatter Chart + <span>Geo Bars</span></h2>
+  <p class="section-desc">A Recharts ScatterChart plots volume vs. engagement for Northeastern CAAs, with CAA-PB highlighted in red. Paired with animated dual-axis geography bars.</p>
+
+  <div class="scatter-wrap">
+    <!-- Scatter chart -->
+    <div class="chart-wrap">
+      <div class="chart-title">Volume vs. Engajamento — Nordeste</div>
+      <div class="chart-sub">Posts/dia × total de interações (12 meses)</div>
+      <canvas id="scatterChart" style="max-height:260px"></canvas>
+      <div style="display:flex;gap:14px;margin-top:10px">
+        <div style="display:flex;align-items:center;gap:6px">
+          <div style="width:10px;height:10px;border-radius:50%;background:#ef4444"></div>
+          <span style="font-size:10px;color:var(--muted)">CAA-PB (destaque)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <div style="width:10px;height:10px;border-radius:50%;background:#1e3a5f;border:1px solid rgba(6,182,212,.4)"></div>
+          <span style="font-size:10px;color:var(--muted)">Demais CAAs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column -->
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <!-- Key finding -->
+      <div class="glass insight-card" style="border-color:rgba(239,68,68,.2)">
+        <div class="ic-header">
+          <div class="ic-icon" style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.2)">
+            <svg viewBox="0 0 24 24" stroke="#f87171"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <div>
+            <div class="ic-label" style="color:rgba(239,68,68,.6)">CAA-PB · Motor digital do Nordeste</div>
+            <div class="ic-value">1 post/dia · 43k+ interações</div>
+          </div>
+        </div>
+        <p class="ic-desc">A Paraíba posta mais e engaja mais que gigantes regionais como Pernambuco. O desafio não é criar o canal, mas otimizar a mensagem.</p>
+      </div>
+
+      <!-- Geo bars -->
+      <div class="glass" style="padding:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span style="font-size:12px;font-weight:600">Pilar 2: A Geografia da Prática Jurídica</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:9px;color:rgba(6,182,212,.4);margin-bottom:8px;font-family:monospace">
+          <span>HYPER-CAPITAL</span><span>INTERIOR STRENGTH</span>
+        </div>
+        <div class="geo-bars" id="geoBars">
+          <div class="geo-row"><span class="geo-uf">MT</span><div class="geo-track-wrap"><div class="geo-track"><div class="geo-fill-int" style="width:0" data-w="15" data-align="right"></div></div><div class="geo-divider"></div><div class="geo-track"><div class="geo-fill-cap" style="width:0" data-w="85"></div></div></div><span class="geo-pct">Cap: 85%</span></div>
+          <div class="geo-row"><span class="geo-uf">TO</span><div class="geo-track-wrap"><div class="geo-track"><div class="geo-fill-int" style="width:0" data-w="18" data-align="right"></div></div><div class="geo-divider"></div><div class="geo-track"><div class="geo-fill-cap" style="width:0" data-w="82"></div></div></div><span class="geo-pct">Cap: 82%</span></div>
+          <div class="geo-row"><span class="geo-uf">AM</span><div class="geo-track-wrap"><div class="geo-track"><div class="geo-fill-int" style="width:0" data-w="20" data-align="right"></div></div><div class="geo-divider"></div><div class="geo-track"><div class="geo-fill-cap" style="width:0" data-w="80"></div></div></div><span class="geo-pct">Cap: 80%</span></div>
+          <div class="geo-row"><span class="geo-uf">GO</span><div class="geo-track-wrap"><div class="geo-track"><div class="geo-fill-int" style="width:0" data-w="65" data-align="right"></div></div><div class="geo-divider"></div><div class="geo-track"><div class="geo-fill-cap" style="width:0" data-w="35"></div></div></div><span class="geo-pct">Int: 65%</span></div>
+          <div class="geo-row"><span class="geo-uf">SC</span><div class="geo-track-wrap"><div class="geo-track"><div class="geo-fill-int" style="width:0" data-w="62" data-align="right"></div></div><div class="geo-divider"></div><div class="geo-track"><div class="geo-fill-cap" style="width:0" data-w="38"></div></div></div><span class="geo-pct">Int: 62%</span></div>
+          <div class="geo-row"><span class="geo-uf">MS</span><div class="geo-track-wrap"><div class="geo-track"><div class="geo-fill-int" style="width:0" data-w="61" data-align="right"></div></div><div class="geo-divider"></div><div class="geo-track"><div class="geo-fill-cap" style="width:0" data-w="39"></div></div></div><span class="geo-pct">Int: 61%</span></div>
+          <div class="geo-row"><span class="geo-uf">ES</span><div class="geo-track-wrap"><div class="geo-track"><div class="geo-fill-int" style="width:0" data-w="58" data-align="right"></div></div><div class="geo-divider"></div><div class="geo-track"><div class="geo-fill-cap" style="width:0" data-w="42"></div></div></div><span class="geo-pct">Int: 58%</span></div>
+        </div>
+        <div class="geo-legend">
+          <div class="geo-legend-item"><div class="geo-dot" style="background:#c2410c"></div>Interior</div>
+          <div class="geo-legend-item"><div class="geo-dot" style="background:#1e40af"></div>Capital</div>
+        </div>
+      </div>
+
+      <!-- Alert -->
+      <div class="glass" style="padding:14px;border-color:rgba(245,158,11,.2)">
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <p style="font-size:9px;font-family:monospace;color:rgba(245,158,11,.6);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Alerta Analítico</p>
+            <p style="font-size:11px;color:var(--muted);line-height:1.6">MT (85% na capital) vs. MS (61% no interior). Dois gigantes do agronegócio vizinhos, porém com lógicas de distribuição profissional diametralmente opostas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ELEMENT 5 — Hover case cards
+══════════════════════════════════════════════════════════════ -->
+<section class="section" id="cases">
+  <p class="section-label">Element 05 · A Cauda Longa dos Benefícios</p>
+  <h2 class="section-title">Hover <span>Case Cards</span></h2>
+  <p class="section-desc">Six case cards each carry a unique accent color that activates on hover — border glow, lift, and a radial gradient overlay. Each card maps to a real CAA benefit.</p>
+
+  <div class="cases-grid">
+    <!-- Paraquedismo -->
+    <div class="case-card sky observe">
+      <div class="case-header">
+        <div class="case-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 2v10l4 4"/></svg>
+        </div>
+        <div class="case-badges">
+          <span class="feature-badge" style="font-size:9px;padding:2px 7px;background:rgba(6,182,212,.08);color:rgba(6,182,212,.6);border:1px solid rgba(6,182,212,.15)">ES</span>
+          <span class="feature-badge badge-sky">Esporte Radical</span>
+        </div>
+      </div>
+      <div class="case-title">Paraquedismo</div>
+      <div class="case-caa">CAAES · Esportes Radicais e Diferenciados</div>
+      <p class="case-desc">Acesso com desconto à única escola de paraquedismo em atividade no estado, oferecendo saltos a 10.000 pés sobre Vila Velha.</p>
+    </div>
+
+    <!-- Clube de Tiro -->
+    <div class="case-card amber observe">
+      <div class="case-header">
+        <div class="case-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div class="case-badges">
+          <span class="feature-badge" style="font-size:9px;padding:2px 7px;background:rgba(6,182,212,.08);color:rgba(6,182,212,.6);border:1px solid rgba(6,182,212,.15)">GO</span>
+          <span class="feature-badge badge-amber">Diferenciado</span>
+        </div>
+      </div>
+      <div class="case-title">Clube de Tiro</div>
+      <div class="case-caa">CASAG · CASAG (GO)</div>
+      <p class="case-desc">Parceria com o CTCI, disponibilizando 13 pistas curtas, pistas longas, tiro ao prato e acesso a instrutores sem custo extra.</p>
+    </div>
+
+    <!-- MMA -->
+    <div class="case-card violet observe">
+      <div class="case-header">
+        <div class="case-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 4v6a6 6 0 0 0 12 0V4"/><line x1="4" y1="20" x2="20" y2="20"/></svg>
+        </div>
+        <div class="case-badges">
+          <span class="feature-badge" style="font-size:9px;padding:2px 7px;background:rgba(6,182,212,.08);color:rgba(6,182,212,.6);border:1px solid rgba(6,182,212,.15)">AM</span>
+          <span class="feature-badge badge-violet">Esporte</span>
+        </div>
+      </div>
+      <div class="case-title">MMA</div>
+      <div class="case-caa">CAAAM · CAAAM (AM)</div>
+      <p class="case-desc">Aulões gratuitos de Artes Marciais Mistas com mestres reconhecidos locais, diversificando o calendário esportivo da Caixa.</p>
+    </div>
+
+    <!-- Saúde Pet -->
+    <div class="case-card pink observe">
+      <div class="case-header">
+        <div class="case-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="case-badges">
+          <span class="feature-badge" style="font-size:9px;padding:2px 7px;background:rgba(6,182,212,.08);color:rgba(6,182,212,.6);border:1px solid rgba(6,182,212,.15)">PR</span>
+          <span class="feature-badge badge-pink">Lifestyle</span>
+        </div>
+      </div>
+      <div class="case-title">Saúde Pet</div>
+      <div class="case-caa">CAAPR · CAAPR (PR)</div>
+      <p class="case-desc">Convênio com clínicas veterinárias para consultas e procedimentos com desconto para advogados e seus animais de estimação.</p>
+    </div>
+
+    <!-- Hidratação de Bolsas -->
+    <div class="case-card rose observe">
+      <div class="case-header">
+        <div class="case-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <div class="case-badges">
+          <span class="feature-badge" style="font-size:9px;padding:2px 7px;background:rgba(6,182,212,.08);color:rgba(6,182,212,.6);border:1px solid rgba(6,182,212,.15)">GO</span>
+          <span class="feature-badge badge-rose">Hiper-personalizado</span>
+        </div>
+      </div>
+      <div class="case-title">Hidratação de Bolsas</div>
+      <div class="case-caa">CASAG · CASAG (GO)</div>
+      <p class="case-desc">Serviço de conservação e higienização de bolsas de couro com parceiros especializados, voltado ao lifestyle profissional.</p>
+    </div>
+
+    <!-- Telemedicina -->
+    <div class="case-card green observe">
+      <div class="case-header">
+        <div class="case-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="case-badges">
+          <span class="feature-badge" style="font-size:9px;padding:2px 7px;background:rgba(6,182,212,.08);color:rgba(6,182,212,.6);border:1px solid rgba(6,182,212,.15)">SP</span>
+          <span class="feature-badge badge-green">Padrão Ouro</span>
+        </div>
+      </div>
+      <div class="case-title">Telemedicina Avançada</div>
+      <div class="case-caa">CAASP · CAASP (SP)</div>
+      <p class="case-desc">Conexa e Psicologia Viva integradas, com cobertura de saúde mental, nutricional e clínica geral via app — padrão ouro nacional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ELEMENT 6 — Navbar active state
+══════════════════════════════════════════════════════════════ -->
+<section class="section" id="navbar">
+  <p class="section-label">Element 06 · Editorial Navbar</p>
+  <h2 class="section-title">Navbar <span>Active States</span></h2>
+  <p class="section-desc">The fixed navbar uses React Router's <code style="font-size:11px;color:var(--cyan)">NavLink</code> with an <code style="font-size:11px;color:var(--cyan)">isActive</code> callback to apply a cyan tinted background to the current route. Click each tab below to preview.</p>
+
+  <div class="nav-demo">
+    <div class="nav-demo-bar">
+      <div class="nav-demo-brand">
+        <div class="brand-icon" style="width:22px;height:22px">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+        </div>
+        CAAsXplorer
+      </div>
+      <button class="nav-demo-link active" onclick="switchNav(this,'home')">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Início
+      </button>
+      <button class="nav-demo-link" onclick="switchNav(this,'analytics')">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Analytics
+      </button>
+      <button class="nav-demo-link" onclick="switchNav(this,'ranking')">
+        <svg viewBox="0 0 24 24"><path d="M8 6l4-4 4 4"/><path d="M12 2v10.3"/><path d="M4.93 10.93A10 10 0 1 0 19.07 10.93"/></svg>
+        Ranking
+      </button>
+      <button class="nav-demo-link" onclick="switchNav(this,'estados')">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Estados
+      </button>
+    </div>
+
+    <div id="nav-home" class="nav-demo-content active">
+      <h4>Homepage Editorial</h4>
+      <p style="font-size:12px;color:var(--muted)">The presentation-led editorial front page. 7 sections covering the full research narrative from hero cover to explore beta.</p>
+    </div>
+    <div id="nav-analytics" class="nav-demo-content">
+      <h4>Analytics Dashboard</h4>
+      <p style="font-size:12px;color:var(--muted)">Full analytical panel with monthly evolution, category distribution, and data source breakdown across all 27 CAAs.</p>
+    </div>
+    <div id="nav-ranking" class="nav-demo-content">
+      <h4>Ranking Nacional</h4>
+      <p style="font-size:12px;color:var(--muted)">CAA classification by per-capita engagement, with metrics normalised per 1,000 registered lawyers.</p>
+    </div>
+    <div id="nav-estados" class="nav-demo-content">
+      <h4>Explorar Estados</h4>
+      <p style="font-size:12px;color:var(--muted)">Detailed profile for each state: mapped services, leading categories, and regional benchmarks.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ELEMENT 7 — Keyboard shortcuts
+══════════════════════════════════════════════════════════════ -->
+<section class="section" id="keyboard">
+  <p class="section-label">Element 07 · Global Keyboard Navigation</p>
+  <h2 class="section-title">Keyboard <span>Shortcuts</span></h2>
+  <p class="section-desc">Press keys <strong>1–7</strong> anywhere on the homepage to jump directly to any section. Click the keys below to simulate, or press the actual keys on your keyboard.</p>
+
+  <div class="kbd-demo">
+    <div class="kbd-item" onclick="pressKey('1','Hero Cover')"><div class="kbd-key">1</div><div class="kbd-label">Hero Cover</div></div>
+    <div class="kbd-item" onclick="pressKey('2','Panorama Executivo')"><div class="kbd-key">2</div><div class="kbd-label">Panorama Executivo</div></div>
+    <div class="kbd-item" onclick="pressKey('3','O Que Mobiliza')"><div class="kbd-key">3</div><div class="kbd-label">O Que Mobiliza</div></div>
+    <div class="kbd-item" onclick="pressKey('4','Paraíba Analítica')"><div class="kbd-key">4</div><div class="kbd-label">Paraíba Analítica</div></div>
+    <div class="kbd-item" onclick="pressKey('5','Cauda Longa')"><div class="kbd-key">5</div><div class="kbd-label">Cauda Longa</div></div>
+    <div class="kbd-item" onclick="pressKey('6','Explore o Beta')"><div class="kbd-key">6</div><div class="kbd-label">Explore o Beta</div></div>
+    <div class="kbd-item" onclick="pressKey('7','Footer')"><div class="kbd-key">7</div><div class="kbd-label">Footer</div></div>
+  </div>
+
+  <div class="kbd-feedback" id="kbdFeedback">
+    Press any key above or type <strong style="color:var(--cyan)">1–7</strong> on your keyboard to navigate sections.
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ELEMENT 8 — Explore Beta module cards
+══════════════════════════════════════════════════════════════ -->
+<section class="section" id="beta">
+  <p class="section-label">Element 08 · Explore o Beta</p>
+  <h2 class="section-title">Beta Module <span>Cards</span></h2>
+  <p class="section-desc">Three module cards act as structured gateways into the inner pages. Each card has a hover lift, a distinct icon, and a CTA arrow that animates on hover.</p>
+
+  <div class="beta-grid">
+    <div class="beta-card observe">
+      <div class="beta-card-icon" style="background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.2)">
+        <svg viewBox="0 0 24 24" stroke="var(--cyan)"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <h4>Analytics</h4>
+      <p>Painel analítico completo com evolução mensal, distribuição por categoria e fontes de dados.</p>
+      <button class="beta-cta">
+        Abrir Analytics
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <div class="beta-card observe">
+      <div class="beta-card-icon" style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2)">
+        <svg viewBox="0 0 24 24" stroke="#f59e0b"><path d="M8 6l4-4 4 4"/><path d="M12 2v10.3"/><path d="M4.93 10.93A10 10 0 1 0 19.07 10.93"/></svg>
+      </div>
+      <h4>Ranking Nacional</h4>
+      <p>Classificação das CAAs por engajamento per capita, com métricas normalizadas por 1.000 advogados.</p>
+      <button class="beta-cta" style="color:#f59e0b">
+        Ver Ranking
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <div class="beta-card observe">
+      <div class="beta-card-icon" style="background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2)">
+        <svg viewBox="0 0 24 24" stroke="#a78bfa"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <h4>Explorar Estados</h4>
+      <p>Perfil detalhado de cada estado: serviços mapeados, categorias líderes e benchmarks regionais.</p>
+      <button class="beta-cta" style="color:#a78bfa">
+        Explorar Estados
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="beta-banner observe">
+    <h4>Dados Abertos. Leitura Estruturada.</h4>
+    <p>Pipeline auditável, taxonomia versionada e datasets prontos para integração com sistemas externos.</p>
+    <div class="beta-banner-btns">
+      <button class="btn-primary">Começar Agora <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      <button class="btn-ghost">Ver Todos os Estados</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     Summary table
+══════════════════════════════════════════════════════════════ -->
+<div class="summary-section">
+  <p class="section-label">Summary</p>
+  <h2 class="section-title" style="margin-bottom:24px">All <span>Interactive Elements</span></h2>
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Element</th>
+        <th>Section</th>
+        <th>Technology</th>
+        <th>Interaction type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>01</td><td>Animated hero stats</td><td>Hero Cover</td><td>Framer Motion stagger</td><td>Page load animation</td></tr>
+      <tr><td>02</td><td>Scroll-reveal pillar cards</td><td>Panorama Executivo</td><td>Framer Motion whileInView</td><td>Scroll trigger</td></tr>
+      <tr><td>03</td><td>Tab-switched chart</td><td>O Que Mobiliza</td><td>React useState + Recharts BarChart</td><td>Click tab toggle</td></tr>
+      <tr><td>04</td><td>Scatter chart with tooltip</td><td>Paraíba Analítica</td><td>Recharts ScatterChart + CustomDot</td><td>Hover tooltip</td></tr>
+      <tr><td>05</td><td>Animated geo bars</td><td>Paraíba Analítica</td><td>CSS transition + Intersection Observer</td><td>Scroll trigger</td></tr>
+      <tr><td>06</td><td>Hover case cards</td><td>Cauda Longa</td><td>Tailwind hover + CSS radial gradient</td><td>Mouse hover</td></tr>
+      <tr><td>07</td><td>Navbar active state</td><td>Global</td><td>React Router NavLink isActive</td><td>Route change</td></tr>
+      <tr><td>08</td><td>Keyboard shortcuts 1–7</td><td>Global</td><td>window.addEventListener keydown</td><td>Keyboard press</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ── Footer ──────────────────────────────────────────────────── -->
+<footer>
+  <span>CAAsXplorer</span> · Homepage Redesign · Branch: <span>feat/homepage-editorial-redesign</span> · Commit: <span>de5edacc</span>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════════
+     Scripts
+══════════════════════════════════════════════════════════════ -->
+<script>
+/* ── Navbar active highlight on scroll ─────────────────────── */
+const navPills = document.querySelectorAll('.top-nav .nav-pill');
+const sections = ['hero-stats','scroll-reveal','tab-chart','scatter','cases','navbar','keyboard','beta'];
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) current = id;
+  });
+  navPills.forEach(p => {
+    p.classList.toggle('active', p.getAttribute('href') === '#' + current);
+  });
+});
+
+/* ── Element 1: Stat card replay ───────────────────────────── */
+function replayStats() {
+  ['sc1','sc2','sc3'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('visible');
+    setTimeout(() => el.classList.add('visible'), 100 + i * 150);
+  });
+}
+// Auto-play on load
+setTimeout(replayStats, 400);
+
+/* ── Element 2: Scroll-reveal trigger ─────────────────────── */
+function triggerReveal() {
+  const cards = document.querySelectorAll('#revealDemo .reveal-card');
+  cards.forEach(c => c.classList.remove('revealed'));
+  setTimeout(() => {
+    cards.forEach((c, i) => {
+      setTimeout(() => c.classList.add('revealed'), i * 150);
+    });
+  }, 50);
+}
+// Auto-trigger on scroll
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      triggerReveal();
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+const revealSection = document.getElementById('revealDemo');
+if (revealSection) revealObs.observe(revealSection);
+
+/* ── Element 3: Tab switcher ───────────────────────────────── */
+let progressAnimated = false;
+function switchTab(type) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('panel-' + type).classList.add('active');
+  if (type === 'progress' && !progressAnimated) {
+    progressAnimated = true;
+    setTimeout(() => {
+      document.querySelectorAll('.progress-fill').forEach(fill => {
+        fill.style.width = fill.dataset.width + '%';
+      });
+    }, 50);
+  }
+}
+
+/* ── Element 3: Engagement bar chart ──────────────────────── */
+const engCtx = document.getElementById('engagementChart').getContext('2d');
+new Chart(engCtx, {
+  type: 'bar',
+  data: {
+    labels: ['Benefícios e Convênios', 'Sorteios', 'Esporte e Bem-estar', 'Saúde'],
+    datasets: [{
+      data: [1.34, 0.83, 0.73, 0.52],
+      backgroundColor: ['#06b6d4cc','#3b82f6cc','#8b5cf6cc','#10b981cc'],
+      borderRadius: 6,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: 'rgba(10,22,40,.95)',
+        borderColor: 'rgba(6,182,212,.25)',
+        borderWidth: 1,
+        titleColor: '#e2e8f0',
+        bodyColor: '#94a3b8',
+        callbacks: {
+          label: ctx => ` ${ctx.parsed.x.toFixed(2)}% engajamento`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(6,182,212,.06)' },
+        ticks: { color: 'rgba(6,182,212,.45)', font: { size: 10 },
+          callback: v => v.toFixed(1) + '%' }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { color: 'rgba(6,182,212,.65)', font: { size: 10 } }
+      }
+    }
+  }
+});
+
+/* ── Element 4: Scatter chart ──────────────────────────────── */
+const scatterData = [
+  { x: 1.0,  y: 43000, r: 14, label: 'CAA-PB', highlight: true },
+  { x: 0.76, y: 22899, r: 9,  label: 'CAA-RN', highlight: false },
+  { x: 0.28, y: 23528, r: 8,  label: 'CAA-PE', highlight: false },
+  { x: 0.65, y: 39612, r: 9,  label: 'CAA-CE', highlight: false },
+  { x: 0.55, y: 44623, r: 10, label: 'CAA-BA', highlight: false },
+  { x: 0.1,  y: 201,   r: 5,  label: 'CAA-MA', highlight: false },
+  { x: 0.8,  y: 48267, r: 9,  label: 'CAA-PI', highlight: false },
+  { x: 0.45, y: 29043, r: 7,  label: 'CAA-AL', highlight: false },
+];
+const scCtx = document.getElementById('scatterChart').getContext('2d');
+new Chart(scCtx, {
+  type: 'bubble',
+  data: {
+    datasets: [
+      {
+        label: 'CAA-PB',
+        data: scatterData.filter(d => d.highlight).map(d => ({ x: d.x, y: d.y, r: d.r, label: d.label })),
+        backgroundColor: 'rgba(239,68,68,.8)',
+        borderColor: '#ef4444',
+        borderWidth: 2,
+      },
+      {
+        label: 'Demais CAAs',
+        data: scatterData.filter(d => !d.highlight).map(d => ({ x: d.x, y: d.y, r: d.r, label: d.label })),
+        backgroundColor: 'rgba(30,58,95,.8)',
+        borderColor: 'rgba(6,182,212,.4)',
+        borderWidth: 1,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: 'rgba(10,22,40,.95)',
+        borderColor: 'rgba(6,182,212,.25)',
+        borderWidth: 1,
+        titleColor: '#e2e8f0',
+        bodyColor: '#94a3b8',
+        callbacks: {
+          title: items => items[0].raw.label || '',
+          label: ctx => [
+            ` ${ctx.parsed.x} posts/dia`,
+            ` ${(ctx.parsed.y/1000).toFixed(1)}k interações`
+          ]
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(6,182,212,.06)' },
+        ticks: { color: 'rgba(6,182,212,.45)', font: { size: 10 } },
+        title: { display: true, text: 'Volume/Frequência de Posts', color: 'rgba(6,182,212,.35)', font: { size: 10 } }
+      },
+      y: {
+        grid: { color: 'rgba(6,182,212,.06)' },
+        ticks: { color: 'rgba(6,182,212,.45)', font: { size: 10 },
+          callback: v => (v/1000).toFixed(0) + 'k' },
+        title: { display: true, text: 'Engajamento', color: 'rgba(6,182,212,.35)', font: { size: 10 } }
+      }
+    }
+  }
+});
+
+/* ── Element 4: Geo bars animate on scroll ─────────────────── */
+let geoBarsAnimated = false;
+const geoObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !geoBarsAnimated) {
+      geoBarsAnimated = true;
+      document.querySelectorAll('.geo-fill-int, .geo-fill-cap').forEach(bar => {
+        const w = bar.dataset.w;
+        setTimeout(() => { bar.style.width = w + '%'; }, 100);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+const geoBarsEl = document.getElementById('geoBars');
+if (geoBarsEl) geoObs.observe(geoBarsEl);
+
+/* ── Element 6: Navbar demo switcher ──────────────────────── */
+function switchNav(btn, page) {
+  document.querySelectorAll('.nav-demo-link').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('.nav-demo-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('nav-' + page).classList.add('active');
+}
+
+/* ── Element 7: Keyboard shortcut demo ────────────────────── */
+const kbdSections = {
+  '1': 'Hero Cover',
+  '2': 'Panorama Executivo',
+  '3': 'O Que Mobiliza a Advocacia',
+  '4': 'Paraíba em Perspectiva Analítica',
+  '5': 'A Cauda Longa dos Benefícios',
+  '6': 'Explore o Beta',
+  '7': 'Footer'
+};
+function pressKey(key, label) {
+  const feedback = document.getElementById('kbdFeedback');
+  feedback.innerHTML = `<span style="color:var(--cyan);font-family:monospace">[${key}]</span> → Navigating to <strong style="color:var(--white)">${label}</strong>`;
+  // Highlight the key
+  document.querySelectorAll('.kbd-item').forEach((item, i) => {
+    if (String(i + 1) === key) {
+      item.classList.add('pressed');
+      setTimeout(() => item.classList.remove('pressed'), 600);
+    }
+  });
+}
+document.addEventListener('keydown', e => {
+  if (kbdSections[e.key]) pressKey(e.key, kbdSections[e.key]);
+});
+
+/* ── Scroll-reveal for .observe elements ──────────────────── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in-view');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.observe').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
