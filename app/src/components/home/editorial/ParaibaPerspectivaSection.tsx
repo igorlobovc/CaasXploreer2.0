@@ -4,7 +4,7 @@ import {
   ResponsiveContainer, ReferenceLine, Cell,
 } from 'recharts';
 import { GlassCard } from '@/components/shared';
-import { MapPin, TrendingUp, AlertCircle } from 'lucide-react';
+import { TrendingUp, AlertCircle, ExternalLink } from 'lucide-react';
 
 // Benchmark data for northeastern states
 const BENCHMARK_DATA = [
@@ -18,22 +18,20 @@ const BENCHMARK_DATA = [
   { name: 'CAA-AL', posts: 0.45, engagement: 29043, size: 20, highlight: false },
 ];
 
-const GEOGRAPHY_DATA = [
-  { uf: 'MT', interior: 15, capital: 85, type: 'hyper-capital' },
-  { uf: 'TO', interior: 18, capital: 82, type: 'hyper-capital' },
-  { uf: 'AM', interior: 20, capital: 80, type: 'hyper-capital' },
-  { uf: 'GO', interior: 65, capital: 35, type: 'interior-strength' },
-  { uf: 'SC', interior: 62, capital: 38, type: 'interior-strength' },
-  { uf: 'MS', interior: 61, capital: 39, type: 'interior-strength' },
-  { uf: 'ES', interior: 58, capital: 42, type: 'interior-strength' },
-];
-
 const tooltipStyle = {
-  backgroundColor: 'rgba(10,22,40,0.95)',
-  border: '1px solid rgba(6,182,212,0.25)',
+  backgroundColor: 'rgba(5,11,20,0.98)',
+  border: '1px solid rgba(6,182,212,0.35)',
   borderRadius: '8px',
-  color: '#e2e8f0',
-  fontSize: 11,
+  color: '#f1f5f9',
+  fontSize: 12,
+  fontWeight: 500,
+  boxShadow: '0 4px 24px rgba(0,0,0,0.6)',
+};
+
+const tooltipLabelStyle = {
+  color: '#67e8f9',
+  fontWeight: 600,
+  marginBottom: 4,
 };
 
 function CustomDot(props: {
@@ -131,28 +129,18 @@ export function ParaibaPerspectivaSection() {
                   />
                   <Tooltip
                     contentStyle={tooltipStyle}
+                    labelStyle={tooltipLabelStyle}
                     cursor={{ strokeDasharray: '3 3', stroke: 'rgba(6,182,212,0.3)' }}
                     formatter={(value: number, name: string) => [
                       name === 'Posts/dia' ? `${value} posts/dia` : `${(value / 1000).toFixed(1)}k interações`,
                       name,
                     ]}
                   />
-                  <ReferenceLine
-                    x={0.5}
-                    stroke="rgba(6,182,212,0.15)"
-                    strokeDasharray="4 4"
-                  />
-                  <ReferenceLine
-                    y={30000}
-                    stroke="rgba(6,182,212,0.15)"
-                    strokeDasharray="4 4"
-                  />
+                  <ReferenceLine x={0.5} stroke="rgba(6,182,212,0.15)" strokeDasharray="4 4" />
+                  <ReferenceLine y={30000} stroke="rgba(6,182,212,0.15)" strokeDasharray="4 4" />
                   <Scatter data={BENCHMARK_DATA} shape={<CustomDot />}>
                     {BENCHMARK_DATA.map((entry) => (
-                      <Cell
-                        key={entry.name}
-                        fill={entry.highlight ? '#ef4444' : '#1e3a5f'}
-                      />
+                      <Cell key={entry.name} fill={entry.highlight ? '#ef4444' : '#1e3a5f'} />
                     ))}
                   </Scatter>
                 </ScatterChart>
@@ -172,7 +160,7 @@ export function ParaibaPerspectivaSection() {
             </GlassCard>
           </motion.div>
 
-          {/* Right column: insights + geography */}
+          {/* Right column: key finding + Hex embed */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -203,60 +191,35 @@ export function ParaibaPerspectivaSection() {
               </div>
             </GlassCard>
 
-            {/* Geography insight */}
-            <GlassCard className="p-5">
-              <div className="flex items-center gap-2 mb-4">
-                <MapPin className="w-4 h-4 text-cyan-400" />
-                <h4 className="text-sm font-semibold text-white">
-                  Pilar 2: A Geografia da Prática Jurídica
-                </h4>
-              </div>
-              <div className="space-y-2">
-                {GEOGRAPHY_DATA.map((item) => (
-                  <div key={item.uf} className="flex items-center gap-3">
-                    <span className="text-xs font-mono text-cyan-300/70 w-6">{item.uf}</span>
-                    <div className="flex-1 flex items-center gap-1">
-                      {/* Interior bar */}
-                      <div className="flex-1 h-2 bg-[#0a1628] rounded-l overflow-hidden">
-                        <div
-                          className="h-full rounded-l"
-                          style={{
-                            width: `${item.interior}%`,
-                            backgroundColor: '#c2410c',
-                            marginLeft: `${100 - item.interior}%`,
-                          }}
-                        />
-                      </div>
-                      {/* Divider */}
-                      <div className="w-px h-4 bg-cyan-500/30" />
-                      {/* Capital bar */}
-                      <div className="flex-1 h-2 bg-[#0a1628] rounded-r overflow-hidden">
-                        <div
-                          className="h-full rounded-r"
-                          style={{
-                            width: `${item.capital}%`,
-                            backgroundColor: '#1e40af',
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <span className="text-[9px] text-cyan-200/30 w-16 text-right">
-                      {item.type === 'hyper-capital'
-                        ? `Cap: ${item.capital}%`
-                        : `Int: ${item.interior}%`}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-center gap-4 mt-3">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded bg-orange-700" />
-                  <span className="text-[9px] text-cyan-200/40">Interior</span>
+            {/* Hex embed — Geography of Legal Practice */}
+            <GlassCard className="p-0 overflow-hidden border border-cyan-500/15">
+              <div className="px-5 pt-4 pb-3 border-b border-cyan-500/10 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-semibold text-white">
+                    A Geografia da Prática Jurídica
+                  </h4>
+                  <p className="text-[10px] text-cyan-200/40 mt-0.5">
+                    Distribuição capital × interior por estado
+                  </p>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded bg-blue-800" />
-                  <span className="text-[9px] text-cyan-200/40">Capital</span>
-                </div>
+                <a
+                  href="https://app.hex.tech/3f6a746a-e122-46c6-be12-44807bef5d8e/app/032gpsHbsbTkJyPNjMCjbI/latest"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-[10px] text-cyan-400/60 hover:text-cyan-300 transition-colors"
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  <span>Abrir</span>
+                </a>
+              </div>
+              <div className="relative w-full" style={{ paddingBottom: '75%' }}>
+                <iframe
+                  src="https://app.hex.tech/3f6a746a-e122-46c6-be12-44807bef5d8e/app/032gpsHbsbTkJyPNjMCjbI/latest?embedded=true"
+                  className="absolute inset-0 w-full h-full border-0"
+                  title="A Geografia da Prática Jurídica"
+                  loading="lazy"
+                  allow="fullscreen"
+                />
               </div>
             </GlassCard>
 

@@ -18,6 +18,7 @@ const sectionAnchors = [
   { id: 'mobiliza', label: 'Análise' },
   { id: 'paraiba', label: 'Paraíba' },
   { id: 'cauda-longa', label: 'Casos' },
+  { id: 'relatorio', label: 'Relatório' },
   { id: 'explore', label: 'Beta' },
 ];
 

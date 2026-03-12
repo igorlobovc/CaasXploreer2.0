@@ -5,6 +5,7 @@ import { PanoramaExecutivoSection } from './PanoramaExecutivoSection';
 import { MobilizaAdvocaciaSection } from './MobilizaAdvocaciaSection';
 import { ParaibaPerspectivaSection } from './ParaibaPerspectivaSection';
 import { CaudaLongaBeneficiosSection } from './CaudaLongaBeneficiosSection';
+import { RelatorioIntelligenciaSection } from './RelatorioIntelligenciaSection';
 import { ExploreBetaSection } from './ExploreBetaSection';
 import { EditorialFooterSection } from './EditorialFooterSection';
 
@@ -19,6 +20,7 @@ export function EditorialHomePage() {
         <div id="mobiliza"><MobilizaAdvocaciaSection /></div>
         <div id="paraiba"><ParaibaPerspectivaSection /></div>
         <div id="cauda-longa"><CaudaLongaBeneficiosSection /></div>
+        <div id="relatorio"><RelatorioIntelligenciaSection /></div>
         <div id="explore"><ExploreBetaSection /></div>
       </main>
       <EditorialFooterSection />

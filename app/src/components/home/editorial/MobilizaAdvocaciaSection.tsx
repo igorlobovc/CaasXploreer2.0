@@ -50,11 +50,13 @@ const THEMES = [
 ];
 
 const tooltipStyle = {
-  backgroundColor: 'rgba(10,22,40,0.95)',
-  border: '1px solid rgba(6,182,212,0.25)',
+  backgroundColor: 'rgba(5,11,20,0.98)',
+  border: '1px solid rgba(6,182,212,0.35)',
   borderRadius: '8px',
-  color: '#e2e8f0',
-  fontSize: 11,
+  color: '#f1f5f9',
+  fontSize: 12,
+  fontWeight: 500,
+  boxShadow: '0 4px 24px rgba(0,0,0,0.6)',
 };
 
 export function MobilizaAdvocaciaSection() {
