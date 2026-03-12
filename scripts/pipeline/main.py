@@ -125,11 +125,9 @@ def build_parser() -> argparse.ArgumentParser:
 # ---------------------------------------------------------------------------
 
 def _run_normalize(df, config):  # type: ignore[no-untyped-def]
-    """Normalization stage — to be implemented in Step 3."""
-    raise NotImplementedError(
-        "normalize stage not yet implemented (Step 3). "
-        "Use --dry-run to test the ingest stage only."
-    )
+    """Estágio de normalização — implementado no Step 3."""
+    from scripts.pipeline.normalize import normalize  # noqa: PLC0415
+    return normalize(df, config)
 
 
 def _run_aggregate(df, config):  # type: ignore[no-untyped-def]
@@ -243,15 +241,43 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     # ------------------------------------------------------------------
-    # Stage 2: Normalize  (Step 3 — not yet implemented)
+    # Stage 2: Normalize  (Step 3 — implementado)
     # ------------------------------------------------------------------
-    logger.info("=== Stage 2: Normalize ===")
+    logger.info("=== Estágio 2: Normalização ===")
     try:
         df_clean, qa_issues = _run_normalize(df, config=None)
     except NotImplementedError as exc:
         logger.warning("%s", exc)
-        logger.warning("Pipeline stopped after ingest. Re-run with --dry-run to test ingest only.")
+        logger.warning("Pipeline parado após ingestão. Use --dry-run para testar apenas a ingestão.")
         return 2
+    except Exception as exc:
+        logger.error("Normalização falhou: %s", exc)
+        return 1
+
+    logger.info(
+        "Normalização concluída: %d linhas limpas, %d problemas QA registrados",
+        len(df_clean), len(qa_issues)
+    )
+
+    # ------------------------------------------------------------------
+    # Dry-run pós-normalização: imprimir resumo e sair
+    # ------------------------------------------------------------------
+    if args.dry_run:
+        print(f"\n[dry-run] Normalização concluída.")
+        print(f"  batch_id        : {record.batch_id}")
+        print(f"  linhas limpas   : {len(df_clean)}")
+        print(f"  colunas         : {len(df_clean.columns)}")
+        print(f"  problemas QA    : {len(qa_issues)}")
+        print(f"\nColunas após normalização:")
+        for col in df_clean.columns:
+            print(f"  {col}")
+        if qa_issues:
+            print(f"\nProblemas QA detectados ({len(qa_issues)}):")
+            for issue in qa_issues[:10]:
+                print(f"  [{issue['estagio']}] linha {issue['linha']} | {issue['coluna']}: {issue['problema']}")
+            if len(qa_issues) > 10:
+                print(f"  ... e mais {len(qa_issues) - 10} problema(s).")
+        return 0
 
     # ------------------------------------------------------------------
     # Stage 3: Aggregate  (Step 4 — not yet implemented)
