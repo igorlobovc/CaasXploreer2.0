@@ -1,0 +1,28 @@
+uf,estado_nome,regiao,regiao_sigla
+AC,Acre,Norte,N
+AL,Alagoas,Nordeste,NE
+AM,Amazonas,Norte,N
+AP,Amapá,Norte,N
+BA,Bahia,Nordeste,NE
+CE,Ceará,Nordeste,NE
+DF,Distrito Federal,Centro-Oeste,CO
+ES,Espírito Santo,Sudeste,SE
+GO,Goiás,Centro-Oeste,CO
+MA,Maranhão,Nordeste,NE
+MG,Minas Gerais,Sudeste,SE
+MS,Mato Grosso do Sul,Centro-Oeste,CO
+MT,Mato Grosso,Centro-Oeste,CO
+PA,Pará,Norte,N
+PB,Paraíba,Nordeste,NE
+PE,Pernambuco,Nordeste,NE
+PI,Piauí,Nordeste,NE
+PR,Paraná,Sul,S
+RJ,Rio de Janeiro,Sudeste,SE
+RN,Rio Grande do Norte,Nordeste,NE
+RO,Rondônia,Norte,N
+RR,Roraima,Norte,N
+RS,Rio Grande do Sul,Sul,S
+SC,Santa Catarina,Sul,S
+SE,Sergipe,Nordeste,NE
+SP,São Paulo,Sudeste,SE
+TO,Tocantins,Norte,N
