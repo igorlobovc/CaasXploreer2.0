@@ -1,7 +1,7 @@
-import { HomePage } from '@/components/home/HomePage';
+import { EditorialHomePage } from '@/components/home/editorial/EditorialHomePage';
 
 function App() {
-  return <HomePage />;
+  return <EditorialHomePage />;
 }
 
 export default App;
