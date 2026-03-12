@@ -1,0 +1,99 @@
+# =============================================================================
+# CAAsXploreer JSON Export Pipeline — Configuration
+# scripts/pipeline/config.yaml
+#
+# This file controls all configurable aspects of the pipeline.
+# All paths are relative to the repository root unless otherwise noted.
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# SOURCE BATCH INPUTS
+# The pipeline reads from registered batch files only.
+# Source files must be registered in data/raw/external_batches/batch_registry.csv
+# before they can be processed.
+# -----------------------------------------------------------------------------
+source:
+  # batch_registry: Path to the CSV file that tracks all registered raw inputs.
+  # batch_registry: "data/raw/external_batches/batch_registry.csv"
+
+  # raw_dir: Root directory where original (untouched) source files are stored.
+  # raw_dir: "data/raw/external_batches/"
+
+  # expected_families: List of accepted source families (e.g. Fanpage Karma, YouScan).
+  # expected_families:
+  #   - "Fanpage Karma"
+  #   - "YouScan"
+
+
+# -----------------------------------------------------------------------------
+# CANONICAL MAPPING / REFERENCE FILES
+# CSV or JSON files used to map raw values to canonical forms.
+# All reference files live in data/reference/.
+# -----------------------------------------------------------------------------
+reference:
+  # uf_region_map: Maps UF codes to canonical region names.
+  # uf_region_map: "data/reference/uf_region_map.csv"
+
+  # category_taxonomy: Canonical category and subcategory definitions.
+  # category_taxonomy: "data/reference/category_taxonomy.csv"
+
+  # caa_dictionary: Maps raw CAA name variants to canonical identifiers.
+  # caa_dictionary: "data/reference/caa_dictionary/"
+
+  # lawyer_totals: Total active lawyers per UF (OAB source).
+  # lawyer_totals: "data/reference/lawyer_totals/"
+
+
+# -----------------------------------------------------------------------------
+# OUTPUT DIRECTORIES
+# Processed JSON files are written to period-specific subdirectories.
+# -----------------------------------------------------------------------------
+output:
+  # base_dir: Root directory for all processed outputs.
+  # base_dir: "data/processed/"
+
+  # period_dir: Target subdirectory for the current processing run.
+  # Typically one of: period_1, period_2, period_3, or shared.
+  # period_dir: "data/processed/period_1/"
+
+  # reconciliation_dir: Where run reports and provenance summaries are written.
+  # reconciliation_dir: "docs/reconciliation/"
+
+
+# -----------------------------------------------------------------------------
+# JSON OUTPUT FAMILIES
+# The complete set of JSON files this pipeline is expected to produce.
+# Each entry maps a logical name to its output filename.
+# -----------------------------------------------------------------------------
+json_outputs:
+  # ranking_estados_12m:    "ranking_estados_12m.json"
+  # ranking_estados_geral:  "ranking_estados_geral.json"
+  # ranking_categorias:     "ranking_categorias.json"
+  # ranking_subcategorias:  "ranking_subcategorias.json"
+  # estados_resumo:         "estados_resumo.json"
+  # estado_detalhe:         "estado_detalhe_{uf}.json"   # one file per UF
+  # analytics_resumo:       "analytics_resumo.json"
+  # analytics_temporal:     "analytics_temporal.json"
+  # macro_regioes:          "macro_regioes.json"
+  # taxonomy_servicos:      "taxonomy_servicos.json"
+  # evidence_index:         "evidence_index.json"
+  # schema_catalog:         "schema_catalog.json"
+
+
+# -----------------------------------------------------------------------------
+# QA / PROVENANCE SETTINGS
+# Controls what is recorded in the provenance report for each pipeline run.
+# -----------------------------------------------------------------------------
+provenance:
+  # emit_provenance_json: Whether to write a _provenance.json alongside outputs.
+  # emit_provenance_json: true
+
+  # emit_run_report_md: Whether to write a human-readable Markdown run report.
+  # emit_run_report_md: true
+
+  # record_git_commit: Whether to capture the current Git commit hash in provenance.
+  # record_git_commit: true
+
+  # anomaly_threshold: Maximum number of anomalies before the pipeline aborts.
+  # anomaly_threshold: 50
