@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: manus-agent-orchestrator
+    runtime: python
+    rootDir: manus-agents
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn server:app --bind 0.0.0.0:$PORT --workers 2 --timeout 300
+    plan: free
+    envVars:
+      - key: MAC_STUDIO_IP
+        value: 192.168.1.9
+      - key: MAC_STUDIO_USER
+        value: igorcunha
+      - key: MAC_SSH_KEY_PATH
+        value: /etc/secrets/mac_ssh_key
+      - key: LLM_API_URL
+        value: http://192.168.1.9:1234/v1
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+    secretFiles:
+      - name: mac_ssh_key
+        mountPath: /etc/secrets/mac_ssh_key
