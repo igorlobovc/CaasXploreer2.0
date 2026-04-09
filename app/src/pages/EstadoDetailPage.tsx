@@ -24,6 +24,21 @@ const tooltipStyle = {
   fontSize: 12,
 };
 
+const DETAIL_COLOR_MAP: Record<string, string> = {
+  cyan:    'bg-cyan-500/20 text-cyan-400 border-cyan-500/20',
+  emerald: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20',
+  blue:    'bg-blue-500/20 text-blue-400 border-blue-500/20',
+  violet:  'bg-violet-500/20 text-violet-400 border-violet-500/20',
+};
+
+const CAT_COLORS: Record<string, string> = {
+  'Saúde':               '#06b6d4',
+  'Benefícios':          '#10b981',
+  'Financeiro':          '#8b5cf6',
+  'Esporte e Bem-estar': '#f59e0b',
+  'Infraestrutura':      '#64748b',
+};
+
 function StatCard({
   label,
   value,
@@ -37,15 +52,9 @@ function StatCard({
   Icon: React.ElementType;
   color?: string;
 }) {
-  const colorMap: Record<string, string> = {
-    cyan:    'bg-cyan-500/20 text-cyan-400 border-cyan-500/20',
-    emerald: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20',
-    blue:    'bg-blue-500/20 text-blue-400 border-blue-500/20',
-    violet:  'bg-violet-500/20 text-violet-400 border-violet-500/20',
-  };
   return (
     <GlassCard className="p-4" hover>
-      <div className={`w-8 h-8 rounded-lg flex items-center justify-center border mb-3 ${colorMap[color]}`}>
+      <div className={`w-8 h-8 rounded-lg flex items-center justify-center border mb-3 ${DETAIL_COLOR_MAP[color]}`}>
         <Icon className="w-4 h-4" />
       </div>
       <div className="text-xl sm:text-2xl font-bold text-white mb-0.5">{value}</div>
@@ -78,14 +87,6 @@ export default function EstadoDetailPage() {
   const TrendIcon =
     estado.tendencia === 'alta' ? TrendingUp :
     estado.tendencia === 'baixa' ? TrendingDown : Minus;
-
-  const catColors: Record<string, string> = {
-    'Saúde':               '#06b6d4',
-    'Benefícios':          '#10b981',
-    'Financeiro':          '#8b5cf6',
-    'Esporte e Bem-estar': '#f59e0b',
-    'Infraestrutura':      '#64748b',
-  };
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-x-hidden">
@@ -208,7 +209,7 @@ export default function EstadoDetailPage() {
                     {estado.categorias.map((cat) => (
                       <Cell
                         key={cat.categoria}
-                        fill={catColors[cat.categoria] ?? '#64748b'}
+                        fill={CAT_COLORS[cat.categoria] ?? '#64748b'}
                       />
                     ))}
                   </Bar>
@@ -231,7 +232,7 @@ export default function EstadoDetailPage() {
                   <div key={cat.categoria} className="flex items-center gap-4 px-4 py-3">
                     <div
                       className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: catColors[cat.categoria] ?? '#64748b' }}
+                      style={{ backgroundColor: CAT_COLORS[cat.categoria] ?? '#64748b' }}
                     />
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-1">
@@ -241,7 +242,7 @@ export default function EstadoDetailPage() {
                       <div className="h-1.5 w-full bg-cyan-500/10 rounded-full overflow-hidden">
                         <div
                           className="h-full rounded-full"
-                          style={{ width: `${pct}%`, backgroundColor: catColors[cat.categoria] ?? '#64748b' }}
+                          style={{ width: `${pct}%`, backgroundColor: CAT_COLORS[cat.categoria] ?? '#64748b' }}
                         />
                       </div>
                     </div>

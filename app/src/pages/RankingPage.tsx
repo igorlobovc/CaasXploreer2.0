@@ -2,7 +2,7 @@
 // PAGE: /ranking — Rankings por estado e por categoria
 // ============================================================
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, TrendingUp, TrendingDown, Minus, BarChart2, Users } from 'lucide-react';
 import { GlassCard, Navbar, PageBackground } from '../components/shared';
@@ -49,6 +49,14 @@ function MedalBadge({ pos }: { pos: number }) {
 
 export default function RankingPage() {
   const [mode, setMode] = useState<RankingMode>('normalizado');
+
+  const categoryTotals = useMemo(
+    () => rankingPorCategoria.reduce(
+      (acc, c) => ({ totalInteracoes: acc.totalInteracoes + c.totalInteracoes, totalServicos: acc.totalServicos + c.totalServicos }),
+      { totalInteracoes: 0, totalServicos: 0 },
+    ),
+    [],
+  );
 
   const tabs: { key: RankingMode; label: string; Icon: React.ElementType }[] = [
     { key: 'normalizado', label: 'Por 1.000 adv.', Icon: Users },
@@ -263,8 +271,8 @@ export default function RankingPage() {
             {/* Summary note */}
             <p className="text-center text-xs text-cyan-200/40 mt-6">
               Total combinado: <span className="text-cyan-300">
-                {formatNumber(rankingPorCategoria.reduce((s, c) => s + c.totalInteracoes, 0))}
-              </span> interações · {rankingPorCategoria.reduce((s, c) => s + c.totalServicos, 0)} serviços mapeados
+                {formatNumber(categoryTotals.totalInteracoes)}
+              </span> interações · {categoryTotals.totalServicos} serviços mapeados
             </p>
           </motion.div>
         )}

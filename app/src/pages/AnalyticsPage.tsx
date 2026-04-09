@@ -26,6 +26,13 @@ import {
 } from '../lib/analytics';
 
 // ---- Stat card -----------------------------------------------
+const STAT_COLOR_MAP: Record<string, string> = {
+  cyan:    'bg-cyan-500/20 text-cyan-400 border-cyan-500/20',
+  emerald: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20',
+  blue:    'bg-blue-500/20 text-blue-400 border-blue-500/20',
+  violet:  'bg-violet-500/20 text-violet-400 border-violet-500/20',
+};
+
 function StatCard({
   icon: Icon,
   label,
@@ -41,12 +48,6 @@ function StatCard({
   color?: string;
   delay?: number;
 }) {
-  const colorMap: Record<string, string> = {
-    cyan:    'bg-cyan-500/20 text-cyan-400 border-cyan-500/20',
-    emerald: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20',
-    blue:    'bg-blue-500/20 text-blue-400 border-blue-500/20',
-    violet:  'bg-violet-500/20 text-violet-400 border-violet-500/20',
-  };
 
   return (
     <motion.div
@@ -56,7 +57,7 @@ function StatCard({
     >
       <GlassCard className="p-4 sm:p-5" hover>
         <div className="flex items-start justify-between mb-3">
-          <div className={`w-9 h-9 rounded-lg flex items-center justify-center border ${colorMap[color]}`}>
+          <div className={`w-9 h-9 rounded-lg flex items-center justify-center border ${STAT_COLOR_MAP[color]}`}>
             <Icon className="w-4 h-4" />
           </div>
         </div>
@@ -77,6 +78,9 @@ const tooltipStyle = {
   fontSize: 12,
 };
 
+// ---- Pie chart colours (static, defined once at module level) ----------
+const PIE_COLORS = ['#ec4899', '#06b6d4', '#8b5cf6', '#3b82f6', '#64748b'];
+
 // ============================================================
 // MAIN PAGE
 // ============================================================
@@ -90,8 +94,6 @@ export default function AnalyticsPage() {
     historicoNacional.length > 1
       ? `${historicoNacional[0].mes} → ${historicoNacional[historicoNacional.length - 1].mes}`
       : analyticsSummary.periodoCobertura;
-
-  const COLORS = ['#ec4899', '#06b6d4', '#8b5cf6', '#3b82f6', '#64748b'];
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-x-hidden">
@@ -285,7 +287,7 @@ export default function AnalyticsPage() {
                       innerRadius={40}
                     >
                       {sourceDistribution.map((entry, index) => (
-                        <Cell key={entry.fonte} fill={COLORS[index % COLORS.length]} opacity={0.85} />
+                        <Cell key={entry.fonte} fill={PIE_COLORS[index % PIE_COLORS.length]} opacity={0.85} />
                       ))}
                     </Pie>
                     <Tooltip contentStyle={tooltipStyle} formatter={(v: number) => [`${v}%`, 'Participação']} />
@@ -294,7 +296,7 @@ export default function AnalyticsPage() {
                 <div className="flex flex-wrap gap-3 justify-center mt-2">
                   {sourceDistribution.map((s, i) => (
                     <div key={s.fonte} className="flex items-center gap-1.5">
-                      <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
+                      <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: PIE_COLORS[i % PIE_COLORS.length] }} />
                       <span className="text-xs text-cyan-200/60">{s.fonte} {s.percentual}%</span>
                     </div>
                   ))}

@@ -12,6 +12,16 @@ import { formatNumber, trendColor } from '../lib/analytics';
 
 const REGIOES = ['Todas', 'Norte', 'Nordeste', 'Centro-Oeste', 'Sudeste', 'Sul'];
 
+const CAT_BAR_COLORS = ['#06b6d4', '#10b981', '#8b5cf6', '#f59e0b', '#64748b'];
+const CAT_BAR_COLOR_MAP: Record<string, string> = {
+  'Saúde':               CAT_BAR_COLORS[0],
+  'Benefícios':          CAT_BAR_COLORS[1],
+  'Financeiro':          CAT_BAR_COLORS[2],
+  'Esporte e Bem-estar': CAT_BAR_COLORS[3],
+  'Infraestrutura':      CAT_BAR_COLORS[4],
+};
+const CAT_TEXT_COLORS = ['text-cyan-400', 'text-emerald-400', 'text-violet-400'];
+
 function TrendIcon({ t }: { t: 'alta' | 'estavel' | 'baixa' }) {
   if (t === 'alta')   return <TrendingUp   className="w-3.5 h-3.5 text-emerald-400" />;
   if (t === 'baixa')  return <TrendingDown  className="w-3.5 h-3.5 text-rose-400" />;
@@ -144,32 +154,21 @@ export default function EstadosPage() {
                   <div className="h-1.5 w-full flex rounded-full overflow-hidden gap-px">
                     {estado.categorias.map((cat) => {
                       const pct = (cat.interacoes / estado.totalInteracoes) * 100;
-                      const colors = ['#06b6d4', '#10b981', '#8b5cf6', '#f59e0b', '#64748b'];
-                      const catColors: Record<string, string> = {
-                        'Saúde': colors[0],
-                        'Benefícios': colors[1],
-                        'Financeiro': colors[2],
-                        'Esporte e Bem-estar': colors[3],
-                        'Infraestrutura': colors[4],
-                      };
                       return (
                         <div
                           key={cat.categoria}
-                          style={{ width: `${pct}%`, backgroundColor: catColors[cat.categoria] ?? colors[4] }}
+                          style={{ width: `${pct}%`, backgroundColor: CAT_BAR_COLOR_MAP[cat.categoria] ?? CAT_BAR_COLORS[4] }}
                         />
                       );
                     })}
                   </div>
 
                   <div className="mt-2 flex gap-2 flex-wrap">
-                    {estado.categorias.slice(0, 3).map((cat, i) => {
-                      const colors = ['text-cyan-400', 'text-emerald-400', 'text-violet-400'];
-                      return (
-                        <span key={cat.categoria} className={`text-[9px] ${colors[i] ?? 'text-cyan-200/40'}`}>
-                          {cat.categoria}
-                        </span>
-                      );
-                    })}
+                    {estado.categorias.slice(0, 3).map((cat, i) => (
+                      <span key={cat.categoria} className={`text-[9px] ${CAT_TEXT_COLORS[i] ?? 'text-cyan-200/40'}`}>
+                        {cat.categoria}
+                      </span>
+                    ))}
                   </div>
                 </GlassCard>
               </Link>
